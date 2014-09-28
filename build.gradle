@@ -1,0 +1,70 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+//apply plugin: 'download-task'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+def tmpDir = new File('temp')
+def libsDir = new File('libs')
+def runDir = new File('run')
+
+
+sourceSets {
+    main {
+    	resources{
+    		srcDir 'resources'
+    	}
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+	compile fileTree(dir: 'libs', include: ['*.jar'])
+	runtime fileTree(dir: 'libs', include: ['*.jar'])
+	testCompile group: 'junit', name: 'junit', version: '4.+'
+	compile 'org.eclipse.jdt:org.eclipse.jdt.annotation:2.0.0'
+}
+
+compileJava {
+	options.fork = true
+	sourceCompatibility = "1.8"
+	targetCompatibility = "1.8"
+}
+
+task cleanAll(dependsOn: clean)<<{
+	
+	tmpDir.deleteDir()
+	libsDir.deleteDir()
+	runDir.deleteDir()
+}
+
+task setUp(dependsOn: cleanAll) <<{
+	tmpDir.mkdir()
+	libsDir.mkdir()
+	runDir.mkdir()
+	tasks.updateLibs.execute()
+}
+
+task updateLibs << {
+	//def zipFile = new File(tmpDir, "libs-${libsVersion}.zip")
+	//if(!zipFile.exists()) {
+	//	download {
+	//		src "http://assets.nativehttp.org/cubes/libs-${libsVersion}.zip"
+	//		dest zipFile
+	//	}
+	//}
+	libsDir.deleteDir()
+	libsDir.mkdir()
+	copy {
+		from zipTree(zipFile)
+		into libsDir
+	}
+}
