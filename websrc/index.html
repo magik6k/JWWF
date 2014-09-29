@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JavaWebWidgetFrmework</title>
+		<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+		<script>
+			//Config
+			
+			var apiServer = "ws://localhost:8888";
+			
+			//Confing end
+			var widgetStorage = [];
+			var widgets = {};
+			var socket;
+			
+			widgets["MainFrame"] = {
+				create: function(data){
+					if(data.content < 0)
+						return {element: $("body")};
+					
+					$("body").html(widgetStorage[data.content].element);
+					return {element: $("body")};
+				},
+				update: function(widget, data){
+					if(data.content < 0)
+					{
+						$("body").html("");
+					}
+					else
+					{
+						$("body").html(widgetStorage[data.content].element);
+					}
+				}
+			};//MainFrame end
+			
+			widgets["TextLabel"] = {
+				create: function(data){
+					return {element: $("<span></span>").html(data.text)};
+				},
+				update: function(widget, data){
+					$(widget.element).html(data.text);
+				}
+					
+			};//TextLabel end
+			
+			
+			$(function(){
+				socket = new WebSocket(apiServer);
+				
+				socket.onopen = function()
+				{
+					$("title").html("JavaWebWidgetFrmework - connected");
+				};
+				socket.onmessage = function (event) 
+				{ 
+					var data = JSON.parse(event.data);
+					console.log(data);
+					if(widgetStorage[data.id] == undefined)
+					{
+						widgetStorage[data.id] = widgets[data.type].create(data.data);
+					}
+					else
+					{
+						widgets[data.type].update(widgetStorage[data.id], data.data);
+					}
+				};
+				socket.onclose = function()
+				{ 
+					alert("Connection closed"); 
+				};
+			});
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>
