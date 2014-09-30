@@ -1,0 +1,46 @@
+Dev 1:
+	-Widgets:
+		-MainFrame				DONE
+		-VertilacPanel			DONE
+		-HorizontalPanel		DONE
+		-FixedPanel
+		-AbsolutePanel
+		-TablePanel
+		-TextLabel				DONE
+		-Image
+		-Link
+
+-Bug fixing	/ testing
+-Docs
+		
+Dev 2:
+	-Widgets:
+		-Button
+		-ActionLink
+		-TextInput
+		-CheckButton
+		-SelectList
+		
+-Bug fixing	/ testing
+-Docs
+		
+Dev 3:
+	-Panel parameters:
+		-Borders
+		-Centered content
+		-Cell width modes
+	-Text(content) parameters:
+		-Color
+		-Alpha
+		
+-Bug fixing	/ testing
+-Docs
+		
+Dev 4:
+	-Skin support
+	
+-Bug fixing	/ testing
+-Docs
+	
+- release v0.1 here
+
