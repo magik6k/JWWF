@@ -35,7 +35,7 @@
 			
 			widgets["TextLabel"] = {
 				create: function(data){
-					return {element: $("<span></span>").html(data.text)};
+					return {element: $("<span>").html(data.text)};
 				},
 				update: function(widget, data){
 					$(widget.element).html(data.text);
@@ -43,6 +43,59 @@
 					
 			};//TextLabel end
 			
+			widgets["HorizontalPanel"] = {
+				create: function(data){
+					var elements = []; 
+					var elem = $("<div>");
+					
+					for(var i = 0; i < data.content.length; ++i)
+					{
+						if(data.content[i] < 0)
+						{
+							elements[i] = $("<div>").addClass("vertical");
+						}
+						else
+						{
+							elements[i] = $("<div>").addClass("vertical")
+								.html(widgetStorage[data.content[i]].element);
+						}
+						elem.append(elements[i])
+					}
+					
+					return {element: elem, data: {elements: elements}};
+				},
+				update: function(widget, data){
+					//TODO: Implement!
+				}
+					
+			};//HorizontalPanel end
+			
+			widgets["VerticalPanel"] = {
+				create: function(data){
+					var elements = []; 
+					var elem = $("<div>");
+					
+					for(var i = 0; i < data.content.length; ++i)
+					{
+						if(data.content[i] < 0)
+						{
+							elements[i] = $("<div>");
+						}
+						else
+						{
+							elements[i] = $("<div>")
+								.html(widgetStorage[data.content[i]].element);
+						}
+						elem.append(elements[i])
+					}
+					
+					return {element: elem, data: {elements: elements}};
+				},
+				update: function(widget, data){
+					//TODO: Implement!
+				}
+					
+			};//VerticalPanel end
 			
 			$(function(){
 				socket = new WebSocket(apiServer);
@@ -70,6 +123,9 @@
 				};
 			});
 		</script>
+		<style>
+			.vertical{float:left;}
+		</style>
 	</head>
 	<body>
 		
