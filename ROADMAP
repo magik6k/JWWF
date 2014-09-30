@@ -1,16 +1,16 @@
 Dev 1:
 	-Widgets:
-		-MainFrame				DONE
+		-MainFrame			DONE
 		-VertilacPanel			DONE
 		-HorizontalPanel		DONE
 		-FixedPanel
 		-AbsolutePanel
 		-TablePanel
-		-TextLabel				DONE
+		-TextLabel			DONE
 		-Image
 		-Link
 
--Bug fixing	/ testing
+-Bug fixing / testing
 -Docs
 		
 Dev 2:
@@ -21,7 +21,7 @@ Dev 2:
 		-CheckButton
 		-SelectList
 		
--Bug fixing	/ testing
+-Bug fixing / testing
 -Docs
 		
 Dev 3:
@@ -33,14 +33,14 @@ Dev 3:
 		-Color
 		-Alpha
 		
--Bug fixing	/ testing
+-Bug fixing / testing
 -Docs
 		
 Dev 4:
 	-Skin support
 	
--Bug fixing	/ testing
+-Bug fixing / testing
 -Docs
 	
-- release v0.1 here
+-Release v0.1 here
 

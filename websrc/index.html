@@ -33,16 +33,6 @@
 				}
 			};//MainFrame end
 			
-			widgets["TextLabel"] = {
-				create: function(data){
-					return {element: $("<span>").html(data.text)};
-				},
-				update: function(widget, data){
-					$(widget.element).html(data.text);
-				}
-					
-			};//TextLabel end
-			
 			widgets["HorizontalPanel"] = {
 				create: function(data){
 					var elements = []; 
@@ -96,6 +86,30 @@
 				}
 					
 			};//VerticalPanel end
+			
+			
+			widgets["TextLabel"] = {
+				create: function(data){
+					return {element: $("<span>").html(data.text)};
+				},
+				update: function(widget, data){
+					$(widget.element).html(data.text);
+				}
+					
+			};//TextLabel end
+			
+			widgets["Image"] = {
+				create: function(data){
+					return {element: $("<img>").attr("src",data.url)};
+				},
+				update: function(widget, data){
+					$(widget.element).attr("src",data.url);
+				}
+					
+			};//Image end
+			
+			
+			
 			
 			$(function(){
 				socket = new WebSocket(apiServer);
