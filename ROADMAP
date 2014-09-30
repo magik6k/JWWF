@@ -7,7 +7,7 @@ Dev 1:
 		-AbsolutePanel
 		-TablePanel
 		-TextLabel			DONE
-		-Image
+		-Image				DONE
 		-Link
 
 -Bug fixing / testing

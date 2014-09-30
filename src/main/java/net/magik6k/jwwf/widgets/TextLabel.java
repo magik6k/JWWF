@@ -16,6 +16,12 @@ public class TextLabel extends Widget {
 		this.sendElement();
 	}
 
+	public void setText(String text)
+	{
+		this.text = text;
+		this.sendElement();
+	}
+	
 	@Override
 	public String getName() {
 		return "TextLabel";

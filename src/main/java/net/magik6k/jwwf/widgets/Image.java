@@ -5,12 +5,28 @@ import net.magik6k.jwwf.Widget;
 
 public class Image extends Widget {
 	private String url;
+	private int w = -1,h = -1;
 	public Image(User user, String url) {
 		super(user);
 		this.url = url;
 		this.sendElement();
 	}
+	
+	public Image(User user, int w, int h, String url) {
+		super(user);
+		this.url = url;
+		this.w = w;
+		this.h = h;
+		this.sendElement();
+	}
 
+	public void setSize(int w, int h)
+	{
+		this.w = w;
+		this.h = h;
+		this.sendElement();
+	}
+	
 	@Override
 	public String getName() {
 		return "Image";
@@ -18,6 +34,6 @@ public class Image extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"url\":\""+url+"\"}";//TODO: Escape text
+		return "{\"url\":\""+url+"\",\"size\":["+String.valueOf(w)+","+String.valueOf(h)+"]}";//TODO: Escape url
 	}
 }

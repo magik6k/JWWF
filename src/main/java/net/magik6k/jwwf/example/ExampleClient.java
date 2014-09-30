@@ -15,7 +15,7 @@ public class ExampleClient extends User{
 		super(rootFrame, connection);
 		System.out.println("Got new client!");
 		
-		Widget cat = new Image(this, "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cat_cleaning_itself.jpg/1280px-Cat_cleaning_itself.jpg");
+		Widget cat = new Image(this, 200, -1, "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cat_cleaning_itself.jpg/1280px-Cat_cleaning_itself.jpg");
 		
 		Widget hp1 = new HorizontalPanel(this, 2, new TextLabel(this, "test"), new TextLabel(this, "test2"));
 		Widget hp2 = new HorizontalPanel(this, 2, new TextLabel(this, "test3"), new TextLabel(this, "test4"));
