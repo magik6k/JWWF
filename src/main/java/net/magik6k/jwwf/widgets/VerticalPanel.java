@@ -16,7 +16,6 @@ public class VerticalPanel extends Widget{
 
 	public VerticalPanel(User user, int height, Widget... widgets) {
 		super(user);
-		this.sendElement();
 		content = new int[height];		
 		
 		for(int i = 0; i < content.length; ++i)	{
