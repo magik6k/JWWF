@@ -129,6 +129,36 @@
 					
 			};//VerticalPanel end
 			
+			widgets["TablePanel"] = {
+				create: function(data){
+					var rows = []; 
+					var elem = $("<table>");
+					
+					for(var i = 0; i < data.content.length; ++i)
+					{
+						rows[i] = $("<tr>")
+						for(var j = 0; j < data.content[i].length; ++j)
+						{
+							if(data.content[i][j] < 0)
+							{
+								$(rows[i]).append($("<td>"));
+							}
+							else
+							{
+								$(rows[i]).append($("<td>").html(widgetStorage[data.content[i][j]].element));
+							}
+						}
+						elem.append(rows[i]);
+					}
+					
+					return {element: elem, data: {rows: rows}};
+				},
+				update: function(widget, data){
+					//TODO: Implement!
+				}
+					
+			};//TablePanel end
+			
 			
 			widgets["TextLabel"] = {
 				create: function(data){

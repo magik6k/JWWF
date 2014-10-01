@@ -9,6 +9,7 @@ import net.magik6k.jwwf.widgets.FixedPanel;
 import net.magik6k.jwwf.widgets.HorizontalPanel;
 import net.magik6k.jwwf.widgets.Image;
 import net.magik6k.jwwf.widgets.MainFrame;
+import net.magik6k.jwwf.widgets.TablePanel;
 import net.magik6k.jwwf.widgets.TextLabel;
 import net.magik6k.jwwf.widgets.VerticalPanel;
 
@@ -24,7 +25,12 @@ public class ExampleClient extends User{
 		Widget hp2 = new AbsolutePanel(this, 0, 100,
 				new HorizontalPanel(this, 2, new TextLabel(this, "test3"), new TextLabel(this, "test4")));
 		
-		rootFrame.put(new VerticalPanel(this, 3, hp1, hp2, cat));
+		Widget table = new TablePanel(this, 3, 3, 
+				new TextLabel(this, "t11"),new TextLabel(this, "t12"),new TextLabel(this, "t13"),
+				new TextLabel(this, "t21"),new TextLabel(this, "t22"),new TextLabel(this, "t23"),
+				new TextLabel(this, "t31"),new TextLabel(this, "t32"),new TextLabel(this, "t33"));
+		
+		rootFrame.put(new VerticalPanel(this, 4, hp1, hp2, table, cat));
 	}
 
 }
