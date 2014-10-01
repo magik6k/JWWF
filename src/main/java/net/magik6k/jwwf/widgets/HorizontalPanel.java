@@ -3,17 +3,29 @@ package net.magik6k.jwwf.widgets;
 import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
 
+/**
+ * This panel places its elements in horizontal line
+ */
 public class HorizontalPanel extends Widget{
 
 	private int[] content;
 	
-	public HorizontalPanel(User user, int height) {
+	/**
+	 * @param user Destination user
+	 * @param width Default height of the container
+	 */
+	public HorizontalPanel(User user, int width) {
 		super(user);
-		content = new int[height];
+		content = new int[width];
 		for(int i = 0; i < content.length; ++i)content[i] = -1;
 		this.sendElement();
 	}
 
+	/**
+	 * @param user Destination user
+	 * @param width Default height of the container
+	 * @param widgets Default widgets
+	 */	
 	public HorizontalPanel(User user, int width, Widget... widgets) {
 		super(user);
 		content = new int[width];		
@@ -41,6 +53,11 @@ public class HorizontalPanel extends Widget{
 		return "{\"content\":["+data+"]}";
 	}
 
+	/**
+	 * Puts new widget to the container
+	 * @param widget Widget to put
+	 * @param index id of 'cell' in the container to put widget to(numbered from 0)
+	 */
 	public void put(Widget widget, int index) {
 		content[index] = widget.getID();
 		this.sendElement();

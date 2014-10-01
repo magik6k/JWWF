@@ -3,9 +3,17 @@ package net.magik6k.jwwf.widgets;
 import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
 
+/**
+ * A simple table container
+ */
 public class TablePanel extends Widget{
 private int[][] content;
 	
+	/**
+	 * @param user Destination user
+	 * @param width Width of the table(number of columns)
+	 * @param height Height of the table(number of rows)
+	 */
 	public TablePanel(User user, int width, int height) {
 		super(user);
 		content = new int[height][width];
@@ -15,7 +23,13 @@ private int[][] content;
 		
 		this.sendElement();
 	}
-
+	
+	/**
+	 * @param user Destination user
+	 * @param width Width of the table(number of columns)
+	 * @param height Height of the table(number of rows)
+	 * @param widgets Default set of widgets, from top-left to bottom-right
+	 */
 	public TablePanel(User user, int width, int height, Widget... widgets) {
 		super(user);
 		content = new int[height][width];		
@@ -50,6 +64,12 @@ private int[][] content;
 		return "{\"content\":["+data+"]}";
 	}
 
+	/**
+	 * Set widget to certain cell in table
+	 * @param widget Widget to set
+	 * @param x Column
+	 * @param y Row
+	 */
 	public void put(Widget widget, int x, int y) {
 		content[x][y] = widget.getID();
 		this.sendElement();

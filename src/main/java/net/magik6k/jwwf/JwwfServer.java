@@ -10,6 +10,7 @@ import net.magik6k.jwwf.widgets.MainFrame;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.drafts.Draft;
+import org.java_websocket.drafts.Draft_17;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
@@ -18,13 +19,25 @@ public class JwwfServer extends WebSocketServer{
 	private HashMap<WebSocket, User> connections = new HashMap<WebSocket, User>();
 	private final Class<? extends User> user;
 	
-	public JwwfServer( Class<? extends User> user, int port , Draft d ) throws UnknownHostException {
-		super( new InetSocketAddress( port ), Collections.singletonList( d ) );
+	/**
+	 * Server constructor
+	 * @param user User handler class
+	 * @param port Port to bind server to
+	 * @throws UnknownHostException
+	 */
+	public JwwfServer( Class<? extends User> user, int port) throws UnknownHostException {
+		super( new InetSocketAddress( port ), Collections.singletonList( (Draft)new Draft_17() ) );
 		this.user = user;
 	}
 	
-	public JwwfServer( Class<? extends User> user, InetSocketAddress address, Draft d ) {
-		super( address, Collections.singletonList( d ) );
+	/**
+	 * Server constructor
+	 * @param user User handler class
+	 * @param address Address to bind server to
+	 * @throws UnknownHostException
+	 */
+	public JwwfServer( Class<? extends User> user, InetSocketAddress address) {
+		super( address, Collections.singletonList( (Draft)new Draft_17() ) );
 		this.user = user;
 	}
 

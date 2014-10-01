@@ -4,9 +4,7 @@ import net.magik6k.jwwf.Connection;
 import net.magik6k.jwwf.Widget;
 
 /**
- * root div
- * @author lukasz
- *
+ * Special panel to add widgets to. Created internally
  */
 public class MainFrame extends Widget{
 
@@ -27,6 +25,10 @@ public class MainFrame extends Widget{
 		return "{\"content\":"+String.valueOf(content)+"}";
 	}
 
+	/**
+	 * Adds widget to page
+	 * @param widget Widget/container to present
+	 */
 	public void put(Widget widget) {
 		content = widget.getID();
 		this.sendElement();

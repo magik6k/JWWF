@@ -18,7 +18,7 @@ public class Main {
 			port = 8888;
 		}
 		try {
-			new JwwfServer( ExampleClient.class, port , new Draft_17() ).start();
+			new JwwfServer( ExampleClient.class, port ).start();
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
