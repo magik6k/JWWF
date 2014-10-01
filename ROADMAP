@@ -8,7 +8,7 @@ Dev 1:
 		-TablePanel
 		-TextLabel			DONE
 		-Image				DONE
-		-Link
+		-ExternalLink			DONE
 
 -Bug fixing / testing
 -Docs
@@ -16,7 +16,7 @@ Dev 1:
 Dev 2:
 	-Widgets:
 		-Button
-		-ActionLink
+		-InternalLink
 		-TextInput
 		-CheckButton
 		-SelectList

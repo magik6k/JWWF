@@ -27,6 +27,12 @@ public class Image extends Widget {
 		this.sendElement();
 	}
 	
+	public void setURL(String url)
+	{
+		this.url = url;
+		this.sendElement();
+	}
+	
 	@Override
 	public String getName() {
 		return "Image";
