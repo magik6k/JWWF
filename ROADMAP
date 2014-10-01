@@ -3,7 +3,7 @@ Dev 1:
 		-MainFrame			DONE
 		-VertilacPanel			DONE
 		-HorizontalPanel		DONE
-		-FixedPanel
+		-FixedPanel                     DONE
 		-AbsolutePanel
 		-TablePanel
 		-TextLabel			DONE
