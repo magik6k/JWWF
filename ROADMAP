@@ -4,7 +4,7 @@ Dev 1:
 		-VertilacPanel			DONE
 		-HorizontalPanel		DONE
 		-FixedPanel                     DONE
-		-AbsolutePanel
+		-AbsolutePanel                  DONE
 		-TablePanel
 		-TextLabel			DONE
 		-Image				DONE

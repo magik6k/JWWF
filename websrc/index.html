@@ -33,6 +33,48 @@
 				}
 			};//MainFrame end
 			
+			widgets["FixedPanel"] = {
+				create: function(data){
+					if(data.content < 0)
+						return {element: $("<div>").css({left:data.x,top:data.y})};
+					
+					var elem = $("<div>").html(widgetStorage[data.content].element)
+						.css({left:data.x,top:data.y}).addClass("fixedPanel");
+					return {element: elem};
+				},
+				update: function(widget, data){
+					if(data.content < 0)
+					{
+						$("body").html("");
+					}
+					else
+					{
+						$("body").html(widgetStorage[data.content].element);
+					}
+				}
+			};//FixedPanel end
+			
+			widgets["AbsolutePanel"] = {
+				create: function(data){
+					if(data.content < 0)
+						return {element: $("<div>").css({left:data.x,top:data.y})};
+					
+					var elem = $("<div>").html(widgetStorage[data.content].element)
+						.css({left:data.x,top:data.y}).addClass("absolutePanel");
+					return {element: elem};
+				},
+				update: function(widget, data){
+					if(data.content < 0)
+					{
+						$("body").html("");
+					}
+					else
+					{
+						$("body").html(widgetStorage[data.content].element);
+					}
+				}
+			};//AbsolutePanel end
+			
 			widgets["HorizontalPanel"] = {
 				create: function(data){
 					var elements = []; 
@@ -86,27 +128,6 @@
 				}
 					
 			};//VerticalPanel end
-			
-			widgets["FixedPanel"] = {
-				create: function(data){
-					if(data.content < 0)
-						return {element: $("<div>").css({left:data.x,top:data.y})};
-					
-					var elem = $("<div>").html(widgetStorage[data.content].element)
-						.css({left:data.x,top:data.y}).addClass("fixedPanel");
-					return {element: elem};
-				},
-				update: function(widget, data){
-					if(data.content < 0)
-					{
-						$("body").html("");
-					}
-					else
-					{
-						$("body").html(widgetStorage[data.content].element);
-					}
-				}
-			};//FixedPanel end
 			
 			
 			widgets["TextLabel"] = {
@@ -173,6 +194,7 @@
 		<style>
 			.vertical{display: inline-block;}
 			.fixedPanel{position: fixed;}
+			.absolutePanel{position: absolute;}
 		</style>
 	</head>
 	<body>
