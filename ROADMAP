@@ -5,7 +5,7 @@ Dev 1:
 		-HorizontalPanel		DONE
 		-FixedPanel                     DONE
 		-AbsolutePanel                  DONE
-		-TablePanel
+		-TablePanel                     DONE
 		-TextLabel			DONE
 		-Image				DONE
 		-ExternalLink			DONE
