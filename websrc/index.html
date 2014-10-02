@@ -207,9 +207,20 @@
 					
 			};//ExternalLink end
 			
+			widgets["InternalLink"] = {
+				create: function(data,id){
+					return {element: $("<a>").html(data.label)
+						.attr("href","javascript:void(0);").click(function(){sendButton(id)})};
+				},
+				update: function(widget, data){
+					$(widget.element).html(data.label);
+				}
+					
+			};//InternalLink end
+			
 			widgets["Button"] = {
 				create: function(data,id){
-					return {element: $("<Button>").html(data.label)
+					return {element: $("<button>").html(data.label)
 					.click(function(){sendButton(id)})};
 				},
 				update: function(widget, data){

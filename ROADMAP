@@ -16,8 +16,9 @@ Dev 1:
 Dev 2:
 	-Widgets:
 		-Button				DONE
-		-InternalLink
+		-InternalLink			DONE
 		-TextInput
+		-PasswordInput
 		-CheckButton
 		-SelectList
 		
@@ -25,6 +26,8 @@ Dev 2:
 -Docs
 		
 Dev 3:
+	Widgets:
+		-TabbedPanel
 	-Panel parameters:
 		-Borders
 		-Centered content

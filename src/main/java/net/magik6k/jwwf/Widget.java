@@ -1,5 +1,7 @@
 package net.magik6k.jwwf;
 
+import net.magik6k.jwwf.handlers.DataHandler;
+
 
 public abstract class Widget implements DataHandler{
 	

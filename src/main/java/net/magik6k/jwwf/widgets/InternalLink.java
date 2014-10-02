@@ -5,15 +5,18 @@ import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
 import net.magik6k.jwwf.handlers.ClickHandler;
 
-public class Button extends Widget{
+/**
+ * Link clickable by user with server-side handler
+ */
+public class InternalLink extends Widget{
 	private String label;
 	private ClickHandler clickHandler;
 	/**
 	 * @param user Destination user
 	 * @param label Default label
 	 */
-	public Button(User user, String label, ClickHandler clickHandler) {
-		super(user, Actions.BUTTON_CLICK);
+	public InternalLink(User user, String label, ClickHandler clickHandler) {
+		super(user, Actions.LINK_CLICK);
 		this.label = label;
 		this.clickHandler = clickHandler;
 		this.sendElement();
@@ -31,7 +34,7 @@ public class Button extends Widget{
 	
 	@Override
 	public String getName() {
-		return "Button";
+		return "InternalLink";
 	}
 
 	@Override

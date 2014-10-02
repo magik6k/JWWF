@@ -2,6 +2,7 @@ package net.magik6k.jwwf;
 
 import java.util.HashMap;
 
+import net.magik6k.jwwf.handlers.DataHandler;
 import net.magik6k.jwwf.widgets.MainFrame;
 
 import org.java_websocket.WebSocket;
@@ -30,8 +31,9 @@ public abstract class User {
 	}
 	
 	protected final void onData(String msg){
-		if(msg.startsWith(Actions.BUTTON_CLICK.apiName))
-		{
+		if(msg.startsWith(Actions.BUTTON_CLICK.apiName)){
+			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
+		}else if(msg.startsWith(Actions.LINK_CLICK.apiName)){
 			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
 		}
 	}
