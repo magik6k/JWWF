@@ -209,7 +209,7 @@
 			
 			widgets["Button"] = {
 				create: function(data,id){
-					return {element: $("<a>").html(data.label).attr("href","javascript:void(0)")
+					return {element: $("<Button>").html(data.label)
 					.click(function(){sendButton(id)})};
 				},
 				update: function(widget, data){
