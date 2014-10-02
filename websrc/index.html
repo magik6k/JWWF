@@ -20,7 +20,10 @@
 				socket.send("B"+id);
 			}
 			
-			
+			function sendText(id,text){
+				socket.send("T"+id+";"+text);
+				console.log("T"+id+";"+text);
+			}
 			
 			//WIDGET IMPLEMENTATIONS
 			
@@ -229,6 +232,25 @@
 					
 			};//Button end
 			
+			widgets["TextInput"] = {
+				create: function(data,id){
+					var snd = 0;
+					
+					var elem = $("<input>").attr("type","text")
+						.attr("placeholder", data.text)
+						.on("keypress",function(){ 
+								clearTimeout(snd);
+								snd = setTimeout(function(){
+									sendText(id,$(elem).val());
+								},250);
+							});
+					return {element: elem};
+				},
+				update: function(widget, data){
+					$(widget.element).attr("placeholder", data.text);
+				}
+					
+			};//TextInput end
 			
 			//WIDGET IMPLEMENTATIONS END
 			

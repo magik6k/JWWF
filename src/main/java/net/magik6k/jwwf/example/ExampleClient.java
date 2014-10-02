@@ -7,6 +7,7 @@ import net.magik6k.jwwf.Connection;
 import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
 import net.magik6k.jwwf.handlers.ClickHandler;
+import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.widgets.AbsolutePanel;
 import net.magik6k.jwwf.widgets.Button;
 import net.magik6k.jwwf.widgets.ExternalLink;
@@ -16,6 +17,7 @@ import net.magik6k.jwwf.widgets.Image;
 import net.magik6k.jwwf.widgets.InternalLink;
 import net.magik6k.jwwf.widgets.MainFrame;
 import net.magik6k.jwwf.widgets.TablePanel;
+import net.magik6k.jwwf.widgets.TextInput;
 import net.magik6k.jwwf.widgets.TextLabel;
 import net.magik6k.jwwf.widgets.VerticalPanel;
 
@@ -35,7 +37,7 @@ public class ExampleClient extends User{
 		});
 		
 		Widget hp1 = new HorizontalPanel(this, 2, new ExternalLink(this, "http://nativehttp.org", "test"), new TextLabel(this, "test2"));
-		Widget hp2 = new AbsolutePanel(this, 0, 100,
+		Widget hp2 = new AbsolutePanel(this, 0, 200,
 				new HorizontalPanel(this, 2, button, new TextLabel(this, "test4")));
 		
 		ClickHandler internalLinkHandler = new ClickHandler() {
@@ -45,12 +47,22 @@ public class ExampleClient extends User{
 			}			
 		};
 		
+		final TextLabel intext = new TextLabel(this, "t13");
+		
 		Widget table = new TablePanel(this, 3, 3, 
-				new TextLabel(this, "t11"),new TextLabel(this, "t12"),new TextLabel(this, "t13"),
+				new TextLabel(this, "t11"),new TextLabel(this, "t12"),intext,
 				new InternalLink(this, "t21",internalLinkHandler),new TextLabel(this, "t22"),new TextLabel(this, "t23"),
 				new TextLabel(this, "t31"),new TextLabel(this, "t32"),new TextLabel(this, "t33"));
 		
-		rootFrame.put(new VerticalPanel(this, 4, hp1, hp2, table, cat));
+		TextInput input = new TextInput(this, "lkdifgj", new TextHandler() {
+			
+			@Override
+			public void onType(String data) {
+				intext.setText(data.toUpperCase());
+			}
+		});
+		
+		rootFrame.put(new VerticalPanel(this, 5, hp1, hp2, table, cat, input));
 	}
 
 }

@@ -17,7 +17,7 @@ Dev 2:
 	-Widgets:
 		-Button				DONE
 		-InternalLink			DONE
-		-TextInput
+		-TextInput			DONE
 		-PasswordInput
 		-CheckButton
 		-SelectList
