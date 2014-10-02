@@ -1,5 +1,7 @@
 package net.magik6k.jwwf;
 
+import java.util.HashMap;
+
 import net.magik6k.jwwf.widgets.MainFrame;
 
 import org.java_websocket.WebSocket;
@@ -7,6 +9,8 @@ import org.java_websocket.WebSocket;
 public abstract class User {
 	private final Connection connection;
 	private int id = 1;//0 is for MainFrame
+	private HashMap<Integer, DataHandler> actionHandlers = new HashMap<Integer, DataHandler>();
+	
 	
 	/**
 	 * User is constructed per each connection incoming
@@ -17,11 +21,21 @@ public abstract class User {
 		this.connection = connection;
 	}
 
-	protected Connection getConnection() {
+	protected final Connection getConnection() {
 		return connection;
 	}
 	
-	protected int nextElementId() {
+	protected final int nextElementId() {
 		return id++;
+	}
+	
+	protected final void onData(String msg){
+		if(msg.startsWith(Actions.BUTTON_CLICK.apiName))
+		{
+			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
+		}
+	}
+	protected final void setActionHandler(int id, DataHandler dataHandler){
+		actionHandlers.put(id, dataHandler);
 	}
 }

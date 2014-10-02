@@ -1,9 +1,13 @@
 package net.magik6k.jwwf.example;
 
+import java.util.Random;
+import java.util.concurrent.Callable;
+
 import net.magik6k.jwwf.Connection;
 import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
 import net.magik6k.jwwf.widgets.AbsolutePanel;
+import net.magik6k.jwwf.widgets.Button;
 import net.magik6k.jwwf.widgets.ExternalLink;
 import net.magik6k.jwwf.widgets.FixedPanel;
 import net.magik6k.jwwf.widgets.HorizontalPanel;
@@ -19,11 +23,19 @@ public class ExampleClient extends User{
 		super(rootFrame, connection);
 		System.out.println("Got new client!");
 		
-		Widget cat = new FixedPanel(this, 400, 400, new Image(this, 200, -1, "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cat_cleaning_itself.jpg/1280px-Cat_cleaning_itself.jpg"));
+		final FixedPanel cat = new FixedPanel(this, 400, 400, new Image(this, 200, -1, "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cat_cleaning_itself.jpg/1280px-Cat_cleaning_itself.jpg"));
+		
+		Widget button  = new Button(this, "testButton", new Callable<Void>() {
+			@Override
+			public Void call() throws Exception {
+				cat.setOffset(new Random().nextInt(401), 400);
+				return null;
+			}
+		});
 		
 		Widget hp1 = new HorizontalPanel(this, 2, new ExternalLink(this, "http://nativehttp.org", "test"), new TextLabel(this, "test2"));
 		Widget hp2 = new AbsolutePanel(this, 0, 100,
-				new HorizontalPanel(this, 2, new TextLabel(this, "test3"), new TextLabel(this, "test4")));
+				new HorizontalPanel(this, 2, button, new TextLabel(this, "test4")));
 		
 		Widget table = new TablePanel(this, 3, 3, 
 				new TextLabel(this, "t11"),new TextLabel(this, "t12"),new TextLabel(this, "t13"),

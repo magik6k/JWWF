@@ -55,8 +55,7 @@ public class JwwfServer extends WebSocketServer{
 
 	@Override
 	public void onMessage(WebSocket arg0, String arg1) {
-		// TODO Auto-generated method stub
-		
+		connections.get(arg0).onData(arg1);	
 	}
 
 	@Override
@@ -67,6 +66,7 @@ public class JwwfServer extends WebSocketServer{
 		MainFrame mainFrame = new MainFrame(0, connection);
 		try {
 			User u = user.getDeclaredConstructor(MainFrame.class, Connection.class).newInstance(mainFrame, connection);
+			connections.put(arg0, u);
 		} catch (InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {

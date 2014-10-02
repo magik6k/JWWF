@@ -10,9 +10,19 @@
 			var apiServer = "ws://localhost:8888";
 			
 			//Confing end
+			
+			
 			var widgetStorage = [];
 			var widgets = {};
 			var socket;
+			
+			function sendButton(id){
+				socket.send("B"+id);
+			}
+			
+			
+			
+			//WIDGET IMPLEMENTATIONS
 			
 			widgets["MainFrame"] = {
 				create: function(data){
@@ -46,11 +56,12 @@
 				update: function(widget, data){
 					if(data.content < 0)
 					{
-						$("body").html("");
+						$(widget.element).html("").css({left:data.x,top:data.y});
 					}
 					else
 					{
-						$("body").html(widgetStorage[data.content].element);
+						$(widget.element).html(widgetStorage[data.content].element)
+							.css({left:data.x,top:data.y});
 					}
 				}
 			};//FixedPanel end
@@ -67,11 +78,12 @@
 				update: function(widget, data){
 					if(data.content < 0)
 					{
-						$("body").html("");
+						$(widget.element).html("").css({left:data.x,top:data.y});
 					}
 					else
 					{
-						$("body").html(widgetStorage[data.content].element);
+						$(widget.element).html(widgetStorage[data.content].element)
+							.css({left:data.x,top:data.y});
 					}
 				}
 			};//AbsolutePanel end
@@ -195,6 +207,19 @@
 					
 			};//ExternalLink end
 			
+			widgets["Button"] = {
+				create: function(data,id){
+					return {element: $("<a>").html(data.label).attr("href","javascript:void(0)")
+					.click(function(){sendButton(id)})};
+				},
+				update: function(widget, data){
+					$(widget.element).html(data.label);
+				}
+					
+			};//Button end
+			
+			
+			//WIDGET IMPLEMENTATIONS END
 			
 			$(function(){
 				socket = new WebSocket(apiServer);
@@ -209,7 +234,7 @@
 					console.log(data);
 					if(widgetStorage[data.id] == undefined)
 					{
-						widgetStorage[data.id] = widgets[data.type].create(data.data);
+						widgetStorage[data.id] = widgets[data.type].create(data.data,data.id);
 					}
 					else
 					{

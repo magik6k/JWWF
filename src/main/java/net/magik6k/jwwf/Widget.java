@@ -1,7 +1,7 @@
 package net.magik6k.jwwf;
 
 
-public abstract class Widget {
+public abstract class Widget implements DataHandler{
 	
 	private final Connection connection;
 	private int id;
@@ -23,6 +23,13 @@ public abstract class Widget {
 		connection = creator.getConnection();
 		id = creator.nextElementId();
 	}
+	
+	public Widget(User creator, Actions actionType){
+		connection = creator.getConnection();
+		id = creator.nextElementId();
+		creator.setActionHandler(id, this);
+	}
+	
 	public int getID(){
 		return id;
 	}
@@ -34,5 +41,5 @@ public abstract class Widget {
 	protected void sendElement(){
 		connection.connection.send(getElement());
 	}
-	
+	public void handleData(String data){}
 }
