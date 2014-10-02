@@ -1,8 +1,8 @@
 package net.magik6k.jwwf.example;
 
 import java.util.Random;
-import java.util.concurrent.Callable;
 
+import sun.security.util.Password;
 import net.magik6k.jwwf.Connection;
 import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
@@ -16,6 +16,7 @@ import net.magik6k.jwwf.widgets.HorizontalPanel;
 import net.magik6k.jwwf.widgets.Image;
 import net.magik6k.jwwf.widgets.InternalLink;
 import net.magik6k.jwwf.widgets.MainFrame;
+import net.magik6k.jwwf.widgets.PasswordInput;
 import net.magik6k.jwwf.widgets.TablePanel;
 import net.magik6k.jwwf.widgets.TextInput;
 import net.magik6k.jwwf.widgets.TextLabel;
@@ -62,7 +63,15 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		rootFrame.put(new VerticalPanel(this, 5, hp1, hp2, table, cat, input));
+		PasswordInput passInput = new PasswordInput(this, "pass", new TextHandler() {
+			
+			@Override
+			public void onType(String data) {
+				intext.setText("Pass:"+data);
+			}
+		});
+		
+		rootFrame.put(new VerticalPanel(this, 6, hp1, hp2, table, cat, input, passInput));
 	}
 
 }

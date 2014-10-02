@@ -252,6 +252,26 @@
 					
 			};//TextInput end
 			
+			widgets["PasswordInput"] = {
+				create: function(data,id){
+					var snd = 0;
+					
+					var elem = $("<input>").attr("type","password")
+						.attr("placeholder", data.text)
+						.on("keypress",function(){ 
+								clearTimeout(snd);
+								snd = setTimeout(function(){
+									sendText(id,$(elem).val());
+								},250);
+							});
+					return {element: elem};
+				},
+				update: function(widget, data){
+					$(widget.element).attr("placeholder", data.text);
+				}
+					
+			};//PasswordInput end
+			
 			//WIDGET IMPLEMENTATIONS END
 			
 			$(function(){

@@ -18,9 +18,10 @@ Dev 2:
 		-Button				DONE
 		-InternalLink			DONE
 		-TextInput			DONE
-		-PasswordInput
+		-PasswordInput			DONE
 		-CheckButton
 		-SelectList
+	-Clean up example
 		
 -Bug fixing / testing
 -Docs
