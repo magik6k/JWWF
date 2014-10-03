@@ -20,9 +20,8 @@ Dev 2:
 		-TextInput			DONE
 		-PasswordInput			DONE
 		-CheckBox			DONE
-		-SelectList
-	-Clean up example
 		
+-Clean up example		
 -Bug fixing / testing
 -Docs
 		
@@ -47,6 +46,11 @@ Dev 4:
 	
 -Bug fixing / testing
 -Docs
+-Set up Jenkins
 	
 -Release v0.1 here
+
+v0.1.1:
+	-Widgets:
+		-SelectList
 
