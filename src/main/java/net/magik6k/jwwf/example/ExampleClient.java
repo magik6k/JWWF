@@ -6,10 +6,12 @@ import sun.security.util.Password;
 import net.magik6k.jwwf.Connection;
 import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
+import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.widgets.AbsolutePanel;
 import net.magik6k.jwwf.widgets.Button;
+import net.magik6k.jwwf.widgets.CheckBox;
 import net.magik6k.jwwf.widgets.ExternalLink;
 import net.magik6k.jwwf.widgets.FixedPanel;
 import net.magik6k.jwwf.widgets.HorizontalPanel;
@@ -50,10 +52,18 @@ public class ExampleClient extends User{
 		
 		final TextLabel intext = new TextLabel(this, "t13");
 		
+		CheckHandler chh = new CheckHandler() {
+			@Override
+			public void checked(boolean state) {
+				intext.setText(state?"on":"off");
+			}
+		};
+		
+		
 		Widget table = new TablePanel(this, 3, 3, 
 				new TextLabel(this, "t11"),new TextLabel(this, "t12"),intext,
 				new InternalLink(this, "t21",internalLinkHandler),new TextLabel(this, "t22"),new TextLabel(this, "t23"),
-				new TextLabel(this, "t31"),new TextLabel(this, "t32"),new TextLabel(this, "t33"));
+				new TextLabel(this, "t31"),new TextLabel(this, "t32"),new CheckBox(this, chh));
 		
 		TextInput input = new TextInput(this, "lkdifgj", new TextHandler() {
 			

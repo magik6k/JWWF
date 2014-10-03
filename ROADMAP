@@ -19,7 +19,7 @@ Dev 2:
 		-InternalLink			DONE
 		-TextInput			DONE
 		-PasswordInput			DONE
-		-CheckButton
+		-CheckBox			DONE
 		-SelectList
 	-Clean up example
 		
@@ -29,6 +29,7 @@ Dev 2:
 Dev 3:
 	Widgets:
 		-TabbedPanel
+		-RadioButton
 	-Panel parameters:
 		-Borders
 		-Centered content
@@ -36,6 +37,7 @@ Dev 3:
 	-Text(content) parameters:
 		-Color
 		-Alpha
+	-Clean up example
 		
 -Bug fixing / testing
 -Docs

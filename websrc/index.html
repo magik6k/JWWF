@@ -22,7 +22,10 @@
 			
 			function sendText(id,text){
 				socket.send("T"+id+";"+text);
-				console.log("T"+id+";"+text);
+			}
+			
+			function sendCheck(id, checked){
+				socket.send("C"+id+";"+(checked?"1":"0"));
 			}
 			
 			//WIDGET IMPLEMENTATIONS
@@ -231,6 +234,19 @@
 				}
 					
 			};//Button end
+			
+			widgets["CheckBox"] = {
+				create: function(data,id){
+					var elem = $("<input>").attr("type","checkbox")
+						.click(function(){sendCheck(id, this.checked)});				
+				
+					return {element: elem};
+				},
+				update: function(widget, data){
+					//$(widget.element).html(data.label);
+				}
+					
+			};//CheckBox end
 			
 			widgets["TextInput"] = {
 				create: function(data,id){

@@ -16,7 +16,7 @@ public class InternalLink extends Widget{
 	 * @param label Default label
 	 */
 	public InternalLink(User user, String label, ClickHandler clickHandler) {
-		super(user, Actions.LINK_CLICK);
+		super(user, Actions.BUTTON_CLICK);
 		this.label = label;
 		this.clickHandler = clickHandler;
 		this.sendElement();

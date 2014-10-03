@@ -3,8 +3,8 @@ package net.magik6k.jwwf;
 
 public enum Actions {
 	BUTTON_CLICK("B"),
-	LINK_CLICK("L"),
-	TEXT_INPUT("T");
+	TEXT_INPUT("T"),
+	CHECK_STATE("C");
 	
 	public final String apiName;
 	

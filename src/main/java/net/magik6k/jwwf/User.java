@@ -33,11 +33,15 @@ public abstract class User {
 	protected final void onData(String msg){
 		if(msg.startsWith(Actions.BUTTON_CLICK.apiName)){//B18
 			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
-		}else if(msg.startsWith(Actions.LINK_CLICK.apiName)){//L18
-			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
+			
 		}else if(msg.startsWith(Actions.TEXT_INPUT.apiName)){//T18;text
 			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
 				.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			
+		}else if(msg.startsWith(Actions.CHECK_STATE.apiName)){//C18;1
+			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
+			.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			
 		}
 	}
 	protected final void setActionHandler(int id, DataHandler dataHandler){
