@@ -6,27 +6,42 @@ import net.magik6k.jwwf.Widget;
 import net.magik6k.jwwf.handlers.TextHandler;
 
 public class PasswordInput extends Widget{
-	private String text;
+	private String placeholder;
+	private String text = "";
 	private TextHandler handler;
 	/**
 	 * @param user Destination user
 	 * @param text Hint text
 	 */
-	public PasswordInput(User user, String text, TextHandler handler) {
+	public PasswordInput(User user, String placeholder, TextHandler handler) {
 		super(user, Actions.TEXT_INPUT);
-		this.text = text;
+		this.placeholder = placeholder;
 		this.handler = handler;
 		this.sendElement();
 	}
 	
 	/**
-	 * Sets new text
-	 * @param text Text
+	 * @param user Destination user
+	 * @param text Hint text
 	 */
-	public void setText(String text)
-	{
-		this.text = text;
+	public PasswordInput(User user, String placeholder) {
+		super(user, Actions.TEXT_INPUT);
+		this.placeholder = placeholder;
 		this.sendElement();
+	}
+	
+	/**
+	 * Sets new placeholder text
+	 * @param text Placeholder text
+	 */
+	public void setPlaceholder(String placeholder)
+	{
+		this.placeholder = placeholder;
+		this.sendElement();
+	}
+	
+	public String getText(){
+		return text;
 	}
 	
 	@Override
@@ -36,13 +51,15 @@ public class PasswordInput extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+text+"\"}";//TODO: Escape text
+		return "{\"text\":\""+placeholder+"\"}";//TODO: Escape/rename text
 	}
 	
 	/**
 	 * Internal use only
 	 */
 	public void handleData(String data){
-		handler.onType(data);
+		if(data == null)return;
+		if(handler != null)handler.onType(data);
+		text = data;
 	}
 }

@@ -103,22 +103,32 @@
 					{
 						if(data.content[i] < 0)
 						{
-							elements[i] = $("<div>").addClass("vertical");
+							elements[i] = {};
+							elements[i].elem = $("<div>").addClass("horizontal");
+							elements[i].id = -1;
 						}
 						else
 						{
-							elements[i] = $("<div>").addClass("vertical")
+							elements[i] = {};
+							elements[i].elem = $("<div>").addClass("horizontal")
 								.html(widgetStorage[data.content[i]].element);
+							elements[i].id = data.content[i];
 						}
-						elem.append(elements[i])
+						elem.append(elements[i].elem)
 					}
 					
 					return {element: elem, data: {elements: elements}};
 				},
 				update: function(widget, data){
-					//TODO: Implement!
+					for(var i = 0; i < data.content.length; ++i)
+					{
+						if(data.content[i] < 0)continue;
+						if(data.content[i] == widget.data.elements[i].id)continue;
+						$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
+						widget.data.elements[i].id = data.content[i];						
+					}
 				}
-					
+				
 			};//HorizontalPanel end
 			
 			widgets["VerticalPanel"] = {
@@ -130,20 +140,30 @@
 					{
 						if(data.content[i] < 0)
 						{
-							elements[i] = $("<div>");
+							elements[i] = {};
+							elements[i].elem = $("<div>");
+							elements[i].id = -1;
 						}
 						else
 						{
-							elements[i] = $("<div>")
+							elements[i] = {};
+							elements[i].elem = $("<div>")
 								.html(widgetStorage[data.content[i]].element);
+							elements[i].id = data.content[i];
 						}
-						elem.append(elements[i])
+						elem.append(elements[i].elem)
 					}
 					
 					return {element: elem, data: {elements: elements}};
 				},
 				update: function(widget, data){
-					//TODO: Implement!
+					for(var i = 0; i < data.content.length; ++i)
+					{
+						if(data.content[i] < 0)continue;
+						if(data.content[i] == widget.data.elements[i].id)continue;
+						$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
+						widget.data.elements[i].id = data.content[i];						
+					}
 				}
 					
 			};//VerticalPanel end
@@ -317,7 +337,7 @@
 			});
 		</script>
 		<style>
-			.vertical{display: inline-block;}
+			.horizontal{display: inline-block;vertical-align:top;}/*TODO:make align customizable*/
 			.fixedPanel{position: fixed;}
 			.absolutePanel{position: absolute;}
 		</style>

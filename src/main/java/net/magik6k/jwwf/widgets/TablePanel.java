@@ -36,7 +36,8 @@ private int[][] content;
 		
 		for(int i = 0; i < content.length; ++i)
 			for(int j = 0; j < content[i].length; ++j){
-				content[i][j] = (i*width)+j < widgets.length ? widgets[(i*width)+j].getID() : -1;
+				
+				content[i][j] = (i*width)+j < widgets.length ? (widgets[(i*width)+j] != null?widgets[(i*width)+j].getID():-1) : -1;
 			}
 		
 		this.sendElement();

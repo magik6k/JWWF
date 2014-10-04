@@ -1,8 +1,5 @@
 package net.magik6k.jwwf.example;
 
-import java.util.Random;
-
-import sun.security.util.Password;
 import net.magik6k.jwwf.Connection;
 import net.magik6k.jwwf.User;
 import net.magik6k.jwwf.Widget;
@@ -13,7 +10,6 @@ import net.magik6k.jwwf.widgets.AbsolutePanel;
 import net.magik6k.jwwf.widgets.Button;
 import net.magik6k.jwwf.widgets.CheckBox;
 import net.magik6k.jwwf.widgets.ExternalLink;
-import net.magik6k.jwwf.widgets.FixedPanel;
 import net.magik6k.jwwf.widgets.HorizontalPanel;
 import net.magik6k.jwwf.widgets.Image;
 import net.magik6k.jwwf.widgets.InternalLink;
@@ -29,59 +25,122 @@ public class ExampleClient extends User{
 	public ExampleClient(MainFrame rootFrame, Connection connection) {
 		super(rootFrame, connection);
 		System.out.println("Got new client!");
+
+		/* Example TextLabel*/
+		TextLabel textLabelExample = new TextLabel(this, "This is example text");
 		
-		final FixedPanel cat = new FixedPanel(this, 400, 400, new Image(this, 200, -1, "http://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Cat_cleaning_itself.jpg/1280px-Cat_cleaning_itself.jpg"));
+		/*Image example*/
 		
-		Widget button  = new Button(this, "testButton", new ClickHandler() {
+		TextLabel imageDesc = new TextLabel(this, "Image");
+		Image image = new Image(this, 200, -1, "http://upload.wikimedia.org/wikipedia/commons/5/5c/View_from_the_Window_at_Le_Gras%2C_Joseph_Nic%C3%A9phore_Ni%C3%A9pce.jpg");
+		
+		/* Example VerticalPanel */
+		
+		TextLabel verticalPanelDesc = new TextLabel(this, "VerticalPanel");
+		VerticalPanel verticalPanel = new VerticalPanel(this, 3,
+				new TextLabel(this, "e1"),new TextLabel(this, "e2"),new TextLabel(this, "e3"));
+		
+		/* Example HorizontalPanel */
+		
+		TextLabel horizontalPanelDesc = new TextLabel(this, "HorizontalPanel");
+		HorizontalPanel horizontalPanel = new HorizontalPanel(this, 3,
+				new TextLabel(this, "e1"),new TextLabel(this, "e2"),new TextLabel(this, "e3"));
+		
+		/* Example TablePanel */
+		
+		TextLabel tablePanelDesc = new TextLabel(this, "TablePanel");
+		TablePanel tablePanel = new TablePanel(this, 2, 2,
+				new TextLabel(this, "e1"),new TextLabel(this, "e2"),
+				new TextLabel(this, "e3"),new TextLabel(this, "e4"));
+		
+		/* Example AbsolutePanel */
+		
+		TextLabel absolutePanelDesc = new TextLabel(this, "AbsolutePanel");
+		AbsolutePanel absolutePanel = new AbsolutePanel(this, 200, 8, 
+				new TextLabel(this, "AbsolutePanel content"));
+		
+		/* Example ExternalLink*/
+		
+		TextLabel externalLinkDesc = new TextLabel(this, "External link");
+		ExternalLink externalLink = new ExternalLink(this, "http://example.org", "example");
+		
+		/* Example InternalLink */
+		
+		final TextLabel internalLinkDesc = new TextLabel(this, "Internal link");
+		InternalLink internalLink = new InternalLink(this, "example", new ClickHandler() {
+			private int clicks = 0;
+			
 			@Override
 			public void clicked() {
-				cat.setOffset(new Random().nextInt(401), 400);
+				internalLinkDesc.setText("Internal link("+String.valueOf(++clicks)+")");
 			}
 		});
 		
-		Widget hp1 = new HorizontalPanel(this, 2, new ExternalLink(this, "http://nativehttp.org", "test"), new TextLabel(this, "test2"));
-		Widget hp2 = new AbsolutePanel(this, 0, 200,
-				new HorizontalPanel(this, 2, button, new TextLabel(this, "test4")));
+		/* Example Button */
 		
-		ClickHandler internalLinkHandler = new ClickHandler() {
+		final TextLabel buttonDesc = new TextLabel(this, "Button");
+		Button button = new Button(this, "example", new ClickHandler() {
+			private int clicks = 0;
+			
 			@Override
-			public void clicked(){
-				cat.setOffset(400,new Random().nextInt(401));
-			}			
-		};
+			public void clicked() {
+				buttonDesc.setText("Button("+String.valueOf(++clicks)+")");
+			}
+		});
 		
-		final TextLabel intext = new TextLabel(this, "t13");
+		/* Example TextInput */
 		
-		CheckHandler chh = new CheckHandler() {
+		final TextLabel textInputDesc = new TextLabel(this, "TextInput");
+		TextInput textInput = new TextInput(this, "TextInput", new TextHandler() {
+			
+			@Override
+			public void onType(String data) {
+				textInputDesc.setText("TextInput("+data+")");
+			}
+		});
+		
+		/* Example PasswordInput */		
+		
+		final TextLabel passwordInputDesc = new TextLabel(this, "PasswordInput");
+		PasswordInput passwordInput = new PasswordInput(this, "PasswordInput", new TextHandler() {
+			
+			@Override
+			public void onType(String data) {
+				passwordInputDesc.setText("PasswordInput("+data+")");
+			}
+		});
+		
+		/* Example CheckBox */
+		
+		final TextLabel checkBoxDesc = new TextLabel(this, "CheckBox");
+		CheckBox checkBox = new CheckBox(this, new CheckHandler() {
 			@Override
 			public void checked(boolean state) {
-				intext.setText(state?"on":"off");
-			}
-		};
-		
-		
-		Widget table = new TablePanel(this, 3, 3, 
-				new TextLabel(this, "t11"),new TextLabel(this, "t12"),intext,
-				new InternalLink(this, "t21",internalLinkHandler),new TextLabel(this, "t22"),new TextLabel(this, "t23"),
-				new TextLabel(this, "t31"),new TextLabel(this, "t32"),new CheckBox(this, chh));
-		
-		TextInput input = new TextInput(this, "lkdifgj", new TextHandler() {
-			
-			@Override
-			public void onType(String data) {
-				intext.setText(data.toUpperCase());
+				checkBoxDesc.setText("CheckBox("+String.valueOf(state)+")");
 			}
 		});
 		
-		PasswordInput passInput = new PasswordInput(this, "pass", new TextHandler() {
-			
-			@Override
-			public void onType(String data) {
-				intext.setText("Pass:"+data);
-			}
-		});
+		/* Custom panel example */		
+		Widget customPanel = new LoginPanel(this);		
+		TextLabel customPanelDesc = new TextLabel(this, "Custom panel");
 		
-		rootFrame.put(new VerticalPanel(this, 6, hp1, hp2, table, cat, input, passInput));
+		//Container for all examples
+		Widget exapmles = new TablePanel(this, 2, 13, 
+				textLabelExample,	null,
+				imageDesc,			image,
+				verticalPanelDesc,	verticalPanel,
+				horizontalPanelDesc,horizontalPanel,
+				tablePanelDesc,		tablePanel,
+				absolutePanelDesc,	absolutePanel,
+				externalLinkDesc,	externalLink,
+				internalLinkDesc,	internalLink,
+				buttonDesc,			button,
+				textInputDesc,		textInput,
+				passwordInputDesc,	passwordInput,
+				checkBoxDesc,		checkBox,
+				customPanelDesc,	customPanel);
+		
+		rootFrame.put(exapmles);
 	}
 
 }
