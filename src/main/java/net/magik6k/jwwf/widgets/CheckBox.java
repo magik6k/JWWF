@@ -1,7 +1,6 @@
 package net.magik6k.jwwf.widgets;
 
 import net.magik6k.jwwf.core.Actions;
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.CheckHandler;
 
@@ -11,8 +10,8 @@ public class CheckBox extends Widget{
 	 * @param user Destination user
 	 * @param label Default label
 	 */
-	public CheckBox(User user, CheckHandler clickHandler) {
-		super(user, Actions.CHECK_STATE);
+	public CheckBox(CheckHandler clickHandler) {
+		super(Actions.CHECK_STATE);
 		this.clickHandler = clickHandler;
 		this.sendElement();
 	}

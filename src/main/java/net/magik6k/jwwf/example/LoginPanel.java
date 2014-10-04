@@ -15,20 +15,20 @@ public class LoginPanel extends VerticalPanel{
 	private final Button loginButton;
 	
 	
-	public LoginPanel(final User user) {
-		super(user, 3);
+	public LoginPanel() {
+		super(3);
 		
-		loginField = new TextInput(user, "login", null);
-		passwordField = new PasswordInput(user, "password", null);
+		loginField = new TextInput("login", null);
+		passwordField = new PasswordInput("password", null);
 		
 		
 		
-		loginButton = new Button(user, "LOGIN!", new ClickHandler() {
+		loginButton = new Button("LOGIN!", new ClickHandler() {
 			@Override
 			public void clicked() {
 				if(loginField.getText().equals("user") && passwordField.getText().equals("password"))
 				{
-					put(new TextLabel(user, "Logged In!"), 2);
+					put(new TextLabel("Logged In!"), 2);
 				}
 			}
 		});

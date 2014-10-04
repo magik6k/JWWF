@@ -22,6 +22,7 @@ Dev 2:
 		-CheckBox			DONE
 		
 -Clean up example				DONE
+-Simpler widget creation(no need for user)	DONE
 -Bug fixing / testing
 -Docs
 		

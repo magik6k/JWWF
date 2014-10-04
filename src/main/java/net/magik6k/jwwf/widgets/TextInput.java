@@ -1,7 +1,6 @@
 package net.magik6k.jwwf.widgets;
 
 import net.magik6k.jwwf.core.Actions;
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.TextHandler;
 
@@ -14,8 +13,8 @@ public class TextInput extends Widget {
 	 * @param text Hint text
 	 * @param handler Handler of typed text
 	 */
-	public TextInput(User user, String placeholder, TextHandler handler) {
-		super(user, Actions.TEXT_INPUT);
+	public TextInput(String placeholder, TextHandler handler) {
+		super(Actions.TEXT_INPUT);
 		this.placeholder = placeholder;
 		this.handler = handler;
 		this.sendElement();
@@ -25,8 +24,8 @@ public class TextInput extends Widget {
 	 * @param user Destination user
 	 * @param text Hint text
 	 */
-	public TextInput(User user, String placeholder) {
-		super(user, Actions.TEXT_INPUT);
+	public TextInput(String placeholder) {
+		super(Actions.TEXT_INPUT);
 		this.placeholder = placeholder;
 		this.sendElement();
 	}

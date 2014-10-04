@@ -6,8 +6,6 @@ import java.net.UnknownHostException;
 import java.util.Collections;
 import java.util.HashMap;
 
-import net.magik6k.jwwf.widgets.MainFrame;
-
 import org.java_websocket.WebSocket;
 import org.java_websocket.drafts.Draft;
 import org.java_websocket.drafts.Draft_17;
@@ -61,7 +59,7 @@ public class JwwfServer extends WebSocketServer{
 	@Override
 	public void onOpen(WebSocket arg0, ClientHandshake arg1) {
 		// TODO Auto-generated method stub
-		System.out.printf("HI. hash: %d, str: %s\n", arg0.hashCode(), arg0.toString());
+		System.out.printf("New user. hash: %d, str: %s\n", arg0.hashCode(), arg0.toString());
 		Connection connection = new Connection(arg0);
 		MainFrame mainFrame = new MainFrame(0, connection);
 		try {

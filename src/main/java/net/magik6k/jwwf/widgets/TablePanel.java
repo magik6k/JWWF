@@ -1,25 +1,24 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 
 /**
  * A simple table container
  */
 public class TablePanel extends Widget{
-private int[][] content;
+	private Widget[][] content;
 	
 	/**
 	 * @param user Destination user
 	 * @param width Width of the table(number of columns)
 	 * @param height Height of the table(number of rows)
 	 */
-	public TablePanel(User user, int width, int height) {
-		super(user);
-		content = new int[height][width];
+	public TablePanel(int width, int height) {
+		super();
+		content = new Widget[height][width];
 		for(int i = 0; i < content.length; ++i)
 			for(int j = 0; j < content[i].length; ++j)
-				content[i][j] = -1;
+				content[i][j] = null;
 		
 		this.sendElement();
 	}
@@ -30,14 +29,16 @@ private int[][] content;
 	 * @param height Height of the table(number of rows)
 	 * @param widgets Default set of widgets, from top-left to bottom-right
 	 */
-	public TablePanel(User user, int width, int height, Widget... widgets) {
-		super(user);
-		content = new int[height][width];		
+	public TablePanel(int width, int height, Widget... widgets) {
+		super();
+		content = new Widget[height][width];		
 		
 		for(int i = 0; i < content.length; ++i)
 			for(int j = 0; j < content[i].length; ++j){
-				
-				content[i][j] = (i*width)+j < widgets.length ? (widgets[(i*width)+j] != null?widgets[(i*width)+j].getID():-1) : -1;
+				if((i*width)+j < widgets.length && widgets[(i*width)+j] != null){
+					attach(widgets[(i*width)+j]);
+					content[i][j] = widgets[(i*width)+j];
+				}
 			}
 		
 		this.sendElement();
@@ -58,7 +59,7 @@ private int[][] content;
 			for(int j = 0; j < content[i].length; ++j)
 			{
 				if(j > 0)data += ",";
-				data += "\"" + String.valueOf(content[i][j]) + "\"";
+				data += "\"" + String.valueOf(content[i][j]!=null?content[i][j].getID():-1) + "\"";
 			}
 			data += "]";
 		}
@@ -72,7 +73,8 @@ private int[][] content;
 	 * @param y Row
 	 */
 	public void put(Widget widget, int x, int y) {
-		content[x][y] = widget.getID();
+		attach(widget);
+		content[x][y] = widget;
 		this.sendElement();
 	}	
 }

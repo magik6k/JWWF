@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 
 /**
@@ -14,8 +13,8 @@ public class Image extends Widget {
 	 * @param user Destination user
 	 * @param url URL of the image; must be accesible by user
 	 */
-	public Image(User user, String url) {
-		super(user);
+	public Image(String url) {
+		super();
 		this.url = url;
 		this.sendElement();
 	}
@@ -26,8 +25,8 @@ public class Image extends Widget {
 	 * @param h width of image, left -1 when not used(will be resized or scaled)
 	 * @param url URL of the image; must be accesible by user
 	 */
-	public Image(User user, int w, int h, String url) {
-		super(user);
+	public Image(int w, int h, String url) {
+		super();
 		this.url = url;
 		this.w = w;
 		this.h = h;

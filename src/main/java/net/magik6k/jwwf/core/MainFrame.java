@@ -1,14 +1,13 @@
-package net.magik6k.jwwf.widgets;
+package net.magik6k.jwwf.core;
 
-import net.magik6k.jwwf.core.Connection;
-import net.magik6k.jwwf.core.Widget;
 
 /**
  * Special panel to add widgets to. Created internally
  */
-public class MainFrame extends Widget{
+public final class MainFrame extends Widget{
 
 	private int content = -1;
+	private User user;
 	
 	public MainFrame(int id, Connection creator) {
 		super(id, creator);
@@ -25,11 +24,16 @@ public class MainFrame extends Widget{
 		return "{\"content\":"+String.valueOf(content)+"}";
 	}
 
+	protected void setUser(User user) {
+		this.user = user;
+	}
+	
 	/**
 	 * Adds widget to page
 	 * @param widget Widget/container to present
 	 */
 	public void put(Widget widget) {
+		widget.addTo(user);
 		content = widget.getID();
 		this.sendElement();
 	}

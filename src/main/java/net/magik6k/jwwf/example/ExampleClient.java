@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.example;
 
 import net.magik6k.jwwf.core.Connection;
+import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.CheckHandler;
@@ -13,7 +14,6 @@ import net.magik6k.jwwf.widgets.ExternalLink;
 import net.magik6k.jwwf.widgets.HorizontalPanel;
 import net.magik6k.jwwf.widgets.Image;
 import net.magik6k.jwwf.widgets.InternalLink;
-import net.magik6k.jwwf.widgets.MainFrame;
 import net.magik6k.jwwf.widgets.PasswordInput;
 import net.magik6k.jwwf.widgets.TablePanel;
 import net.magik6k.jwwf.widgets.TextInput;
@@ -27,47 +27,47 @@ public class ExampleClient extends User{
 		System.out.println("Got new client!");
 
 		/* Example TextLabel*/
-		TextLabel textLabelExample = new TextLabel(this, "This is example text");
+		TextLabel textLabelExample = new TextLabel("This is example text");
 		
 		/*Image example*/
 		
-		TextLabel imageDesc = new TextLabel(this, "Image");
-		Image image = new Image(this, 200, -1, "http://upload.wikimedia.org/wikipedia/commons/5/5c/View_from_the_Window_at_Le_Gras%2C_Joseph_Nic%C3%A9phore_Ni%C3%A9pce.jpg");
+		TextLabel imageDesc = new TextLabel("Image");
+		Image image = new Image(200, -1, "http://upload.wikimedia.org/wikipedia/commons/5/5c/View_from_the_Window_at_Le_Gras%2C_Joseph_Nic%C3%A9phore_Ni%C3%A9pce.jpg");
 		
 		/* Example VerticalPanel */
 		
-		TextLabel verticalPanelDesc = new TextLabel(this, "VerticalPanel");
-		VerticalPanel verticalPanel = new VerticalPanel(this, 3,
-				new TextLabel(this, "e1"),new TextLabel(this, "e2"),new TextLabel(this, "e3"));
+		TextLabel verticalPanelDesc = new TextLabel("VerticalPanel");
+		VerticalPanel verticalPanel = new VerticalPanel(3,
+				new TextLabel("e1"),new TextLabel("e2"),new TextLabel("e3"));
 		
 		/* Example HorizontalPanel */
 		
-		TextLabel horizontalPanelDesc = new TextLabel(this, "HorizontalPanel");
-		HorizontalPanel horizontalPanel = new HorizontalPanel(this, 3,
-				new TextLabel(this, "e1"),new TextLabel(this, "e2"),new TextLabel(this, "e3"));
+		TextLabel horizontalPanelDesc = new TextLabel("HorizontalPanel");
+		HorizontalPanel horizontalPanel = new HorizontalPanel(3,
+				new TextLabel("e1"),new TextLabel("e2"),new TextLabel("e3"));
 		
 		/* Example TablePanel */
 		
-		TextLabel tablePanelDesc = new TextLabel(this, "TablePanel");
-		TablePanel tablePanel = new TablePanel(this, 2, 2,
-				new TextLabel(this, "e1"),new TextLabel(this, "e2"),
-				new TextLabel(this, "e3"),new TextLabel(this, "e4"));
+		TextLabel tablePanelDesc = new TextLabel("TablePanel");
+		TablePanel tablePanel = new TablePanel(2, 2,
+				new TextLabel("e1"),new TextLabel("e2"),
+				new TextLabel("e3"),new TextLabel("e4"));
 		
 		/* Example AbsolutePanel */
 		
-		TextLabel absolutePanelDesc = new TextLabel(this, "AbsolutePanel");
-		AbsolutePanel absolutePanel = new AbsolutePanel(this, 200, 8, 
-				new TextLabel(this, "AbsolutePanel content"));
+		TextLabel absolutePanelDesc = new TextLabel("AbsolutePanel");
+		AbsolutePanel absolutePanel = new AbsolutePanel(200, 8, 
+				new TextLabel("AbsolutePanel content"));
 		
 		/* Example ExternalLink*/
 		
-		TextLabel externalLinkDesc = new TextLabel(this, "External link");
-		ExternalLink externalLink = new ExternalLink(this, "http://example.org", "example");
+		TextLabel externalLinkDesc = new TextLabel("External link");
+		ExternalLink externalLink = new ExternalLink("http://example.org", "example");
 		
 		/* Example InternalLink */
 		
-		final TextLabel internalLinkDesc = new TextLabel(this, "Internal link");
-		InternalLink internalLink = new InternalLink(this, "example", new ClickHandler() {
+		final TextLabel internalLinkDesc = new TextLabel("Internal link");
+		InternalLink internalLink = new InternalLink("example", new ClickHandler() {
 			private int clicks = 0;
 			
 			@Override
@@ -78,8 +78,8 @@ public class ExampleClient extends User{
 		
 		/* Example Button */
 		
-		final TextLabel buttonDesc = new TextLabel(this, "Button");
-		Button button = new Button(this, "example", new ClickHandler() {
+		final TextLabel buttonDesc = new TextLabel("Button");
+		Button button = new Button("example", new ClickHandler() {
 			private int clicks = 0;
 			
 			@Override
@@ -90,8 +90,8 @@ public class ExampleClient extends User{
 		
 		/* Example TextInput */
 		
-		final TextLabel textInputDesc = new TextLabel(this, "TextInput");
-		TextInput textInput = new TextInput(this, "TextInput", new TextHandler() {
+		final TextLabel textInputDesc = new TextLabel("TextInput");
+		TextInput textInput = new TextInput("TextInput", new TextHandler() {
 			
 			@Override
 			public void onType(String data) {
@@ -101,8 +101,8 @@ public class ExampleClient extends User{
 		
 		/* Example PasswordInput */		
 		
-		final TextLabel passwordInputDesc = new TextLabel(this, "PasswordInput");
-		PasswordInput passwordInput = new PasswordInput(this, "PasswordInput", new TextHandler() {
+		final TextLabel passwordInputDesc = new TextLabel("PasswordInput");
+		PasswordInput passwordInput = new PasswordInput("PasswordInput", new TextHandler() {
 			
 			@Override
 			public void onType(String data) {
@@ -112,8 +112,8 @@ public class ExampleClient extends User{
 		
 		/* Example CheckBox */
 		
-		final TextLabel checkBoxDesc = new TextLabel(this, "CheckBox");
-		CheckBox checkBox = new CheckBox(this, new CheckHandler() {
+		final TextLabel checkBoxDesc = new TextLabel("CheckBox");
+		CheckBox checkBox = new CheckBox(new CheckHandler() {
 			@Override
 			public void checked(boolean state) {
 				checkBoxDesc.setText("CheckBox("+String.valueOf(state)+")");
@@ -121,11 +121,11 @@ public class ExampleClient extends User{
 		});
 		
 		/* Custom panel example */		
-		Widget customPanel = new LoginPanel(this);		
-		TextLabel customPanelDesc = new TextLabel(this, "Custom panel");
+		Widget customPanel = new LoginPanel();		
+		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(this, 2, 13, 
+		Widget exapmles = new TablePanel(2, 13, 
 				textLabelExample,	null,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,

@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 
 /**
@@ -9,7 +8,7 @@ import net.magik6k.jwwf.core.Widget;
  *
  */
 public class AbsolutePanel extends Widget{
-	private int content = -1;
+	private Widget content;
 	private int x,y;
 	
 	/**
@@ -18,9 +17,10 @@ public class AbsolutePanel extends Widget{
 	 * @param y Y-Offset
 	 * @param widget Default content
 	 */
-	public AbsolutePanel(User user, int x, int y, Widget widget) {
-		super(user);
-		content = widget.getID();
+	public AbsolutePanel(int x, int y, Widget widget) {
+		super();
+		attach(widget);
+		content = widget;
 		this.x = x;
 		this.y = y;
 		this.sendElement();
@@ -31,8 +31,8 @@ public class AbsolutePanel extends Widget{
 	 * @param x X-Offset
 	 * @param y Y-Offset
 	 */
-	public AbsolutePanel(User user, int x, int y) {
-		super(user);
+	public AbsolutePanel(int x, int y) {
+		super();
 		this.x = x;
 		this.y = y;
 		this.sendElement();
@@ -41,16 +41,17 @@ public class AbsolutePanel extends Widget{
 	/**
 	 * @param user Destination user
 	 */
-	public AbsolutePanel(User user) {
-		super(user);
+	public AbsolutePanel() {
+		super();
 		this.sendElement();
 	}
 
 	/**
-	 * @param widget Content
+	 * @param widget Widget to store
 	 */
 	public void put(Widget widget) {
-		content = widget.getID();
+		attach(widget);
+		content = widget;
 		this.sendElement();
 	}
 	
@@ -72,6 +73,6 @@ public class AbsolutePanel extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"content\":"+String.valueOf(content)+",\"x\":"+String.valueOf(x)+",\"y\":"+String.valueOf(y)+"}";
+		return "{\"content\":"+String.valueOf(content.getID())+",\"x\":"+String.valueOf(x)+",\"y\":"+String.valueOf(y)+"}";
 	}
 }

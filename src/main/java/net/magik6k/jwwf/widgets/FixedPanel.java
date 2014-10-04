@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 
 /**
@@ -8,7 +7,7 @@ import net.magik6k.jwwf.core.Widget;
  * the content is 'fixed'
  */
 public class FixedPanel extends Widget{
-	private int content = -1;
+	private Widget content;
 	private int x,y;
 	
 	/**
@@ -17,9 +16,10 @@ public class FixedPanel extends Widget{
 	 * @param y Y-Offset
 	 * @param widget Default content
 	 */
-	public FixedPanel(User user, int x, int y, Widget widget) {
-		super(user);
-		content = widget.getID();
+	public FixedPanel(int x, int y, Widget widget) {
+		super();
+		attach(widget);
+		content = widget;
 		this.x = x;
 		this.y = y;
 		this.sendElement();
@@ -30,8 +30,8 @@ public class FixedPanel extends Widget{
 	 * @param x X-Offset
 	 * @param y Y-Offset
 	 */
-	public FixedPanel(User user, int x, int y) {
-		super(user);
+	public FixedPanel(int x, int y) {
+		super();
 		this.x = x;
 		this.y = y;
 		this.sendElement();
@@ -40,8 +40,8 @@ public class FixedPanel extends Widget{
 	/**
 	 * @param user Destination user
 	 */
-	public FixedPanel(User user) {
-		super(user);
+	public FixedPanel() {
+		super();
 		this.sendElement();
 	}
 
@@ -50,7 +50,8 @@ public class FixedPanel extends Widget{
 	 * @param widget new content of panel
 	 */
 	public void put(Widget widget) {
-		content = widget.getID();
+		attach(widget);
+		content = widget;
 		this.sendElement();
 	}
 	
@@ -71,6 +72,6 @@ public class FixedPanel extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"content\":"+String.valueOf(content)+",\"x\":"+String.valueOf(x)+",\"y\":"+String.valueOf(y)+"}";
+		return "{\"content\":"+String.valueOf(content.getID())+",\"x\":"+String.valueOf(x)+",\"y\":"+String.valueOf(y)+"}";
 	}	
 }

@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 
 /**
@@ -14,8 +13,8 @@ public class ExternalLink extends Widget {
 	 * @param url URL of destination resource
 	 * @param label Name of the link
 	 */
-	public ExternalLink(User user, String url, String label) {
-		super(user);
+	public ExternalLink(String url, String label) {
+		super();
 		this.url = url;
 		this.label = label;
 		this.sendElement();

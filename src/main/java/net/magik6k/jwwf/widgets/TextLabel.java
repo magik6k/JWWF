@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 
 /**
@@ -12,8 +11,8 @@ public class TextLabel extends Widget {
 	 * @param user Destination user
 	 * @param text Default text
 	 */
-	public TextLabel(User user, String text) {
-		super(user);
+	public TextLabel(String text) {
+		super();
 		this.text = text;
 		this.sendElement();
 	}

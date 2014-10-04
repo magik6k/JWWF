@@ -1,7 +1,6 @@
 package net.magik6k.jwwf.widgets;
 
 import net.magik6k.jwwf.core.Actions;
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.ClickHandler;
 
@@ -12,8 +11,8 @@ public class Button extends Widget{
 	 * @param user Destination user
 	 * @param label Default label
 	 */
-	public Button(User user, String label, ClickHandler clickHandler) {
-		super(user, Actions.BUTTON_CLICK);
+	public Button(String label, ClickHandler clickHandler) {
+		super(Actions.BUTTON_CLICK);
 		this.label = label;
 		this.clickHandler = clickHandler;
 		this.sendElement();

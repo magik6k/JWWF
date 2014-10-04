@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 
 /**
@@ -8,16 +7,16 @@ import net.magik6k.jwwf.core.Widget;
  */
 public class HorizontalPanel extends Widget{
 
-	private int[] content;
+	private Widget[] content;
 	
 	/**
 	 * @param user Destination user
 	 * @param width Default height of the container
 	 */
-	public HorizontalPanel(User user, int width) {
-		super(user);
-		content = new int[width];
-		for(int i = 0; i < content.length; ++i)content[i] = -1;
+	public HorizontalPanel(int width) {
+		super();
+		content = new Widget[width];
+		for(int i = 0; i < content.length; ++i)content[i] = null;
 		this.sendElement();
 	}
 
@@ -26,12 +25,15 @@ public class HorizontalPanel extends Widget{
 	 * @param width Default height of the container
 	 * @param widgets Default widgets
 	 */	
-	public HorizontalPanel(User user, int width, Widget... widgets) {
-		super(user);
-		content = new int[width];		
+	public HorizontalPanel(int width, Widget... widgets) {
+		super();
+		content = new Widget[width];		
 		
 		for(int i = 0; i < content.length; ++i)	{
-			content[i] = i < widgets.length ? widgets[i].getID() : -1;
+			if(i < widgets.length && widgets[i] != null){
+				attach(widgets[i]);
+				content[i] = widgets[i];
+			}
 		}
 		
 		this.sendElement();
@@ -48,7 +50,7 @@ public class HorizontalPanel extends Widget{
 		for(int i = 0; i < content.length; ++i)
 		{
 			if(i > 0)data += ",";
-			data += "\"" + String.valueOf(content[i]) + "\"";
+			data += "\"" + String.valueOf(content[i].getID()) + "\"";
 		}
 		return "{\"content\":["+data+"]}";
 	}
@@ -59,7 +61,8 @@ public class HorizontalPanel extends Widget{
 	 * @param index id of 'cell' in the container to put widget to(numbered from 0)
 	 */
 	public void put(Widget widget, int index) {
-		content[index] = widget.getID();
+		attach(widget);
+		content[index] = widget;
 		this.sendElement();
 	}	
 }
