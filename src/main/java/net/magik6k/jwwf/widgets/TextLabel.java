@@ -8,7 +8,6 @@ import net.magik6k.jwwf.core.Widget;
 public class TextLabel extends Widget {
 	private String text;
 	/**
-	 * @param user Destination user
 	 * @param text Default text
 	 */
 	public TextLabel(String text) {

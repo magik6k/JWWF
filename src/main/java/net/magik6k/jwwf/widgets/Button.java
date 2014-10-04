@@ -4,11 +4,13 @@ import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.ClickHandler;
 
+/**
+ * User-clickable button
+ */
 public class Button extends Widget{
 	private String label;
 	private ClickHandler clickHandler;
 	/**
-	 * @param user Destination user
 	 * @param label Default label
 	 */
 	public Button(String label, ClickHandler clickHandler) {
@@ -19,13 +21,21 @@ public class Button extends Widget{
 	}
 	
 	/**
-	 * Sets new text
+	 * Sets new label
 	 * @param label Label
 	 */
 	public void setlabel(String label)
 	{
 		this.label = label;
 		this.sendElement();
+	}
+	
+	/**
+	 * Sets new handler for button click
+	 * @param clickHandler New handler
+	 */
+	public void setHandler(ClickHandler clickHandler){
+		this.clickHandler = clickHandler;
 	}
 	
 	@Override
@@ -41,7 +51,7 @@ public class Button extends Widget{
 	/**
 	 * Internal use only
 	 */
-	public void handleData(String data){
+	protected void handleData(String data){
 		try {
 			clickHandler.clicked();
 		} catch (Exception e) {

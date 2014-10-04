@@ -10,7 +10,6 @@ public class HorizontalPanel extends Widget{
 	private Widget[] content;
 	
 	/**
-	 * @param user Destination user
 	 * @param width Default height of the container
 	 */
 	public HorizontalPanel(int width) {
@@ -21,7 +20,6 @@ public class HorizontalPanel extends Widget{
 	}
 
 	/**
-	 * @param user Destination user
 	 * @param width Default height of the container
 	 * @param widgets Default widgets
 	 */	

@@ -10,7 +10,6 @@ public class Image extends Widget {
 	private int w = -1,h = -1;
 	
 	/**
-	 * @param user Destination user
 	 * @param url URL of the image; must be accesible by user
 	 */
 	public Image(String url) {
@@ -20,7 +19,6 @@ public class Image extends Widget {
 	}
 	
 	/**
-	 * @param user Destination user
 	 * @param w width of image, left -1 when not used(will be resized or scaled)
 	 * @param h width of image, left -1 when not used(will be resized or scaled)
 	 * @param url URL of the image; must be accesible by user

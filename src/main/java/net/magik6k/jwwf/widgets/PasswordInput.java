@@ -4,12 +4,14 @@ import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.TextHandler;
 
+/**
+ * Input for passwords
+ */
 public class PasswordInput extends Widget{
 	private String placeholder;
 	private String text = "";
 	private TextHandler handler;
 	/**
-	 * @param user Destination user
 	 * @param text Hint text
 	 */
 	public PasswordInput(String placeholder, TextHandler handler) {
@@ -20,7 +22,6 @@ public class PasswordInput extends Widget{
 	}
 	
 	/**
-	 * @param user Destination user
 	 * @param text Hint text
 	 */
 	public PasswordInput(String placeholder) {
@@ -39,6 +40,10 @@ public class PasswordInput extends Widget{
 		this.sendElement();
 	}
 	
+	/**
+	 * Returns entered text
+	 * @return Entered text
+	 */
 	public String getText(){
 		return text;
 	}

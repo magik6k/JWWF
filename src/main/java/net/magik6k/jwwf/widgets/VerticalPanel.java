@@ -10,7 +10,6 @@ public class VerticalPanel extends Widget{
 	private Widget[] content;
 	
 	/**
-	 * @param user Destination user
 	 * @param height Default height of the container
 	 */	
 	public VerticalPanel(int height) {
@@ -21,7 +20,6 @@ public class VerticalPanel extends Widget{
 	}
 
 	/**
-	 * @param user Destination user
 	 * @param height Default height of the container
 	 * @param widgets Default widgets
 	 */	

@@ -11,7 +11,6 @@ public class FixedPanel extends Widget{
 	private int x,y;
 	
 	/**
-	 * @param user Destination user
 	 * @param x X-Offset
 	 * @param y Y-Offset
 	 * @param widget Default content
@@ -26,7 +25,6 @@ public class FixedPanel extends Widget{
 	}
 	
 	/**
-	 * @param user Destination user
 	 * @param x X-Offset
 	 * @param y Y-Offset
 	 */
@@ -38,7 +36,6 @@ public class FixedPanel extends Widget{
 	}
 	
 	/**
-	 * @param user Destination user
 	 */
 	public FixedPanel() {
 		super();

@@ -4,12 +4,14 @@ import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.TextHandler;
 
+/**
+ * Input for user data
+ */
 public class TextInput extends Widget {
 	private String placeholder;
 	private String text = "";
 	private TextHandler handler;
 	/**
-	 * @param user Destination user
 	 * @param text Hint text
 	 * @param handler Handler of typed text
 	 */
@@ -21,7 +23,6 @@ public class TextInput extends Widget {
 	}
 	
 	/**
-	 * @param user Destination user
 	 * @param text Hint text
 	 */
 	public TextInput(String placeholder) {
@@ -40,6 +41,10 @@ public class TextInput extends Widget {
 		this.sendElement();
 	}
 	
+	/**
+	 * Returns entered text
+	 * @return Entered text
+	 */
 	public String getText(){
 		return text;
 	}

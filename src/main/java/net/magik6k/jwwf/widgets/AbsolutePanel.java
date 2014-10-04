@@ -12,7 +12,6 @@ public class AbsolutePanel extends Widget{
 	private int x,y;
 	
 	/**
-	 * @param user Destination user
 	 * @param x X-Offset
 	 * @param y Y-Offset
 	 * @param widget Default content
@@ -27,7 +26,6 @@ public class AbsolutePanel extends Widget{
 	}
 	
 	/**
-	 * @param user Destination user
 	 * @param x X-Offset
 	 * @param y Y-Offset
 	 */
@@ -39,7 +37,6 @@ public class AbsolutePanel extends Widget{
 	}
 	
 	/**
-	 * @param user Destination user
 	 */
 	public AbsolutePanel() {
 		super();

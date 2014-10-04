@@ -9,7 +9,6 @@ public class TablePanel extends Widget{
 	private Widget[][] content;
 	
 	/**
-	 * @param user Destination user
 	 * @param width Width of the table(number of columns)
 	 * @param height Height of the table(number of rows)
 	 */
@@ -24,7 +23,6 @@ public class TablePanel extends Widget{
 	}
 	
 	/**
-	 * @param user Destination user
 	 * @param width Width of the table(number of columns)
 	 * @param height Height of the table(number of rows)
 	 * @param widgets Default set of widgets, from top-left to bottom-right

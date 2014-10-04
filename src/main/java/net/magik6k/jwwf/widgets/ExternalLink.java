@@ -9,7 +9,6 @@ public class ExternalLink extends Widget {
 	private String url, label;
 	
 	/**
-	 * @param user Destination user
 	 * @param url URL of destination resource
 	 * @param label Name of the link
 	 */

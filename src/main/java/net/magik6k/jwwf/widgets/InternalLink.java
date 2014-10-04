@@ -11,7 +11,6 @@ public class InternalLink extends Widget{
 	private String label;
 	private ClickHandler clickHandler;
 	/**
-	 * @param user Destination user
 	 * @param label Default label
 	 */
 	public InternalLink(String label, ClickHandler clickHandler) {
@@ -22,13 +21,21 @@ public class InternalLink extends Widget{
 	}
 	
 	/**
-	 * Sets new text
-	 * @param label Label
+	 * Sets new label
+	 * @param label New label
 	 */
 	public void setlabel(String label)
 	{
 		this.label = label;
 		this.sendElement();
+	}
+	
+	/**
+	 * Sets new handler for button click
+	 * @param clickHandler New handler
+	 */
+	public void setHandler(ClickHandler clickHandler){
+		this.clickHandler = clickHandler;
 	}
 	
 	@Override
