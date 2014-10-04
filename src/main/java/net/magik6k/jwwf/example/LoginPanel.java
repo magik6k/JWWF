@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.example;
 
-import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.widgets.Button;
 import net.magik6k.jwwf.widgets.PasswordInput;

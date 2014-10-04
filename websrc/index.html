@@ -74,11 +74,19 @@
 			
 			widgets["AbsolutePanel"] = {
 				create: function(data){
+					var elem = $("<div>").css("position","relative");
+				
 					if(data.content < 0)
-						return {element: $("<div>").css({left:data.x,top:data.y})};
+					{
+						var content = $("<div>").css({left:data.x,top:data.y});
+						$(elem).html(content);
+						return {element: elem, data:{content:content}};
+					}
 					
-					var elem = $("<div>").html(widgetStorage[data.content].element)
+					var content = $("<div>").html(widgetStorage[data.content].element)
 						.css({left:data.x,top:data.y}).addClass("absolutePanel");
+					$(elem).html(content);
+					
 					return {element: elem};
 				},
 				update: function(widget, data){
