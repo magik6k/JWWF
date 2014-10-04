@@ -1,8 +1,7 @@
-package net.magik6k.jwwf;
+package net.magik6k.jwwf.core;
 
 import java.util.HashMap;
 
-import net.magik6k.jwwf.handlers.DataHandler;
 import net.magik6k.jwwf.widgets.MainFrame;
 
 import org.java_websocket.WebSocket;

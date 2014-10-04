@@ -1,8 +1,8 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.Actions;
-import net.magik6k.jwwf.User;
-import net.magik6k.jwwf.Widget;
+import net.magik6k.jwwf.core.Actions;
+import net.magik6k.jwwf.core.User;
+import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.CheckHandler;
 
 public class CheckBox extends Widget{

@@ -1,4 +1,4 @@
-package net.magik6k.jwwf;
+package net.magik6k.jwwf.core;
 
 import org.java_websocket.WebSocket;
 

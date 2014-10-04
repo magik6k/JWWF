@@ -1,7 +1,7 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.User;
-import net.magik6k.jwwf.Widget;
+import net.magik6k.jwwf.core.User;
+import net.magik6k.jwwf.core.Widget;
 
 /**
  * This panel allows to 'move' its content from oridinal place by x,y pixels

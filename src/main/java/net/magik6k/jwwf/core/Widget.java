@@ -1,9 +1,8 @@
-package net.magik6k.jwwf;
-
-import net.magik6k.jwwf.handlers.DataHandler;
+package net.magik6k.jwwf.core;
 
 
-public abstract class Widget implements DataHandler{
+
+public abstract class Widget extends DataHandler{
 	
 	private final Connection connection;
 	private int id;
@@ -43,5 +42,5 @@ public abstract class Widget implements DataHandler{
 	protected void sendElement(){
 		connection.connection.send(getElement());
 	}
-	public void handleData(String data){}
+	protected void handleData(String data){}
 }

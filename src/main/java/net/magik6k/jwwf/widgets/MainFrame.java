@@ -1,7 +1,7 @@
 package net.magik6k.jwwf.widgets;
 
-import net.magik6k.jwwf.Connection;
-import net.magik6k.jwwf.Widget;
+import net.magik6k.jwwf.core.Connection;
+import net.magik6k.jwwf.core.Widget;
 
 /**
  * Special panel to add widgets to. Created internally

@@ -1,8 +1,8 @@
 package net.magik6k.jwwf.example;
 
-import net.magik6k.jwwf.Connection;
-import net.magik6k.jwwf.User;
-import net.magik6k.jwwf.Widget;
+import net.magik6k.jwwf.core.Connection;
+import net.magik6k.jwwf.core.User;
+import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.TextHandler;

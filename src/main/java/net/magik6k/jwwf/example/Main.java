@@ -2,7 +2,7 @@ package net.magik6k.jwwf.example;
 
 import java.net.UnknownHostException;
 
-import net.magik6k.jwwf.JwwfServer;
+import net.magik6k.jwwf.core.JwwfServer;
 
 import org.java_websocket.WebSocketImpl;
 import org.java_websocket.drafts.Draft_17;

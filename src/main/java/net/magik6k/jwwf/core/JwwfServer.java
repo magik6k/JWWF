@@ -1,4 +1,4 @@
-package net.magik6k.jwwf;
+package net.magik6k.jwwf.core;
 
 import java.lang.reflect.InvocationTargetException;
 import java.net.InetSocketAddress;
