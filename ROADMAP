@@ -31,7 +31,7 @@ Dev 3:
 		-TabbedPanel
 		-RadioButton
 		-Textarea
-	-Skin support
+	-Skin support				DONE
 	-Extensions for widgets
 	-Default skin
 	-Clean up example
