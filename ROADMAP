@@ -30,20 +30,14 @@ Dev 3:
 	Widgets:
 		-TabbedPanel
 		-RadioButton
-	-Panel parameters:
-		-Borders
-		-Centered content
-		-Cell width modes
-	-Text(content) parameters:
-		-Color
-		-Alpha
+		-Textarea
+	-Skin support
+	-Extensions for widgets
+	-Default skin
 	-Clean up example
 		
 -Bug fixing / testing
 -Docs
-		
-Dev 4:
-	-Skin support
 	
 -Bug fixing / testing
 -Docs
