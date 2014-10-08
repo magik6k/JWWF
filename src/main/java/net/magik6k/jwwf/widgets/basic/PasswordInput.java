@@ -1,4 +1,4 @@
-package net.magik6k.jwwf.widgets;
+package net.magik6k.jwwf.widgets.basic;
 
 import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
@@ -6,17 +6,16 @@ import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.util.Json;
 
 /**
- * Input for user data
+ * Input for passwords
  */
-public class TextInput extends Widget {
+public class PasswordInput extends Widget{
 	private String placeholder;
 	private String text = "";
 	private TextHandler handler;
 	/**
 	 * @param text Hint text
-	 * @param handler Handler of typed text
 	 */
-	public TextInput(String placeholder, TextHandler handler) {
+	public PasswordInput(String placeholder, TextHandler handler) {
 		super(Actions.TEXT_INPUT);
 		this.placeholder = placeholder;
 		this.handler = handler;
@@ -26,7 +25,7 @@ public class TextInput extends Widget {
 	/**
 	 * @param text Hint text
 	 */
-	public TextInput(String placeholder) {
+	public PasswordInput(String placeholder) {
 		super(Actions.TEXT_INPUT);
 		this.placeholder = placeholder;
 		this.sendElement();
@@ -34,7 +33,7 @@ public class TextInput extends Widget {
 	
 	/**
 	 * Sets new placeholder text
-	 * @param placeholder Placeholder text
+	 * @param text Placeholder text
 	 */
 	public void setPlaceholder(String placeholder)
 	{
@@ -52,12 +51,12 @@ public class TextInput extends Widget {
 	
 	@Override
 	public String getName() {
-		return "TextInput";
+		return "PasswordInput";
 	}
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+Json.escapeString(placeholder)+"\"}";//TODO: Escape text
+		return "{\"text\":\""+Json.escapeString(placeholder)+"\"}";//TODO: Escape/rename text
 	}
 	
 	/**
