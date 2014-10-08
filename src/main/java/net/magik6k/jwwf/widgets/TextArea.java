@@ -5,10 +5,7 @@ import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.util.Json;
 
-/**
- * Input for user data
- */
-public class TextInput extends Widget {
+public class TextArea extends Widget{
 	private String placeholder;
 	private String text = "";
 	private TextHandler handler;
@@ -16,7 +13,7 @@ public class TextInput extends Widget {
 	 * @param text Hint text
 	 * @param handler Handler of typed text
 	 */
-	public TextInput(String placeholder, TextHandler handler) {
+	public TextArea(String placeholder, TextHandler handler) {
 		super(Actions.TEXT_INPUT);
 		this.placeholder = placeholder;
 		this.handler = handler;
@@ -26,7 +23,7 @@ public class TextInput extends Widget {
 	/**
 	 * @param text Hint text
 	 */
-	public TextInput(String placeholder) {
+	public TextArea(String placeholder) {
 		super(Actions.TEXT_INPUT);
 		this.placeholder = placeholder;
 		this.sendElement();
@@ -52,7 +49,7 @@ public class TextInput extends Widget {
 	
 	@Override
 	public String getName() {
-		return "TextInput";
+		return "TextArea";
 	}
 
 	@Override

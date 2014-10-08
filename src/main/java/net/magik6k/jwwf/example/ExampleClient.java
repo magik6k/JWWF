@@ -16,6 +16,7 @@ import net.magik6k.jwwf.widgets.Image;
 import net.magik6k.jwwf.widgets.InternalLink;
 import net.magik6k.jwwf.widgets.PasswordInput;
 import net.magik6k.jwwf.widgets.TablePanel;
+import net.magik6k.jwwf.widgets.TextArea;
 import net.magik6k.jwwf.widgets.TextInput;
 import net.magik6k.jwwf.widgets.TextLabel;
 import net.magik6k.jwwf.widgets.VerticalPanel;
@@ -120,12 +121,22 @@ public class ExampleClient extends User{
 			}
 		});
 		
+		/* Example TextArea */
+		
+		final TextLabel textAreaDesc = new TextLabel("TextArea");
+		TextArea textArea = new TextArea("Text area", new TextHandler() {
+			@Override
+			public void onType(String data) {
+				textAreaDesc.setText("TextArea("+data+")");
+			}
+		});
+		
 		/* Custom panel example */		
 		Widget customPanel = new LoginPanel();		
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 13, 
+		Widget exapmles = new TablePanel(2, 14, 
 				textLabelExample,	null,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -137,6 +148,7 @@ public class ExampleClient extends User{
 				buttonDesc,			button,
 				textInputDesc,		textInput,
 				passwordInputDesc,	passwordInput,
+				textAreaDesc,		textArea,
 				checkBoxDesc,		checkBox,
 				customPanelDesc,	customPanel);
 		

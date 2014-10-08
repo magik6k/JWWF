@@ -329,6 +329,26 @@
 					
 			};//TextInput end
 			
+			widgets["TextArea"] = {
+				create: function(data,id){
+					var snd = 0;
+					
+					var elem = $("<textarea>").attr("type","text")
+						.attr("placeholder", data.text)
+						.on("keypress",function(){ 
+								clearTimeout(snd);
+								snd = setTimeout(function(){
+									sendText(id,$(elem).val());
+								},250);
+							});
+					return {element: elem};
+				},
+				update: function(widget, data){
+					$(widget.element).attr("placeholder", data.text);
+				}
+					
+			};//TextArea end
+			
 			widgets["PasswordInput"] = {
 				create: function(data,id){
 					var snd = 0;
@@ -404,6 +424,10 @@
 			.horizontal{display: inline-block;vertical-align:top;}/*TODO:make align customizable*/
 			.fixedPanel{position: fixed;}
 			.absolutePanel{position: absolute;}
+			
+			textarea{
+				resize: none;
+			}
 
 		</style>
 		<link rel="stylesheet" type="text/css" href="skins/defaultBright.css">

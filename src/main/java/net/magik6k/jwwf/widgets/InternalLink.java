@@ -3,6 +3,7 @@ package net.magik6k.jwwf.widgets;
 import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.ClickHandler;
+import net.magik6k.jwwf.util.Json;
 
 /**
  * Link clickable by user with server-side handler
@@ -45,7 +46,7 @@ public class InternalLink extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"label\":\""+label+"\"}";//TODO: Escape text
+		return "{\"label\":\""+Json.escapeString(label)+"\"}";//TODO: Escape text
 	}
 	
 	/**

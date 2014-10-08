@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.widgets;
 
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.util.Json;
 
 /**
  * This panel is much like {@link TextLabel} except it is a link to another resourcue(eg. webpage)
@@ -46,6 +47,6 @@ public class ExternalLink extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"url\":\""+url+"\",\"label\":\""+label+"\"}";//TODO: Escape text
+		return "{\"url\":\""+Json.escapeString(url)+"\",\"label\":\""+Json.escapeString(label)+"\"}";//TODO: Escape text
 	}
 }

@@ -3,6 +3,7 @@ package net.magik6k.jwwf.widgets;
 import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.TextHandler;
+import net.magik6k.jwwf.util.Json;
 
 /**
  * Input for passwords
@@ -55,7 +56,7 @@ public class PasswordInput extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+placeholder+"\"}";//TODO: Escape/rename text
+		return "{\"text\":\""+Json.escapeString(placeholder)+"\"}";//TODO: Escape/rename text
 	}
 	
 	/**

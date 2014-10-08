@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.widgets;
 
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.util.Json;
 
 /**
  * Basic container of text
@@ -33,6 +34,6 @@ public class TextLabel extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+text+"\"}";//TODO: Escape text
+		return "{\"text\":\""+Json.escapeString(text)+"\"}";//TODO: Escape text
 	}
 }
