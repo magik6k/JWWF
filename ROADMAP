@@ -29,13 +29,12 @@ Dev 2:
 Dev 3:
 	Widgets:
 		-TabbedPanel
-		-RadioButton/Group		TODO: Skin
+		-RadioButton/Group		DONE
 		-Textarea			DONE
 	-Skin support				DONE
 	-Extensions for widgets
 	-Default skin				DONE
 	-Sessions
-	-Clean up example
 		
 -Bug fixing / testing
 -Docs
