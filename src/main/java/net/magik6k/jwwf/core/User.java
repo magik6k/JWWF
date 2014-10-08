@@ -5,7 +5,7 @@ import java.util.HashMap;
 public abstract class User {
 	private final Connection connection;
 	private int id = 1;//0 is for MainFrame
-	private HashMap<Integer, DataHandler> actionHandlers = new HashMap<Integer, DataHandler>();
+	private HashMap<Integer, Widget> actionHandlers = new HashMap<Integer, Widget>();
 	
 	
 	/**
@@ -37,10 +37,12 @@ public abstract class User {
 		}else if(msg.startsWith(Actions.CHECK_STATE.apiName)){//C18;1
 			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
 			.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
-			
+		}else if(msg.startsWith(Actions.SELECT.apiName)){//S18;1
+			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
+			.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
 		}
 	}
-	protected final void setActionHandler(int id, DataHandler dataHandler){
+	protected final void setActionHandler(int id, Widget dataHandler){
 		actionHandlers.put(id, dataHandler);
 	}
 }

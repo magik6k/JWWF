@@ -6,7 +6,9 @@ import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
+import net.magik6k.jwwf.handlers.SelectionHandler;
 import net.magik6k.jwwf.handlers.TextHandler;
+import net.magik6k.jwwf.util.RadioGroup;
 import net.magik6k.jwwf.widgets.AbsolutePanel;
 import net.magik6k.jwwf.widgets.Button;
 import net.magik6k.jwwf.widgets.CheckBox;
@@ -15,6 +17,7 @@ import net.magik6k.jwwf.widgets.HorizontalPanel;
 import net.magik6k.jwwf.widgets.Image;
 import net.magik6k.jwwf.widgets.InternalLink;
 import net.magik6k.jwwf.widgets.PasswordInput;
+import net.magik6k.jwwf.widgets.RadioButton;
 import net.magik6k.jwwf.widgets.TablePanel;
 import net.magik6k.jwwf.widgets.TextArea;
 import net.magik6k.jwwf.widgets.TextInput;
@@ -121,6 +124,20 @@ public class ExampleClient extends User{
 			}
 		});
 		
+		/* Example RadioButton*/
+		
+		final TextLabel radioButtonDesc = new TextLabel("RadioButton");
+		
+		RadioGroup group = new RadioGroup(new SelectionHandler() {
+			@Override
+			public void select(Object selectionData) {
+				radioButtonDesc.setText("RadioButton("+(String)selectionData+")");
+			}
+		});
+		
+		HorizontalPanel radioButtons = new HorizontalPanel(2, 
+				new RadioButton(group, "Button1"), new RadioButton(group, "Button2"));
+		
 		/* Example TextArea */
 		
 		final TextLabel textAreaDesc = new TextLabel("TextArea");
@@ -136,7 +153,7 @@ public class ExampleClient extends User{
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 14, 
+		Widget exapmles = new TablePanel(2, 15, 
 				textLabelExample,	null,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -150,6 +167,7 @@ public class ExampleClient extends User{
 				passwordInputDesc,	passwordInput,
 				textAreaDesc,		textArea,
 				checkBoxDesc,		checkBox,
+				radioButtonDesc,	radioButtons,
 				customPanelDesc,	customPanel);
 		
 		rootFrame.put(exapmles);

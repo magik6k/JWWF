@@ -29,8 +29,8 @@ Dev 2:
 Dev 3:
 	Widgets:
 		-TabbedPanel
-		-RadioButton/Group
-		-Textarea
+		-RadioButton/Group		TODO: Skin
+		-Textarea			DONE
 	-Skin support				DONE
 	-Extensions for widgets
 	-Default skin				DONE

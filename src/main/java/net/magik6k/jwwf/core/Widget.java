@@ -5,13 +5,13 @@ import java.util.Queue;
 
 
 
-public abstract class Widget extends DataHandler{
+public abstract class Widget extends Attachable{
 	
 	private Connection connection;
 	private int id;
 	private Actions action;
 	private User user;
-	private Queue<Widget> waitingForUser;
+	private Queue<Attachable> waitingForUser;
 	
 	/**
 	 * Internal use only
@@ -65,7 +65,7 @@ public abstract class Widget extends DataHandler{
 		user = owner;
 		
 		if(waitingForUser != null){
-			Widget w;
+			Attachable w;
 			while((w = waitingForUser.poll())!=null){
 				w.addTo(owner);
 			}
@@ -79,11 +79,11 @@ public abstract class Widget extends DataHandler{
 	 * If the widget is container it must invoke this metkod for all widgets it stores
 	 * @param widget Widget that is stored in this widget
 	 */
-	protected final void attach(Widget widget){
+	protected final void attach(Attachable widget){
 		if(user != null){
 			widget.addTo(user);
 		}else{
-			if(waitingForUser == null)waitingForUser = new LinkedList<Widget>();
+			if(waitingForUser == null)waitingForUser = new LinkedList<Attachable>();
 			waitingForUser.add(widget);
 		}
 	}

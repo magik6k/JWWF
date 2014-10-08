@@ -28,6 +28,10 @@
 				socket.send("C"+id+";"+(checked?"1":"0"));
 			}
 			
+			function sendSelect(id){
+				socket.send("S"+id+";1");
+			}
+			
 			//CUSTOM CONTROLS
 			
 			function CheckBox(selected){
@@ -304,10 +308,25 @@
 					return {element: chBox.element};
 				},
 				update: function(widget, data){
-					//$(widget.element).html(data.label);
+					
 				}
 					
 			};//CheckBox end
+			
+			widgets["RadioButton"] = {
+				create: function(data,id){
+					var elem = $("<input>").attr("type","radio")
+						.attr("name", "radio"+data.group)
+						.click(function(){
+							if($(elem).is(":checked"))sendSelect(id);
+						});
+					return {element: elem};
+				},
+				update: function(widget, data){
+					
+				}
+					
+			};//RadioButton end
 			
 			widgets["TextInput"] = {
 				create: function(data,id){
