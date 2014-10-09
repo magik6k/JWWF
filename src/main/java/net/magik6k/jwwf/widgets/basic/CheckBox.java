@@ -3,7 +3,6 @@ package net.magik6k.jwwf.widgets.basic;
 import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.handlers.CheckHandler;
-import net.magik6k.jwwf.handlers.ClickHandler;
 
 /**
  * Basic check box

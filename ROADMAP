@@ -31,8 +31,13 @@ Dev 3:
 		-TabbedPanel			DONE
 		-RadioButton/Group		DONE
 		-Textarea			DONE
+		-LabaledCheckBox		DONE
+		-LabeledRadioButton		DONE
 	-Skin support				DONE
 	-Extensions for widgets
+		-The alt text for image
+		-Panel align setting
+		-Panel element spacing
 	-Default skin				DONE
 	-User storage				DONE
 	
