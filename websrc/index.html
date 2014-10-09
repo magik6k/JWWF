@@ -32,6 +32,7 @@
 				socket.send("S"+id+";1");
 			}
 			
+			
 			//CUSTOM CONTROLS
 			
 			function CheckBox(selected){
@@ -497,7 +498,18 @@
 				{ 
 					var data = JSON.parse(event.data);
 					console.log(data);
-					if(widgetStorage[data.id] == undefined)
+					
+					if(data.id < 0)
+					{
+						if(data.type == "storageSet")
+						{
+							localStorage.setItem(data.key, data.value);
+						}else if(data.type == "storageGet"){
+							if(localStorage.getItem(data.key))
+								socket.send("U"+data.key+";"+localStorage.getItem(data.key));
+						}
+					}
+					else if(widgetStorage[data.id] == undefined)
 					{
 						widgetStorage[data.id] = widgets[data.type].create(data.data,data.id);
 					}

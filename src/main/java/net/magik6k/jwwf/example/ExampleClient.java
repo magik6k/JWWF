@@ -8,6 +8,7 @@ import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.SelectionHandler;
 import net.magik6k.jwwf.handlers.TextHandler;
+import net.magik6k.jwwf.handlers.UserDataHandler;
 import net.magik6k.jwwf.util.NamedWidget;
 import net.magik6k.jwwf.util.RadioGroup;
 import net.magik6k.jwwf.widgets.basic.AbsolutePanel;
@@ -167,8 +168,27 @@ public class ExampleClient extends User{
 		Widget customPanel = new LoginPanel();		
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
+		/* UserData example*/
+		
+		final TextLabel userDataDesc = new TextLabel("UserData");
+		
+		userData.get("exampleKey", new UserDataHandler() {
+			@Override
+			public void data(String key, String value) {
+				userDataDesc.setText("UserData:"+value);
+			}
+		});
+		
+		TextInput userDataInput = new TextInput("TextInput", new TextHandler() {
+			@Override
+			public void onType(String data) {
+				userDataDesc.setText("TextInput:"+data);
+				userData.set("exampleKey", data);
+			}
+		});
+		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 16, 
+		Widget exapmles = new TablePanel(2, 17, 
 				textLabelExample,	null,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -184,7 +204,8 @@ public class ExampleClient extends User{
 				checkBoxDesc,		checkBox,
 				radioButtonDesc,	radioButtons,
 				tabbedPanelDesc,	tabbedPanel,
-				customPanelDesc,	customPanel);
+				customPanelDesc,	customPanel,
+				userDataDesc,		userDataInput);
 		
 		rootFrame.put(exapmles);
 	}

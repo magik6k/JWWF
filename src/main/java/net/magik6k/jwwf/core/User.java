@@ -6,7 +6,7 @@ public abstract class User {
 	private final Connection connection;
 	private int id = 1;//0 is for MainFrame
 	private HashMap<Integer, Widget> actionHandlers = new HashMap<Integer, Widget>();
-	
+	public final UserData userData;
 	
 	/**
 	 * User is constructed per each connection incoming
@@ -16,6 +16,7 @@ public abstract class User {
 	public User(MainFrame rootFrame, Connection connection){
 		this.connection = connection;
 		rootFrame.setUser(this);
+		userData = new UserData(this);
 	}
 
 	protected final Connection getConnection() {
@@ -40,6 +41,8 @@ public abstract class User {
 		}else if(msg.startsWith(Actions.SELECT.apiName)){//S18;1
 			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
 			.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+		}else if(msg.startsWith(Actions.USERDATA.apiName)){//Ukey;value
+			userData.recvData((String)msg.subSequence(1, msg.indexOf(";")), (String)msg.subSequence( msg.indexOf(";")+1, msg.length()));
 		}
 	}
 	protected final void setActionHandler(int id, Widget dataHandler){

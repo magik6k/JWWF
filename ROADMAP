@@ -34,16 +34,14 @@ Dev 3:
 	-Skin support				DONE
 	-Extensions for widgets
 	-Default skin				DONE
-	-Sessions
-		
--Bug fixing / testing
--Docs
+	-User storage				DONE
 	
 -Bug fixing / testing
 -Docs
 -Set up Jenkins
 	-Building
 	-Example setup
+	-JavaDoc page
 	
 -Release v0.1 here
 
