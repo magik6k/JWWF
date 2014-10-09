@@ -8,6 +8,7 @@ import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.SelectionHandler;
 import net.magik6k.jwwf.handlers.TextHandler;
+import net.magik6k.jwwf.util.NamedWidget;
 import net.magik6k.jwwf.util.RadioGroup;
 import net.magik6k.jwwf.widgets.basic.AbsolutePanel;
 import net.magik6k.jwwf.widgets.basic.Button;
@@ -18,6 +19,7 @@ import net.magik6k.jwwf.widgets.basic.Image;
 import net.magik6k.jwwf.widgets.basic.InternalLink;
 import net.magik6k.jwwf.widgets.basic.PasswordInput;
 import net.magik6k.jwwf.widgets.basic.RadioButton;
+import net.magik6k.jwwf.widgets.basic.TabbedPanel;
 import net.magik6k.jwwf.widgets.basic.TablePanel;
 import net.magik6k.jwwf.widgets.basic.TextArea;
 import net.magik6k.jwwf.widgets.basic.TextInput;
@@ -148,12 +150,25 @@ public class ExampleClient extends User{
 			}
 		});
 		
+		/* Exapmle TabbedPanel */
+		
+		TextLabel tabbedPanelDesc = new TextLabel("Tabbed panel");
+		
+		TextLabel tabbedPanelContent1 = new TextLabel("Example1");
+		TextLabel tabbedPanelContent2 = new TextLabel("Example2");
+		TextLabel tabbedPanelContent3 = new TextLabel("Example3");
+		
+		TabbedPanel tabbedPanel = new TabbedPanel(3, 
+				new NamedWidget(tabbedPanelContent1, "Tab 1"),
+				new NamedWidget(tabbedPanelContent2, "Tab 2"),
+				new NamedWidget(tabbedPanelContent3, "Tab 3"));
+		
 		/* Custom panel example */		
 		Widget customPanel = new LoginPanel();		
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 15, 
+		Widget exapmles = new TablePanel(2, 16, 
 				textLabelExample,	null,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -168,6 +183,7 @@ public class ExampleClient extends User{
 				textAreaDesc,		textArea,
 				checkBoxDesc,		checkBox,
 				radioButtonDesc,	radioButtons,
+				tabbedPanelDesc,	tabbedPanel,
 				customPanelDesc,	customPanel);
 		
 		rootFrame.put(exapmles);

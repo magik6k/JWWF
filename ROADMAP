@@ -28,7 +28,7 @@ Dev 2:
 		
 Dev 3:
 	Widgets:
-		-TabbedPanel
+		-TabbedPanel			DONE
 		-RadioButton/Group		DONE
 		-Textarea			DONE
 	-Skin support				DONE
@@ -42,6 +42,8 @@ Dev 3:
 -Bug fixing / testing
 -Docs
 -Set up Jenkins
+	-Building
+	-Example setup
 	
 -Release v0.1 here
 
