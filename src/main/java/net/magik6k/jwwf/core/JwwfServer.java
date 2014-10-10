@@ -32,7 +32,6 @@ public class JwwfServer extends WebSocketServer{
 	 * Server constructor
 	 * @param user User handler class
 	 * @param address Address to bind server to
-	 * @throws UnknownHostException
 	 */
 	public JwwfServer( Class<? extends User> user, InetSocketAddress address) {
 		super( address, Collections.singletonList( (Draft)new Draft_17() ) );
