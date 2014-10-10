@@ -37,45 +37,40 @@ public class ExampleClient extends User{
 		/* Example TextLabel*/
 		TextLabel textLabelExample = new TextLabel("This is example text");
 		
-		/*Image example*/
-		
+		/*Image example*/		
 		TextLabel imageDesc = new TextLabel("Image");
 		Image image = new Image(200, -1, "http://upload.wikimedia.org/wikipedia/commons/5/5c/View_from_the_Window_at_Le_Gras%2C_Joseph_Nic%C3%A9phore_Ni%C3%A9pce.jpg");
 		image.setAlternativeText("Old photo");
 		
-		/* Example VerticalPanel */
-		
+		/* Example VerticalPanel */		
 		TextLabel verticalPanelDesc = new TextLabel("VerticalPanel");
 		VerticalPanel verticalPanel = new VerticalPanel(3,
 				new TextLabel("e1"),new TextLabel("e2e2"),new TextLabel("e3"));
 		verticalPanel.setElementAlign(PanelAlign.MIDDLE);
 		
-		/* Example HorizontalPanel */
-		
+		/* Example HorizontalPanel */		
 		TextLabel horizontalPanelDesc = new TextLabel("HorizontalPanel");
 		HorizontalPanel horizontalPanel = new HorizontalPanel(3,8,
 				new TextLabel("e1"),new TextLabel("e2\ne2"),new TextLabel("e3"));
 		horizontalPanel.setElementAlign(PanelAlign.MIDDLE);
-		/* Example TablePanel */
 		
+		/* Example TablePanel */		
 		TextLabel tablePanelDesc = new TextLabel("TablePanel");
 		TablePanel tablePanel = new TablePanel(2, 2,
-				new TextLabel("e1"),new TextLabel("e2"),
-				new TextLabel("e3"),new TextLabel("e4"));
+				new TextLabel("e1e1"),new TextLabel("e2"),
+				new TextLabel("e3"),new TextLabel("e4e4\ne4e4"));
 		tablePanel.setSpacing(16, 16);
-		/* Example AbsolutePanel */
 		
+		/* Example AbsolutePanel */		
 		TextLabel absolutePanelDesc = new TextLabel("AbsolutePanel");
 		AbsolutePanel absolutePanel = new AbsolutePanel(200, 8, 
 				new TextLabel("AbsolutePanel content"));
 		
-		/* Example ExternalLink*/
-		
+		/* Example ExternalLink*/		
 		TextLabel externalLinkDesc = new TextLabel("External link");
 		ExternalLink externalLink = new ExternalLink("http://example.org", "example");
 		
-		/* Example InternalLink */
-		
+		/* Example InternalLink */		
 		final TextLabel internalLinkDesc = new TextLabel("Internal link");
 		InternalLink internalLink = new InternalLink("example", new ClickHandler() {
 			private int clicks = 0;
@@ -86,8 +81,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example Button */
-		
+		/* Example Button */		
 		final TextLabel buttonDesc = new TextLabel("Button");
 		Button button = new Button("example", new ClickHandler() {
 			private int clicks = 0;
@@ -98,8 +92,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example TextInput */
-		
+		/* Example TextInput */		
 		final TextLabel textInputDesc = new TextLabel("TextInput");
 		TextInput textInput = new TextInput("TextInput", new TextHandler() {
 			
@@ -110,7 +103,6 @@ public class ExampleClient extends User{
 		});
 		
 		/* Example PasswordInput */		
-		
 		final TextLabel passwordInputDesc = new TextLabel("PasswordInput");
 		PasswordInput passwordInput = new PasswordInput("PasswordInput", new TextHandler() {
 			
@@ -120,8 +112,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example CheckBox */
-		
+		/* Example CheckBox */		
 		final TextLabel checkBoxDesc = new TextLabel("CheckBox");
 		CheckBox checkBox = new CheckBox(new CheckHandler() {
 			@Override
@@ -130,8 +121,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example RadioButton*/
-		
+		/* Example RadioButton*/		
 		final TextLabel radioButtonDesc = new TextLabel("RadioButton");
 		
 		RadioGroup group = new RadioGroup(new SelectionHandler() {
@@ -144,8 +134,7 @@ public class ExampleClient extends User{
 		HorizontalPanel radioButtons = new HorizontalPanel(2, 
 				new RadioButton(group, "Button1"), new RadioButton(group, "Button2"));
 		
-		/* Example TextArea */
-		
+		/* Example TextArea */		
 		final TextLabel textAreaDesc = new TextLabel("TextArea");
 		TextArea textArea = new TextArea("Text area", new TextHandler() {
 			@Override
@@ -154,8 +143,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Exapmle TabbedPanel */
-		
+		/* Exapmle TabbedPanel */		
 		TextLabel tabbedPanelDesc = new TextLabel("Tabbed panel");
 		
 		TextLabel tabbedPanelContent1 = new TextLabel("Example1");
@@ -171,8 +159,7 @@ public class ExampleClient extends User{
 		Widget customPanel = new LoginPanel();		
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
-		/* UserData example*/
-		
+		/* UserData example*/		
 		final TextLabel userDataDesc = new TextLabel("UserData");
 		
 		userData.get("exampleKey", new UserDataHandler() {

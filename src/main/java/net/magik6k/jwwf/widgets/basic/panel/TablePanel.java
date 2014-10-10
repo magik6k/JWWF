@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.enums.PanelAlign;
 
 /**
  * A simple table container
@@ -9,7 +10,7 @@ public class TablePanel extends Widget{
 	private Widget[][] content;
 	private float verticalSpacing = 0;
 	private float horizontalSpacing = 0;
-	
+	private PanelAlign align = PanelAlign.LEFT;
 	
 	/**
 	 * @param width Width of the table(number of columns)
@@ -70,6 +71,16 @@ public class TablePanel extends Widget{
 	}
 	
 	/**
+	 * Sets align of elementd inside container. this is important when
+	 * container has few elements with different widths or/and heights
+	 * @param align Alignment type valid for this container
+	 */
+	public void setElementAlign(PanelAlign align){
+		this.align = align;
+		this.sendElement();	
+	}
+	
+	/**
 	 * Sets space betwen elements
 	 * @param verticalSpacing vertical space betwen elements in pixels
 	 * @param horizontalSpacing horizontal space betwen elements in pixels
@@ -118,7 +129,8 @@ public class TablePanel extends Widget{
 			data += "]";
 		}
 		return "{\"content\":["+data+"],\"hspace\":"+String.valueOf(horizontalSpacing)
-				+",\"vspace\":"+String.valueOf(verticalSpacing)+"}";
+				+",\"vspace\":"+String.valueOf(verticalSpacing)+
+				",\"align\":\""+align.propertyName+"\"}";
 	}
 
 	/**

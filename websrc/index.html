@@ -273,14 +273,38 @@
 						{
 							if(data.content[i][j] < 0)
 							{
-								$(rows[i]).append($("<td>").css("padding-right",data.hspace+"px")
-										.css("padding-bottom",data.vspace+"px"));
+								var cell = $("<td>").css("padding-right",data.hspace+"px")
+										.css("padding-bottom",data.vspace+"px");
+								
+								if(data.align == "topleft")		cell.addClass("tatl");
+								if(data.align == "top")			cell.addClass("tatc");
+								if(data.align == "topright")	cell.addClass("tatr");
+								if(data.align == "middleleft")	cell.addClass("taml");
+								if(data.align == "middle")		cell.addClass("tamc");
+								if(data.align == "middleright")	cell.addClass("tamr");
+								if(data.align == "bottomleft")	cell.addClass("tabl");
+								if(data.align == "bottom")		cell.addClass("tabc");
+								if(data.align == "bottomright")	cell.addClass("tabr");
+								
+								$(rows[i]).append(cell);
 							}
 							else
 							{
-								$(rows[i]).append($("<td>").html(widgetStorage[data.content[i][j]].element)
+								var cell = $("<td>").html(widgetStorage[data.content[i][j]].element)
 										.css("padding-right",(j+1<data.content[i].length?data.hspace:0)+"px")
-										.css("padding-bottom",(i+1<data.content.length?data.vspace:0)+"px"));
+										.css("padding-bottom",(i+1<data.content.length?data.vspace:0)+"px")
+								
+								if(data.align == "topleft")		cell.addClass("tatl");
+								if(data.align == "top")			cell.addClass("tatc");
+								if(data.align == "topright")	cell.addClass("tatr");
+								if(data.align == "left")		cell.addClass("taml");
+								if(data.align == "middle")		cell.addClass("tamc");
+								if(data.align == "right")		cell.addClass("tamr");
+								if(data.align == "bottomleft")	cell.addClass("tabl");
+								if(data.align == "bottom")		cell.addClass("tabc");
+								if(data.align == "bottomright")	cell.addClass("tabr");
+								
+								$(rows[i]).append(cell);
 							}
 						}
 						elem.append(rows[i]);
@@ -602,6 +626,16 @@
 			.hmiddle{display: table;margin: 0 auto;}
 			.right{margin-left:auto; margin-right:0;width: min-content;width: -moz-min-content;width: -webkit-min-content;}
 			.vcontainer{width: min-content;width: -moz-min-content;width: -webkit-min-content;}
+			/*Table align*/
+			.tatl{vertical-align:top;}
+			.tatc{vertical-align:top;text-align:center;}
+			.tatr{vertical-align:top;text-align:right;}
+			.taml{}
+			.tamc{text-align:center;}
+			.tamr{text-align:right;}
+			.tabl{vertical-align:bottom;}
+			.tabc{vertical-align:bottom;text-align:center;}
+			.tabr{vertical-align:bottom;text-align:right;}
 			
 			textarea{
 				resize: none;
