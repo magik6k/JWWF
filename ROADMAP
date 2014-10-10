@@ -45,8 +45,8 @@ Dev 3:
 	-Do TODOs				DONE
 -Bug fixing / testing				DONE
 -Docs						DONE
--Set up Jenkins
-	-Building
+-Set up Jenkins					DONE
+	-Building				TESTING
 	-Example setup
 	-JavaDoc page
 	
