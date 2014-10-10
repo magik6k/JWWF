@@ -18,8 +18,8 @@ public class LoginPanel extends VerticalPanel{
 		super(3);
 		this.setElementSpacing(4);
 		
-		loginField = new TextInput("login", null);
-		passwordField = new PasswordInput("password", null);
+		loginField = new TextInput("login");
+		passwordField = new PasswordInput("password");
 		
 		
 		

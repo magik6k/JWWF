@@ -11,7 +11,23 @@ import net.magik6k.jwwf.util.Json;
 public class TextInput extends Widget {
 	private String placeholder;
 	private String text = "";
+	private boolean sendTextUpdate;
 	private TextHandler handler;
+	
+	/**
+	 * @param text Hint text
+	 * @param defaultText Default text
+	 * @param handler Handler of typed text
+	 */
+	public TextInput(String placeholder, String defaultText, TextHandler handler) {
+		super(Actions.TEXT_INPUT);
+		this.placeholder = placeholder;
+		this.text = defaultText;
+		sendTextUpdate = true;
+		this.handler = handler;
+		this.sendElement();
+	}
+	
 	/**
 	 * @param text Hint text
 	 * @param handler Handler of typed text
@@ -25,6 +41,18 @@ public class TextInput extends Widget {
 	
 	/**
 	 * @param text Hint text
+	 * @param defaultText Default text
+	 */
+	public TextInput(String placeholder, String defaultText) {
+		super(Actions.TEXT_INPUT);
+		this.placeholder = placeholder;
+		this.text = defaultText;
+		sendTextUpdate = true;
+		this.sendElement();
+	}
+	
+	/**
+	 * @param text Hint text
 	 */
 	public TextInput(String placeholder) {
 		super(Actions.TEXT_INPUT);
@@ -33,12 +61,29 @@ public class TextInput extends Widget {
 	}
 	
 	/**
+	 * @param text Hint text
+	 */
+	public TextInput() {
+		super(Actions.TEXT_INPUT);
+		this.sendElement();
+	}
+	
+	/**
 	 * Sets new placeholder text
 	 * @param placeholder Placeholder text
 	 */
-	public void setPlaceholder(String placeholder)
-	{
+	public void setPlaceholder(String placeholder){
 		this.placeholder = placeholder;
+		this.sendElement();
+	}
+	
+	/**
+	 * Sets new text
+	 * @param text Text to set
+	 */
+	public void setText(String text){
+		this.text = text;
+		sendTextUpdate = true;
 		this.sendElement();
 	}
 	
@@ -57,7 +102,12 @@ public class TextInput extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+Json.escapeString(placeholder)+"\"}";//TODO: Escape text
+		if(sendTextUpdate){
+			sendTextUpdate = false;
+			return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\",\"text\":\""
+					+Json.escapeString(text)+"\"}";
+		}		
+		return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\"}";
 	}
 	
 	/**

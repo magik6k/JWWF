@@ -37,7 +37,7 @@ public class ExampleClient extends User{
 		/* Example TextLabel*/
 		TextLabel textLabelExample = new TextLabel("This is example text");
 		
-		/*Image example*/		
+		/*Image example*/
 		TextLabel imageDesc = new TextLabel("Image");
 		Image image = new Image(200, -1, "http://upload.wikimedia.org/wikipedia/commons/5/5c/View_from_the_Window_at_Le_Gras%2C_Joseph_Nic%C3%A9phore_Ni%C3%A9pce.jpg");
 		image.setAlternativeText("Old photo");
@@ -57,8 +57,8 @@ public class ExampleClient extends User{
 		/* Example TablePanel */		
 		TextLabel tablePanelDesc = new TextLabel("TablePanel");
 		TablePanel tablePanel = new TablePanel(2, 2,
-				new TextLabel("e1e1"),new TextLabel("e2"),
-				new TextLabel("e3"),new TextLabel("e4e4\ne4e4"));
+				new TextLabel("e1"),new TextLabel("e2"),
+				new TextLabel("e3"),new TextLabel("e4"));
 		tablePanel.setSpacing(16, 16);
 		
 		/* Example AbsolutePanel */		
@@ -160,20 +160,18 @@ public class ExampleClient extends User{
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
 		/* UserData example*/		
-		final TextLabel userDataDesc = new TextLabel("UserData");
+		TextLabel userDataDesc = new TextLabel("UserData");
+		final TextInput userDataInput = new TextInput("UserData", "ThisWillPersist", new TextHandler() {
+			@Override
+			public void onType(String data) {
+				userData.set("exampleKey", data);
+			}
+		});		
 		
 		userData.get("exampleKey", new UserDataHandler() {
 			@Override
 			public void data(String key, String value) {
-				userDataDesc.setText("UserData:"+value);
-			}
-		});
-		
-		TextInput userDataInput = new TextInput("UserData", new TextHandler() {
-			@Override
-			public void onType(String data) {
-				userDataDesc.setText("UserData:"+data);
-				userData.set("exampleKey", data);
+				userDataInput.setText(value);
 			}
 		});
 		

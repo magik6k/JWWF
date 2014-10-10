@@ -72,6 +72,10 @@ textarea
 	appearance: none;
 }
 
+input[type=text],input[type=password]{
+	min-width:200px;
+}
+
 .checkbox
 {
 	width: 16px;

@@ -8,9 +8,28 @@ import net.magik6k.jwwf.util.Json;
 public class TextArea extends Widget{
 	private String placeholder;
 	private String text = "";
+	private boolean sendTextUpdate;
 	private TextHandler handler;
 	private short cols = 20;
 	private short rows = 3;
+	
+	/**
+	 * @param text Hint text
+	 * @param defaultText Default text
+	 * @param cols Column amount, by default 20
+	 * @param rows Row amount, by default 3
+	 * @param handler Handler of typed text
+	 */
+	public TextArea(String placeholder, String defaultText, int cols, int rows, TextHandler handler) {
+		super(Actions.TEXT_INPUT);
+		this.placeholder = placeholder;
+		this.handler = handler;
+		this.text = defaultText;
+		sendTextUpdate = true;
+		this.cols = (short)cols;
+		this.rows = (short)rows;
+		this.sendElement();
+	}
 	
 	/**
 	 * @param text Hint text
@@ -24,6 +43,20 @@ public class TextArea extends Widget{
 		this.handler = handler;
 		this.cols = (short)cols;
 		this.rows = (short)rows;
+		this.sendElement();
+	}
+	
+	/**
+	 * @param text Hint text
+	 * @param defaultText Default text
+	 * @param handler Handler of typed text
+	 */
+	public TextArea(String placeholder, String defaultText, TextHandler handler) {
+		super(Actions.TEXT_INPUT);
+		this.placeholder = placeholder;
+		this.handler = handler;
+		this.text = defaultText;
+		sendTextUpdate = true;
 		this.sendElement();
 	}
 	
@@ -53,10 +86,32 @@ public class TextArea extends Widget{
 	
 	/**
 	 * @param text Hint text
+	 * @param defaultText Default text
+	 */
+	public TextArea(String placeholder, String defaultText) {
+		super(Actions.TEXT_INPUT);
+		this.placeholder = placeholder;
+		this.text = defaultText;
+		sendTextUpdate = true;
+		this.sendElement();
+	}
+	
+	/**
+	 * @param text Hint text
 	 */
 	public TextArea(String placeholder) {
 		super(Actions.TEXT_INPUT);
 		this.placeholder = placeholder;
+		this.sendElement();
+	}
+	
+	/**
+	 * Sets new text
+	 * @param text Text to set
+	 */
+	public void setText(String text){
+		this.text = text;
+		sendTextUpdate = true;
 		this.sendElement();
 	}
 	
@@ -96,7 +151,13 @@ public class TextArea extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+Json.escapeString(placeholder)+"\",\"cols\":"
+		if(sendTextUpdate){
+			sendTextUpdate = false;
+			return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\",\"text\":\""
+					+Json.escapeString(text)+"\",\"cols\":"
+					+String.valueOf(cols)+",\"rows\":"+String.valueOf(rows)+"}";
+		}
+		return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\",\"cols\":"
 				+String.valueOf(cols)+",\"rows\":"+String.valueOf(rows)+"}";
 	}
 	
