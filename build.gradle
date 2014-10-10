@@ -35,8 +35,8 @@ dependencies {
 
 compileJava {
 	options.fork = true
-	sourceCompatibility = "1.8"
-	targetCompatibility = "1.8"
+	sourceCompatibility = "1.7"
+	targetCompatibility = "1.7"
 }
 
 task cleanAll(dependsOn: clean)<<{
@@ -51,6 +51,15 @@ task setUp(dependsOn: cleanAll) <<{
 	libsDir.mkdir()
 	runDir.mkdir()
 	tasks.updateLibs.execute()
+}
+
+javadoc {
+	include 'net/magik6k/jwwf/**'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+from 'build/docs/javadoc'
+classifier 'javadoc'
 }
 
 task updateLibs << {
