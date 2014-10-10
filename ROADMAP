@@ -37,7 +37,8 @@ Dev 3:
 	-Extensions for widgets
 		-The alt text for image		DONE
 		-Panel align setting		
-		-Panel element spacing		PARTIAL(only h/v panel)
+		-Panel element spacing		DONE
+		-TextArea resizing
 	-Default skin				DONE
 	-User storage				DONE
 	
@@ -53,4 +54,6 @@ Dev 3:
 v0.1.1:
 	-Widgets:
 		-SelectList
+		-ProgressBar
+		-Slider
 

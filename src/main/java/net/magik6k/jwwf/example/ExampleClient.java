@@ -60,7 +60,7 @@ public class ExampleClient extends User{
 		TablePanel tablePanel = new TablePanel(2, 2,
 				new TextLabel("e1"),new TextLabel("e2"),
 				new TextLabel("e3"),new TextLabel("e4"));
-		
+		tablePanel.setSpacing(24, 24);
 		/* Example AbsolutePanel */
 		
 		TextLabel absolutePanelDesc = new TextLabel("AbsolutePanel");
@@ -180,10 +180,10 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		TextInput userDataInput = new TextInput("TextInput", new TextHandler() {
+		TextInput userDataInput = new TextInput("UserData", new TextHandler() {
 			@Override
 			public void onType(String data) {
-				userDataDesc.setText("TextInput:"+data);
+				userDataDesc.setText("UserData:"+data);
 				userData.set("exampleKey", data);
 			}
 		});

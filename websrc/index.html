@@ -224,13 +224,13 @@
 						if(data.content[i] < 0)
 						{
 							elements[i] = {};
-							elements[i].elem = $("<div>").css("margin-bottom", data.spacing);
+							elements[i].elem = $("<div>").css("margin-bottom", data.spacing+"px");
 							elements[i].id = -1;
 						}
 						else
 						{
 							elements[i] = {};
-							elements[i].elem = $("<div>").css("margin-bottom", data.spacing)
+							elements[i].elem = $("<div>").css("margin-bottom", data.spacing+"px")
 								.html(widgetStorage[data.content[i]].element);
 							elements[i].id = data.content[i];
 						}
@@ -258,16 +258,19 @@
 					
 					for(var i = 0; i < data.content.length; ++i)
 					{
-						rows[i] = $("<tr>")
+						rows[i] = $("<tr>");
 						for(var j = 0; j < data.content[i].length; ++j)
 						{
 							if(data.content[i][j] < 0)
 							{
-								$(rows[i]).append($("<td>"));
+								$(rows[i]).append($("<td>").css("padding-right",data.hspace+"px")
+										.css("padding-bottom",data.vspace+"px"));
 							}
 							else
 							{
-								$(rows[i]).append($("<td>").html(widgetStorage[data.content[i][j]].element));
+								$(rows[i]).append($("<td>").html(widgetStorage[data.content[i][j]].element)
+										.css("padding-right",(j+1<data.content[i].length?data.hspace:0)+"px")
+										.css("padding-bottom",(i+1<data.content.length?data.vspace:0)+"px"));
 							}
 						}
 						elem.append(rows[i]);
@@ -555,7 +558,6 @@
 				color: #e3e3e3;
 				font-family: sans-serif;
 				font-size: 24px;
-				margin-top: -8px;
 				-moz-user-select: none;
 				-webkit-user-select: none;
 				-ms-user-select: none;
