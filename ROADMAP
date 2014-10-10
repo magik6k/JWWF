@@ -35,7 +35,7 @@ Dev 3:
 		-LabeledRadioButton		DONE
 	-Skin support				DONE
 	-Extensions for widgets
-		-The alt text for image
+		-The alt text for image		DONE
 		-Panel align setting
 		-Panel element spacing
 	-Default skin				DONE

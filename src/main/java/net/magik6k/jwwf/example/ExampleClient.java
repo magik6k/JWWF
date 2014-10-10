@@ -40,6 +40,7 @@ public class ExampleClient extends User{
 		
 		TextLabel imageDesc = new TextLabel("Image");
 		Image image = new Image(200, -1, "http://upload.wikimedia.org/wikipedia/commons/5/5c/View_from_the_Window_at_Le_Gras%2C_Joseph_Nic%C3%A9phore_Ni%C3%A9pce.jpg");
+		image.setAlternativeText("Old photo");
 		
 		/* Example VerticalPanel */
 		

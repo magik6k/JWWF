@@ -69,10 +69,7 @@ public class JwwfServer extends WebSocketServer{
 				| IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException e) {
 			e.printStackTrace();
-		}
-		
-		//User userInstance = user.getDeclaredConstructor(user).newInstance(mainFrame, connection);
-		
+		}		
 	}
 
 	
