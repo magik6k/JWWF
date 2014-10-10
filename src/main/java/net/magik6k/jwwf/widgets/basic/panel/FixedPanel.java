@@ -1,4 +1,4 @@
-package net.magik6k.jwwf.widgets.basic;
+package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.Widget;
 

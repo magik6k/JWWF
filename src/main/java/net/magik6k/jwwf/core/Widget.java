@@ -3,6 +3,8 @@ package net.magik6k.jwwf.core;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import net.magik6k.jwwf.enums.Actions;
+
 
 
 public abstract class Widget extends Attachable{

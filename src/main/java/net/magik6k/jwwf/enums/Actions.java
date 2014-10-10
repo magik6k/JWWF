@@ -1,4 +1,4 @@
-package net.magik6k.jwwf.core;
+package net.magik6k.jwwf.enums;
 
 
 public enum Actions {

@@ -2,6 +2,8 @@ package net.magik6k.jwwf.core;
 
 import java.util.HashMap;
 
+import net.magik6k.jwwf.enums.Actions;
+
 public abstract class User {
 	private final Connection connection;
 	private int id = 1;//0 is for MainFrame

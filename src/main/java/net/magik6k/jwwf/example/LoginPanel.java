@@ -1,11 +1,11 @@
 package net.magik6k.jwwf.example;
 
 import net.magik6k.jwwf.handlers.ClickHandler;
-import net.magik6k.jwwf.widgets.basic.Button;
-import net.magik6k.jwwf.widgets.basic.PasswordInput;
-import net.magik6k.jwwf.widgets.basic.TextInput;
 import net.magik6k.jwwf.widgets.basic.TextLabel;
-import net.magik6k.jwwf.widgets.basic.VerticalPanel;
+import net.magik6k.jwwf.widgets.basic.input.Button;
+import net.magik6k.jwwf.widgets.basic.input.PasswordInput;
+import net.magik6k.jwwf.widgets.basic.input.TextInput;
+import net.magik6k.jwwf.widgets.basic.panel.VerticalPanel;
 
 public class LoginPanel extends VerticalPanel{
 

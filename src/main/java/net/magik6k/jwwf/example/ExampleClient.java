@@ -11,21 +11,21 @@ import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.handlers.UserDataHandler;
 import net.magik6k.jwwf.util.NamedWidget;
 import net.magik6k.jwwf.util.RadioGroup;
-import net.magik6k.jwwf.widgets.basic.AbsolutePanel;
-import net.magik6k.jwwf.widgets.basic.Button;
-import net.magik6k.jwwf.widgets.basic.CheckBox;
 import net.magik6k.jwwf.widgets.basic.ExternalLink;
-import net.magik6k.jwwf.widgets.basic.HorizontalPanel;
 import net.magik6k.jwwf.widgets.basic.Image;
-import net.magik6k.jwwf.widgets.basic.InternalLink;
-import net.magik6k.jwwf.widgets.basic.PasswordInput;
-import net.magik6k.jwwf.widgets.basic.RadioButton;
-import net.magik6k.jwwf.widgets.basic.TabbedPanel;
-import net.magik6k.jwwf.widgets.basic.TablePanel;
-import net.magik6k.jwwf.widgets.basic.TextArea;
-import net.magik6k.jwwf.widgets.basic.TextInput;
 import net.magik6k.jwwf.widgets.basic.TextLabel;
-import net.magik6k.jwwf.widgets.basic.VerticalPanel;
+import net.magik6k.jwwf.widgets.basic.input.Button;
+import net.magik6k.jwwf.widgets.basic.input.CheckBox;
+import net.magik6k.jwwf.widgets.basic.input.InternalLink;
+import net.magik6k.jwwf.widgets.basic.input.PasswordInput;
+import net.magik6k.jwwf.widgets.basic.input.RadioButton;
+import net.magik6k.jwwf.widgets.basic.input.TextArea;
+import net.magik6k.jwwf.widgets.basic.input.TextInput;
+import net.magik6k.jwwf.widgets.basic.panel.AbsolutePanel;
+import net.magik6k.jwwf.widgets.basic.panel.HorizontalPanel;
+import net.magik6k.jwwf.widgets.basic.panel.TabbedPanel;
+import net.magik6k.jwwf.widgets.basic.panel.TablePanel;
+import net.magik6k.jwwf.widgets.basic.panel.VerticalPanel;
 
 public class ExampleClient extends User{
 

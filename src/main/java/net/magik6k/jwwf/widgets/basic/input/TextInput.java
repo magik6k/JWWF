@@ -1,7 +1,7 @@
-package net.magik6k.jwwf.widgets.basic;
+package net.magik6k.jwwf.widgets.basic.input;
 
-import net.magik6k.jwwf.core.Actions;
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.enums.Actions;
 import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.util.Json;
 
