@@ -118,7 +118,7 @@ public class TablePanel extends Widget{
 			data += "]";
 		}
 		return "{\"content\":["+data+"],\"hspace\":"+String.valueOf(horizontalSpacing)
-				+",\"vspace\":"+String.valueOf(horizontalSpacing)+"}";
+				+",\"vspace\":"+String.valueOf(verticalSpacing)+"}";
 	}
 
 	/**

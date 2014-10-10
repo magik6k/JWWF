@@ -38,10 +38,11 @@ Dev 3:
 		-The alt text for image		DONE
 		-Panel align setting		
 		-Panel element spacing		DONE
-		-TextArea resizing
+		-TextArea resizing		DONE
+		-Text setting for text inputs
 	-Default skin				DONE
 	-User storage				DONE
-	
+	-Do TODOs	
 -Bug fixing / testing
 -Docs
 -Set up Jenkins

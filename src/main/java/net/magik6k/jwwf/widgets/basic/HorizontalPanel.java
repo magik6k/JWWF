@@ -59,6 +59,18 @@ public class HorizontalPanel extends Widget{
 	}
 	
 	/**
+	 * @param width Default height of the container
+	 * @param elementSpacing pixels betwen each element
+	 */	
+	public HorizontalPanel(int width, float elementSpacing) {
+		super();
+		content = new Widget[width];		
+		this.elementSpacing = elementSpacing;
+		
+		this.sendElement();
+	}
+	
+	/**
 	 * Sets space betwen each element.
 	 * @param elementSpacing pixels betwen each element
 	 */

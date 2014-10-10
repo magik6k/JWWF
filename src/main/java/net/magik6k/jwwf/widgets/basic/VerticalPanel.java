@@ -59,6 +59,18 @@ public class VerticalPanel extends Widget{
 	}
 	
 	/**
+	 * @param height Default height of the container
+	 * @param elementSpacing pixels betwen each element
+	 */	
+	public VerticalPanel(int height, float elementSpacing) {
+		super();
+		content = new Widget[height];		
+		this.elementSpacing = elementSpacing;
+		
+		this.sendElement();
+	}
+	
+	/**
 	 * Sets space betwen each element.
 	 * @param elementSpacing pixels betwen each element
 	 */

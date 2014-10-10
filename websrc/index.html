@@ -455,6 +455,8 @@
 					
 					var elem = $("<textarea>").attr("type","text")
 						.attr("placeholder", data.text)
+						.attr("cols",data.cols)
+						.attr("rows",data.rows)
 						.on("keypress",function(){ 
 								clearTimeout(snd);
 								snd = setTimeout(function(){
@@ -464,7 +466,9 @@
 					return {element: elem};
 				},
 				update: function(widget, data){
-					$(widget.element).attr("placeholder", data.text);
+					$(widget.element).attr("placeholder", data.text)
+						.attr("cols",data.cols)
+						.attr("rows",data.rows);
 				}
 					
 			};//TextArea end
