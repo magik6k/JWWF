@@ -8,6 +8,7 @@ import net.magik6k.jwwf.core.Widget;
 public class HorizontalPanel extends Widget{
 
 	private Widget[] content;
+	private float elementSpacing = 0;
 	
 	/**
 	 * @param width Default height of the container
@@ -37,6 +38,35 @@ public class HorizontalPanel extends Widget{
 		this.sendElement();
 	}
 	
+	/**
+	 * @param width Default height of the container
+	 * @param elementSpacing pixels betwen each element
+	 * @param widgets Default widgets
+	 */	
+	public HorizontalPanel(int width, float elementSpacing, Widget... widgets) {
+		super();
+		content = new Widget[width];		
+		this.elementSpacing = elementSpacing;
+		
+		for(int i = 0; i < content.length; ++i)	{
+			if(i < widgets.length && widgets[i] != null){
+				attach(widgets[i]);
+				content[i] = widgets[i];
+			}
+		}
+		
+		this.sendElement();
+	}
+	
+	/**
+	 * Sets space betwen each element.
+	 * @param elementSpacing pixels betwen each element
+	 */
+	public void setElementSpacing(float elementSpacing){
+		this.elementSpacing = elementSpacing;
+		this.sendElement();
+	}
+	
 	@Override
 	public String getName() {
 		return "HorizontalPanel";
@@ -50,7 +80,7 @@ public class HorizontalPanel extends Widget{
 			if(i > 0)data += ",";
 			data += "\"" + String.valueOf(content[i].getID()) + "\"";
 		}
-		return "{\"content\":["+data+"]}";
+		return "{\"content\":["+data+"],\"spacing\":"+String.valueOf(elementSpacing)+"}";
 	}
 
 	/**

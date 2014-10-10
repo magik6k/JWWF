@@ -187,13 +187,13 @@
 						if(data.content[i] < 0)
 						{
 							elements[i] = {};
-							elements[i].elem = $("<div>").addClass("horizontal");
+							elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing);
 							elements[i].id = -1;
 						}
 						else
 						{
 							elements[i] = {};
-							elements[i].elem = $("<div>").addClass("horizontal")
+							elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing)
 								.html(widgetStorage[data.content[i]].element);
 							elements[i].id = data.content[i];
 						}
@@ -224,13 +224,13 @@
 						if(data.content[i] < 0)
 						{
 							elements[i] = {};
-							elements[i].elem = $("<div>");
+							elements[i].elem = $("<div>").css("margin-bottom", data.spacing);
 							elements[i].id = -1;
 						}
 						else
 						{
 							elements[i] = {};
-							elements[i].elem = $("<div>")
+							elements[i].elem = $("<div>").css("margin-bottom", data.spacing)
 								.html(widgetStorage[data.content[i]].element);
 							elements[i].id = data.content[i];
 						}

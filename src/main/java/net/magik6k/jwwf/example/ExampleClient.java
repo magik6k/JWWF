@@ -51,7 +51,7 @@ public class ExampleClient extends User{
 		/* Example HorizontalPanel */
 		
 		TextLabel horizontalPanelDesc = new TextLabel("HorizontalPanel");
-		HorizontalPanel horizontalPanel = new HorizontalPanel(3,
+		HorizontalPanel horizontalPanel = new HorizontalPanel(3,8,
 				new TextLabel("e1"),new TextLabel("e2"),new TextLabel("e3"));
 		
 		/* Example TablePanel */

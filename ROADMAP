@@ -36,8 +36,8 @@ Dev 3:
 	-Skin support				DONE
 	-Extensions for widgets
 		-The alt text for image		DONE
-		-Panel align setting
-		-Panel element spacing
+		-Panel align setting		
+		-Panel element spacing		PARTIAL(only h/v panel)
 	-Default skin				DONE
 	-User storage				DONE
 	
