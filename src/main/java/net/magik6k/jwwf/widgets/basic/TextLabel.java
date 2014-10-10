@@ -13,7 +13,7 @@ public class TextLabel extends Widget {
 	 */
 	public TextLabel(String text) {
 		super();
-		this.text = text;
+		this.text = text.replace("\n", "<br/>");//TODO: option to turn it off;
 		this.sendElement();
 	}
 	
@@ -23,7 +23,7 @@ public class TextLabel extends Widget {
 	 */
 	public void setText(String text)
 	{
-		this.text = text;
+		this.text = text.replace("\n", "<br/>");//TODO: option to turn it off
 		this.sendElement();
 	}
 	
@@ -34,6 +34,6 @@ public class TextLabel extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+Json.escapeString(text)+"\"}";//TODO: Escape text
+		return "{\"text\":\""+Json.escapeString(text)+"\"}";
 	}
 }

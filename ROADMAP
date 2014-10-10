@@ -36,7 +36,7 @@ Dev 3:
 	-Skin support				DONE
 	-Extensions for widgets
 		-The alt text for image		DONE
-		-Panel align setting		
+		-Panel align setting		DONE
 		-Panel element spacing		DONE
 		-TextArea resizing		DONE
 		-Text setting for text inputs
@@ -57,4 +57,10 @@ v0.1.1:
 		-SelectList
 		-ProgressBar
 		-Slider
+		
+v0.1.2
+	-Widgets:
+		-SimpleGraph
+
+
 

@@ -188,6 +188,7 @@
 						{
 							elements[i] = {};
 							elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing);
+							elements[i].elem.css("vertical-align", data.align);
 							elements[i].id = -1;
 						}
 						else
@@ -195,6 +196,7 @@
 							elements[i] = {};
 							elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing)
 								.html(widgetStorage[data.content[i]].element);
+							elements[i].elem.css("vertical-align", data.align);
 							elements[i].id = data.content[i];
 						}
 						elem.append(elements[i].elem)
@@ -205,6 +207,7 @@
 				update: function(widget, data){
 					for(var i = 0; i < data.content.length; ++i)
 					{
+						widget.data.elements[i].elem.css("vertical-align", data.align);
 						if(data.content[i] < 0)continue;
 						if(data.content[i] == widget.data.elements[i].id)continue;
 						$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
@@ -217,7 +220,7 @@
 			widgets["VerticalPanel"] = {
 				create: function(data){
 					var elements = []; 
-					var elem = $("<div>");
+					var elem = $("<div>").addClass("vcontainer");
 					
 					for(var i = 0; i < data.content.length; ++i)
 					{
@@ -225,6 +228,8 @@
 						{
 							elements[i] = {};
 							elements[i].elem = $("<div>").css("margin-bottom", data.spacing+"px");
+							if(data.align == "middle")elements[i].elem.addClass("hmiddle");
+							if(data.align == "right")elements[i].elem.addClass("right");
 							elements[i].id = -1;
 						}
 						else
@@ -232,6 +237,8 @@
 							elements[i] = {};
 							elements[i].elem = $("<div>").css("margin-bottom", data.spacing+"px")
 								.html(widgetStorage[data.content[i]].element);
+							if(data.align == "middle")elements[i].elem.addClass("hmiddle");
+							if(data.align == "right")elements[i].elem.addClass("right");
 							elements[i].id = data.content[i];
 						}
 						elem.append(elements[i].elem)
@@ -242,6 +249,9 @@
 				update: function(widget, data){
 					for(var i = 0; i < data.content.length; ++i)
 					{
+						if(data.align == "middle"){widget.data.elements[i].elem.removeClass("right").addClass("hmiddle");}
+						if(data.align == "right"){widget.data.elements[i].elem.removeClass("hmiddle").addClass("right");}
+						if(data.align == "left"){widget.data.elements[i].elem.removeClass("hmiddle").removeClass("right");}
 						if(data.content[i] < 0)continue;
 						if(data.content[i] == widget.data.elements[i].id)continue;
 						$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
@@ -585,9 +595,13 @@
 				-ms-user-select: none;
 			}
 			
-			.horizontal{display: inline-block;vertical-align:top;}/*TODO:make align customizable*/
+			.horizontal{display: inline-block;}
 			.fixedPanel{position: fixed;}
 			.absolutePanel{position: absolute;}
+			
+			.hmiddle{display: table;margin: 0 auto;}
+			.right{margin-left:auto; margin-right:0;width: min-content;width: -moz-min-content;width: -webkit-min-content;}
+			.vcontainer{width: min-content;width: -moz-min-content;width: -webkit-min-content;}
 			
 			textarea{
 				resize: none;

@@ -4,6 +4,7 @@ import net.magik6k.jwwf.core.Connection;
 import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.enums.PanelAlign;
 import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.SelectionHandler;
@@ -46,21 +47,22 @@ public class ExampleClient extends User{
 		
 		TextLabel verticalPanelDesc = new TextLabel("VerticalPanel");
 		VerticalPanel verticalPanel = new VerticalPanel(3,
-				new TextLabel("e1"),new TextLabel("e2"),new TextLabel("e3"));
+				new TextLabel("e1"),new TextLabel("e2e2"),new TextLabel("e3"));
+		verticalPanel.setElementAlign(PanelAlign.MIDDLE);
 		
 		/* Example HorizontalPanel */
 		
 		TextLabel horizontalPanelDesc = new TextLabel("HorizontalPanel");
 		HorizontalPanel horizontalPanel = new HorizontalPanel(3,8,
-				new TextLabel("e1"),new TextLabel("e2"),new TextLabel("e3"));
-		
+				new TextLabel("e1"),new TextLabel("e2\ne2"),new TextLabel("e3"));
+		horizontalPanel.setElementAlign(PanelAlign.MIDDLE);
 		/* Example TablePanel */
 		
 		TextLabel tablePanelDesc = new TextLabel("TablePanel");
 		TablePanel tablePanel = new TablePanel(2, 2,
 				new TextLabel("e1"),new TextLabel("e2"),
 				new TextLabel("e3"),new TextLabel("e4"));
-		tablePanel.setSpacing(24, 24);
+		tablePanel.setSpacing(16, 16);
 		/* Example AbsolutePanel */
 		
 		TextLabel absolutePanelDesc = new TextLabel("AbsolutePanel");

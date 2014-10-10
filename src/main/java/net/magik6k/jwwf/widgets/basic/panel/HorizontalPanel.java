@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.enums.PanelAlign;
 
 /**
  * This panel places its elements in horizontal line
@@ -9,7 +10,7 @@ public class HorizontalPanel extends Widget{
 
 	private Widget[] content;
 	private float elementSpacing = 0;
-	
+	private PanelAlign align = PanelAlign.LEFT;
 	/**
 	 * @param width Default height of the container
 	 */
@@ -71,6 +72,20 @@ public class HorizontalPanel extends Widget{
 	}
 	
 	/**
+	 * Sets align of elementd inside container. this is important when
+	 * container has few elements with different heights
+	 * @param align Alignment type valid for this container
+	 */
+	public void setElementAlign(PanelAlign align){
+		if(	align == PanelAlign.TOP ||
+			align == PanelAlign.MIDDLE ||
+			align == PanelAlign.BOTTOM){
+			this.align = align;
+			this.sendElement();
+		}		
+	}
+	
+	/**
 	 * Sets space betwen each element.
 	 * @param elementSpacing pixels betwen each element
 	 */
@@ -92,7 +107,8 @@ public class HorizontalPanel extends Widget{
 			if(i > 0)data += ",";
 			data += "\"" + String.valueOf(content[i].getID()) + "\"";
 		}
-		return "{\"content\":["+data+"],\"spacing\":"+String.valueOf(elementSpacing)+"}";
+		return "{\"content\":["+data+"],\"spacing\":"+String.valueOf(elementSpacing)+
+				",\"align\":\""+align.propertyName+"\"}";
 	}
 
 	/**
