@@ -13,7 +13,7 @@ public class TextLabel extends Widget {
 	 */
 	public TextLabel(String text) {
 		super();
-		this.text = text.replace("\n", "<br/>");//TODO: option to turn it off;
+		this.text = text.replace("\n", "<br/>");
 		this.sendElement();
 	}
 	
@@ -23,7 +23,7 @@ public class TextLabel extends Widget {
 	 */
 	public void setText(String text)
 	{
-		this.text = text.replace("\n", "<br/>");//TODO: option to turn it off
+		this.text = text.replace("\n", "<br/>");
 		this.sendElement();
 	}
 	

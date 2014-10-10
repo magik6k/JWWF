@@ -10,11 +10,11 @@ import net.magik6k.jwwf.handlers.CheckHandler;
 public class CheckBox extends Widget{
 	private CheckHandler checkHandler;
 	/**
-	 * @param label Default label
+	 * @param checkHandler handler claaed when checkbox changes it's state
 	 */
-	public CheckBox(CheckHandler clickHandler) {
+	public CheckBox(CheckHandler checkHandler) {
 		super(Actions.CHECK_STATE);
-		this.checkHandler = clickHandler;
+		this.checkHandler = checkHandler;
 		this.sendElement();
 	}
 	
@@ -22,8 +22,8 @@ public class CheckBox extends Widget{
 	 * Sets new handler for button click
 	 * @param checkHandler New handler
 	 */
-	public void setHandler(CheckHandler clickHandler){
-		this.checkHandler = clickHandler;
+	public void setHandler(CheckHandler checkHandler){
+		this.checkHandler = checkHandler;
 	}
 	
 	@Override

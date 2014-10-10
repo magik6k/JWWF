@@ -5,6 +5,9 @@ import net.magik6k.jwwf.enums.Actions;
 import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.util.Json;
 
+/**
+ * Scrollable {@link TextInput} with multiple rows
+ */
 public class TextArea extends Widget{
 	private String placeholder;
 	private String text = "";
@@ -14,7 +17,7 @@ public class TextArea extends Widget{
 	private short rows = 3;
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param defaultText Default text
 	 * @param cols Column amount, by default 20
 	 * @param rows Row amount, by default 3
@@ -32,7 +35,7 @@ public class TextArea extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param cols Column amount, by default 20
 	 * @param rows Row amount, by default 3
 	 * @param handler Handler of typed text
@@ -47,7 +50,7 @@ public class TextArea extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param defaultText Default text
 	 * @param handler Handler of typed text
 	 */
@@ -61,7 +64,7 @@ public class TextArea extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param handler Handler of typed text
 	 */
 	public TextArea(String placeholder, TextHandler handler) {
@@ -72,7 +75,7 @@ public class TextArea extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param cols Column amount, by default 20
 	 * @param rows Row amount, by default 3
 	 */
@@ -85,7 +88,7 @@ public class TextArea extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param defaultText Default text
 	 */
 	public TextArea(String placeholder, String defaultText) {
@@ -97,7 +100,7 @@ public class TextArea extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 */
 	public TextArea(String placeholder) {
 		super(Actions.TEXT_INPUT);

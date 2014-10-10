@@ -4,11 +4,14 @@ import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.Actions;
 import net.magik6k.jwwf.util.RadioGroup;
 
+/**
+ * As part of {@link RadioGroup} acts as option in single-selection group
+ */
 public class RadioButton extends Widget{
 	private RadioGroup radioGroup;
 	private Object userdata;
 	/**
-	 * @param label Default label
+	 * @param radioGroup Default group to bind button to
 	 */
 	public RadioButton(RadioGroup radioGroup) {
 		super(Actions.SELECT);
@@ -17,6 +20,10 @@ public class RadioButton extends Widget{
 		this.sendElement();
 	}
 	
+	/**
+	 * @param radioGroup Default group to bind button to
+	 * @param userdata data to store in button
+	 */
 	public RadioButton(RadioGroup radioGroup, Object userdata) {
 		super(Actions.CHECK_STATE);
 		attach(radioGroup);
@@ -27,7 +34,7 @@ public class RadioButton extends Widget{
 	
 	/**
 	 * Sets new handler for button click
-	 * @param checkHandler New handler
+	 * @param radioGroup group to bind button to
 	 */
 	public void setGroup(RadioGroup radioGroup){
 		this.radioGroup = radioGroup;

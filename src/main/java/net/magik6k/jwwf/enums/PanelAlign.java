@@ -1,5 +1,8 @@
 package net.magik6k.jwwf.enums;
 
+/**
+ * List of all possible aligns used for panles
+ */
 public enum PanelAlign {
 	
 	/**
@@ -35,32 +38,32 @@ public enum PanelAlign {
 	/**
 	 * Valid for TablePanel
 	 */
-	TOPLEFT("topleft"),
+	TOP_LEFT("topleft"),
 
 	/**
 	 * Valid for TablePanel
 	 */
-	TOPRIGHT("topright"),
+	TOP_RIGHT("topright"),
 	
 	/**
 	 * Valid for TablePanel
 	 */
-	MIDDLELEFT("middleleft"),
+	MIDDLE_LEFT("middleleft"),
 
 	/**
 	 * Valid for TablePanel
 	 */
-	MIDDLERIGHT("middleright"),
+	MIDDLE_RIGHT("middleright"),
 
 	/**
 	 * Valid for TablePanel
 	 */
-	BOTTOMLEFT("bottomleft"),
+	BOTTOM_LEFT("bottomleft"),
 
 	/**
 	 * Valid for TablePanel
 	 */
-	BOTTOMRIGHT("bottomright");
+	BOTTOM_RIGHT("bottomright");
 	public final String propertyName;
 	
 	private PanelAlign(String propertyName) {

@@ -20,6 +20,12 @@ public abstract class User {
 		rootFrame.setUser(this);
 		userData = new UserData(this);
 	}
+	/**
+	 * This function is called when user disconnects for some reason,
+	 * If user has some resourcues that need manual cleanup override
+	 * this function
+	 */
+	public void destroy(){};
 
 	protected final Connection getConnection() {
 		return connection;

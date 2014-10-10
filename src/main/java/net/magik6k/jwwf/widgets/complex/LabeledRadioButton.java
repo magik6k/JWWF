@@ -5,6 +5,9 @@ import net.magik6k.jwwf.widgets.basic.TextLabel;
 import net.magik6k.jwwf.widgets.basic.input.RadioButton;
 import net.magik6k.jwwf.widgets.basic.panel.HorizontalPanel;
 
+/**
+ * {@link RadioButton} with {@link TextLabel}
+ */
 public class LabeledRadioButton extends HorizontalPanel{
 	public final RadioButton radioButton;
 	public final TextLabel label;

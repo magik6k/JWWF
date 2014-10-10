@@ -41,14 +41,20 @@ public class JwwfServer extends WebSocketServer{
 
 	@Override
 	public void onClose(WebSocket arg0, int arg1, String arg2, boolean arg3) {
-		// TODO Auto-generated method stub
-		
+		try{
+			connections.remove(arg0).destroy();
+		}catch(Throwable th){
+			th.printStackTrace();
+		}
 	}
 
 	@Override
 	public void onError(WebSocket arg0, Exception arg1) {
-		// TODO Auto-generated method stub
-		
+		try{
+			connections.remove(arg0).destroy();
+		}catch(Throwable th){
+			th.printStackTrace();
+		}
 	}
 
 	@Override
@@ -58,7 +64,6 @@ public class JwwfServer extends WebSocketServer{
 
 	@Override
 	public void onOpen(WebSocket arg0, ClientHandshake arg1) {
-		// TODO Auto-generated method stub
 		System.out.printf("New user. hash: %d, str: %s\n", arg0.hashCode(), arg0.toString());
 		Connection connection = new Connection(arg0);
 		MainFrame mainFrame = new MainFrame(0, connection);

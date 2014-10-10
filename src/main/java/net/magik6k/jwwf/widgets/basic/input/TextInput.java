@@ -15,7 +15,7 @@ public class TextInput extends Widget {
 	private TextHandler handler;
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param defaultText Default text
 	 * @param handler Handler of typed text
 	 */
@@ -29,7 +29,7 @@ public class TextInput extends Widget {
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param handler Handler of typed text
 	 */
 	public TextInput(String placeholder, TextHandler handler) {
@@ -40,7 +40,7 @@ public class TextInput extends Widget {
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param defaultText Default text
 	 */
 	public TextInput(String placeholder, String defaultText) {
@@ -52,7 +52,7 @@ public class TextInput extends Widget {
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 */
 	public TextInput(String placeholder) {
 		super(Actions.TEXT_INPUT);
@@ -60,9 +60,6 @@ public class TextInput extends Widget {
 		this.sendElement();
 	}
 	
-	/**
-	 * @param text Hint text
-	 */
 	public TextInput() {
 		super(Actions.TEXT_INPUT);
 		this.sendElement();

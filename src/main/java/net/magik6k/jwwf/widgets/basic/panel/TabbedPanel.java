@@ -3,6 +3,9 @@ package net.magik6k.jwwf.widgets.basic.panel;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.util.NamedWidget;
 
+/**
+ * Panel with many tabs
+ */
 public class TabbedPanel extends Widget{
 	private NamedWidget[] content;
 	

@@ -15,7 +15,7 @@ public class PasswordInput extends Widget{
 	private TextHandler handler;
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param defaultText Default text
 	 * @param handler Handler of typed text
 	 */
@@ -29,7 +29,7 @@ public class PasswordInput extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param handler Handler of typed text
 	 */
 	public PasswordInput(String placeholder, TextHandler handler) {
@@ -40,7 +40,7 @@ public class PasswordInput extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 * @param defaultText Default text
 	 */
 	public PasswordInput(String placeholder,  String defaultText) {
@@ -52,7 +52,7 @@ public class PasswordInput extends Widget{
 	}
 	
 	/**
-	 * @param text Hint text
+	 * @param placeholder Hint text
 	 */
 	public PasswordInput(String placeholder) {
 		super(Actions.TEXT_INPUT);
@@ -72,7 +72,7 @@ public class PasswordInput extends Widget{
 	
 	/**
 	 * Sets new placeholder text
-	 * @param text Placeholder text
+	 * @param placeholder Placeholder text
 	 */
 	public void setPlaceholder(String placeholder)
 	{

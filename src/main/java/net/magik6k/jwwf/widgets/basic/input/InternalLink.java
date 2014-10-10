@@ -46,7 +46,7 @@ public class InternalLink extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"label\":\""+Json.escapeString(label)+"\"}";//TODO: Escape text
+		return "{\"label\":\""+Json.escapeString(label)+"\"}";
 	}
 	
 	/**

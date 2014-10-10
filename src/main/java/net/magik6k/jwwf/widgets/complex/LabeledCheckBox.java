@@ -5,6 +5,9 @@ import net.magik6k.jwwf.widgets.basic.TextLabel;
 import net.magik6k.jwwf.widgets.basic.input.CheckBox;
 import net.magik6k.jwwf.widgets.basic.panel.HorizontalPanel;
 
+/**
+ * {@link CheckBox} with {@link TextLabel}
+ */
 public class LabeledCheckBox extends HorizontalPanel{
 
 	public final CheckBox checkBox;

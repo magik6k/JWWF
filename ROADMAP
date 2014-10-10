@@ -42,9 +42,9 @@ Dev 3:
 		-Text setting for text inputs	DONE
 	-Default skin				DONE
 	-User storage				DONE
-	-Do TODOs	
--Bug fixing / testing
--Docs
+	-Do TODOs				DONE
+-Bug fixing / testing				DONE
+-Docs						DONE
 -Set up Jenkins
 	-Building
 	-Example setup
