@@ -288,6 +288,7 @@
 								if(data.align == "bottom")		cell.addClass("tabc");
 								if(data.align == "bottomright")	cell.addClass("tabr");
 								
+								rows[i].cells[j] = {};
 								rows[i].cells[j].elem = cell;
 								rows[i].cells[j].id = -1;
 								$(rows[i].elem).append(cell);
@@ -308,6 +309,7 @@
 								if(data.align == "bottom")		cell.addClass("tabc");
 								if(data.align == "bottomright")	cell.addClass("tabr");
 								
+								rows[i].cells[j] = {};
 								rows[i].cells[j].elem = cell;
 								rows[i].cells[j].id = data.content[i][j];
 								$(rows[i].elem).append(cell);

@@ -6,7 +6,9 @@ JavaWebWidgetFrmework
 This framework allows you to write swing-like server side code to get
 fully functional interface in broweser.
 
-The library is under heavy development.
+JavaDoc: http://jenkins.magik6k.net/job/JavaWebWidgetFramework/javadoc/
+Working example: http://jwwf.magik6k.net/example/
+Official website: http://jwwf.magik6k.net/
 
 Experimental version!
 You may consider tags as 'stable' versions, but there is no warranty.
