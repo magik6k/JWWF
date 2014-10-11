@@ -1,19 +1,24 @@
 JWWF
-====
+========
 
 JavaWebWidgetFrmework
+---
 
-This framework allows you to write swing-like server side code to get
-fully functional interface in broweser.
+This framework enables you to write awt-like server side code to get fully functional user interface in broweser. It aims to be as simple to use as possible, but be able to handle complex tasks as well. 
 
-JavaDoc: http://jenkins.magik6k.net/job/JavaWebWidgetFramework/javadoc/
-Working example: http://jwwf.magik6k.net/example/
-Official website: http://jwwf.magik6k.net/
+Main focus of the project is to make web-app creation simpler than ever before.
 
-Experimental version!
-You may consider tags as 'stable' versions, but there is no warranty.
-This software is at development and it is missing many planned features.
-At development stage it may be unstable and/or insecure.
+* [JavaDoc](http://jenkins.magik6k.net/job/JavaWebWidgetFramework/javadoc/)
+* [Working example](http://jwwf.magik6k.net/example/)
+* [Official website](http://jwwf.magik6k.net/)
 
+Requirements:
+* Java 7 on server side(may work on lower java version, but it was not tested)
+* http(s) server to hold *websrc* files
+* 1 port for webapp
+* Client browser able to handle WebSockets and optionally some experimental CSS3/HTML5 extensions(current firefox/chrome(webkit) are known to work well) 
+
+
+The project is in beta stage. Please report any issues you have.
 
 Licensed under MIT License
