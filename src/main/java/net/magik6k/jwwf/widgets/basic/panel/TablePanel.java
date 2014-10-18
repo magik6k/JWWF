@@ -114,6 +114,37 @@ public class TablePanel extends Widget{
 		return "TablePanel";
 	}
 
+	/**
+	 * Removes all elements stored in this container
+	 */
+	public void removeAll(){
+		for(int i = 0; i < content.length; ++i)
+			for(int j = 0; j < content[i].length; ++j)
+				content[i][j] = null;
+		this.sendElement();
+	}
+	
+	/**
+	 * Removes element at specified position
+	 * @param x Column
+	 * @param y Row
+	 */
+	public void removeAt(int x, int y){
+		content[x][y] = null;
+		this.sendElement();
+	}
+	
+	/**
+	 * Removes all elements that are instance of specified element
+	 * @param widget Instance of widget to remove from container
+	 */
+	public void remove(Widget widget){
+		for(int i = 0; i < content.length; ++i)
+			for(int j = 0; j < content[i].length; ++j)
+				if(content[i][j] == widget)content[i] = null;
+		this.sendElement();
+	}
+	
 	@Override
 	public String getData() {
 		String data = "";

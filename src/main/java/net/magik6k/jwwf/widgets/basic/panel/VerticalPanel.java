@@ -94,6 +94,33 @@ public class VerticalPanel extends Widget{
 		this.sendElement();
 	}
 	
+	/**
+	 * Removes all elements stored in this container
+	 */
+	public void removeAll(){
+		for(int i = 0; i < content.length; ++i)content[i] = null;
+		this.sendElement();
+	}
+	
+	/**
+	 * Removes element at specified position
+	 * @param index index of element to remove
+	 */
+	public void removeAt(int index){
+		content[index] = null;
+		this.sendElement();
+	}
+	
+	/**
+	 * Removes all elements that are instance of specified element
+	 * @param widget Instance of widget to remove from container
+	 */
+	public void remove(Widget widget){
+		for(int i = 0; i < content.length; ++i)
+			if(content[i] == widget)content[i] = null;
+		this.sendElement();
+	}
+	
 	@Override
 	public String getName() {
 		return "VerticalPanel";

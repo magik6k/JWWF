@@ -52,9 +52,6 @@ public class AbsolutePanel extends Widget{
 		this.sendElement();
 	}
 	
-	
-	
-
 	/**
 	 * @param x X-Offset
 	 * @param y Y-Offset
@@ -62,6 +59,14 @@ public class AbsolutePanel extends Widget{
 	public void setOffset(int x, int y) {
 		this.x = x;
 		this.y = y;
+		this.sendElement();
+	}
+	
+	/**
+	 * Removes stored element
+	 */
+	public void remove(){
+		content = null;
 		this.sendElement();
 	}
 	

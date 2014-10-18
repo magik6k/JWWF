@@ -62,6 +62,14 @@ public class FixedPanel extends Widget{
 		this.sendElement();
 	}
 	
+	/**
+	 * Removes stored element
+	 */
+	public void remove(){
+		content = null;
+		this.sendElement();
+	}
+	
 	@Override
 	public String getName() {
 		return "FixedPanel";
