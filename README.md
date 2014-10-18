@@ -1,7 +1,7 @@
 JWWF
 ========
 
-JavaWebWidgetFrmework
+JavaWebWidgetFramework
 ---
 
 This framework enables you to write awt-like server side code to get fully functional user interface in broweser. It aims to be as simple to use as possible, but be able to handle complex tasks as well. 
