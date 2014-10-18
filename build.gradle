@@ -1,18 +1,16 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
-//apply plugin: 'download-task'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 buildscript {
     repositories {
         mavenCentral()
+        jcenter()
     }
+    dependencies {
+    	classpath 'com.github.jengelman.gradle.plugins:shadow:1.1.1'
+  	}
 }
-
-
-def tmpDir = new File('temp')
-def libsDir = new File('libs')
-def runDir = new File('run')
-
 
 sourceSets {
     main {
@@ -27,30 +25,15 @@ repositories {
 }
 
 dependencies {
-	compile fileTree(dir: 'libs', include: ['*.jar'])
-	runtime fileTree(dir: 'libs', include: ['*.jar'])
 	testCompile group: 'junit', name: 'junit', version: '4.+'
 	compile 'org.eclipse.jdt:org.eclipse.jdt.annotation:2.0.0'
+	compile 'org.java-websocket:Java-WebSocket:1.3.0'
 }
 
 compileJava {
 	options.fork = true
 	sourceCompatibility = "1.7"
 	targetCompatibility = "1.7"
-}
-
-task cleanAll(dependsOn: clean)<<{
-	
-	tmpDir.deleteDir()
-	libsDir.deleteDir()
-	runDir.deleteDir()
-}
-
-task setUp(dependsOn: cleanAll) <<{
-	tmpDir.mkdir()
-	libsDir.mkdir()
-	runDir.mkdir()
-	tasks.updateLibs.execute()
 }
 
 javadoc {
@@ -60,20 +43,4 @@ javadoc {
 task javadocJar(type: Jar, dependsOn: javadoc) {
 from 'build/docs/javadoc'
 classifier 'javadoc'
-}
-
-task updateLibs << {
-	//def zipFile = new File(tmpDir, "libs-${libsVersion}.zip")
-	//if(!zipFile.exists()) {
-	//	download {
-	//		src "http://assets.nativehttp.org/cubes/libs-${libsVersion}.zip"
-	//		dest zipFile
-	//	}
-	//}
-	libsDir.deleteDir()
-	libsDir.mkdir()
-	copy {
-		from zipTree(zipFile)
-		into libsDir
-	}
 }
