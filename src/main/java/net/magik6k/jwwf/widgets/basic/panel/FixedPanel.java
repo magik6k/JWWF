@@ -69,6 +69,6 @@ public class FixedPanel extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"content\":"+String.valueOf(content.getID())+",\"x\":"+String.valueOf(x)+",\"y\":"+String.valueOf(y)+"}";
+		return "{\"content\":"+String.valueOf(content!=null?content.getID():-1)+",\"x\":"+String.valueOf(x)+",\"y\":"+String.valueOf(y)+"}";
 	}	
 }

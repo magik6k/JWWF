@@ -105,7 +105,7 @@ public class HorizontalPanel extends Widget{
 		for(int i = 0; i < content.length; ++i)
 		{
 			if(i > 0)data += ",";
-			data += "\"" + String.valueOf(content[i].getID()) + "\"";
+			data += "\"" + String.valueOf(content[i]!=null?content[i].getID():-1) + "\"";
 		}
 		return "{\"content\":["+data+"],\"spacing\":"+String.valueOf(elementSpacing)+
 				",\"align\":\""+align.propertyName+"\"}";

@@ -48,7 +48,7 @@ public class TabbedPanel extends Widget{
 		for(int i = 0; i < content.length; ++i)
 		{
 			if(i > 0)data += ",";
-			data += "{\"widget\":" + String.valueOf(content[i].widget.getID()) + ",\"name\":\""+content[i].name+"\"}";
+			data += "{\"widget\":" + String.valueOf(content[i].widget!=null?content[i].widget.getID():-1) + ",\"name\":\""+content[i].name+"\"}";
 		}
 		return "{\"content\":["+data+"]}";
 	}
