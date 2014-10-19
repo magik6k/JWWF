@@ -3,7 +3,7 @@ package net.magik6k.jwwf.widgets.basic.panel;
 import net.magik6k.jwwf.core.Widget;
 
 /**
- * This panel allows to 'move' its content from oridinal place by x,y pixels
+ * This panel allows to 'move' its content from original place
  * @author lukasz
  *
  */
