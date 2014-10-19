@@ -69,9 +69,7 @@ public class JwwfServer extends WebSocketServer{
 		try {
 			User u = user.getDeclaredConstructor(MainFrame.class, Connection.class).newInstance(mainFrame, connection);
 			connections.put(arg0, u);
-		} catch (InstantiationException | IllegalAccessException
-				| IllegalArgumentException | InvocationTargetException
-				| NoSuchMethodException | SecurityException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}		
 	}

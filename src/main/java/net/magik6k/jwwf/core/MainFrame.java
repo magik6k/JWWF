@@ -34,7 +34,7 @@ public final class MainFrame extends Widget{
 	 */
 	public void put(Widget widget) {
 		widget.addTo(user);
-		content = widget.getID();
+		content = widget!= null?widget.getID():-1;
 		this.sendElement();
 	}
 }
