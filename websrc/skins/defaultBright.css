@@ -6,13 +6,23 @@ body
 	background: #F8F8F8;
 }
 
-body,input,textarea,select
+body,input,textarea,select,span
 {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 	line-height: 1.75em;
 	color: #888;
+	font-size: 1em;
 	-webkit-text-stroke: 0.1px;
+}
+
+pre
+{
+	-webkit-text-stroke: 0.1px;
+	font-weight: 300;
+	line-height: 1.75em;
+	font-size: 1em;
+	color: #888;
 }
 
 h1,h2,h3,h4,h5,h6
@@ -60,6 +70,7 @@ textarea
 	padding: 0.85em 1em 0.85em 1em;
 	border-radius: 0.25em;
 	border: 0;
+	font-size: 1em;
 	-moz-transition: all 0.25s ease-in-out;
 	-webkit-transition: all 0.25s ease-in-out;
 	-o-transition: all 0.25s ease-in-out;
@@ -153,7 +164,6 @@ textarea:focus
 
 textarea
 {
-	font-size: 0.85em;
 	font-family: 'Roboto', sans-serif;
 }
 

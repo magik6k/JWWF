@@ -1,4 +1,5 @@
 v0.1.1:
 -Added remove methods to panels
+-Added PreformattedTextLabel
 -Exception handling from user code
 -Fixed bad string escaping(2x)

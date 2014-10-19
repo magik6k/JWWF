@@ -14,6 +14,7 @@ import net.magik6k.jwwf.util.NamedWidget;
 import net.magik6k.jwwf.util.RadioGroup;
 import net.magik6k.jwwf.widgets.basic.ExternalLink;
 import net.magik6k.jwwf.widgets.basic.Image;
+import net.magik6k.jwwf.widgets.basic.PreformattedTextLabel;
 import net.magik6k.jwwf.widgets.basic.TextLabel;
 import net.magik6k.jwwf.widgets.basic.input.Button;
 import net.magik6k.jwwf.widgets.basic.input.CheckBox;
@@ -36,6 +37,8 @@ public class ExampleClient extends User{
 
 		/* Example TextLabel*/
 		TextLabel textLabelExample = new TextLabel("This is example text");
+		PreformattedTextLabel preformattedTextLabelExample = 
+			new PreformattedTextLabel("This is example\nPreformattedTextLabel\n. . .");
 		
 		/*Image example*/
 		TextLabel imageDesc = new TextLabel("Image");
@@ -177,7 +180,7 @@ public class ExampleClient extends User{
 		
 		//Container for all examples
 		Widget exapmles = new TablePanel(2, 17, 
-				textLabelExample,	null,
+				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
 				horizontalPanelDesc,horizontalPanel,
