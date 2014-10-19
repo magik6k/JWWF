@@ -46,7 +46,7 @@ public class Button extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"label\":\""+Json.escapeString(label)+"\"}";
+		return "{\"label\":"+Json.escapeString(label)+"}";
 	}
 	
 	/**

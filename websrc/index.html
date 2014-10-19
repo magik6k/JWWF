@@ -573,8 +573,12 @@
 					$("title").html("JavaWebWidgetFrmework - connected");
 				};
 				socket.onmessage = function (event) 
-				{ 
-					var data = JSON.parse(event.data);
+				{
+					try{
+						var data = JSON.parse(event.data);
+					}catch(e){
+						console.error("Error parsing data:", event.data);
+					}
 					console.log(data);
 					
 					if(data.id < 0)

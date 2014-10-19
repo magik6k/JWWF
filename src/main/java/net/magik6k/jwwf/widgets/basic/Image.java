@@ -85,9 +85,9 @@ public class Image extends Widget {
 
 	@Override
 	public String getData() {
-		String res = "{\"url\":\""+Json.escapeString(url)+"\",\"size\":["+String.valueOf(w)+","+String.valueOf(h)+"]";
+		String res = "{\"url\":"+Json.escapeString(url)+",\"size\":["+String.valueOf(w)+","+String.valueOf(h)+"]";
 		if(altText != null){
-			res += ",\"alt\":\""+Json.escapeString(altText)+"\"";
+			res += ",\"alt\":"+Json.escapeString(altText)+"";
 		}
 		res += "}";		
 		return res;

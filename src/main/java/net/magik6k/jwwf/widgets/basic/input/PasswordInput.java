@@ -97,10 +97,10 @@ public class PasswordInput extends Widget{
 	public String getData() {
 		if(sendTextUpdate){
 			sendTextUpdate = false;
-			return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\",\"text\":\""
-				+Json.escapeString(text)+"\"}";
+			return "{\"placeholder\":"+Json.escapeString(placeholder)+",\"text\":"
+				+Json.escapeString(text)+"}";
 		}
-		return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\"}";
+		return "{\"placeholder\":"+Json.escapeString(placeholder)+"}";
 	}
 	
 	/**

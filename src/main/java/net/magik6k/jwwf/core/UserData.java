@@ -31,8 +31,8 @@ public class UserData {
 			handler.data(key, cache.get(key));
 			return;
 		}
-		connection.connection.send("{\"id\":-1,\"type\":\"storageGet\",\"key\":\""
-				+Json.escapeString(key)+"\"}");
+		connection.connection.send("{\"id\":-1,\"type\":\"storageGet\",\"key\":"
+				+Json.escapeString(key)+"}");
 		if(waitingHandlers.containsKey(key)){
 			waitingHandlers.get(key).push(handler);
 		}else{
@@ -55,8 +55,8 @@ public class UserData {
 	 */
 	public void set(String key, String value){
 		cache.put(key, value);
-		connection.connection.send("{\"id\":-1,\"type\":\"storageSet\",\"key\":\""
-				+Json.escapeString(key)+"\",\"value\":\""+Json.escapeString(value)+"\"}");
+		connection.connection.send("{\"id\":-1,\"type\":\"storageSet\",\"key\":"
+				+Json.escapeString(key)+",\"value\":"+Json.escapeString(value)+"}");
 	}
 	
 	protected void recvData(String key, String value) {

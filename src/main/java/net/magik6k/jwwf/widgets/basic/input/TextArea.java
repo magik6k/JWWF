@@ -156,11 +156,11 @@ public class TextArea extends Widget{
 	public String getData() {
 		if(sendTextUpdate){
 			sendTextUpdate = false;
-			return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\",\"text\":\""
-					+Json.escapeString(text)+"\",\"cols\":"
+			return "{\"placeholder\":"+Json.escapeString(placeholder)+",\"text\":"
+					+Json.escapeString(text)+",\"cols\":"
 					+String.valueOf(cols)+",\"rows\":"+String.valueOf(rows)+"}";
 		}
-		return "{\"placeholder\":\""+Json.escapeString(placeholder)+"\",\"cols\":"
+		return "{\"placeholder\":"+Json.escapeString(placeholder)+",\"cols\":"
 				+String.valueOf(cols)+",\"rows\":"+String.valueOf(rows)+"}";
 	}
 	

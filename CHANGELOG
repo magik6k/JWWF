@@ -1,3 +1,3 @@
 v0.1.1:
 -Added remove methods to panels
--Fixed bas string escaping
+-Fixed bad string escaping(2x)

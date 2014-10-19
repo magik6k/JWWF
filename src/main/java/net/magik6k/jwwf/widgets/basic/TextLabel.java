@@ -34,6 +34,6 @@ public class TextLabel extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"text\":\""+Json.escapeString(text)+"\"}";
+		return "{\"text\":"+Json.escapeString(text)+"}";
 	}
 }

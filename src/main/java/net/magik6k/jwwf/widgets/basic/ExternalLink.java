@@ -47,6 +47,6 @@ public class ExternalLink extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"url\":\""+Json.escapeString(url)+"\",\"label\":\""+Json.escapeString(label)+"\"}";
+		return "{\"url\":"+Json.escapeString(url)+",\"label\":"+Json.escapeString(label)+"}";
 	}
 }
