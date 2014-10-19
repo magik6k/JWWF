@@ -1,10 +1,12 @@
 package net.magik6k.jwwf.core;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.InetSocketAddress;
 import java.net.UnknownHostException;
 import java.util.Collections;
 import java.util.HashMap;
+
+import net.magik6k.jwwf.handlers.LogHandler;
+import net.magik6k.jwwf.handlers.StdLogHandler;
 
 import org.java_websocket.WebSocket;
 import org.java_websocket.drafts.Draft;
@@ -16,6 +18,8 @@ public class JwwfServer extends WebSocketServer{
 
 	private HashMap<WebSocket, User> connections = new HashMap<WebSocket, User>();
 	private final Class<? extends User> user;
+	
+	public static LogHandler logger = new StdLogHandler();
 	
 	/**
 	 * Server constructor
