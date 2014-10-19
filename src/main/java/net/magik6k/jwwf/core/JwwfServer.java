@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 
 import net.magik6k.jwwf.handlers.LogHandler;
+import net.magik6k.jwwf.handlers.NullLogHandler;
 import net.magik6k.jwwf.handlers.StdLogHandler;
 
 import org.java_websocket.WebSocket;
@@ -20,6 +21,14 @@ public class JwwfServer extends WebSocketServer{
 	private final Class<? extends User> user;
 	
 	public static LogHandler logger = new StdLogHandler();
+	
+	public static void debugOutput(boolean enable){
+		logger.enableDebug(enable);
+	}
+	
+	public static void setQuietLogger(){
+		logger = new NullLogHandler();
+	}
 	
 	/**
 	 * Server constructor
@@ -62,12 +71,14 @@ public class JwwfServer extends WebSocketServer{
 
 	@Override
 	public void onMessage(WebSocket arg0, String arg1) {
-		connections.get(arg0).onData(arg1);	
+		logger.debug("JwwfServer", "Client message: "+arg1);
+		connections.get(arg0).onData(arg1);
+		logger.debug("JwwfServer", "Client message/leaving logic");
 	}
 
 	@Override
 	public void onOpen(WebSocket arg0, ClientHandshake arg1) {
-		System.out.printf("New user. hash: %d, str: %s\n", arg0.hashCode(), arg0.toString());
+		logger.debug("JwwfServer", String.format("New user. hash: %d, str: %s", arg0.hashCode(), arg0.toString()));
 		Connection connection = new Connection(arg0);
 		MainFrame mainFrame = new MainFrame(0, connection);
 		try {
@@ -76,9 +87,5 @@ public class JwwfServer extends WebSocketServer{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}		
-	}
-
-	
-	
-	
+	}	
 }

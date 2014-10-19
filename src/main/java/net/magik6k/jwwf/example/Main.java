@@ -16,6 +16,7 @@ public class Main {
 			System.out.println( "No port specified. Defaulting to 8888" );
 			port = 8888;
 		}
+		JwwfServer.debugOutput(true);
 		try {
 			new JwwfServer( ExampleClient.class, port ).start();
 		} catch (UnknownHostException e) {
