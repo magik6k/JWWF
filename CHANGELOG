@@ -5,3 +5,4 @@ v0.1.1:
 -Added customizable log handlers
 -Exception handling from user code
 -Fixed bad string escaping(2x)
+-Fixed element replacing

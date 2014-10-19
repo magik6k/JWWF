@@ -111,15 +111,19 @@
 						return {element: $("body")};
 					
 					$("body").html(widgetStorage[data.content].element);
-					return {element: $("body")};
+					return {element: $("body"), data:{id: data.content}};
 				},
 				update: function(widget, data){
+					if(widget.data!=undefined&&widget.data.id > 0)
+					{
+						widgetStorage[data.id].element = $(widgetStorage[data.id].element).detach();
+					}
 					if(data.content < 0)
 					{
 						$("body").html("");
 					}
 					else
-					{
+					{						
 						$("body").html(widgetStorage[data.content].element);
 					}
 				}
@@ -132,9 +136,13 @@
 					
 					var elem = $("<div>").html(widgetStorage[data.content].element)
 						.css({left:data.x,top:data.y}).addClass("fixedPanel");
-					return {element: elem};
+					return {element: elem, data: {id: data.content}};
 				},
 				update: function(widget, data){
+					if(widget.data.id > 0)
+					{
+						widgetStorage[widget.data.id].element = $(widgetStorage[widget.data.id].element).detach();
+					}
 					if(data.content < 0)
 					{
 						$(widget.element).html("").css({left:data.x,top:data.y});
@@ -162,9 +170,13 @@
 						.css({left:data.x,top:data.y}).addClass("absolutePanel");
 					$(elem).html(content);
 					
-					return {element: elem};
+					return {element: elem, data: {id: data.content}};
 				},
 				update: function(widget, data){
+					if(widget.data.id > 0)
+					{
+						widgetStorage[widget.data.id].element = $(widgetStorage[widget.data.id].element).detach();
+					}
 					if(data.content < 0)
 					{
 						$(widget.element).html("").css({left:data.x,top:data.y});
@@ -208,8 +220,12 @@
 					for(var i = 0; i < data.content.length; ++i)
 					{
 						widget.data.elements[i].elem.css("vertical-align", data.align);
-						if(data.content[i] < 0)continue;
+						if(data.content[i] < 0)continue;//TODO: Is this ok?
 						if(data.content[i] == widget.data.elements[i].id)continue;
+						
+						if(widget.data.elements[i].id > 0){
+							widgetStorage[widget.data.elements[i].id].element = $(widgetStorage[widget.data.elements[i].id].element).detach();
+						}
 						$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
 						widget.data.elements[i].id = data.content[i];						
 					}
@@ -252,8 +268,11 @@
 						if(data.align == "middle"){widget.data.elements[i].elem.removeClass("right").addClass("hmiddle");}
 						if(data.align == "right"){widget.data.elements[i].elem.removeClass("hmiddle").addClass("right");}
 						if(data.align == "left"){widget.data.elements[i].elem.removeClass("hmiddle").removeClass("right");}
-						if(data.content[i] < 0)continue;
+						if(data.content[i] < 0)continue;//TODO: Is this ok?
 						if(data.content[i] == widget.data.elements[i].id)continue;
+						if(widget.data.elements[i].id > 0){
+							widgetStorage[widget.data.elements[i].id].element = $(widgetStorage[widget.data.elements[i].id].element).detach();
+						}
 						$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
 						widget.data.elements[i].id = data.content[i];						
 					}
@@ -329,8 +348,16 @@
 							{
 								widget.data.rows[i].cells[j].elem.html("");
 							}else{
-								widget.data.rows[i].cells[j].elem.html(widgetStorage[data.content[i][j]].element);
-								widget.data.rows[i].cells[j].id = data.content[i][j];
+								if(widget.data.rows[i].cells[j].id > 0){
+									widgetStorage[widget.data.rows[i].cells[j].id].element 
+										= $(widgetStorage[widget.data.rows[i].cells[j].id].element).detach();
+								}
+								
+								if(widget.data.rows[i].cells[j].id != data.content[i][j])
+								{
+									widget.data.rows[i].cells[j].elem.html(widgetStorage[data.content[i][j]].element);
+									widget.data.rows[i].cells[j].id = data.content[i][j];
+								}
 								
 								if(data.align == "topleft")		widget.data.rows[i].cells[j].elem.addClass("tatl");
 								if(data.align == "top")			widget.data.rows[i].cells[j].elem.addClass("tatc");
@@ -388,7 +415,6 @@
 							setCallback(i, elements[i].button);
 							switcher.append(elements[i].button);
 						}
-						
 					}
 					container.html(elements[0].elem);
 					elements[0].button.addClass("tabswsel");
@@ -401,6 +427,9 @@
 					{
 						if(data.content[i] < 0)continue;
 						if(data.content[i] == widget.data.elements[i].id)continue;
+						if(widget.data.elements[i].id > 0){
+							widgetStorage[widget.data.elements[i].id].element = $(widgetStorage[widget.data.elements[i].id].element).detach();
+						}
 						$(widget.data.elements[i].elem).html(widgetStorage[data.content[i].widget].element);
 						widget.data.elements[i].id = data.content[i].widget;						
 					}
@@ -415,7 +444,6 @@
 				update: function(widget, data){
 					$(widget.element).html(data.text);
 				}
-					
 			};//TextLabel end
 			
 			widgets["PreformattedTextLabel"] = {
@@ -456,10 +484,10 @@
 			widgets["InternalLink"] = {
 				create: function(data,id){
 					return {element: $("<a>").html(data.label)
-						.attr("href","javascript:void(0);").click(function(){sendButton(id)})};
+						.attr("href","javascript:void(0);").click(function(){sendButton(id);}),data:{id:id}};
 				},
 				update: function(widget, data){
-					$(widget.element).html(data.label);
+					$(widget.element).html(data.label).click(function(){sendButton(data.id);});
 				}
 					
 			};//InternalLink end
@@ -467,10 +495,11 @@
 			widgets["Button"] = {
 				create: function(data,id){
 					return {element: $("<button>").html(data.label)
-					.click(function(){sendButton(id)})};
+						.click(function(){sendButton(id);}),data:{id:id}};
 				},
 				update: function(widget, data){
-					$(widget.element).html(data.label);
+					$(widget.element).html(data.label)
+						.click(function(){sendButton(data.id);});
 				}
 					
 			};//Button end
@@ -483,7 +512,7 @@
 					return {element: chBox.element};
 				},
 				update: function(widget, data){
-					
+					//TODO: ?
 				}
 					
 			};//CheckBox end
@@ -498,7 +527,7 @@
 					
 				},
 				update: function(widget, data){
-					
+					//TODO: ?
 				}
 					
 			};//RadioButton end
