@@ -147,5 +147,21 @@ public class HorizontalPanel extends Widget{
 		attach(widget);
 		content[index] = widget;
 		this.sendElement();
-	}	
+	}
+	
+	/**
+	 * Puts widget at first free index
+	 * @param widget Widget to put
+	 * @return index of element in container
+	 */
+	public int put(Widget widget) {
+		attach(widget);
+		for(int i = 0; i < content.length; ++i)
+			if(content[i] == null){
+				content[i] = widget;
+				this.sendElement();
+				return i;
+			}
+		return -1;
+	}
 }

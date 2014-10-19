@@ -60,8 +60,27 @@ public class TabbedPanel extends Widget{
 	 * @param index id of 'cell' in the container to put widget to(numbered from 0)
 	 */
 	public void put(Widget widget, String name, int index) {
+		if(widget == null)return;
 		attach(widget);
 		content[index] = new NamedWidget(widget, name);
 		this.sendElement();
-	}	
+	}
+	
+	/**
+	 * Puts widget at first free index
+	 * @param widget Widget to put
+	 * @param name Name of tab
+	 * @return index of element in container
+	 */
+	public int put(Widget widget, String name) {
+		if(widget == null)return -1;
+		attach(widget);
+		for(int i = 0; i < content.length; ++i)
+			if(content[i] == null){
+				content[i] = new NamedWidget(widget, name);
+				this.sendElement();
+				return i;
+			}
+		return -1;
+	}
 }

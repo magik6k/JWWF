@@ -174,5 +174,23 @@ public class TablePanel extends Widget{
 		attach(widget);
 		content[x][y] = widget;
 		this.sendElement();
-	}	
+	}
+	
+	/**
+	 * Puts widget at first free index
+	 * @param widget Widget to put
+	 * @return index of element in container
+	 */
+	public int put(Widget widget) {
+		attach(widget);
+		for(int i = 0; i < content.length; ++i)
+			for(int j = 0; j < content[i].length; ++j)
+				if(content[i][j] == null){
+					content[i][j] = widget;
+					this.sendElement();
+					return i;
+				}
+		return -1;
+	}
+	
 }
