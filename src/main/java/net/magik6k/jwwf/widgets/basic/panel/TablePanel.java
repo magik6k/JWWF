@@ -141,7 +141,7 @@ public class TablePanel extends Widget{
 	public void remove(Widget widget){
 		for(int i = 0; i < content.length; ++i)
 			for(int j = 0; j < content[i].length; ++j)
-				if(content[i][j] == widget)content[i] = null;
+				if(content[i][j] == widget)content[i][j] = null;
 		this.sendElement();
 	}
 	

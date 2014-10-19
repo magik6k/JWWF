@@ -169,7 +169,7 @@ public class ExampleClient extends User{
 			public void onType(String data) {
 				userData.set("exampleKey", data);
 			}
-		});		
+		});
 		
 		userData.get("exampleKey", new UserDataHandler() {
 			@Override
