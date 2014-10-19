@@ -591,23 +591,29 @@
 					}
 					console.log(data);
 					
-					if(data.id < 0)
-					{
-						if(data.type == "storageSet")
+					try{
+					
+						if(data.id < 0)
 						{
-							localStorage.setItem(data.key, data.value);
-						}else if(data.type == "storageGet"){
-							if(localStorage.getItem(data.key))
-								socket.send("U"+data.key+";"+localStorage.getItem(data.key));
+							if(data.type == "storageSet")
+							{
+								localStorage.setItem(data.key, data.value);
+							}else if(data.type == "storageGet"){
+								if(localStorage.getItem(data.key))
+									socket.send("U"+data.key+";"+localStorage.getItem(data.key));
+							}
 						}
-					}
-					else if(widgetStorage[data.id] == undefined)
-					{
-						widgetStorage[data.id] = widgets[data.type].create(data.data,data.id);
-					}
-					else
-					{
-						widgets[data.type].update(widgetStorage[data.id], data.data);
+						else if(widgetStorage[data.id] == undefined)
+						{
+							widgetStorage[data.id] = widgets[data.type].create(data.data,data.id);
+						}
+						else
+						{
+							widgets[data.type].update(widgetStorage[data.id], data.data);
+						}
+					
+					}catch(e){
+						console.error("Error in logic:", e);
 					}
 				};
 				socket.onclose = function()
