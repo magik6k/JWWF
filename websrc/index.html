@@ -348,7 +348,7 @@
 							{
 								widget.data.rows[i].cells[j].elem.html("");
 							}else{
-								if(widget.data.rows[i].cells[j].id > 0){
+								if(widget.data.rows[i].cells[j].id > 0 && widget.data.rows[i].cells[j].id != data.content[i][j]){
 									widgetStorage[widget.data.rows[i].cells[j].id].element 
 										= $(widgetStorage[widget.data.rows[i].cells[j].id].element).detach();
 								}
