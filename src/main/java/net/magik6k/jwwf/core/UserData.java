@@ -25,6 +25,8 @@ public class UserData {
 	 * Gets userData string. if data exists in cache the callback is fired
 	 * immediately, if not async request is sent to user. If user don't have
 	 * requested data, the callback won't be triggered
+	 * @param key Requested key
+	 * @param handler Handler to be invoked when data arrives
 	 */
 	public void get(String key, UserDataHandler handler){
 		if(cache.containsKey(key)){
@@ -43,8 +45,10 @@ public class UserData {
 	}
 	
 	/**
-	 * Gets userData from cache, if userData is not cached(has not requested,
+	 * Gets userData from cache, if userData is not cached(i.e. has not been requested,
 	 * or set earlier) null will be returned.
+	 * @param key Requested key
+	 * @return Requested value or null if not in cache
 	 */
 	public String getCached(String key){
 		return cache.get(key);
@@ -52,6 +56,8 @@ public class UserData {
 	
 	/**
 	 * Sets userData for user, data is set in cache and sent to user
+	 * @param key Name of value
+	 * @param value Data to be set
 	 */
 	public void set(String key, String value){
 		cache.put(key, value);

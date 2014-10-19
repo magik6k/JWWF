@@ -21,7 +21,7 @@ public class JwwfServer extends WebSocketServer{
 	 * Server constructor
 	 * @param user User handler class
 	 * @param port Port to bind server to
-	 * @throws UnknownHostException
+	 * @throws UnknownHostException thrown when wrong port is specified
 	 */
 	public JwwfServer( Class<? extends User> user, int port) throws UnknownHostException {
 		super( new InetSocketAddress( port ), Collections.singletonList( (Draft)new Draft_17() ) );

@@ -13,6 +13,7 @@ public class InternalLink extends Widget{
 	private ClickHandler clickHandler;
 	/**
 	 * @param label Default label
+	 * @param clickHandler handler to be invoked when link is pressed by user
 	 */
 	public InternalLink(String label, ClickHandler clickHandler) {
 		super(Actions.BUTTON_CLICK);

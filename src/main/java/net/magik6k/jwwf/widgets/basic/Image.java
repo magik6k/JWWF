@@ -62,6 +62,7 @@ public class Image extends Widget {
 	/**
 	 * Sets alternative text to be displayed when there
 	 * is problem displaying the image
+	 * @param text Alternative text
 	 */
 	public void setAlternativeText(String text){
 		this.altText = text;

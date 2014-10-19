@@ -14,12 +14,7 @@ public abstract class Widget extends Attachable{
 	private Actions action;
 	private User user;
 	private Queue<Attachable> waitingForUser;
-	
-	/**
-	 * Internal use only
-	 * @param id
-	 * @param connection
-	 */
+
 	protected Widget(int id, Connection connection) {
 		this.id = id;
 		this.connection = connection;

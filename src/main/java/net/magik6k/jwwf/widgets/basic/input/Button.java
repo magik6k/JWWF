@@ -13,6 +13,7 @@ public class Button extends Widget{
 	private ClickHandler clickHandler;
 	/**
 	 * @param label Default label
+	 * @param clickHandler handler to be invoked when button is pressed by user
 	 */
 	public Button(String label, ClickHandler clickHandler) {
 		super(Actions.BUTTON_CLICK);
