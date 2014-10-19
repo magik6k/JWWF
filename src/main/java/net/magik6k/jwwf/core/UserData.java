@@ -30,7 +30,11 @@ public class UserData {
 	 */
 	public void get(String key, UserDataHandler handler){
 		if(cache.containsKey(key)){
-			handler.data(key, cache.get(key));
+			try {
+				handler.data(key, cache.get(key));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return;
 		}
 		connection.connection.send("{\"id\":-1,\"type\":\"storageGet\",\"key\":"
@@ -70,7 +74,11 @@ public class UserData {
 		if(waitingHandlers.containsKey(key)){
 			LinkedList<UserDataHandler> tempHandlers = waitingHandlers.remove(key);
 			for(UserDataHandler dataHandler : tempHandlers){
-				dataHandler.data(key, value);
+				try {
+					dataHandler.data(key, value);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}

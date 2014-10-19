@@ -85,5 +85,5 @@ public abstract class Widget extends Attachable{
 		}
 	}
 	
-	protected void handleData(String data){}
+	protected void handleData(String data)throws Exception{}
 }

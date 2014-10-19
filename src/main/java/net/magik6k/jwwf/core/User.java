@@ -37,18 +37,36 @@ public abstract class User {
 	
 	protected final void onData(String msg){
 		if(msg.startsWith(Actions.BUTTON_CLICK.apiName)){//B18
-			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
+			try {
+				actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		}else if(msg.startsWith(Actions.TEXT_INPUT.apiName)){//T18;text
-			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
-				.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			try {
+				actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
+					.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 		}else if(msg.startsWith(Actions.CHECK_STATE.apiName)){//C18;1
-			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
-			.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			try {
+				actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
+				.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}else if(msg.startsWith(Actions.SELECT.apiName)){//S18;1
-			actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
-			.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			try {
+				actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
+				.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}else if(msg.startsWith(Actions.USERDATA.apiName)){//Ukey;value
 			userData.recvData((String)msg.subSequence(1, msg.indexOf(";")), (String)msg.subSequence( msg.indexOf(";")+1, msg.length()));
 		}
