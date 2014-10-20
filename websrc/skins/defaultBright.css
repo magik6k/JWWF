@@ -66,7 +66,6 @@ textarea
 	display: block;
 	box-shadow: inset 0 0 0 1px #e6e6e6;
 	background: #f4f4f4;
-	width: 100%;
 	padding: 0.85em 1em 0.85em 1em;
 	border-radius: 0.25em;
 	border: 0;
@@ -147,7 +146,7 @@ input[type=text],input[type=password]{
 	background: #f9f9f9;
 }
 
-input[type=text],
+input[type=text],input[type=password],
 select
 {
 	line-height: 1.25em;

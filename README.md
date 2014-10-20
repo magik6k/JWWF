@@ -9,6 +9,7 @@ This framework enables you to write awt-like server side code to get fully funct
 Main focus of the project is to make web-app creation simpler than ever before.
 
 * [JavaDoc](http://jenkins.magik6k.net/job/JavaWebWidgetFramework/javadoc/)
+* [Build server](http://jenkins.magik6k.net/job/JavaWebWidgetFramework/)
 * [Working example](http://jwwf.magik6k.net/example/)
 * [Official website](http://jwwf.magik6k.net/)
 

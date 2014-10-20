@@ -86,6 +86,6 @@ public class JwwfServer extends WebSocketServer{
 			connections.put(arg0, u);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
 	}	
 }
