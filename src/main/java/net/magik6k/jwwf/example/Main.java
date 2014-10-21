@@ -1,8 +1,6 @@
 package net.magik6k.jwwf.example;
 
-import java.net.UnknownHostException;
-
-import net.magik6k.jwwf.core.JwwfServer;
+import net.magik6k.jwwf.core.JettyServer;
 
 import org.java_websocket.WebSocketImpl;
 
@@ -16,11 +14,8 @@ public class Main {
 			System.out.println( "No port specified. Defaulting to 8888" );
 			port = 8888;
 		}
-		JwwfServer.debugOutput(true);
-		try {
-			new JwwfServer( ExampleClient.class, port ).start();
-		} catch (UnknownHostException e) {
-			e.printStackTrace();
-		}
+		JettyServer.debugOutput(true);
+		JettyServer server = new JettyServer(port).bind(ExampleClient.class);
+		server.start();
 	}
 }
