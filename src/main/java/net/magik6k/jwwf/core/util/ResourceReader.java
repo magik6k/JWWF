@@ -1,4 +1,4 @@
-package net.magik6k.jwwf.util;
+package net.magik6k.jwwf.core.util;
 
 import java.io.File;
 import java.io.IOException;

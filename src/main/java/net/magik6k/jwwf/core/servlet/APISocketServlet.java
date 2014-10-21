@@ -7,12 +7,12 @@ import net.magik6k.jwwf.core.util.UserFactory;
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
 
-public class JwwfWebSocket extends WebSocketServlet{
+public class APISocketServlet extends WebSocketServlet{
 	
 	private static final long serialVersionUID = -7312431906619293571L;
 	private final UserFactory userFactory;
 	
-	public JwwfWebSocket(UserFactory userFactory) {
+	public APISocketServlet(UserFactory userFactory) {
 		this.userFactory = userFactory;
 	}
 	

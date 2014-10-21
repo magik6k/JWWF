@@ -1,7 +1,7 @@
 package net.magik6k.jwwf.core;
 
-import net.magik6k.jwwf.core.servlet.ClientServlet;
-import net.magik6k.jwwf.core.servlet.JwwfWebSocket;
+import net.magik6k.jwwf.core.servlet.WebClientServelt;
+import net.magik6k.jwwf.core.servlet.APISocketServlet;
 import net.magik6k.jwwf.core.util.UserFactory;
 import net.magik6k.jwwf.handlers.LogHandler;
 import net.magik6k.jwwf.handlers.NullLogHandler;
@@ -11,7 +11,7 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
-public class JettyServer {
+public class JwwfServer {
 	//XXX: https://wiki.eclipse.org/Jetty/Tutorial/Embedding_Jetty
 	//XXX: ->>>>>> https://wiki.eclipse.org/Jetty/Tutorial/Embedding_Jetty#Creating_Servlets
 	//XXX: ->>>>>> http://www.eclipse.org/jetty/documentation/current/jetty-websocket-server-api.html
@@ -20,12 +20,12 @@ public class JettyServer {
 	ServletContextHandler context;
 	
 	public static LogHandler logger = new StdLogHandler();
-	
+	public static int userIdleTime = Integer.MAX_VALUE;
 	/**
 	 * Server constructor
 	 * @param port Port to bind server to 
 	 */
-	public JettyServer(int port) {
+	public JwwfServer(int port) {
 		server = new Server(port);
 		
         context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -38,9 +38,9 @@ public class JettyServer {
 	 * @param user
 	 * @param url
 	 */
-	public JettyServer bind(final Class<? extends User> user, String url){
-		context.addServlet(new ServletHolder(new ClientServlet()),url + "");
-		context.addServlet(new ServletHolder(new JwwfWebSocket(new UserFactory() {
+	public JwwfServer bind(final Class<? extends User> user, String url){
+		context.addServlet(new ServletHolder(new WebClientServelt()),url + "");
+		context.addServlet(new ServletHolder(new APISocketServlet(new UserFactory() {
 			
 			@Override
 			public User createUser() {				
@@ -60,12 +60,12 @@ public class JettyServer {
 	 * @param user
 	 * @param url
 	 */
-	public JettyServer bind(Class<? extends User> user){
+	public JwwfServer bind(Class<? extends User> user){
 		bind(user, "/");
 		return this;
 	}
 	
-	public JettyServer start(){
+	public JwwfServer start(){
 		try {
 			server.start();
 			server.join();

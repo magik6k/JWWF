@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.magik6k.jwwf.util.ResourceReader;
+import net.magik6k.jwwf.core.util.ResourceReader;
 
-public class ClientServlet extends HttpServlet{
+public class WebClientServelt extends HttpServlet{
 
 	private static final long serialVersionUID = -4228685451957270735L;
 

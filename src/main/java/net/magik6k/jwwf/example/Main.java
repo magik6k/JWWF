@@ -1,6 +1,6 @@
 package net.magik6k.jwwf.example;
 
-import net.magik6k.jwwf.core.JettyServer;
+import net.magik6k.jwwf.core.JwwfServer;
 
 public class Main {
 	public static void main(String[] args){
@@ -11,8 +11,8 @@ public class Main {
 			System.out.println( "No port specified. Defaulting to 8888" );
 			port = 8888;
 		}
-		JettyServer.debugOutput(true);
-		JettyServer server = new JettyServer(port).bind(ExampleClient.class).start();
+		JwwfServer.debugOutput(true);
+		JwwfServer server = new JwwfServer(port).bind(ExampleClient.class).start();
 		server.start();
 	}
 }
