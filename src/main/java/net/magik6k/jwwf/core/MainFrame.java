@@ -1,5 +1,7 @@
 package net.magik6k.jwwf.core;
 
+import org.eclipse.jetty.websocket.WebSocket.Connection;
+
 
 /**
  * Special panel to add widgets to. Created internally

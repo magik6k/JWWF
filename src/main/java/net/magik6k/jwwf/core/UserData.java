@@ -1,10 +1,13 @@
 package net.magik6k.jwwf.core;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 import net.magik6k.jwwf.handlers.UserDataHandler;
 import net.magik6k.jwwf.util.Json;
+
+import org.eclipse.jetty.websocket.WebSocket.Connection;
 
 /**
  * Utility mechanism that allows app creator to save user data on his/her
@@ -37,8 +40,12 @@ public class UserData {
 			}
 			return;
 		}
-		connection.connection.send("{\"id\":-1,\"type\":\"storageGet\",\"key\":"
-				+Json.escapeString(key)+"}");
+		try {
+			connection.sendMessage("{\"id\":-1,\"type\":\"storageGet\",\"key\":"
+					+Json.escapeString(key)+"}");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		if(waitingHandlers.containsKey(key)){
 			waitingHandlers.get(key).push(handler);
 		}else{
@@ -65,8 +72,13 @@ public class UserData {
 	 */
 	public void set(String key, String value){
 		cache.put(key, value);
-		connection.connection.send("{\"id\":-1,\"type\":\"storageSet\",\"key\":"
-				+Json.escapeString(key)+",\"value\":"+Json.escapeString(value)+"}");
+		try {
+			connection.sendMessage("{\"id\":-1,\"type\":\"storageSet\",\"key\":"
+					+Json.escapeString(key)+",\"value\":"+Json.escapeString(value)+"}");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	protected void recvData(String key, String value) {

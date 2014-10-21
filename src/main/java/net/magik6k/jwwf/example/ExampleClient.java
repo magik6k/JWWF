@@ -1,6 +1,5 @@
 package net.magik6k.jwwf.example;
 
-import net.magik6k.jwwf.core.Connection;
 import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
@@ -31,8 +30,8 @@ import net.magik6k.jwwf.widgets.basic.panel.VerticalPanel;
 
 public class ExampleClient extends User{
 
-	public ExampleClient(MainFrame rootFrame, Connection connection) {
-		super(rootFrame, connection);
+	@Override
+	protected void initializeUser(MainFrame rootFrame) {
 		System.out.println("Got new client!");
 
 		/* Example TextLabel*/

@@ -4,22 +4,17 @@ import java.util.HashMap;
 
 import net.magik6k.jwwf.enums.Actions;
 
-public abstract class User {
-	private final Connection connection;
+import org.eclipse.jetty.websocket.WebSocket.OnTextMessage;
+
+public abstract class User implements OnTextMessage{
+	private Connection connection;
 	private int id = 1;//0 is for MainFrame
 	private HashMap<Integer, Widget> actionHandlers = new HashMap<Integer, Widget>();
-	public final UserData userData;
+	protected MainFrame rootFrame;
+	public UserData userData;
 	
-	/**
-	 * User is constructed per each connection incoming
-	 * @param rootFrame Special panel to put all other panels into(like page body)
-	 * @param connection connection passed to super-constructor / only used internally
-	 */
-	public User(MainFrame rootFrame, Connection connection){
-		this.connection = connection;
-		rootFrame.setUser(this);
-		userData = new UserData(this);
-	}
+	protected abstract void initializeUser(MainFrame rootFrame);
+	
 	/**
 	 * This function is called when user disconnects for some reason,
 	 * If user has some resourcues that need manual cleanup override
@@ -35,7 +30,7 @@ public abstract class User {
 		return id++;
 	}
 	
-	protected final void onData(String msg){
+	private final void onData(String msg){
 		if(msg.startsWith(Actions.BUTTON_CLICK.apiName)){//B18
 			try {
 				actionHandlers.get(new Integer((String) msg.subSequence(1, msg.length()))).handleData(msg);
@@ -73,5 +68,24 @@ public abstract class User {
 	}
 	protected final void setActionHandler(int id, Widget dataHandler){
 		actionHandlers.put(id, dataHandler);
+	}
+	@Override
+	public void onOpen(Connection connection) {
+		this.connection = connection;
+		
+		rootFrame = new MainFrame(0, connection);
+		rootFrame.setUser(this);
+		userData = new UserData(this);
+		
+		initializeUser(rootFrame);
+	}
+	@Override
+	public void onClose(int closeCode, String message) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void onMessage(String data) {
+		this.onData(data);		
 	}
 }

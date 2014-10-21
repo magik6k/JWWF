@@ -2,17 +2,25 @@ package net.magik6k.jwwf.core.servlet;
 
 import javax.servlet.http.HttpServletRequest;
 
+import net.magik6k.jwwf.core.util.UserFactory;
+
 import org.eclipse.jetty.websocket.WebSocket;
 import org.eclipse.jetty.websocket.WebSocketServlet;
 
-class JwwfWebSocket extends WebSocketServlet{
+public class JwwfWebSocket extends WebSocketServlet{
 	
 	private static final long serialVersionUID = -7312431906619293571L;
-
+	private final UserFactory userFactory;
+	
+	public JwwfWebSocket(UserFactory userFactory) {
+		this.userFactory = userFactory;
+	}
+	
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
 			String protocol) {
-		return null;
+		System.out.println("Doing new Websc");
+		return userFactory.createUser();
 	}
 
 }

@@ -1,12 +1,13 @@
 package net.magik6k.jwwf.core;
 
 import net.magik6k.jwwf.core.servlet.ClientServlet;
+import net.magik6k.jwwf.core.servlet.JwwfWebSocket;
+import net.magik6k.jwwf.core.util.UserFactory;
 import net.magik6k.jwwf.handlers.LogHandler;
 import net.magik6k.jwwf.handlers.NullLogHandler;
 import net.magik6k.jwwf.handlers.StdLogHandler;
 
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
@@ -37,8 +38,20 @@ public class JettyServer {
 	 * @param user
 	 * @param url
 	 */
-	public JettyServer bind(Class<? extends User> user, String url){
-		context.addServlet(new ServletHolder(new ClientServlet()),url + "*");
+	public JettyServer bind(final Class<? extends User> user, String url){
+		context.addServlet(new ServletHolder(new ClientServlet()),url + "");
+		context.addServlet(new ServletHolder(new JwwfWebSocket(new UserFactory() {
+			
+			@Override
+			public User createUser() {				
+				try {
+					return user.getDeclaredConstructor().newInstance();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				return null;
+			}
+		})),url + "wshnd");
 		return this;
 	}
 	

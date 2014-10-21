@@ -1,9 +1,12 @@
 package net.magik6k.jwwf.core;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
 import net.magik6k.jwwf.enums.Actions;
+
+import org.eclipse.jetty.websocket.WebSocket.Connection;
 
 
 
@@ -45,7 +48,11 @@ public abstract class Widget extends Attachable{
 	
 	protected final void sendElement(){
 		if(connection == null)return;
-		connection.connection.send(getElement());
+		try {
+			connection.sendMessage(getElement());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	protected final void addTo(User owner)throws IllegalStateException {
