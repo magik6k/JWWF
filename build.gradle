@@ -30,6 +30,7 @@ dependencies {
 	compile 'org.eclipse.jetty:jetty-server:8.1.+'
 	compile 'org.eclipse.jetty:jetty-servlet:8.1.+'
 	compile 'org.eclipse.jetty:jetty-websocket:8.1.+'
+	compile 'com.google.guava:guava:18.+'
 }
 
 compileJava {
