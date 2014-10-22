@@ -1,5 +1,6 @@
 package net.magik6k.jwwf.core;
 
+import net.magik6k.jwwf.core.servlet.SkinServlet;
 import net.magik6k.jwwf.core.servlet.WebClientServelt;
 import net.magik6k.jwwf.core.servlet.APISocketServlet;
 import net.magik6k.jwwf.core.util.UserFactory;
@@ -40,6 +41,7 @@ public class JwwfServer {
 	 */
 	public JwwfServer bind(final Class<? extends User> user, String url){
 		context.addServlet(new ServletHolder(new WebClientServelt()),url + "");
+		context.addServlet(new ServletHolder(new SkinServlet()),url + "skins/*");
 		context.addServlet(new ServletHolder(new APISocketServlet(new UserFactory() {
 			
 			@Override

@@ -1,11 +1,11 @@
-v0.1.1:
+v0.2.1:
 	-Panel resizing
 	-Widgets:
 		-SelectList
 		-ProgressBar
 		-Slider
 		
-v0.1.2
+v0.2.2
 	-Widgets:
 		-SimpleGraph
 

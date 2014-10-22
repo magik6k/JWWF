@@ -76,7 +76,7 @@ public abstract class User implements OnTextMessage{
 		rootFrame = new MainFrame(0, connection);
 		rootFrame.setUser(this);
 		userData = new UserData(this);
-		
+		connection.setMaxIdleTime(JwwfServer.userIdleTime);
 		initializeUser(rootFrame);
 	}
 	@Override
