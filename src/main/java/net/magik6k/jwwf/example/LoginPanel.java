@@ -36,7 +36,6 @@ public class LoginPanel extends VerticalPanel{
 		this.put(loginField, 0);
 		this.put(passwordField, 1);
 		this.put(loginButton, 2);
-		System.out.println("constructed");
 	}
 	
 }

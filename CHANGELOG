@@ -1,3 +1,10 @@
+v0.2.0/WIP:
+-Switched to Jetty with small API changes
+	-Self hosted Web client and skins
+		-No need for separate http server
+	-Faster, more secure
+	-Static content/REST, etc support
+
 v0.1.1:
 -Added remove methods to panels
 -Added PreformattedTextLabel

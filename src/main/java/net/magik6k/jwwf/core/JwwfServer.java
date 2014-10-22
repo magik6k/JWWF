@@ -36,10 +36,11 @@ public class JwwfServer {
 	
 	/**
 	 * Binds webapp to address, by default '/'
-	 * @param user
-	 * @param url
+	 * @param user User class for web application
+	 * @param url Url to bind to, myst begin and end with /, like /foo/bar/
+	 * @return JwwfServer instance to allow chaining
 	 */
-	public JwwfServer bind(final Class<? extends User> user, String url){
+	public JwwfServer bindWebapp(final Class<? extends User> user, String url){
 		context.addServlet(new ServletHolder(new WebClientServelt()),url + "");
 		context.addServlet(new ServletHolder(new SkinServlet()),url + "skins/*");
 		context.addServlet(new ServletHolder(new APISocketServlet(new UserFactory() {
@@ -60,16 +61,57 @@ public class JwwfServer {
 	/**
 	 * Binds webapp to '/' address
 	 * @param user
-	 * @param url
+	 * @return JwwfServer instance to allow chaining
 	 */
-	public JwwfServer bind(Class<? extends User> user){
-		bind(user, "/");
+	public JwwfServer bindWebapp(Class<? extends User> user){
+		bindWebapp(user, "/");
 		return this;
 	}
 	
+	/**
+	 * Binds Jetty servlet to URL, this allows creation of REST APIs, etc
+	 * @param servletHolder Jetty servlet holder
+	 * @param url URL to bind servlet to
+	 * @return JwwfServer instance to allow chaining
+	 */
+	public JwwfServer bindJettyServlet(ServletHolder servletHolder, String url){
+		context.addServlet(servletHolder, url);
+		return this;
+	}
+	
+	/**
+	 * Starts Jetty server in background
+	 * @return JwwfServer instance to allow chaining
+	 */
 	public JwwfServer start(){
 		try {
 			server.start();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+	
+	/**
+	 * Starts Jetty server and waits for it
+	 * @return JwwfServer instance to allow chaining
+	 */
+	public JwwfServer startAndJoin(){
+		try {
+			server.start();
+			server.join();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
+	
+	/**
+	 * Waits for jetty server
+	 * @return JwwfServer instance to allow chaining
+	 */
+	public JwwfServer join(){
+		try {
 			server.join();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -12,7 +12,7 @@ public class Main {
 			port = 8888;
 		}
 		JwwfServer.debugOutput(true);
-		JwwfServer server = new JwwfServer(port).bind(ExampleClient.class).start();
+		JwwfServer server = new JwwfServer(port).bindWebapp(ExampleClient.class).start();
 		server.start();
 	}
 }

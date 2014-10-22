@@ -19,7 +19,6 @@ public class APISocketServlet extends WebSocketServlet{
 	@Override
 	public WebSocket doWebSocketConnect(HttpServletRequest request,
 			String protocol) {
-		System.out.println("Doing new Websc");
 		return userFactory.createUser();
 	}
 
