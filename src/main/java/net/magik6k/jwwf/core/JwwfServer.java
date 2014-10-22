@@ -36,7 +36,7 @@ public class JwwfServer {
 	
 	/**
 	 * Binds webapp to address, by default '/'
-	 * @param user User class for web application
+	 * @param user User class for the web application
 	 * @param url Url to bind to, myst begin and end with /, like /foo/bar/
 	 * @return JwwfServer instance to allow chaining
 	 */
@@ -60,7 +60,7 @@ public class JwwfServer {
 	
 	/**
 	 * Binds webapp to '/' address
-	 * @param user
+	 * @param user User class for the web application
 	 * @return JwwfServer instance to allow chaining
 	 */
 	public JwwfServer bindWebapp(Class<? extends User> user){

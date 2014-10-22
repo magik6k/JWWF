@@ -15,7 +15,6 @@ Main focus of the project is to make web-app creation simpler than ever before.
 
 Requirements:
 * Java 7 on server side(may work on lower java version, but it was not tested)
-* http(s) server to hold *websrc* files
 * 1 port for server
 * Client browser able to handle WebSockets and optionally some experimental CSS3/HTML5 extensions(current firefox/chrome(webkit) are known to work well) 
 
