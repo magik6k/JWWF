@@ -1,8 +1,8 @@
 package net.magik6k.jwwf.core;
 
+import net.magik6k.jwwf.core.servlet.APISocketServlet;
 import net.magik6k.jwwf.core.servlet.SkinServlet;
 import net.magik6k.jwwf.core.servlet.WebClientServelt;
-import net.magik6k.jwwf.core.servlet.APISocketServlet;
 import net.magik6k.jwwf.core.util.UserFactory;
 import net.magik6k.jwwf.handlers.LogHandler;
 import net.magik6k.jwwf.handlers.NullLogHandler;
@@ -13,10 +13,6 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 public class JwwfServer {
-	//XXX: https://wiki.eclipse.org/Jetty/Tutorial/Embedding_Jetty
-	//XXX: ->>>>>> https://wiki.eclipse.org/Jetty/Tutorial/Embedding_Jetty#Creating_Servlets
-	//XXX: ->>>>>> http://www.eclipse.org/jetty/documentation/current/jetty-websocket-server-api.html
-	
 	Server server;
 	ServletContextHandler context;
 	

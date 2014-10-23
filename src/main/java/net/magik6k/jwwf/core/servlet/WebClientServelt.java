@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.magik6k.jwwf.core.util.ResourceReader;
+import net.magik6k.jwwf.core.util.WebClientCreator;
 
 public class WebClientServelt extends HttpServlet{
 
@@ -19,7 +19,7 @@ public class WebClientServelt extends HttpServlet{
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);
         
-        response.getWriter().println(ResourceReader.instance.readFile("index.html"));
+        response.getWriter().println(WebClientCreator.instance.getClient());
     }
 
 }
