@@ -1,7 +1,11 @@
 {
 	create: function(data){
 		var elements = []; 
-		var elem = $("<div>");
+		var elem = $("<div>").addClass("horizontalcontainer");
+		
+		if(data.align == "middle"){elem.addClass("hpmid");}
+		if(data.align == "top"){elem.addClass("hptop");}
+		if(data.align == "bottom"){elem.addClass("hpbot");}
 		
 		for(var i = 0; i < data.content.length; ++i)
 		{
@@ -9,7 +13,7 @@
 			{
 				elements[i] = {};
 				elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing);
-				elements[i].elem.css("vertical-align", data.align);
+				
 				elements[i].id = -1;
 			}
 			else
@@ -17,7 +21,6 @@
 				elements[i] = {};
 				elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing)
 					.html(widgetStorage[data.content[i]].element);
-				elements[i].elem.css("vertical-align", data.align);
 				elements[i].id = data.content[i];
 			}
 			elem.append(elements[i].elem)
@@ -26,9 +29,16 @@
 		return {element: elem, data: {elements: elements}};
 	},
 	update: function(widget, data){
+	
+		if(data.align == "middle"){widget.element.addClass("hpmid");}
+		if(data.align == "top"){widget.element.addClass("hptop");}
+		if(data.align == "bottom"){widget.element.addClass("hpbottom");}
+	
 		for(var i = 0; i < data.content.length; ++i)
 		{
-			widget.data.elements[i].elem.css("vertical-align", data.align);
+			
+			
+			
 			if(data.content[i] < 0)continue;//TODO: Is this ok?
 			if(data.content[i] == widget.data.elements[i].id)continue;
 			
