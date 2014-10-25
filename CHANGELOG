@@ -4,6 +4,7 @@ v0.2.0/WIP:
 		-No need for separate http server
 	-Faster, more secure
 	-Static content/REST, etc support
+-Added option to disable text wrapping in TextLabel
 
 v0.1.1:
 -Added remove methods to panels

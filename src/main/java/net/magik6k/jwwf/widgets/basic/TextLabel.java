@@ -8,6 +8,7 @@ import net.magik6k.jwwf.util.Json;
  */
 public class TextLabel extends Widget {
 	private String text;
+	private boolean textWrap = true;
 	/**
 	 * @param text Default text
 	 */
@@ -20,11 +21,23 @@ public class TextLabel extends Widget {
 	/**
 	 * Sets new text
 	 * @param text Text
+	 * @return This instance of object for chaining
 	 */
-	public void setText(String text)
+	public TextLabel setText(String text)
 	{
 		this.text = text.replace("\n", "<br/>");
 		this.sendElement();
+		return this;
+	}
+	
+	/**
+	 * Sets text wrapping
+	 * @param textWrap If set to false text will not be wrapped
+	 * @return This instance of object for chaining
+	 */
+	public TextLabel setTextWrapping(boolean textWrap){
+		this.textWrap = textWrap;
+		return this;
 	}
 	
 	@Override
@@ -34,6 +47,15 @@ public class TextLabel extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"text\":"+Json.escapeString(text)+"}";
+		StringBuilder dataBuilder = new StringBuilder(48);
+		dataBuilder.append("{\"text\":");
+		dataBuilder.append(Json.escapeString(text));
+		if(!textWrap){
+			dataBuilder.append(",\"nowrap\":true");
+		}
+		dataBuilder.append("}");
+		
+		return dataBuilder.toString();
 	}
+
 }

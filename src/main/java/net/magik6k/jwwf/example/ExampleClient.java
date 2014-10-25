@@ -66,7 +66,7 @@ public class ExampleClient extends User{
 		/* Example AbsolutePanel */		
 		TextLabel absolutePanelDesc = new TextLabel("AbsolutePanel");
 		AbsolutePanel absolutePanel = new AbsolutePanel(200, 8, 
-				new TextLabel("AbsolutePanel content"));
+				new TextLabel("AbsolutePanel content").setTextWrapping(false));
 		
 		/* Example ExternalLink*/		
 		TextLabel externalLinkDesc = new TextLabel("External link");

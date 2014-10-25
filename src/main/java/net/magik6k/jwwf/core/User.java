@@ -72,7 +72,7 @@ public abstract class User implements OnTextMessage{
 	@Override
 	public void onOpen(Connection connection) {
 		this.connection = connection;
-		
+		connection.setMaxTextMessageSize(1024*1024);//TODO: make configurable
 		rootFrame = new MainFrame(0, connection);
 		rootFrame.setUser(this);
 		userData = new UserData(this);

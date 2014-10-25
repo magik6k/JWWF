@@ -54,13 +54,12 @@ public class ResourceReader {
 			}		    
 			
 		} else { 
-			System.out.println("ide");
 		    final URL url = Resources.getResource(path);
 		    if (url != null) {
 		        try {
-		            final File apps = new File(url.toURI());
-		            for (File app : apps.listFiles()) {
-		                res.add(app.getPath());
+		            final File dir = new File(url.toURI());
+		            for (File file : dir.listFiles()) {
+		                res.add(file.getPath());
 		            }
 		        } catch (URISyntaxException ex) {}
 		    }

@@ -21,11 +21,13 @@ public class PreformattedTextLabel extends Widget{
 	/**
 	 * Sets new text
 	 * @param text Text
+	 * @return This instance of object for chaining
 	 */
-	public void setText(String text)
+	public PreformattedTextLabel setText(String text)
 	{
 		this.text = text;
 		this.sendElement();
+		return this;
 	}
 	
 	@Override
