@@ -104,7 +104,7 @@ public class Slider extends Widget{
 	
 	/**
 	 * Sets minimal value that user can pick on slider
-	 * @param maxnValue Max value
+	 * @param maxValue Max value
 	 * @return This instance for chaining
 	 */
 	public Slider setMaxValue(double maxValue){
