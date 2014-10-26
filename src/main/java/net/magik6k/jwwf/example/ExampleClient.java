@@ -7,6 +7,7 @@ import net.magik6k.jwwf.enums.PanelAlign;
 import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.SelectionHandler;
+import net.magik6k.jwwf.handlers.SlideHandler;
 import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.handlers.UserDataHandler;
 import net.magik6k.jwwf.util.NamedWidget;
@@ -20,6 +21,7 @@ import net.magik6k.jwwf.widgets.basic.input.CheckBox;
 import net.magik6k.jwwf.widgets.basic.input.InternalLink;
 import net.magik6k.jwwf.widgets.basic.input.PasswordInput;
 import net.magik6k.jwwf.widgets.basic.input.RadioButton;
+import net.magik6k.jwwf.widgets.basic.input.Slider;
 import net.magik6k.jwwf.widgets.basic.input.TextArea;
 import net.magik6k.jwwf.widgets.basic.input.TextInput;
 import net.magik6k.jwwf.widgets.basic.panel.AbsolutePanel;
@@ -93,6 +95,18 @@ public class ExampleClient extends User{
 				buttonDesc.setText("Button("+String.valueOf(++clicks)+")");
 			}
 		});
+		
+		/* Example Slider */
+		
+		final TextLabel sliderDesc = new TextLabel("Slider");
+		Slider slider = new Slider(new SlideHandler() {
+			
+			@Override
+			public void slide(double position) {
+				sliderDesc.setText("Slider: " + String.valueOf(position));
+			}
+		}, 30, 0, 120);
+		
 		
 		/* Example TextInput */		
 		final TextLabel textInputDesc = new TextLabel("TextInput");
@@ -178,7 +192,7 @@ public class ExampleClient extends User{
 		});
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 17, 
+		Widget exapmles = new TablePanel(2, 18,
 				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -188,6 +202,7 @@ public class ExampleClient extends User{
 				externalLinkDesc,	externalLink,
 				internalLinkDesc,	internalLink,
 				buttonDesc,			button,
+				sliderDesc,			slider,
 				textInputDesc,		textInput,
 				passwordInputDesc,	passwordInput,
 				textAreaDesc,		textArea,

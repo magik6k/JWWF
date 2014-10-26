@@ -1,3 +1,6 @@
+v0.2.1/WIP:
+-Added Slider
+
 v0.2.0:
 -Switched to Jetty with small API changes
 	-Self hosted Web client and skins

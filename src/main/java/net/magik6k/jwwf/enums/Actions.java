@@ -6,6 +6,7 @@ public enum Actions {
 	TEXT_INPUT("T"),
 	CHECK_STATE("C"),
 	SELECT("S"),
+	SLIDE("L"),
 	USERDATA("U");
 	
 	

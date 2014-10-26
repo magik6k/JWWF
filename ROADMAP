@@ -3,7 +3,6 @@ v0.2.1:
 	-Widgets:
 		-SelectList
 		-ProgressBar
-		-Slider
 		
 v0.2.2
 	-Widgets:

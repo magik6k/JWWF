@@ -62,6 +62,14 @@ public abstract class User implements OnTextMessage{
 				e.printStackTrace();
 			}
 			
+		}else if(msg.startsWith(Actions.SLIDE.apiName)){//L18;0.12345
+			try {
+				actionHandlers.get(new Integer((String) msg.subSequence(1, msg.indexOf(";"))))
+				.handleData((String) msg.subSequence( msg.indexOf(";")+1, msg.length()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}else if(msg.startsWith(Actions.USERDATA.apiName)){//Ukey;value
 			userData.recvData((String)msg.subSequence(1, msg.indexOf(";")), (String)msg.subSequence( msg.indexOf(";")+1, msg.length()));
 		}
