@@ -212,6 +212,7 @@ public class ExampleClient extends User{
 				customPanelDesc,	customPanel,
 				userDataDesc,		userDataInput);
 		
+		rootFrame.setTitle("Example Jwwf WebApp");
 		rootFrame.put(exapmles);
 	}
 
