@@ -1,4 +1,4 @@
-v0.2.0/WIP:
+v0.2.0:
 -Switched to Jetty with small API changes
 	-Self hosted Web client and skins
 		-No need for separate http server
