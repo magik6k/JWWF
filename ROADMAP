@@ -2,7 +2,6 @@ v0.2.1:
 	-Panel/widget resizing, max/min/static
 	-Widgets:
 		-SelectList
-		-ProgressBar
 		
 v0.2.2
 	-Widgets:

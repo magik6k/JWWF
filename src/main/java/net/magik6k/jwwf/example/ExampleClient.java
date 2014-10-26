@@ -15,6 +15,7 @@ import net.magik6k.jwwf.util.RadioGroup;
 import net.magik6k.jwwf.widgets.basic.ExternalLink;
 import net.magik6k.jwwf.widgets.basic.Image;
 import net.magik6k.jwwf.widgets.basic.PreformattedTextLabel;
+import net.magik6k.jwwf.widgets.basic.ProgressBar;
 import net.magik6k.jwwf.widgets.basic.TextLabel;
 import net.magik6k.jwwf.widgets.basic.input.Button;
 import net.magik6k.jwwf.widgets.basic.input.CheckBox;
@@ -96,6 +97,11 @@ public class ExampleClient extends User{
 			}
 		});
 		
+		/* Example ProgressBar */
+		
+		TextLabel progressBarDesc = new TextLabel("ProgressBar");
+		final ProgressBar progressBar = new ProgressBar(255, 0.5);		
+		
 		/* Example Slider */
 		
 		final TextLabel sliderDesc = new TextLabel("Slider");
@@ -104,6 +110,7 @@ public class ExampleClient extends User{
 			@Override
 			public void slide(double position) {
 				sliderDesc.setText("Slider: " + String.valueOf(position));
+				progressBar.setProgress(position/120.0);
 			}
 		}, 30, 0, 120);
 		
@@ -192,7 +199,7 @@ public class ExampleClient extends User{
 		});
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 18,
+		Widget exapmles = new TablePanel(2, 19,
 				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -202,6 +209,7 @@ public class ExampleClient extends User{
 				externalLinkDesc,	externalLink,
 				internalLinkDesc,	internalLink,
 				buttonDesc,			button,
+				progressBarDesc,	progressBar,
 				sliderDesc,			slider,
 				textInputDesc,		textInput,
 				passwordInputDesc,	passwordInput,

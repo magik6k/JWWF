@@ -107,6 +107,16 @@
 			
 			//RadioButton end
 			
+			function ProgressBar(width, progress){
+				var pBar = $("<div>").addClass("progressBar").width(progress+"%");
+				this.element = $("<div>").addClass("progressContainer").width(width+"px").html(pBar);
+				this.data = this;
+				this.update = function(width, progress){
+					pBar.width(progress+"%");
+					this.element.width(width+"px");
+				}
+			}//ProgressBar end
+			
 			//WIDGET IMPLEMENTATIONS
 			
 			/*?WidgetImpl*/
@@ -211,9 +221,19 @@
 				-ms-user-select: none;
 			}
 			
-			
 			.fixedPanel{position: fixed;}
 			.absolutePanel{position: absolute;}
+			
+			.progressContainer{
+				height: 16px;
+				border: 1px solid;
+				padding: 2px;
+			}
+			
+			.progressBar{
+				height: 16px;				
+				background: #0f0f0f;
+			}
 			
 			/* Horizontal panel */
 			.horizontal{display: flex;}
