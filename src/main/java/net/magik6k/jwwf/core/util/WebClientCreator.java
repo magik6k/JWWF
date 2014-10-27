@@ -24,10 +24,27 @@ public class WebClientCreator {
 	}
 	
 	private String generate(){
-		String widgetCode = generateWidgetCode(getAllWidgets("widgets"));
-		String client = ResourceReader.instance.readFile("index.html");
+		String widgetCode = generateWidgetCode(getAllWidgets("webclient/widgets"));
+		String client = ResourceReader.instance.readFile("webclient/index.html");
 		
-		return client.replace("/*?WidgetImpl*/", widgetCode);
+		String widgetsClient = client.replace("/*?WidgetImpl*/", widgetCode);
+		
+		
+		return doIncludes(widgetsClient);
+	}
+	
+	private String doIncludes(String inClient){
+		String res = inClient;
+		
+		Pattern pat = Pattern.compile("\\/\\*\\?\\!(.+)\\*\\/");
+		Matcher matcher = pat.matcher(inClient);
+		
+		while (matcher.find()) {
+			res = res.replace(matcher.group(0), 
+					ResourceReader.instance.readFile("webclient/includes/" + matcher.group(1)));			
+		}
+		
+		return res;
 	}
 	
 	private String generateWidgetCode(Iterable<String> files){
