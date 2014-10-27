@@ -71,6 +71,18 @@ public class ExampleClient extends User{
 		AbsolutePanel absolutePanel = new AbsolutePanel(200, 8, 
 				new TextLabel("AbsolutePanel content").setTextWrapping(false));
 		
+		/* Exapmle TabbedPanel */		
+		TextLabel tabbedPanelDesc = new TextLabel("Tabbed panel");
+		
+		TextLabel tabbedPanelContent1 = new TextLabel("Example1");
+		TextLabel tabbedPanelContent2 = new TextLabel("Example2");
+		TextLabel tabbedPanelContent3 = new TextLabel("Example3");
+		
+		TabbedPanel tabbedPanel = new TabbedPanel(3, 
+				new NamedWidget(tabbedPanelContent1, "Tab 1"),
+				new NamedWidget(tabbedPanelContent2, "Tab 2"),
+				new NamedWidget(tabbedPanelContent3, "Tab 3"));
+		
 		/* Example ExternalLink*/		
 		TextLabel externalLinkDesc = new TextLabel("External link");
 		ExternalLink externalLink = new ExternalLink("http://example.org", "example");
@@ -166,18 +178,6 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Exapmle TabbedPanel */		
-		TextLabel tabbedPanelDesc = new TextLabel("Tabbed panel");
-		
-		TextLabel tabbedPanelContent1 = new TextLabel("Example1");
-		TextLabel tabbedPanelContent2 = new TextLabel("Example2");
-		TextLabel tabbedPanelContent3 = new TextLabel("Example3");
-		
-		TabbedPanel tabbedPanel = new TabbedPanel(3, 
-				new NamedWidget(tabbedPanelContent1, "Tab 1"),
-				new NamedWidget(tabbedPanelContent2, "Tab 2"),
-				new NamedWidget(tabbedPanelContent3, "Tab 3"));
-		
 		/* Custom panel example */		
 		Widget customPanel = new LoginPanel();		
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
@@ -206,6 +206,7 @@ public class ExampleClient extends User{
 				horizontalPanelDesc,horizontalPanel,
 				tablePanelDesc,		tablePanel,
 				absolutePanelDesc,	absolutePanel,
+				tabbedPanelDesc,	tabbedPanel,
 				externalLinkDesc,	externalLink,
 				internalLinkDesc,	internalLink,
 				buttonDesc,			button,
@@ -216,7 +217,6 @@ public class ExampleClient extends User{
 				textAreaDesc,		textArea,
 				checkBoxDesc,		checkBox,
 				radioButtonDesc,	radioButtons,
-				tabbedPanelDesc,	tabbedPanel,
 				customPanelDesc,	customPanel,
 				userDataDesc,		userDataInput);
 		
