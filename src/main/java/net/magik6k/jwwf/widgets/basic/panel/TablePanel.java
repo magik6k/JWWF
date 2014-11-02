@@ -74,39 +74,46 @@ public class TablePanel extends Widget{
 	 * Sets align of elementd inside container. this is important when
 	 * container has few elements with different widths or/and heights
 	 * @param align Alignment type valid for this container
+	 * @return This instance for chaining
 	 */
-	public void setElementAlign(PanelAlign align){
+	public TablePanel setElementAlign(PanelAlign align){
 		this.align = align;
-		this.sendElement();	
+		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets space betwen elements
 	 * @param verticalSpacing vertical space betwen elements in pixels
 	 * @param horizontalSpacing horizontal space betwen elements in pixels
+	 * @return This instance for chaining
 	 */
-	public void setSpacing(float verticalSpacing, float horizontalSpacing){
+	public TablePanel setSpacing(float verticalSpacing, float horizontalSpacing){
 		this.verticalSpacing = verticalSpacing;
 		this.horizontalSpacing = horizontalSpacing;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets space betwen elements
 	 * @param verticalSpacing vertical space betwen elements in pixels
+	 * @return This instance for chaining
 	 */
-	public void setVerticalSpacing(float verticalSpacing){
+	public TablePanel setVerticalSpacing(float verticalSpacing){
 		this.verticalSpacing = verticalSpacing;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets space betwen elements
 	 * @param horizontalSpacing horizontal space betwen elements in pixels
 	 */
-	public void setHorizontalSpacing(float horizontalSpacing){
+	public TablePanel setHorizontalSpacing(float horizontalSpacing){
 		this.horizontalSpacing = horizontalSpacing;
 		this.sendElement();
+		return this;
 	}
 	
 	@Override
@@ -116,33 +123,39 @@ public class TablePanel extends Widget{
 
 	/**
 	 * Removes all elements stored in this container
+	 * @return This instance for chaining
 	 */
-	public void removeAll(){
+	public TablePanel removeAll(){
 		for(int i = 0; i < content.length; ++i)
 			for(int j = 0; j < content[i].length; ++j)
 				content[i][j] = null;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Removes element at specified position
 	 * @param x Column
 	 * @param y Row
+	 * @return This instance for chaining
 	 */
-	public void removeAt(int x, int y){
+	public TablePanel removeAt(int x, int y){
 		content[x][y] = null;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Removes all elements that are instance of specified element
 	 * @param widget Instance of widget to remove from container
+	 * @return This instance for chaining
 	 */
-	public void remove(Widget widget){
+	public TablePanel remove(Widget widget){
 		for(int i = 0; i < content.length; ++i)
 			for(int j = 0; j < content[i].length; ++j)
 				if(content[i][j] == widget)content[i][j] = null;
 		this.sendElement();
+		return this;
 	}
 	
 	@Override
@@ -169,11 +182,13 @@ public class TablePanel extends Widget{
 	 * @param widget Widget to set
 	 * @param x Column
 	 * @param y Row
+	 * @return This instance for chaining
 	 */
-	public void put(Widget widget, int x, int y) {
+	public TablePanel put(Widget widget, int x, int y) {
 		attach(widget);
 		content[x][y] = widget;
 		this.sendElement();
+		return this;
 	}
 	
 	/**

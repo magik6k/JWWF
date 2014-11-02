@@ -58,12 +58,14 @@ public class TabbedPanel extends Widget{
 	 * @param widget Widget to put
 	 * @param name Name of tab
 	 * @param index id of 'cell' in the container to put widget to(numbered from 0)
+	 * @return This instance for chaining
 	 */
-	public void put(Widget widget, String name, int index) {
-		if(widget == null)return;
+	public TabbedPanel put(Widget widget, String name, int index) {
+		if(widget == null)return this;
 		attach(widget);
 		content[index] = new NamedWidget(widget, name);
 		this.sendElement();
+		return this;
 	}
 	
 	/**
@@ -83,4 +85,6 @@ public class TabbedPanel extends Widget{
 			}
 		return -1;
 	}
+	
+	//TODO: Tab setting
 }

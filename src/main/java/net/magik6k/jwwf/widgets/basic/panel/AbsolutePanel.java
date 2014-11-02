@@ -45,29 +45,35 @@ public class AbsolutePanel extends Widget{
 
 	/**
 	 * @param widget Widget to store
+	 * @return This instance for chaining
 	 */
-	public void put(Widget widget) {
+	public AbsolutePanel put(Widget widget) {
 		attach(widget);
 		content = widget;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * @param x X-Offset
 	 * @param y Y-Offset
+	 * @return This instance for chaining
 	 */
-	public void setOffset(int x, int y) {
+	public AbsolutePanel setOffset(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Removes stored element
+	 * @return This instance for chaining
 	 */
-	public void remove(){
+	public AbsolutePanel remove(){
 		content = null;
 		this.sendElement();
+		return this;
 	}
 	
 	@Override

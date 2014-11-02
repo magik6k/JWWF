@@ -75,50 +75,60 @@ public class VerticalPanel extends Widget{
 	 * Sets align of elementd inside container. this is important when
 	 * container has few elements with different widths
 	 * @param align Alignment type valid for this container
+	 * @return This instance for chaining
 	 */
-	public void setElementAlign(PanelAlign align){
+	public VerticalPanel setElementAlign(PanelAlign align){
 		if(	align == PanelAlign.LEFT ||
 			align == PanelAlign.MIDDLE ||
 			align == PanelAlign.RIGHT){
 			this.align = align;
 			this.sendElement();
-		}		
+		}
+		return this;
 	}
 	
 	/**
 	 * Sets space betwen each element.
 	 * @param elementSpacing pixels betwen each element
+	 * @return This instance for chaining
 	 */
-	public void setElementSpacing(float elementSpacing){
+	public VerticalPanel setElementSpacing(float elementSpacing){
 		this.elementSpacing = elementSpacing;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Removes all elements stored in this container
+	 * @return This instance for chaining
 	 */
-	public void removeAll(){
+	public VerticalPanel removeAll(){
 		for(int i = 0; i < content.length; ++i)content[i] = null;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Removes element at specified position
 	 * @param index index of element to remove
+	 * @return This instance for chaining
 	 */
-	public void removeAt(int index){
+	public VerticalPanel removeAt(int index){
 		content[index] = null;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Removes all elements that are instance of specified element
 	 * @param widget Instance of widget to remove from container
+	 * @return This instance for chaining
 	 */
-	public void remove(Widget widget){
+	public VerticalPanel remove(Widget widget){
 		for(int i = 0; i < content.length; ++i)
 			if(content[i] == widget)content[i] = null;
 		this.sendElement();
+		return this;
 	}
 	
 	@Override
@@ -142,11 +152,13 @@ public class VerticalPanel extends Widget{
 	 * Puts new widget to the container
 	 * @param widget Widget to put
 	 * @param index id of 'cell' in the container to put widget to(numbered from 0)
+	 * @return This instance for chaining
 	 */	
-	public void put(Widget widget, int index) {
+	public VerticalPanel put(Widget widget, int index) {
 		attach(widget);
 		content[index] = widget;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
