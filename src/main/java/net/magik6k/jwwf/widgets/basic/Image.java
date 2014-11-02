@@ -52,31 +52,37 @@ public class Image extends Widget {
 	 * Sets size of the image
 	 * @param w width of image, left -1 when not used(will be resized or scaled)
 	 * @param h width of image, left -1 when not used(will be resized or scaled)
+	 * @return This instance for chaining
 	 */
-	public void setSize(int w, int h){
+	public Image setSize(int w, int h){
 		this.w = w;
 		this.h = h;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets alternative text to be displayed when there
 	 * is problem displaying the image
 	 * @param text Alternative text
+	 * @return This instance for chaining
 	 */
-	public void setAlternativeText(String text){
+	public Image setAlternativeText(String text){
 		this.altText = text;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets URL of the image
 	 * @param url URL of the image; must be accesible by user
+	 * @return This instance for chaining
 	 */
-	public void setURL(String url)
+	public Image setURL(String url)
 	{
 		this.url = url;
 		this.sendElement();
+		return this;
 	}
 	
 	@Override

@@ -2,6 +2,7 @@ v0.2.1/WIP:
 -Added Slider
 -Added ProgressBar
 -Added option to change page title
+-Made widgets chaniable
 
 v0.2.0:
 -Switched to Jetty with small API changes

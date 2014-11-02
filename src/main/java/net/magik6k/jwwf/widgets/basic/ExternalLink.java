@@ -23,21 +23,25 @@ public class ExternalLink extends Widget {
 	/**
 	 * Sets links url
 	 * @param url URL of destination resource
+	 * @return This instance for chaining
 	 */
-	public void setURL(String url)
+	public ExternalLink setURL(String url)
 	{
 		this.url = url;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets links name
 	 * @param label Name of the link
+	 * @return This instance for chaining
 	 */
-	public void setLabel(String label)
+	public ExternalLink setLabel(String label)
 	{
 		this.label = label;
 		this.sendElement();
+		return this;
 	}
 	
 	@Override
