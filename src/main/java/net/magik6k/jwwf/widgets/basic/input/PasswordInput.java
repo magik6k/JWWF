@@ -63,21 +63,25 @@ public class PasswordInput extends Widget{
 	/**
 	 * Sets new text
 	 * @param text Text to set
+	 * @return This instance for chaining
 	 */
-	public void setText(String text){
+	public PasswordInput setText(String text){
 		this.text = text;
 		sendTextUpdate = true;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets new placeholder text
 	 * @param placeholder Placeholder text
+	 * @return This instance for chaining
 	 */
-	public void setPlaceholder(String placeholder)
+	public PasswordInput setPlaceholder(String placeholder)
 	{
 		this.placeholder = placeholder;
 		this.sendElement();
+		return this;
 	}
 	
 	/**

@@ -25,19 +25,23 @@ public class Button extends Widget{
 	/**
 	 * Sets new label
 	 * @param label Label
+	 * @return This instance for chaining
 	 */
-	public void setlabel(String label)
+	public Button setlabel(String label)
 	{
 		this.label = label;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets new handler for button click
 	 * @param clickHandler New handler
+	 * @return This instance for chaining
 	 */
-	public void setHandler(ClickHandler clickHandler){
+	public Button setHandler(ClickHandler clickHandler){
 		this.clickHandler = clickHandler;
+		return this;
 	}
 	
 	@Override

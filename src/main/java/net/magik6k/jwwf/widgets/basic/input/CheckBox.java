@@ -21,9 +21,11 @@ public class CheckBox extends Widget{
 	/**
 	 * Sets new handler for button click
 	 * @param checkHandler New handler
+	 * @return This instance for chaining
 	 */
-	public void setHandler(CheckHandler checkHandler){
+	public CheckBox setHandler(CheckHandler checkHandler){
 		this.checkHandler = checkHandler;
+		return this;
 	}
 	
 	@Override

@@ -68,20 +68,24 @@ public class TextInput extends Widget {
 	/**
 	 * Sets new placeholder text
 	 * @param placeholder Placeholder text
+	 * @return This instance for chaining
 	 */
-	public void setPlaceholder(String placeholder){
+	public TextInput setPlaceholder(String placeholder){
 		this.placeholder = placeholder;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets new text
 	 * @param text Text to set
+	 * @return This instance for chaining
 	 */
-	public void setText(String text){
+	public TextInput setText(String text){
 		this.text = text;
 		sendTextUpdate = true;
 		this.sendElement();
+		return this;
 	}
 	
 	/**

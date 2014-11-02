@@ -35,10 +35,12 @@ public class RadioButton extends Widget{
 	/**
 	 * Sets new handler for button click
 	 * @param radioGroup group to bind button to
+	 * @return This instance for chaining
 	 */
-	public void setGroup(RadioGroup radioGroup){
+	public RadioButton setGroup(RadioGroup radioGroup){
 		this.radioGroup = radioGroup;
 		attach(radioGroup);
+		return this;
 	}
 	
 	@Override

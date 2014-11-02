@@ -111,32 +111,38 @@ public class TextArea extends Widget{
 	/**
 	 * Sets new text
 	 * @param text Text to set
+	 * @return This instance for chaining
 	 */
-	public void setText(String text){
+	public TextArea setText(String text){
 		this.text = text;
 		sendTextUpdate = true;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets size of the widget
 	 * @param cols Column amount, by default 20
 	 * @param rows Row amount, by default 3
+	 * @return This instance for chaining
 	 */
-	public void setSize(short cols, short rows){
+	public TextArea setSize(short cols, short rows){
 		this.cols = cols;
 		this.rows = rows;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
 	 * Sets new placeholder text
 	 * @param placeholder Placeholder text
+	 * @return This instance for chaining
 	 */
-	public void setPlaceholder(String placeholder)
+	public TextArea setPlaceholder(String placeholder)
 	{
 		this.placeholder = placeholder;
 		this.sendElement();
+		return this;
 	}
 	
 	/**
