@@ -33,7 +33,7 @@ public abstract class LinePanel extends Panel{
 	 * @param startIndex index at wich adding will start
 	 * @return Index of last added element
 	 */
-	public int put(Iterable<Widget> widgets, int startIndex){
+	public int put(Iterable<? extends Widget> widgets, int startIndex){
 		int index = startIndex;
 		for(Widget widget : widgets){
 			put(widget, index);
@@ -47,7 +47,7 @@ public abstract class LinePanel extends Panel{
 	 * @param factories Iterable object containing widget factories
 	 * @return List of created widgets
 	 */
-	public List<Widget> putFactories(Iterable<IWidgetFactory> factories, int startIndex){
+	public List<Widget> putFactories(Iterable<? extends IWidgetFactory> factories, int startIndex){
 		int index = startIndex;
 		List<Widget> instances = new LinkedList<Widget>();
 		for(IWidgetFactory factory : factories){

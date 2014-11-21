@@ -30,7 +30,7 @@ public abstract class Panel extends Widget{
 	 * @param widgets Iterable object containing widgets
 	 * @return Index of last added element
 	 */
-	public int put(Iterable<Widget> widgets){
+	public int put(Iterable<? extends Widget> widgets){
 		int last = -1;
 		for(Widget widget : widgets){
 			last = put(widget);
@@ -43,7 +43,7 @@ public abstract class Panel extends Widget{
 	 * @param factories Iterable object containing widget factories
 	 * @return List of created widgets
 	 */
-	public List<Widget> putFactories(Iterable<IWidgetFactory> factories){
+	public List<Widget> putFactories(Iterable<? extends IWidgetFactory> factories){
 		List<Widget> instances = new LinkedList<Widget>();
 		for(IWidgetFactory factory : factories){
 			instances.add(put(factory));
