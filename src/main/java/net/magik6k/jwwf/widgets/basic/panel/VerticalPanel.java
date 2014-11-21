@@ -1,13 +1,13 @@
 package net.magik6k.jwwf.widgets.basic.panel;
 
-import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.PanelAlign;
+import net.magik6k.jwwf.widgets.basic.panel.virtual.LinePanel;
 
 /**
  * This panel places its elements in vertical line
  */
-public class VerticalPanel extends Widget{
+public class VerticalPanel extends LinePanel{
 
 	private Widget[] content;
 	private float elementSpacing = 0;
@@ -176,28 +176,5 @@ public class VerticalPanel extends Widget{
 				return i;
 			}
 		return -1;
-	}
-	
-	/**
-	 * Creates new widget and puts it to container at first free index
-	 * @param factory Factory of new widget
-	 * @return Instance of created widget
-	 */
-	public Widget put(IWidgetFactory factory){
-		Widget widget = factory.getWidget();
-		put(widget);
-		return widget;
-	}
-	
-	/**
-	 * Creates new widget and puts it to container
-	 * @param factory Factory of new widget
-	 * @param index index id of 'cell' in the container to put widget to(numbered from 0)
-	 * @return Instance of created widget
-	 */
-	public Widget put(IWidgetFactory factory, int index){
-		Widget widget = factory.getWidget();
-		put(widget, index);
-		return widget;
 	}
 }

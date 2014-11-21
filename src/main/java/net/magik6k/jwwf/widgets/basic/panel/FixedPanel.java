@@ -2,12 +2,13 @@ package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.widgets.basic.panel.virtual.Panel;
 
 /**
  * This panel places its content based on top-left corner of the window,
  * the content is 'fixed'
  */
-public class FixedPanel extends Widget{
+public class FixedPanel extends Panel{
 	private Widget content;
 	private int x,y;
 	
@@ -44,15 +45,16 @@ public class FixedPanel extends Widget{
 	}
 
 	/**
-	 * Sets content
-	 * @param widget new content of panel
-	 * @return This instance for chaining
+	 * Puts widget at first free index
+	 * @param widget Widget to put
+	 * @return index of element in container
 	 */
-	public FixedPanel put(Widget widget) {
+	@Override
+	public int put(Widget widget) {
 		attach(widget);
 		content = widget;
 		this.sendElement();
-		return this;
+		return 0;
 	}
 	
 	/**

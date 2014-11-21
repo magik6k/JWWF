@@ -2,13 +2,14 @@ package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.widgets.basic.panel.virtual.Panel;
 
 /**
  * This panel allows to 'move' its content from original place
  * @author lukasz
  *
  */
-public class AbsolutePanel extends Widget{
+public class AbsolutePanel extends Panel{
 	private Widget content;
 	private int x,y;
 	
@@ -45,14 +46,16 @@ public class AbsolutePanel extends Widget{
 	}
 
 	/**
-	 * @param widget Widget to store
-	 * @return This instance for chaining
+	 * Puts widget at first free index
+	 * @param widget Widget to put
+	 * @return index of element in container
 	 */
-	public AbsolutePanel put(Widget widget) {
+	@Override
+	public int put(Widget widget) {
 		attach(widget);
 		content = widget;
 		this.sendElement();
-		return this;
+		return 0;
 	}
 	
 	/**

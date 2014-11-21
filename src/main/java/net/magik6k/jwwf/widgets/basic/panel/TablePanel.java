@@ -1,13 +1,13 @@
 package net.magik6k.jwwf.widgets.basic.panel;
 
-import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.PanelAlign;
+import net.magik6k.jwwf.widgets.basic.panel.virtual.ArrayPanel;
 
 /**
  * A simple table container
  */
-public class TablePanel extends Widget{
+public class TablePanel extends ArrayPanel{
 	private Widget[][] content;
 	private float verticalSpacing = 0;
 	private float horizontalSpacing = 0;
@@ -210,27 +210,4 @@ public class TablePanel extends Widget{
 		return -1;
 	}
 	
-	/**
-	 * Creates new widget and puts it to container at first free index
-	 * @param factory Factory of new widget
-	 * @return Instance of created widget
-	 */
-	public Widget put(IWidgetFactory factory){
-		Widget widget = factory.getWidget();
-		put(widget);
-		return widget;
-	}
-	
-	/**
-	 * Creates new widget and puts it to container
-	 * @param factory Factory of new widget
-	 * @param x Column
-	 * @param y Row
-	 * @return Instance of created widget
-	 */
-	public Widget put(IWidgetFactory factory, int x, int y){
-		Widget widget = factory.getWidget();
-		put(widget, x, y);
-		return widget;
-	}
 }
