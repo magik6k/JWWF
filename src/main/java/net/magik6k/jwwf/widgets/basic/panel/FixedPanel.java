@@ -1,5 +1,6 @@
 package net.magik6k.jwwf.widgets.basic.panel;
 
+import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
 
 /**
@@ -52,6 +53,17 @@ public class FixedPanel extends Widget{
 		content = widget;
 		this.sendElement();
 		return this;
+	}
+	
+	/**
+	 * Creates new widget and puts it to container
+	 * @param factory Factory of new widget
+	 * @return Instance of created widget
+	 */
+	public Widget put(IWidgetFactory factory){
+		Widget widget = factory.getWidget();
+		put(widget);
+		return widget;
 	}
 	
 	/**

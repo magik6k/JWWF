@@ -56,7 +56,7 @@ public abstract class Widget extends Attachable{
 	}
 	
 	protected final void addTo(User owner)throws IllegalStateException {
-		if(connection!=null&&owner.getConnection() == connection)
+		if(connection!=null&&owner.getConnection() != connection)
 			throw new IllegalStateException("Instance of widget can exist only for one user");
 		
 		if(id < 0)

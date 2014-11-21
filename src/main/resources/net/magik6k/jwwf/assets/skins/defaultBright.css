@@ -88,6 +88,7 @@ textarea
 	border-radius: 0.25em;
 	border: 0;
 	font-size: 1em;
+	margin 1px;
 	-moz-transition: all 0.25s ease-in-out;
 	-webkit-transition: all 0.25s ease-in-out;
 	-o-transition: all 0.25s ease-in-out;
@@ -233,6 +234,7 @@ button
 	color: inherit;
 	background: none;
 	height: 2.5em;
+	margin 2px;
 	box-shadow: inset 0 0 0 1px #d6d6d6;
 	-moz-transition: all 0.25s ease-in-out;
 	-webkit-transition: all 0.25s ease-in-out;

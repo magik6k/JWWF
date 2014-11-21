@@ -1,5 +1,6 @@
 package net.magik6k.jwwf.widgets.basic.panel;
 
+import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.PanelAlign;
 
@@ -109,6 +110,7 @@ public class TablePanel extends Widget{
 	/**
 	 * Sets space betwen elements
 	 * @param horizontalSpacing horizontal space betwen elements in pixels
+	 * @return This instance for chaining
 	 */
 	public TablePanel setHorizontalSpacing(float horizontalSpacing){
 		this.horizontalSpacing = horizontalSpacing;
@@ -208,4 +210,27 @@ public class TablePanel extends Widget{
 		return -1;
 	}
 	
+	/**
+	 * Creates new widget and puts it to container at first free index
+	 * @param factory Factory of new widget
+	 * @return Instance of created widget
+	 */
+	public Widget put(IWidgetFactory factory){
+		Widget widget = factory.getWidget();
+		put(widget);
+		return widget;
+	}
+	
+	/**
+	 * Creates new widget and puts it to container
+	 * @param factory Factory of new widget
+	 * @param x Column
+	 * @param y Row
+	 * @return Instance of created widget
+	 */
+	public Widget put(IWidgetFactory factory, int x, int y){
+		Widget widget = factory.getWidget();
+		put(widget, x, y);
+		return widget;
+	}
 }
