@@ -4,6 +4,7 @@ import net.magik6k.jwwf.core.servlet.APISocketServlet;
 import net.magik6k.jwwf.core.servlet.SkinServlet;
 import net.magik6k.jwwf.core.servlet.WebClientServelt;
 import net.magik6k.jwwf.core.util.UserFactory;
+import net.magik6k.jwwf.core.util.WebClientCreator;
 import net.magik6k.jwwf.handlers.LogHandler;
 import net.magik6k.jwwf.handlers.NullLogHandler;
 import net.magik6k.jwwf.handlers.StdLogHandler;
@@ -113,6 +114,15 @@ public class JwwfServer {
 			e.printStackTrace();
 		}
 		return this;
+	}
+	
+	/**
+	 * Sometimes you have to release your application and you can't set proxy for
+	 * websocket connections, you need to set url of api here.
+	 * @param url Url to set, default(auto) is ws://"+document.location.host+"/wshnd
+	 */
+	public void setApiUrl(String url){
+		WebClientCreator.instance.setApiServer(url);
 	}
 	
 	public static void debugOutput(boolean enable){

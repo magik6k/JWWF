@@ -1,5 +1,5 @@
 //Config
 			
-var apiServer = "ws://"+document.location.host+"/wshnd";
+var apiServer = "/*?apiServer*/";
 
 //Confing end

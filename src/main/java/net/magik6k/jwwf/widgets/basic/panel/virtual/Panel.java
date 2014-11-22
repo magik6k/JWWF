@@ -47,7 +47,7 @@ public abstract class Panel extends Widget{
 		List<Widget> instances = new LinkedList<Widget>();
 		for(IWidgetFactory factory : factories){
 			instances.add(put(factory));
-		}		
+		}
 		return instances;
 	}
 }

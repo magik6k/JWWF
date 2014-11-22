@@ -12,10 +12,11 @@ public class WebClientCreator {
 	public static final WebClientCreator instance = new WebClientCreator();
 	
 	private final String widgetObjectName = "widgets";
-	private final String precompiledCode;
+	private String precompiledCode;
+	private String apiServer = "ws://\"+document.location.host+\"/wshnd";	
 	
 	private WebClientCreator() {
-		JwwfServer.logger.debug("WebClientCreator", "Compiling web client");
+		
 		precompiledCode = generate();
 	}
 	
@@ -23,14 +24,22 @@ public class WebClientCreator {
 		return precompiledCode;
 	}
 	
+	public void setApiServer(String apiServer){
+		this.apiServer = apiServer;
+		precompiledCode = generate();
+	}
+	
 	private String generate(){
+		JwwfServer.logger.debug("WebClientCreator", "Compiling web client");
 		String widgetCode = generateWidgetCode(getAllWidgets("webclient/widgets"));
 		String client = ResourceReader.instance.readFile("webclient/index.html");
 		
-		String widgetsClient = client.replace("/*?WidgetImpl*/", widgetCode);
+		client = client.replace("/*?WidgetImpl*/", widgetCode);
+		client = doIncludes(client);
 		
+		client = client.replace("/*?apiServer*/", apiServer);
 		
-		return doIncludes(widgetsClient);
+		return client;
 	}
 	
 	private String doIncludes(String inClient){
