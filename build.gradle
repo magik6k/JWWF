@@ -1,6 +1,12 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'maven'
+apply plugin: 'signing'
 apply plugin: 'com.github.johnrengelman.shadow'
+
+group = "net.magik6k.jwwf"
+archivesBaseName = "jwwf"
+version = "0.2.0"
 
 buildscript {
     repositories {
@@ -8,7 +14,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-    	classpath 'com.github.jengelman.gradle.plugins:shadow:1.1.1'
+    	classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.0'
   	}
 }
 
@@ -25,12 +31,12 @@ repositories {
 }
 
 dependencies {
-	testCompile group: 'junit', name: 'junit', version: '4.+'
+	testCompile group: 'junit', name: 'junit', version: '4.0'
 	compile 'org.eclipse.jdt:org.eclipse.jdt.annotation:2.0.0'
-	compile 'org.eclipse.jetty:jetty-server:8.1.+'
-	compile 'org.eclipse.jetty:jetty-servlet:8.1.+'
-	compile 'org.eclipse.jetty:jetty-websocket:8.1.+'
-	compile 'com.google.guava:guava:18.+'
+	compile 'org.eclipse.jetty:jetty-server:8.1.16.v20140903'
+	compile 'org.eclipse.jetty:jetty-servlet:8.1.16.v20140903'
+	compile 'org.eclipse.jetty:jetty-websocket:8.1.16.v20140903'
+	compile 'com.google.guava:guava:18.0'
 }
 
 compileJava {
@@ -44,6 +50,79 @@ javadoc {
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-from 'build/docs/javadoc'
-classifier 'javadoc'
+	from 'build/docs/javadoc'
+	classifier 'javadoc'
 }
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+task writeNewPom << {
+    pom {
+        project {
+            licenses {
+                license {
+                    name 'The MIT License'
+                    url 'http://opensource.org/licenses/MIT'
+                    distribution 'repo'
+                }
+            }
+        }
+    }.writeTo("$buildDir/libs/pom.xml")
+}
+
+signing {
+    sign configurations.archives
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name 'Java Web Widget Framework'
+        packaging 'jar'
+        description 'Framework for transparent web based widget applications'
+        url 'https://github.com/magik6k/JWWF'
+
+        scm {
+          connection 'scm:git:https://github.com/magik6k/JWWF.git'
+          developerConnection 'scm:git:https://github.com/magik6k/JWWF.git'
+          url 'https://github.com/magik6k/JWWF'
+        }
+
+        licenses {
+            license {
+                name 'The MIT License'
+                url 'http://opensource.org/licenses/MIT'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+          developer {
+            id 'Magik6k'
+            email 'me@magik6k.net'
+          }
+        }
+      }
+    }
+  }
+}
+
+
