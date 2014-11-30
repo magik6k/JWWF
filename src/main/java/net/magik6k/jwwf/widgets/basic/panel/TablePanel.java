@@ -187,6 +187,8 @@ public class TablePanel extends ArrayPanel{
 	 * @return This instance for chaining
 	 */
 	public TablePanel put(Widget widget, int x, int y) {
+		if(x < 0 || y < 0 || x >= content.length || y >= content[x].length)
+			throw new IndexOutOfBoundsException();
 		attach(widget);
 		content[x][y] = widget;
 		this.sendElement();
@@ -207,7 +209,7 @@ public class TablePanel extends ArrayPanel{
 					this.sendElement();
 					return i;
 				}
-		return -1;
+		throw new IndexOutOfBoundsException();
+		//return -1;
 	}
-	
 }

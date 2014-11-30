@@ -10,8 +10,9 @@ public abstract class ArrayPanel extends Panel{
 	 * @param x Column
 	 * @param y Row
 	 * @return This instance for chaining
+	 * @throws IndexOutOfBoundsException when specified coordinates are out of range
 	 */
-	public abstract ArrayPanel put(Widget widget, int x, int y);
+	public abstract ArrayPanel put(Widget widget, int x, int y)throws IndexOutOfBoundsException;
 	
 	/**
 	 * Creates new widget and puts it to container
@@ -19,8 +20,9 @@ public abstract class ArrayPanel extends Panel{
 	 * @param x Column
 	 * @param y Row
 	 * @return Instance of created widget
+	 * @throws IndexOutOfBoundsException when specified coordinates are out of range
 	 */
-	public Widget put(IWidgetFactory factory, int x, int y){
+	public Widget put(IWidgetFactory factory, int x, int y)throws IndexOutOfBoundsException {
 		Widget widget = factory.getWidget();
 		put(widget, x, y);
 		return widget;

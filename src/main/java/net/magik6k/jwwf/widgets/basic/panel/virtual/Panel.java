@@ -11,15 +11,17 @@ public abstract class Panel extends Widget{
 	 * Puts widget at first free index
 	 * @param widget Widget to put
 	 * @return index of element in container
+	 * @throws IndexOutOfBoundsException when there is no more space
 	 */
-	public abstract int put(Widget widget);
+	public abstract int put(Widget widget)throws IndexOutOfBoundsException;
 	
 	/**
 	 * Creates new widget and puts it to container at first free index
 	 * @param factory Factory of new widget
 	 * @return Instance of created widget
+	 * @throws IndexOutOfBoundsException when there is no more space
 	 */
-	public Widget put(IWidgetFactory factory){
+	public Widget put(IWidgetFactory factory)throws IndexOutOfBoundsException {
 		Widget widget = factory.getWidget();
 		put(widget);
 		return widget;
@@ -29,8 +31,9 @@ public abstract class Panel extends Widget{
 	 * Adds all widgets from given iterable
 	 * @param widgets Iterable object containing widgets
 	 * @return Index of last added element
+	 * @throws IndexOutOfBoundsException when there is no more space
 	 */
-	public int put(Iterable<? extends Widget> widgets){
+	public int put(Iterable<? extends Widget> widgets)throws IndexOutOfBoundsException {
 		int last = -1;
 		for(Widget widget : widgets){
 			last = put(widget);
@@ -42,8 +45,9 @@ public abstract class Panel extends Widget{
 	 * Creates widgets instance from given iterable and adds it to this panel
 	 * @param factories Iterable object containing widget factories
 	 * @return List of created widgets
+	 * @throws IndexOutOfBoundsException when there is no more space
 	 */
-	public List<Widget> putFactories(Iterable<? extends IWidgetFactory> factories){
+	public List<Widget> putFactories(Iterable<? extends IWidgetFactory> factories)throws IndexOutOfBoundsException {
 		List<Widget> instances = new LinkedList<Widget>();
 		for(IWidgetFactory factory : factories){
 			instances.add(put(factory));

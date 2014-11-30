@@ -62,6 +62,7 @@ public class TabbedPanel extends NamedPanel{
 	 * @return This instance for chaining
 	 */
 	public TabbedPanel put(Widget widget, String name, int index) {
+		if(index < 0 || index >= content.length)throw new IndexOutOfBoundsException();
 		if(widget == null)return this;
 		attach(widget);
 		content[index] = new NamedWidget(widget, name);
@@ -84,7 +85,8 @@ public class TabbedPanel extends NamedPanel{
 				this.sendElement();
 				return i;
 			}
-		return -1;
+		throw new IndexOutOfBoundsException();
+		//return -1;
 	}
 	
 	//TODO: Tab setting

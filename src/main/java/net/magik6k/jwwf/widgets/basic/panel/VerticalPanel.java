@@ -156,6 +156,7 @@ public class VerticalPanel extends LinePanel{
 	 * @return This instance for chaining
 	 */	
 	public VerticalPanel put(Widget widget, int index) {
+		if(index < 0 || index >= content.length)throw new IndexOutOfBoundsException();
 		attach(widget);
 		content[index] = widget;
 		this.sendElement();
@@ -175,6 +176,7 @@ public class VerticalPanel extends LinePanel{
 				this.sendElement();
 				return i;
 			}
-		return -1;
+		throw new IndexOutOfBoundsException();
+		//return -1;
 	}
 }
