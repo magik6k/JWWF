@@ -8,7 +8,7 @@ import net.magik6k.jwwf.util.Json;
  */
 public class TextLabel extends Widget {
 	private String text;
-	private boolean textWrap = true;
+	private boolean textWrap = false;
 	/**
 	 * @param text Default text
 	 */
