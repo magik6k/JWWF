@@ -1,5 +1,5 @@
 {
-	create: function(data){
+	create: function(data, id){
 		var elements = [];
 		var actSel = 0;
 		var elem = $("<div>");
@@ -15,7 +15,7 @@
 					
 					actSel = i;
 					container.html(elements[i].elem);
-					$(".tabswitch").removeClass("tabswsel");
+					$(".tabsw" + id).removeClass("tabswsel");
 					$(this).addClass("tabswsel");
 				});
 		}
@@ -28,7 +28,8 @@
 				elements[i].elem = $("<div>");
 				elements[i].id = -1;
 				
-				var sw = $("<a>").html(data.content[i].name).addClass("tabswitch");
+				var sw = $("<a>").html(data.content[i].name)
+					.addClass("tabswitch").addClass("tabsw" + id);
 				setCallback(i, sw);
 				switcher.append(sw);
 			}
@@ -39,7 +40,8 @@
 					.html(widgetStorage[data.content[i].widget].element);
 				elements[i].id = data.content[i].widget;
 				
-				elements[i].button = $("<a>").html(data.content[i].name).addClass("tabswitch");
+				elements[i].button = $("<a>").html(data.content[i].name)
+					.addClass("tabswitch").addClass("tabsw" + id);;
 				setCallback(i, elements[i].button);
 				switcher.append(elements[i].button);
 			}
