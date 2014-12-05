@@ -49,8 +49,11 @@ public class TabbedPanel extends NamedPanel{
 		for(int i = 0; i < content.length; ++i)
 		{
 			if(i > 0)data += ",";
-			data += "{\"widget\":" + String.valueOf(content[i].widget!=null?content[i].widget.getID():-1) 
-					+ ",\"name\":\""+(content[i].name!=null?content[i].name:"unnamed")+"\"}";
+			if(content[i] != null)
+				data += "{\"widget\":" + String.valueOf(content[i].widget!=null?content[i].widget.getID():-1) 
+						+ ",\"name\":\""+(content[i].name!=null?content[i].name:"unnamed")+"\"}";
+			else
+				data += "{\"widget\":-1, \"name\":\"-NULL-\"}";
 		}
 		return "{\"content\":["+data+"]}";
 	}
