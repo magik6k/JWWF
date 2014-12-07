@@ -11,6 +11,7 @@ import net.magik6k.jwwf.util.Json;
 public class Button extends Widget{
 	private String label;
 	private ClickHandler clickHandler;
+	
 	/**
 	 * @param label Default label
 	 * @param clickHandler handler to be invoked when button is pressed by user
@@ -19,6 +20,15 @@ public class Button extends Widget{
 		super(Actions.BUTTON_CLICK);
 		this.label = label;
 		this.clickHandler = clickHandler;
+		this.sendElement();
+	}
+	
+	/**
+	 * @param label Default label
+	 */
+	public Button(String label) {
+		super(Actions.BUTTON_CLICK);
+		this.label = label;
 		this.sendElement();
 	}
 	
@@ -59,7 +69,8 @@ public class Button extends Widget{
 	 */
 	protected void handleData(String data){
 		try {
-			clickHandler.clicked();
+			if(clickHandler != null)
+				clickHandler.clicked();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

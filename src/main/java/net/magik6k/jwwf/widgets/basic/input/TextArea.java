@@ -134,6 +134,16 @@ public class TextArea extends Widget{
 	}
 	
 	/**
+	 * Sets new TextHandler
+	 * @param handler New text handler
+	 * @return This instance for chaining
+	 */
+	public TextArea setTextHandler(TextHandler handler){
+		this.handler = handler;
+		return this;
+	}
+	
+	/**
 	 * Sets new placeholder text
 	 * @param placeholder Placeholder text
 	 * @return This instance for chaining
@@ -175,7 +185,8 @@ public class TextArea extends Widget{
 	 */
 	public void handleData(String data){
 		if(data == null)return;
-		if(handler != null)handler.onType(data);
+		if(handler != null)
+			handler.onType(data);
 		text = data;
 	}
 }

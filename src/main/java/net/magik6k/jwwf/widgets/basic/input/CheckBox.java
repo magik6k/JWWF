@@ -9,12 +9,18 @@ import net.magik6k.jwwf.handlers.CheckHandler;
  */
 public class CheckBox extends Widget{
 	private CheckHandler checkHandler;
+	
 	/**
-	 * @param checkHandler handler claaed when checkbox changes it's state
+	 * @param checkHandler handler called when checkbox changes it's state
 	 */
 	public CheckBox(CheckHandler checkHandler) {
 		super(Actions.CHECK_STATE);
 		this.checkHandler = checkHandler;
+		this.sendElement();
+	}
+	
+	public CheckBox() {
+		super(Actions.CHECK_STATE);
 		this.sendElement();
 	}
 	
@@ -42,6 +48,7 @@ public class CheckBox extends Widget{
 	 * Internal use only
 	 */
 	public void handleData(String data){
-		checkHandler.checked(data.equals("1"));
+		if(checkHandler != null)
+			checkHandler.checked(data.equals("1"));
 	}
 }

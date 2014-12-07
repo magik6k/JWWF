@@ -85,6 +85,16 @@ public class PasswordInput extends Widget{
 	}
 	
 	/**
+	 * Sets new TextHandler
+	 * @param handler New text handler
+	 * @return This instance for chaining
+	 */
+	public PasswordInput setTextHandler(TextHandler handler){
+		this.handler = handler;
+		return this;
+	}
+	
+	/**
 	 * Returns entered text
 	 * @return Entered text
 	 */
@@ -112,7 +122,8 @@ public class PasswordInput extends Widget{
 	 */
 	public void handleData(String data){
 		if(data == null)return;
-		if(handler != null)handler.onType(data);
+		if(handler != null)
+			handler.onType(data);
 		text = data;
 	}
 }

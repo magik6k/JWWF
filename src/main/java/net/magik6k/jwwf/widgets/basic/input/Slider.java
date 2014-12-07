@@ -125,6 +125,16 @@ public class Slider extends Widget{
 	}
 	
 	/**
+	 * Sets new handler for this widget
+	 * @param handler New handler
+	 * @return This instance for chaining
+	 */
+	public Slider setHanlder(SlideHandler handler){
+		this.handler = handler;
+		return this;
+	}
+	
+	/**
 	 * Returns value set on slider
 	 * @return Slider value
 	 */
