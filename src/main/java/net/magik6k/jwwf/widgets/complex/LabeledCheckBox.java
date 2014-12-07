@@ -23,4 +23,24 @@ public class LabeledCheckBox extends HorizontalPanel{
 		put(checkBox, 2);
 	}
 
+	public LabeledCheckBox(String label) {
+		super(2);
+		
+		this.label = new TextLabel(label);
+		checkBox = new CheckBox();
+		
+		put(this.label, 1);
+		put(checkBox, 2);
+	}
+	
+	
+	public LabeledCheckBox setLabel(String label) {
+		this.label.setText(label);
+		return this;
+	}
+	
+	public boolean getState() {
+		return checkBox.getState();
+	}
+	
 }

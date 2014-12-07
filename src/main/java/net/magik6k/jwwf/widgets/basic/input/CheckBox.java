@@ -9,6 +9,7 @@ import net.magik6k.jwwf.handlers.CheckHandler;
  */
 public class CheckBox extends Widget{
 	private CheckHandler checkHandler;
+	private boolean state;
 	
 	/**
 	 * @param checkHandler handler called when checkbox changes it's state
@@ -25,13 +26,21 @@ public class CheckBox extends Widget{
 	}
 	
 	/**
-	 * Sets new handler for button click
+	 * Sets new check handler
 	 * @param checkHandler New handler
 	 * @return This instance for chaining
 	 */
 	public CheckBox setHandler(CheckHandler checkHandler){
 		this.checkHandler = checkHandler;
 		return this;
+	}
+	
+	/**
+	 * Returns boolean indicating checkbox selection
+	 * @return State of this widget
+	 */
+	public boolean getState(){
+		return state;
 	}
 	
 	@Override
@@ -48,7 +57,8 @@ public class CheckBox extends Widget{
 	 * Internal use only
 	 */
 	public void handleData(String data){
+		state = data.equals("1");
 		if(checkHandler != null)
-			checkHandler.checked(data.equals("1"));
+			checkHandler.checked(state);
 	}
 }
