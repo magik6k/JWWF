@@ -15,9 +15,17 @@ public abstract class Widget extends Attachable{
 	private Connection connection;
 	private int id;
 	private Actions action;
-	private User user;
 	private Queue<Attachable> waitingForUser;
 
+	/**
+	 * This variable holds refference to user associated with this widget.
+	 * Initially it's null, and is set when widget is attached to another.<br/>
+	 * DO NOT MANUALLY SET THIS VARIABLE UNLESS YOU RALLY KNOW WHAT
+	 * YOU ARE DOING.
+	 * Setting this variable may cause things to fail badly.
+	 */
+	protected User user;
+	
 	protected Widget(int id, Connection connection) {
 		this.id = id;
 		this.connection = connection;
