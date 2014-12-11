@@ -1,10 +1,11 @@
 package net.magik6k.jwwf.widgets.basic.input;
 
-import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.Actions;
+import net.magik6k.jwwf.event.input.SlideEvent;
 import net.magik6k.jwwf.handlers.SlideHandler;
+import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 
-public class Slider extends Widget{
+public class Slider extends BasicInput{
 
 	private double minValue = 0;
 	private double maxValue = 100;
@@ -158,6 +159,7 @@ public class Slider extends Widget{
 	 */
 	public void handleData(String data){
 		value = Double.valueOf(data);
+		sendEvent(new SlideEvent(this.user, getPayload(), value));
 		if(handler != null)
 			handler.slide(value);
 	}

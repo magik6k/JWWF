@@ -4,6 +4,7 @@ import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.PanelAlign;
+import net.magik6k.jwwf.event.InputEvent;
 import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.SelectionHandler;
@@ -30,6 +31,9 @@ import net.magik6k.jwwf.widgets.basic.panel.HorizontalPanel;
 import net.magik6k.jwwf.widgets.basic.panel.TabbedPanel;
 import net.magik6k.jwwf.widgets.basic.panel.TablePanel;
 import net.magik6k.jwwf.widgets.basic.panel.VerticalPanel;
+
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 
 public class ExampleClient extends User{
 
@@ -198,8 +202,31 @@ public class ExampleClient extends User{
 			}
 		});
 		
+		/* EventBus example */
+		
+		TextLabel busExampleDesc = new TextLabel("EventBus");
+		final TextLabel busExample = new TextLabel("Events: 0");
+		
+		Object handler = new Object(){
+			int events = 0;
+			
+			@Subscribe
+			public void onInputAction(InputEvent e){
+				busExample.setText("Events: " + String.valueOf(++events));
+			}
+		};
+		
+		EventBus exampleBus = new EventBus();
+		exampleBus.register(handler);
+		button.setEventBus(exampleBus);
+		internalLink.setEventBus(exampleBus);
+		slider.setEventBus(exampleBus);
+		textInput.setEventBus(exampleBus);
+		passwordInput.setEventBus(exampleBus);
+		//...
+		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 19,
+		Widget exapmles = new TablePanel(2, 20,
 				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -218,7 +245,8 @@ public class ExampleClient extends User{
 				checkBoxDesc,		checkBox,
 				radioButtonDesc,	radioButtons,
 				customPanelDesc,	customPanel,
-				userDataDesc,		userDataInput);
+				userDataDesc,		userDataInput,
+				busExampleDesc,		busExample);
 		
 		rootFrame.setTitle("Example Jwwf WebApp");
 		rootFrame.put(exapmles);

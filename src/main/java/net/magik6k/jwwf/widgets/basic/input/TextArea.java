@@ -1,14 +1,15 @@
 package net.magik6k.jwwf.widgets.basic.input;
 
-import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.Actions;
+import net.magik6k.jwwf.event.input.TextInputEvent;
 import net.magik6k.jwwf.handlers.TextHandler;
 import net.magik6k.jwwf.util.Json;
+import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 
 /**
  * Scrollable {@link TextInput} with multiple rows
  */
-public class TextArea extends Widget{
+public class TextArea extends BasicInput{
 	private String placeholder;
 	private String text = "";
 	private boolean sendTextUpdate;
@@ -185,8 +186,9 @@ public class TextArea extends Widget{
 	 */
 	public void handleData(String data){
 		if(data == null)return;
+		text = data;
+		sendEvent(new TextInputEvent(this.user, getPayload(), data));
 		if(handler != null)
 			handler.onType(data);
-		text = data;
 	}
 }

@@ -1,13 +1,14 @@
 package net.magik6k.jwwf.widgets.basic.input;
 
-import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.Actions;
+import net.magik6k.jwwf.event.input.CheckEvent;
 import net.magik6k.jwwf.handlers.CheckHandler;
+import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 
 /**
  * Basic check box
  */
-public class CheckBox extends Widget{
+public class CheckBox extends BasicInput{
 	private CheckHandler checkHandler;
 	private boolean state;
 	
@@ -58,6 +59,7 @@ public class CheckBox extends Widget{
 	 */
 	public void handleData(String data){
 		state = data.equals("1");
+		sendEvent(new CheckEvent(this.user, getPayload(), state));
 		if(checkHandler != null)
 			checkHandler.checked(state);
 	}

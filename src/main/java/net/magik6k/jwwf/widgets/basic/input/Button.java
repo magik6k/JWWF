@@ -1,14 +1,15 @@
 package net.magik6k.jwwf.widgets.basic.input;
 
-import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.Actions;
+import net.magik6k.jwwf.event.input.ClickEvent;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.util.Json;
+import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 
 /**
  * User-clickable button
  */
-public class Button extends Widget{
+public class Button extends BasicInput{
 	private String label;
 	private ClickHandler clickHandler;
 	
@@ -69,6 +70,7 @@ public class Button extends Widget{
 	 */
 	protected void handleData(String data){
 		try {
+			sendEvent(new ClickEvent(this.user, getPayload()));
 			if(clickHandler != null)
 				clickHandler.clicked();
 		} catch (Exception e) {
