@@ -1,6 +1,6 @@
 package net.magik6k.jwwf.widgets.basic.input;
 
-import net.magik6k.jwwf.enums.Actions;
+import net.magik6k.jwwf.core.action.Actions;
 import net.magik6k.jwwf.event.input.SlideEvent;
 import net.magik6k.jwwf.handlers.SlideHandler;
 import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;

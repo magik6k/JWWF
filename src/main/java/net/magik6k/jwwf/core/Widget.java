@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import net.magik6k.jwwf.enums.Actions;
+import net.magik6k.jwwf.core.action.Actions;
 
 import org.eclipse.jetty.websocket.WebSocket.Connection;
 
