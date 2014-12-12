@@ -20,6 +20,7 @@ import net.magik6k.jwwf.widgets.basic.ProgressBar;
 import net.magik6k.jwwf.widgets.basic.TextLabel;
 import net.magik6k.jwwf.widgets.basic.input.Button;
 import net.magik6k.jwwf.widgets.basic.input.CheckBox;
+import net.magik6k.jwwf.widgets.basic.input.CheckButton;
 import net.magik6k.jwwf.widgets.basic.input.InternalLink;
 import net.magik6k.jwwf.widgets.basic.input.PasswordInput;
 import net.magik6k.jwwf.widgets.basic.input.RadioButton;
@@ -160,6 +161,15 @@ public class ExampleClient extends User{
 			}
 		});
 		
+		/* Example CheckButton */		
+		final TextLabel CheckButtonDesc = new TextLabel("CheckButton");
+		CheckButton checkButton = new CheckButton("CheckButton", new CheckHandler() {
+			@Override
+			public void checked(boolean state) {
+				CheckButtonDesc.setText("CheckButton("+String.valueOf(state)+")");
+			}
+		});
+		
 		/* Example RadioButton*/		
 		final TextLabel radioButtonDesc = new TextLabel("RadioButton");
 		
@@ -191,11 +201,11 @@ public class ExampleClient extends User{
 		final TextInput userDataInput = new TextInput("UserData", "ThisWillPersist", new TextHandler() {
 			@Override
 			public void onType(String data) {
-				userData.set("exampleKey", data);
+				getUserData().set("exampleKey", data);
 			}
 		});
 		
-		userData.get("exampleKey", new UserDataHandler() {
+		getUserData().get("exampleKey", new UserDataHandler() {
 			@Override
 			public void data(String key, String value) {
 				userDataInput.setText(value);
@@ -226,7 +236,7 @@ public class ExampleClient extends User{
 		//...
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 20,
+		Widget exapmles = new TablePanel(2, 21,
 				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -243,6 +253,7 @@ public class ExampleClient extends User{
 				passwordInputDesc,	passwordInput,
 				textAreaDesc,		textArea,
 				checkBoxDesc,		checkBox,
+				CheckButtonDesc,	checkButton,
 				radioButtonDesc,	radioButtons,
 				customPanelDesc,	customPanel,
 				userDataDesc,		userDataInput,
