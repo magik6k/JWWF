@@ -15,6 +15,13 @@ function CheckButton(label, selected){
 		this.element.html(this.label);
 	}
 	
+	this.setState = function(state)
+	{
+		this.checked = state;
+		if(that.checked)$(that.element).addClass("checkbuttonchecked");
+		else $(that.element).removeClass("checkbuttonchecked")
+	}
+	
 	this.oncheck = function(f)
 	{
 		this.oncheckfn = f;

@@ -64,6 +64,16 @@ public class CheckButton extends BasicInput{
 	}
 	
 	/**
+	 * @param state New state
+	 * @return This instance for chaining
+	 */
+	public CheckButton setSate(boolean state){
+		this.state = state;
+		this.sendElement();
+		return this;
+	}
+	
+	/**
 	 * @return Current button label
 	 */
 	public String getLabel(){
@@ -87,7 +97,7 @@ public class CheckButton extends BasicInput{
 
 	@Override
 	public String getData() {
-		return "{\"label\":"+Json.escapeString(label)+"}";
+		return "{\"state\":"+String.valueOf(state)+",\"label\":"+Json.escapeString(label)+"}";
 	}
 	
 	/**

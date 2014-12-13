@@ -14,6 +14,14 @@ function CheckBox(selected){
 	{
 		this.oncheckfn = f;
 	}
+	
+	this.setState = function(state)
+	{
+		this.checked = state;
+		if(this.checked)$(that.element).html("<div class='check'>");
+		else $(this.element).html(" ");
+	}
+	
 	var that = this;
 	this.element = $("<div>").addClass("checkbox").html(" ")
 		.click(function(){

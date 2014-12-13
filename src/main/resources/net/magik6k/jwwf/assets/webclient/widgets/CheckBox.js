@@ -1,12 +1,12 @@
 {
 	create: function(data,id){
-		var chBox = new CheckBox();
+		var chBox = new CheckBox(data.state);
 		chBox.oncheck(function(c){sendCheck(id, c)});				
 	
-		return {element: chBox.element};
+		return {element: chBox.element,data:{ch:chBox}};
 	},
 	update: function(widget, data){
-		//TODO: ?
+		widget.data.ch.setState(data.state)
 	}
 		
 };//CheckBox end

@@ -44,6 +44,16 @@ public class CheckBox extends BasicInput{
 		return state;
 	}
 	
+	/**
+	 * @param state New state
+	 * @return This instance for chaining
+	 */
+	public CheckBox setSate(boolean state){
+		this.state = state;
+		this.sendElement();
+		return this;
+	}
+	
 	@Override
 	public String getName() {
 		return "CheckBox";
@@ -51,7 +61,7 @@ public class CheckBox extends BasicInput{
 
 	@Override
 	public String getData() {
-		return "{}";
+		return "{\"state\":"+String.valueOf(state)+"}";
 	}
 	
 	/**
