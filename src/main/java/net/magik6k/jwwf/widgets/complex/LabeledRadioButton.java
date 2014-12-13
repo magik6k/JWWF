@@ -18,7 +18,7 @@ public class LabeledRadioButton extends HorizontalPanel{
 		this.label = new TextLabel(label);
 		radioButton = new RadioButton(radioGroup);
 		
-		put(this.label, 1);
-		put(radioButton, 2);
+		put(this.label, 0);
+		put(radioButton, 1);
 	}
 }

@@ -19,8 +19,8 @@ public class LabeledCheckBox extends HorizontalPanel{
 		this.label = new TextLabel(label);
 		checkBox = new CheckBox(checkHandler);
 		
-		put(this.label, 1);
-		put(checkBox, 2);
+		put(this.label, 0);
+		put(checkBox, 1);
 	}
 
 	public LabeledCheckBox(String label) {
@@ -29,8 +29,8 @@ public class LabeledCheckBox extends HorizontalPanel{
 		this.label = new TextLabel(label);
 		checkBox = new CheckBox();
 		
-		put(this.label, 1);
-		put(checkBox, 2);
+		put(this.label, 0);
+		put(checkBox, 1);
 	}
 	
 	
