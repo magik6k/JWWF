@@ -18,11 +18,11 @@ public abstract class Widget extends Attachable{
 	private Queue<Attachable> waitingForUser;
 
 	/**
-	 * This variable holds refference to user associated with this widget.
-	 * Initially it's null, and is set when widget is attached to another.<br/>
-	 * DO NOT MANUALLY SET THIS VARIABLE UNLESS YOU RALLY KNOW WHAT
-	 * YOU ARE DOING.
-	 * Setting this variable may cause things to fail badly.
+	 * <p>This variable holds refference to user associated with this widget.
+	 * Initially it's null, and is set when widget is attached to another.</p>
+	 * <p>DO NOT MANUALLY SET THIS VARIABLE UNLESS YOU RALLY KNOW WHAT
+	 * YOU ARE DOING.</p>
+	 * <p>Setting this variable may cause things to fail badly.</p>
 	 */
 	protected User user;
 	
