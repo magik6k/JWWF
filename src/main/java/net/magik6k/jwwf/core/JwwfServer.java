@@ -35,11 +35,12 @@ public class JwwfServer {
 	 * Binds webapp to address, by default '/'
 	 * @param user User class for the web application
 	 * @param url Url to bind to, myst begin and end with /, like /foo/bar/
-	 * @return JwwfServer instance to allow chaining
+	 * @return This JwwfServer
 	 */
 	public JwwfServer bindWebapp(final Class<? extends User> user, String url){
+		if(url.endsWith("/"))url = url + "/";
 		context.addServlet(new ServletHolder(new WebClientServelt()),url + "");
-		context.addServlet(new ServletHolder(new SkinServlet()),url + "skins/*");
+		context.addServlet(new ServletHolder(new SkinServlet()),url + "__jwwf/skins/*");
 		context.addServlet(new ServletHolder(new APISocketServlet(new UserFactory() {
 			
 			@Override
@@ -51,14 +52,14 @@ public class JwwfServer {
 				}
 				return null;
 			}
-		})),url + "wshnd");
+		})),url + "__jwwf/socket");
 		return this;
 	}
 	
 	/**
 	 * Binds webapp to '/' address
 	 * @param user User class for the web application
-	 * @return JwwfServer instance to allow chaining
+	 * @return This JwwfServer
 	 */
 	public JwwfServer bindWebapp(Class<? extends User> user){
 		bindWebapp(user, "/");
@@ -69,7 +70,7 @@ public class JwwfServer {
 	 * Binds Jetty servlet to URL, this allows creation of REST APIs, etc
 	 * @param servletHolder Jetty servlet holder
 	 * @param url URL to bind servlet to
-	 * @return JwwfServer instance to allow chaining
+	 * @return This JwwfServer
 	 */
 	public JwwfServer bindJettyServlet(ServletHolder servletHolder, String url){
 		context.addServlet(servletHolder, url);
@@ -78,7 +79,7 @@ public class JwwfServer {
 	
 	/**
 	 * Starts Jetty server in background
-	 * @return JwwfServer instance to allow chaining
+	 * @return This JwwfServer
 	 */
 	public JwwfServer start(){
 		try {
@@ -91,7 +92,7 @@ public class JwwfServer {
 	
 	/**
 	 * Starts Jetty server and waits for it
-	 * @return JwwfServer instance to allow chaining
+	 * @return This JwwfServer
 	 */
 	public JwwfServer startAndJoin(){
 		try {
@@ -105,7 +106,7 @@ public class JwwfServer {
 	
 	/**
 	 * Waits for jetty server
-	 * @return JwwfServer instance to allow chaining
+	 * @return This JwwfServer
 	 */
 	public JwwfServer join(){
 		try {
@@ -117,9 +118,14 @@ public class JwwfServer {
 	}
 	
 	/**
+	 * <p>
 	 * Sometimes you have to release your application and you can't set proxy for
 	 * websocket connections, you need to set url of api here.
-	 * @param url Url to set, default(auto) is ws://"+document.location.host+"/wshnd
+	 * </p><p>
+	 * Default(automatic) address is ws://"+document.location.host+"/__jwwf/socket,
+	 * Generally it should be ws[s]://[bound adress]/__jwwf/socket
+	 * </p>
+	 * @param url Url to set
 	 */
 	public void setApiUrl(String url){
 		WebClientCreator.instance.setApiServer(url);

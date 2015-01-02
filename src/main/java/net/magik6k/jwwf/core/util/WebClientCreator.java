@@ -13,7 +13,7 @@ public class WebClientCreator {
 	
 	private final String widgetObjectName = "widgets";
 	private String precompiledCode;
-	private String apiServer = "ws://\"+document.location.host+\"/wshnd";	
+	private String apiServer = "ws://\"+document.location.host+\"/__jwwf/socket";	
 	
 	private WebClientCreator() {
 		
