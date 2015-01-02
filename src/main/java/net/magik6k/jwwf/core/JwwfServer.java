@@ -100,7 +100,7 @@ public class JwwfServer {
 	/**
 	 * <p>Binds ServletHolder to URL, this allows creation of REST APIs, etc</p>
 	 * <p>PLUGINS: Plugin servlets should have url's like /__jwwf/myplugin/stuff</p>
-	 * @param servletHolder Servlet holder
+	 * @param servlet Servlet holder
 	 * @param url URL to bind servlet to
 	 * @return This JwwfServer
 	 */

@@ -39,8 +39,8 @@ public class WebClientCreator implements ClientCreator{
 	}
 	
 	@Override
-	public void registerWidget(String name, String create, String update) {
-		String code = new StringBuilder().append("{create:function(data){").append(create)
+	public void registerWidget(final String name, String create, String update) {
+		final String code = new StringBuilder().append("{create:function(data){").append(create)
 				.append("},update:function(widget, data){").append(update).append("}}").toString();
 		
 		specialWidgets.add(new Entry<String, String>() {
