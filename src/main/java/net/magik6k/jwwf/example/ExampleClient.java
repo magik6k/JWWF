@@ -5,6 +5,7 @@ import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.PanelAlign;
 import net.magik6k.jwwf.event.InputEvent;
+import net.magik6k.jwwf.example.plugin.ExamplePluginWidget;
 import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.handlers.SelectionHandler;
@@ -226,6 +227,11 @@ public class ExampleClient extends User{
 			}
 		};
 		
+		/* Plugin example */
+		
+		TextLabel pluginExampleDesc = new TextLabel("Plugin");
+		ExamplePluginWidget pluginExample = new ExamplePluginWidget();
+		
 		EventBus exampleBus = new EventBus();
 		exampleBus.register(handler);
 		button.setEventBus(exampleBus);
@@ -233,10 +239,9 @@ public class ExampleClient extends User{
 		slider.setEventBus(exampleBus);
 		textInput.setEventBus(exampleBus);
 		passwordInput.setEventBus(exampleBus);
-		//...
 		
 		//Container for all examples
-		Widget exapmles = new TablePanel(2, 21,
+		Widget exapmles = new TablePanel(2, 22,
 				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				verticalPanelDesc,	verticalPanel,
@@ -257,7 +262,8 @@ public class ExampleClient extends User{
 				radioButtonDesc,	radioButtons,
 				customPanelDesc,	customPanel,
 				userDataDesc,		userDataInput,
-				busExampleDesc,		busExample);
+				busExampleDesc,		busExample,
+				pluginExampleDesc,	pluginExample);
 		
 		rootFrame.setTitle("Example Jwwf WebApp");
 		rootFrame.put(exapmles);

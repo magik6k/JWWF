@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.example;
 
 import net.magik6k.jwwf.core.JwwfServer;
+import net.magik6k.jwwf.example.plugin.ExamplePlugin;
 
 public class Main {
 	public static void main(String[] args){
@@ -11,7 +12,9 @@ public class Main {
 			System.out.println( "No port specified. Defaulting to 8888" );
 			port = 8888;
 		}
+		
 		JwwfServer server = new JwwfServer(port);
+		
 		try {
 			String addr = args[1];
 			if(addr != null){
@@ -21,7 +24,8 @@ public class Main {
 			System.out.println( "No custom API address given, using automatic mode." );
 		}
 		JwwfServer.debugOutput(true);
-		server.bindWebapp(ExampleClient.class).start();
+		server.attachPlugin(new ExamplePlugin());
+		server.bindWebapp(ExampleClient.class, "").start();
 		server.start();
 	}
 }

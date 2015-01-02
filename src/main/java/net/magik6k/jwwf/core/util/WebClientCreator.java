@@ -2,42 +2,82 @@ package net.magik6k.jwwf.core.util;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import net.magik6k.jwwf.core.JwwfServer;
+import net.magik6k.jwwf.core.plugin.ClientCreator;
 
 
-public class WebClientCreator {
-	public static final WebClientCreator instance = new WebClientCreator();
-	
+public class WebClientCreator implements ClientCreator{
 	private final String widgetObjectName = "widgets";
 	private String precompiledCode;
+	private String code;
 	private String apiServer = "ws://\"+document.location.host+\"/__jwwf/socket";	
+	private StringBuilder header = new StringBuilder();
+	private LinkedList<Entry<String, String>> specialWidgets = new LinkedList<>();
 	
-	private WebClientCreator() {
-		
-		precompiledCode = generate();
+	public WebClientCreator() {
+		precompiledCode = generateStatic();
+		code = generate();
 	}
 	
 	public String getClient(){
-		return precompiledCode;
+		return code;
 	}
 	
 	public void setApiServer(String apiServer){
 		this.apiServer = apiServer;
-		precompiledCode = generate();
+		code = generate();
 	}
 	
+	@Override
+	public void appendHead(String what){
+		header.append(what);
+		code = generate();
+	}
+	
+	@Override
+	public void registerWidget(String name, String create, String update) {
+		String code = new StringBuilder().append("{create:function(data){").append(create)
+				.append("},update:function(widget, data){").append(update).append("}}").toString();
+		
+		specialWidgets.add(new Entry<String, String>() {
+			
+			@Override
+			public String setValue(String value) {
+				return null;
+			}
+			
+			@Override
+			public String getValue() {
+				return code;
+			}
+			
+			@Override
+			public String getKey() {
+				return name;
+			}
+		});
+		
+		precompiledCode = generateStatic();
+		this.code = generate();
+	}	
+	
 	private String generate(){
+		return precompiledCode
+				.replace("<!--?!HEAD-->", header.toString())
+				.replace("/*?apiServer*/", apiServer);
+	}
+	
+	private String generateStatic(){
 		JwwfServer.logger.debug("WebClientCreator", "Compiling web client");
 		String widgetCode = generateWidgetCode(getAllWidgets("webclient/widgets"));
 		String client = ResourceReader.instance.readFile("webclient/index.html");
 		
 		client = client.replace("/*?WidgetImpl*/", widgetCode);
 		client = doIncludes(client);
-		
-		client = client.replace("/*?apiServer*/", apiServer);
 		
 		return client;
 	}
@@ -69,6 +109,15 @@ public class WebClientCreator {
 			codeBuilder.append("\"]=");					
 			codeBuilder.append(ResourceReader.instance.readFile(file));
 		}
+		
+		for(Entry<String, String> widget: specialWidgets){
+			codeBuilder.append(widgetObjectName);
+			codeBuilder.append("[\"");
+			codeBuilder.append(widget.getKey());
+			codeBuilder.append("\"]=");	
+			
+			codeBuilder.append(widget.getValue());
+		}
 		return codeBuilder.toString();
 	}
 	
@@ -85,8 +134,5 @@ public class WebClientCreator {
 		}
 		
 		return res;
-	}	
-	
-	
-	
+	}
 }

@@ -1,7 +1,12 @@
 package net.magik6k.jwwf.core;
 
+import java.util.LinkedList;
+
 import javax.servlet.Servlet;
 
+import net.magik6k.jwwf.core.plugin.ClientCreator;
+import net.magik6k.jwwf.core.plugin.IPluginGlobal;
+import net.magik6k.jwwf.core.plugin.IPluginWebapp;
 import net.magik6k.jwwf.core.servlet.APISocketServlet;
 import net.magik6k.jwwf.core.servlet.SkinServlet;
 import net.magik6k.jwwf.core.servlet.WebClientServelt;
@@ -16,11 +21,14 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
 public class JwwfServer {
-	Server server;
-	ServletContextHandler context;
+	private Server server;
+	private ServletContextHandler context;
+	private LinkedList<JwwfPlugin> plugins = new LinkedList<>();
+	private final WebClientCreator clientCreator = new WebClientCreator();
 	
 	public static LogHandler logger = new StdLogHandler();
 	public static int userIdleTime = Integer.MAX_VALUE;
+	
 	/**
 	 * Server constructor
 	 * @param port Port to bind server to 
@@ -40,14 +48,15 @@ public class JwwfServer {
 	 * @return This JwwfServer
 	 */
 	public JwwfServer bindWebapp(final Class<? extends User> user, String url){
-		if(url.endsWith("/"))
+		if(!url.endsWith("/"))
 			url = url + "/";
-		context.addServlet(new ServletHolder(new WebClientServelt()),url + "");
+		
+		context.addServlet(new ServletHolder(new WebClientServelt(clientCreator)),url + "");
 		context.addServlet(new ServletHolder(new SkinServlet()),url + "__jwwf/skins/*");
 		context.addServlet(new ServletHolder(new APISocketServlet(new UserFactory() {
 			
 			@Override
-			public User createUser() {				
+			public User createUser() {
 				try {
 					return user.getDeclaredConstructor().newInstance();
 				} catch (Exception e) {
@@ -56,9 +65,15 @@ public class JwwfServer {
 				return null;
 			}
 		})),url + "__jwwf/socket");
+		
+		for(JwwfPlugin plugin : plugins){
+			if(plugin instanceof IPluginWebapp)
+				((IPluginWebapp) plugin).onWebappBound(this, url);
+		}
+		
 		return this;
 	}
-	
+
 	/**
 	 * Binds webapp to '/' address
 	 * @see #bindServlet(ServletHolder, String)
@@ -71,7 +86,8 @@ public class JwwfServer {
 	}
 	
 	/**
-	 * Binds ServletHolder to URL, this allows creation of REST APIs, etc
+	 * <p>Binds ServletHolder to URL, this allows creation of REST APIs, etc</p>
+	 * <p>PLUGINS: Plugin servlets should have url's like /__jwwf/myplugin/stuff</p>
 	 * @param servletHolder Servlet holder
 	 * @param url URL to bind servlet to
 	 * @return This JwwfServer
@@ -82,7 +98,8 @@ public class JwwfServer {
 	}
 	
 	/**
-	 * Binds servlet to URL, this allows creation of REST APIs, etc
+	 * <p>Binds ServletHolder to URL, this allows creation of REST APIs, etc</p>
+	 * <p>PLUGINS: Plugin servlets should have url's like /__jwwf/myplugin/stuff</p>
 	 * @param servletHolder Servlet holder
 	 * @param url URL to bind servlet to
 	 * @return This JwwfServer
@@ -90,6 +107,26 @@ public class JwwfServer {
 	public JwwfServer bindServlet(Servlet servlet, String url){
 		context.addServlet(new ServletHolder(servlet), url);
 		return this;
+	}
+	
+	/**
+	 * Attahes new plugin to this server
+	 * @param plugin Plugin to attach
+	 * @return This JwwfServer
+	 */
+	public JwwfServer attachPlugin(JwwfPlugin plugin){
+		plugins.add(plugin);
+		if(plugin instanceof IPluginGlobal)
+			((IPluginGlobal) plugin).onAttach(this);
+		return this;
+	}
+	
+	/**
+	 * This method provides interface to client creator
+	 * @return {@link ClientCreator} instance
+	 */
+	public ClientCreator getCreator(){
+		return clientCreator;
 	}
 	
 	/**
@@ -143,7 +180,7 @@ public class JwwfServer {
 	 * @param url Url to set
 	 */
 	public void setApiUrl(String url){
-		WebClientCreator.instance.setApiServer(url);
+		clientCreator.setApiServer(url);
 	}
 	
 	public static void debugOutput(boolean enable){
