@@ -38,7 +38,8 @@ public class JwwfServer {
 	 * @return This JwwfServer
 	 */
 	public JwwfServer bindWebapp(final Class<? extends User> user, String url){
-		if(url.endsWith("/"))url = url + "/";
+		if(url.endsWith("/"))
+			url = url + "/";
 		context.addServlet(new ServletHolder(new WebClientServelt()),url + "");
 		context.addServlet(new ServletHolder(new SkinServlet()),url + "__jwwf/skins/*");
 		context.addServlet(new ServletHolder(new APISocketServlet(new UserFactory() {

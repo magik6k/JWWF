@@ -2,7 +2,7 @@ package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.PanelAlign;
-import net.magik6k.jwwf.widgets.basic.panel.virtual.ArrayPanel;
+import net.magik6k.jwwf.widgets.basic.panel.generic.ArrayPanel;
 
 /**
  * A simple table container

@@ -1,4 +1,4 @@
-package net.magik6k.jwwf.widgets.basic.panel.virtual;
+package net.magik6k.jwwf.widgets.basic.panel.generic;
 
 import java.util.LinkedList;
 import java.util.List;

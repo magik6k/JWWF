@@ -2,7 +2,7 @@ package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
-import net.magik6k.jwwf.widgets.basic.panel.virtual.Panel;
+import net.magik6k.jwwf.widgets.basic.panel.generic.Panel;
 
 /**
  * This panel allows to 'move' its content from original place

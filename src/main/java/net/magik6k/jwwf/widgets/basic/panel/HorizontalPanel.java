@@ -2,7 +2,7 @@ package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.enums.PanelAlign;
-import net.magik6k.jwwf.widgets.basic.panel.virtual.LinePanel;
+import net.magik6k.jwwf.widgets.basic.panel.generic.LinePanel;
 
 /**
  * This panel places its elements in horizontal line

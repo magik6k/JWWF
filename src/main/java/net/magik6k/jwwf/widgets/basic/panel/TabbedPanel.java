@@ -2,7 +2,7 @@ package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.util.NamedWidget;
-import net.magik6k.jwwf.widgets.basic.panel.virtual.NamedPanel;
+import net.magik6k.jwwf.widgets.basic.panel.generic.NamedPanel;
 
 /**
  * Panel with many tabs
