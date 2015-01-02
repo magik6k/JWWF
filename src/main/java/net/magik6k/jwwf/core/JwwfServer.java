@@ -1,5 +1,7 @@
 package net.magik6k.jwwf.core;
 
+import javax.servlet.Servlet;
+
 import net.magik6k.jwwf.core.servlet.APISocketServlet;
 import net.magik6k.jwwf.core.servlet.SkinServlet;
 import net.magik6k.jwwf.core.servlet.WebClientServelt;
@@ -32,7 +34,7 @@ public class JwwfServer {
 	}
 	
 	/**
-	 * Binds webapp to address, by default '/'
+	 * Binds webapp to address
 	 * @param user User class for the web application
 	 * @param url Url to bind to, myst begin and end with /, like /foo/bar/
 	 * @return This JwwfServer
@@ -59,6 +61,7 @@ public class JwwfServer {
 	
 	/**
 	 * Binds webapp to '/' address
+	 * @see #bindServlet(ServletHolder, String)
 	 * @param user User class for the web application
 	 * @return This JwwfServer
 	 */
@@ -68,13 +71,24 @@ public class JwwfServer {
 	}
 	
 	/**
-	 * Binds Jetty servlet to URL, this allows creation of REST APIs, etc
-	 * @param servletHolder Jetty servlet holder
+	 * Binds ServletHolder to URL, this allows creation of REST APIs, etc
+	 * @param servletHolder Servlet holder
 	 * @param url URL to bind servlet to
 	 * @return This JwwfServer
 	 */
-	public JwwfServer bindJettyServlet(ServletHolder servletHolder, String url){
+	public JwwfServer bindServlet(ServletHolder servletHolder, String url){
 		context.addServlet(servletHolder, url);
+		return this;
+	}
+	
+	/**
+	 * Binds servlet to URL, this allows creation of REST APIs, etc
+	 * @param servletHolder Servlet holder
+	 * @param url URL to bind servlet to
+	 * @return This JwwfServer
+	 */
+	public JwwfServer bindServlet(Servlet servlet, String url){
+		context.addServlet(new ServletHolder(servlet), url);
 		return this;
 	}
 	
