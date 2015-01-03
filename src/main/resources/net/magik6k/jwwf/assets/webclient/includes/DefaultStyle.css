@@ -101,11 +101,11 @@
 .tabc{vertical-align:bottom;text-align:center;}
 .tabr{vertical-align:bottom;text-align:right;}
 
-textarea{
+.jwwfTextarea{
 	resize: none;
 }
 
-button {
+.jwwfButton {
 	white-space: nowrap;
 }
 

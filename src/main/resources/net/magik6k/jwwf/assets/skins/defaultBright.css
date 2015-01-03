@@ -1,12 +1,12 @@
 /*SKIN, inspired by Tesselate / http://html5up.net/ */
 @charset 'UTF-8';
 
-body
+.jwwfBody
 {
 	background: #F8F8F8;
 }
 
-body,input,textarea,select,span
+.jwwfElement
 {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
@@ -16,7 +16,7 @@ body,input,textarea,select,span
 	-webkit-text-stroke: 0.1px;
 }
 
-pre
+.jwwfPre
 {
 	-webkit-text-stroke: 0.1px;
 	font-weight: 300;
@@ -39,7 +39,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
 	text-decoration: none;
 }
 
-a
+.jwwfA
 {
 	color: inherit;
 	text-decoration: none;
@@ -52,7 +52,7 @@ a
 	transition: border-bottom-color 0.25s ease-in-out;
 }
 
-a:hover
+.jwwfA:hover
 {
 	border-bottom-color: rgba(0,0,0,0);
 }
@@ -77,9 +77,8 @@ a:hover
 	transition: all 0.25s ease-in-out;
 }
 
-input[type=text],input[type=password],
-select,
-textarea
+.jwwfInput[type=text],.jwwfInput[type=password],
+.jwwfSelect, .jwwfTextarea
 {
 	display: block;
 	box-shadow: inset 0 0 0 1px #e6e6e6;
@@ -101,7 +100,7 @@ textarea
 	appearance: none;
 }
 
-input[type=text],input[type=password]{
+.jwwfInput[type=text],.jwwfInput[type=password]{
 	min-width:200px;
 }
 
@@ -165,32 +164,31 @@ input[type=text],input[type=password]{
 	background: #f9f9f9;
 }
 
-input[type=text],input[type=password],
-select
+.jwwfInput[type=text],.jwwfInput[type=password],
+.jwwfSelect
 {
 	line-height: 1.25em;
 }
 
-input[type=text]:focus,input[type=password]:focus,
-select:focus,
-textarea:focus
+.jwwfInput[type=text]:focus,.jwwfInput[type=password]:focus,
+.jwwfSelect:focus, .jwwfTextarea:focus
 {
 	outline: 0;
 	box-shadow: inset 0 0 0 1px #9fc9f1;
 	background: #f9f9f9;
 }
 
-textarea
+.jwwfTextarea
 {
 	font-family: 'Roboto', sans-serif;
 }
 
-select
+.jwwfSelect
 {
 	position: relative;
 }
 
-select option
+.jwwfSelect option
 {
 	color: #000;
 }
@@ -200,8 +198,7 @@ select option
 	border: 0;
 }
 
-
-img
+.jwwfImg
 {
 	display: inline-block;
 	border: 0;
@@ -214,12 +211,12 @@ img
 	transition: all 0.25s ease-in-out;
 }
 
-img:hover
+.jwwfImg:hover
 {
 	border-radius: 0;
 }
 
-button, .checkbutton
+.jwwfButton, .checkbutton
 {
 	-webkit-appearance: none;
 	position: relative;
@@ -228,7 +225,6 @@ button, .checkbutton
 	border-radius: 0.35em;
 	cursor: pointer;
 	border: 0;
-	
 	text-align: center;
 	text-decoration: none;
 	color: inherit;
@@ -242,7 +238,7 @@ button, .checkbutton
 	transition: all 0.25s ease-in-out;
 }
 
-button:hover, .checkbutton:hover
+.jwwfButton:hover, .checkbutton:hover
 {
 	background: rgba(150,150,150,0.1);
 }

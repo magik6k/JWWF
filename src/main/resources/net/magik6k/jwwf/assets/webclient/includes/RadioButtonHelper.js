@@ -12,7 +12,8 @@ function RadioButton(group, uid){
 		this.onselectfn = f;
 	}
 	var that = this;
-	this.element = $("<div>").addClass("radio").html(" ")
+	this.element = $("<div>").addClass("jwwfElement")
+		.addClass("radio").html(" ")
 		.click(function(){
 			if(radioGroups[group] == undefined)
 			{
@@ -23,7 +24,7 @@ function RadioButton(group, uid){
 				radioGroups[group] = uid;
 				that.selected = true;
 			}
-			if(that.selected)$(that.element).html("<div class='radiodot'>");
+			if(that.selected)$(that.element).html("<div class='jwwfElement radiodot'>");
 			else $(that.element).html(" ");
 			
 			if(that.selected&&typeof that.onselectfn == "function")that.onselectfn();

@@ -2,10 +2,10 @@
 	create: function(data, id){
 		var elements = [];
 		var actSel = 0;
-		var elem = $("<div>");
+		var elem = $("<div>").addClass("jwwfElement");
 		
-		var switcher = $("<div>");
-		var container = $("<div>").addClass("tabcontainer");
+		var switcher = $("<div>").addClass("jwwfElement");
+		var container = $("<div>").addClass("jwwfElement").addClass("tabcontainer");
 		
 		function setCallback(i, elem)
 		{
@@ -25,7 +25,7 @@
 			if(data.content[i].widget < 0)
 			{
 				elements[i] = {};
-				elements[i].elem = $("<div>");
+				elements[i].elem = $("<div>").addClass("jwwfElement");
 				elements[i].id = -1;
 				
 				var sw = $("<a>").html(data.content[i].name)

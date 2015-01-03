@@ -1,14 +1,14 @@
 {
 	create: function(data){
 		var elements = []; 
-		var elem = $("<div>").addClass("vcontainer");
+		var elem = $("<div>").addClass("jwwfElement").addClass("vcontainer");
 		
 		for(var i = 0; i < data.content.length; ++i)
 		{
 			if(data.content[i] < 0)
 			{
 				elements[i] = {};
-				elements[i].elem = $("<div>").css("margin-bottom", data.spacing+"px");
+				elements[i].elem = $("<div>").addClass("jwwfElement").css("margin-bottom", data.spacing+"px");
 				if(data.align == "middle")elements[i].elem.addClass("horizontallymiddle");
 				if(data.align == "right")elements[i].elem.addClass("right");
 				elements[i].id = -1;
@@ -16,7 +16,7 @@
 			else
 			{
 				elements[i] = {};
-				elements[i].elem = $("<div>").css("margin-bottom", data.spacing+"px")
+				elements[i].elem = $("<div>").addClass("jwwfElement").css("margin-bottom", data.spacing+"px")
 					.html(widgetStorage[data.content[i]].element);
 				if(data.align == "middle")elements[i].elem.addClass("horizontallymiddle");
 				if(data.align == "right")elements[i].elem.addClass("right");

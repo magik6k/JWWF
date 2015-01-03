@@ -1,15 +1,15 @@
 {
 	create: function(data){
-		var elem = $("<div>").css("position","relative");
+		var elem = $("<div>").addClass("jwwfElement").css("position","relative");
 	
 		if(data.content < 0)
 		{
-			var content = $("<div>").css({left:data.x,top:data.y});
+			var content = $("<div>").addClass("jwwfElement").css({left:data.x,top:data.y});
 			$(elem).html(content);
 			return {element: elem, data:{content:content}};
 		}
 		
-		var content = $("<div>").html(widgetStorage[data.content].element)
+		var content = $("<div>").addClass("jwwfElement").html(widgetStorage[data.content].element)
 			.css({left:data.x,top:data.y}).addClass("absolutePanel");
 		$(elem).html(content);
 		

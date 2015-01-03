@@ -27,7 +27,7 @@ function CheckButton(label, selected){
 		this.oncheckfn = f;
 	}
 	var that = this;
-	this.element = $("<div>").addClass("checkbutton").html(this.label)
+	this.element = $("<div>").addClass("jwwfElement").addClass("checkbutton").html(this.label)
 		.click(function(){
 			that.checked=!that.checked;
 			if(that.checked)$(that.element).addClass("checkbuttonchecked");

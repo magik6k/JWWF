@@ -2,7 +2,7 @@
 	create: function(data,id){
 		var snd = 0;
 		
-		var elem = $("<input>").attr("type","text")
+		var elem = $("<input>").addClass("jwwfInput").addClass("jwwfElement").attr("type","text")
 			.attr("placeholder", data.placeholder)
 			.on("keypress",function(){ 
 					clearTimeout(snd);

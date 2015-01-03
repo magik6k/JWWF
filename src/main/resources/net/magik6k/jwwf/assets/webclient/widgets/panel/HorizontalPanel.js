@@ -1,7 +1,7 @@
 {
 	create: function(data){
 		var elements = []; 
-		var elem = $("<div>").addClass("horizontalcontainer");
+		var elem = $("<div>").addClass("horizontalcontainer").addClass("jwwfElement");
 		
 		if(data.align == "middle"){elem.addClass("hpmid");}
 		if(data.align == "top"){elem.addClass("hptop");}
@@ -12,14 +12,14 @@
 			if(data.content[i] < 0)
 			{
 				elements[i] = {};
-				elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing);
+				elements[i].elem = $("<div>").addClass("jwwfElement").addClass("horizontal").css("margin-right", data.spacing);
 				
 				elements[i].id = -1;
 			}
 			else
 			{
 				elements[i] = {};
-				elements[i].elem = $("<div>").addClass("horizontal").css("margin-right", data.spacing)
+				elements[i].elem = $("<div>").addClass("jwwfElement").addClass("horizontal").css("margin-right", data.spacing)
 					.html(widgetStorage[data.content[i]].element);
 				elements[i].id = data.content[i];
 			}
@@ -36,9 +36,6 @@
 	
 		for(var i = 0; i < data.content.length; ++i)
 		{
-			
-			
-			
 			if(data.content[i] < 0)continue;//TODO: Is this ok?
 			if(data.content[i] == widget.data.elements[i].id)continue;
 			

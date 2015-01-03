@@ -2,7 +2,7 @@
 	create: function(data,id){
 		var snd = 0;
 		
-		var elem = $("<textarea>").attr("type","text")
+		var elem = $("<textarea>").addClass("jwwfElement").addClass("jwwfTextarea").attr("type","text")
 			.attr("placeholder", data.placeholder)
 			.attr("cols",data.cols)
 			.attr("rows",data.rows)

@@ -1,6 +1,6 @@
 {
 	create: function(data,id){
-		return {element: $("<button>").html(data.label)
+		return {element: $("<button>").addClass("jwwfElement").addClass("jwwfButton").html(data.label)
 			.click(function(){sendButton(id);}),data:{id:id}};
 	},
 	update: function(widget, data){

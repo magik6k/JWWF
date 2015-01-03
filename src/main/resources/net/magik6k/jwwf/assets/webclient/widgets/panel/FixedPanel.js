@@ -1,9 +1,9 @@
 {
 	create: function(data){
 		if(data.content < 0)
-			return {element: $("<div>").css({left:data.x,top:data.y})};
+			return {element: $("<div>").addClass("jwwfElement").css({left:data.x,top:data.y})};
 		
-		var elem = $("<div>").html(widgetStorage[data.content].element)
+		var elem = $("<div>").addClass("jwwfElement").html(widgetStorage[data.content].element)
 			.css({left:data.x,top:data.y}).addClass("fixedPanel");
 		return {element: elem, data: {id: data.content}};
 	},

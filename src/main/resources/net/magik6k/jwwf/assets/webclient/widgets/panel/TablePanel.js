@@ -1,18 +1,18 @@
 {
 	create: function(data){
 		var rows = []; 
-		var elem = $("<table>");
+		var elem = $("<table>").addClass("jwwfElement");
 		
 		for(var i = 0; i < data.content.length; ++i)
 		{
 			rows[i] = {}
-			rows[i].elem = $("<tr>");
+			rows[i].elem = $("<tr>").addClass("jwwfElement");
 			rows[i].cells = []
 			for(var j = 0; j < data.content[i].length; ++j)
 			{
 				if(data.content[i][j] < 0)
 				{
-					var cell = $("<td>").css("padding-right",data.hspace+"px")
+					var cell = $("<td>").addClass("jwwfElement").css("padding-right",data.hspace+"px")
 							.css("padding-bottom",data.vspace+"px");
 					
 					if(data.align == "topleft")		cell.addClass("tatl");
@@ -32,7 +32,7 @@
 				}
 				else
 				{
-					var cell = $("<td>").html(widgetStorage[data.content[i][j]].element)
+					var cell = $("<td>").addClass("jwwfElement").html(widgetStorage[data.content[i][j]].element)
 							.css("padding-right",(j+1<data.content[i].length?data.hspace:0)+"px")
 							.css("padding-bottom",(i+1<data.content.length?data.vspace:0)+"px")
 					
