@@ -42,7 +42,15 @@ public abstract class Widget extends Attachable{
 		id = -1;
 	}
 	
+	/**
+	 * Used to get internal widget name
+	 * @return Internal name of this widget, Usually name of widget class
+	 */
 	public abstract String getName();
+	
+	/**
+	 * @return Data to send to client side
+	 */
 	public abstract String getData();
 	
 	public final int getID(){
@@ -54,6 +62,10 @@ public abstract class Widget extends Attachable{
 		return "{\"id\":"+String.valueOf(id)+",\"type\":\""+getName()+"\", \"data\":"+getData()+"}";
 	}
 	
+	/**
+	 * Used to indicate that this instance of widget requires sending an update
+	 * To client side. Calling this method will trigger {@link #getData()} method.
+	 */
 	protected final void sendElement(){
 		if(connection == null)return;
 		try {
@@ -74,7 +86,10 @@ public abstract class Widget extends Attachable{
 		if(action != null)
 			owner.setActionHandler(id, this);
 		
-		user = owner;
+		if(user == null){
+			onAttach();
+			user = owner;
+		}
 		
 		if(waitingForUser != null){
 			Attachable w;
@@ -88,7 +103,8 @@ public abstract class Widget extends Attachable{
 	}	
 	
 	/**
-	 * If the widget is container it must invoke this metkod for all widgets it stores
+	 * Used to declare that instance of widget is 'held' by this widget.
+	 * If this widget is container it must invoke this method for all widgets it stores
 	 * @param widget Widget that is stored in this widget
 	 */
 	protected final void attach(Attachable widget){
@@ -100,5 +116,17 @@ public abstract class Widget extends Attachable{
 		}
 	}
 	
+	/**
+	 * This method is triggered when data arrives from client side
+	 * @param data Data that arrived from client side
+	 * @throws Exception An exception that can be thrown in case something went wrong
+	 */
 	protected void handleData(String data)throws Exception{}
+	
+	/**
+	 * This method is called when this widget is assigned to user for the first time.
+	 * Note that if you are overriding widget that already extends {@link Widget} class,
+	 * you should call super method.
+	 */
+	protected void onAttach(){};
 }
