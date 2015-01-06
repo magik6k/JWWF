@@ -10,6 +10,7 @@ public abstract class User implements OnTextMessage{
 	//private HashMap<Integer, Widget> actionHandlers = new HashMap<Integer, Widget>();
 	protected MainFrame rootFrame;
 	private UserState userState;
+	private JwwfServer server; 
 	
 	/**
 	 * @deprecated Use getUserData method
@@ -32,6 +33,19 @@ public abstract class User implements OnTextMessage{
 	
 	protected final int nextElementId() {
 		return id++;
+	}
+	
+	protected void setServer(JwwfServer server) {
+		if(this.server != null)
+			throw new IllegalStateException("Users server is set internally!");
+		this.server = server;
+	}
+	
+	/**
+	 * @return Instance of {@link JwwfServer} fow which this user was created
+	 */
+	public JwwfServer getServer(){
+		return server;
 	}
 	
 	private final void onData(String data){

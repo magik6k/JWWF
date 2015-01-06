@@ -25,6 +25,7 @@ public class JwwfServer {
 	private ServletContextHandler context;
 	private LinkedList<JwwfPlugin> plugins = new LinkedList<>();
 	private final WebClientCreator clientCreator = new WebClientCreator();
+	private final JwwfServer jwwfServer = this;
 	
 	public static LogHandler logger = new StdLogHandler();
 	public static int userIdleTime = Integer.MAX_VALUE;
@@ -58,7 +59,9 @@ public class JwwfServer {
 			@Override
 			public User createUser() {
 				try {
-					return user.getDeclaredConstructor().newInstance();
+					User u = user.getDeclaredConstructor().newInstance();
+					u.setServer(jwwfServer);
+					return u;
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
