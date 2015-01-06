@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.core;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import javax.servlet.Servlet;
 
@@ -170,6 +171,16 @@ public class JwwfServer {
 			e.printStackTrace();
 		}
 		return this;
+	}
+	
+	/**
+	 * This method returns list containing instances of all plugins
+	 * attached to this server.
+	 * @return List containing instances of attached plugins.
+	 */
+	@SuppressWarnings("unchecked")
+	public List<JwwfPlugin> getPlugins(){
+		return (List<JwwfPlugin>) plugins.clone();
 	}
 	
 	/**
