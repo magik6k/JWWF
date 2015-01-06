@@ -24,6 +24,8 @@ $(function(){
 				}else if(data.type == "storageGet"){
 					if(localStorage.getItem(data.key))
 						socket.send("U"+data.key+";"+localStorage.getItem(data.key));
+					else
+						socket.send("U"+data.key+";");
 				}
 			}
 			else if(widgetStorage[data.id] == undefined)

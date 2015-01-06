@@ -210,6 +210,9 @@ public class ExampleClient extends User{
 			@Override
 			public void data(String key, String value) {
 				userDataInput.setText(value);
+				if(value.equals("")){
+					userDataInput.setText("ThisWillPersist");
+				}
 			}
 		});
 		

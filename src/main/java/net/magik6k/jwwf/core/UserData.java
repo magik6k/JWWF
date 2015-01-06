@@ -27,7 +27,7 @@ public class UserData {
 	/**
 	 * Gets userData string. if data exists in cache the callback is fired
 	 * immediately, if not async request is sent to user. If user don't have
-	 * requested data, the callback won't be triggered
+	 * requested data, empty string will arrive
 	 * @param key Requested key
 	 * @param handler Handler to be invoked when data arrives
 	 */
