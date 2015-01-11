@@ -1,13 +1,10 @@
 package net.magik6k.jwwf.core;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 import net.magik6k.jwwf.handlers.UserDataHandler;
 import net.magik6k.jwwf.util.Json;
-
-import org.eclipse.jetty.websocket.WebSocket.Connection;
 
 /**
  * Utility mechanism that allows app creator to save user data on his/her
@@ -18,10 +15,10 @@ public class UserData {
 	private HashMap<String,String> cache = new HashMap<String,String>();
 	private HashMap<String,LinkedList<UserDataHandler>> waitingHandlers = 
 			new HashMap<String,LinkedList<UserDataHandler>>();
-	private Connection connection;
+	private User user;
 	
 	public UserData(User user){
-		connection = user.getConnection();
+		this.user = user;
 	}
 	
 	/**
@@ -40,12 +37,9 @@ public class UserData {
 			}
 			return;
 		}
-		try {
-			connection.sendMessage("{\"id\":-1,\"type\":\"storageGet\",\"key\":"
-					+Json.escapeString(key)+"}");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		
+		user.sendGlobal("JWWF-storageGet", "{\"key\":"+Json.escapeString(key)+"}");
+
 		if(waitingHandlers.containsKey(key)){
 			waitingHandlers.get(key).push(handler);
 		}else{
@@ -72,13 +66,7 @@ public class UserData {
 	 */
 	public void set(String key, String value){
 		cache.put(key, value);
-		try {
-			connection.sendMessage("{\"id\":-1,\"type\":\"storageSet\",\"key\":"
-					+Json.escapeString(key)+",\"value\":"+Json.escapeString(value)+"}");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		user.sendGlobal("JWWF-storageSet", "{\"key\":"+Json.escapeString(key)+",\"value\":"+Json.escapeString(value)+"}");
 	}
 	
 	protected void recvData(String key, String value) {

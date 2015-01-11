@@ -16,17 +16,9 @@ $(function(){
 		
 		try{
 		
-			if(data.id < 0)
+			if(data.id < 0 && data.type == "global")
 			{
-				if(data.type == "storageSet")
-				{
-					localStorage.setItem(data.key, data.value);
-				}else if(data.type == "storageGet"){
-					if(localStorage.getItem(data.key))
-						socket.send("U"+data.key+";"+localStorage.getItem(data.key));
-					else
-						socket.send("U"+data.key+";");
-				}
+				global[data.handler](data.data)
 			}
 			else if(widgetStorage[data.id] == undefined)
 			{

@@ -1,6 +1,9 @@
 package net.magik6k.jwwf.core;
 
+import java.io.IOException;
+
 import net.magik6k.jwwf.core.action.Actions;
+import net.magik6k.jwwf.util.Json;
 
 import org.eclipse.jetty.websocket.WebSocket.OnTextMessage;
 
@@ -18,6 +21,12 @@ public abstract class User implements OnTextMessage{
 	@Deprecated
 	public UserData userData;
 	
+	/**
+	 * This method gets called when user is gets connected and some basic setup is done.
+	 * @param rootFrame Instance of {@link MainFrame}, Note that this argument
+	 * 	will be removed in future, and replaced by {@link User#rootFrame}.
+	 * 	It's recommended to keep the name 'rootFrame' to make porting to new version easier
+	 */
 	protected abstract void initializeUser(MainFrame rootFrame);
 	
 	/**
@@ -26,9 +35,29 @@ public abstract class User implements OnTextMessage{
 	 * this function
 	 */
 	public void destroy(){};//FIXME: Is this actually called?
-
+	
 	protected final Connection getConnection() {
 		return connection;
+	}
+	
+	/**
+	 * This function is mainly made for plug-in use, it sends
+	 * data to global user handler for example to perform some tasks
+	 * that aren't related directly to widgets. Global handler is a javascript
+	 * function in array named 'global', under key that is passed to this function as
+	 * handler parameter. As first argument the javascript function is given
+	 * data object that is passed as JSON here
+	 * @param handler Name of client-side handler, generally syntax
+	 * 	should be [PluginName]-[HandlerName], like JWWF-UserData
+	 * @param data Data to send, JSON-formatted
+	 */
+	public final void sendGlobal(String handler, String data){
+		try {
+			connection.sendMessage("{\"id\":-1,\"type\":\"global\",\"handler\":"
+					+Json.escapeString(handler)+",\"data\":"+data+"}");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	protected final int nextElementId() {
