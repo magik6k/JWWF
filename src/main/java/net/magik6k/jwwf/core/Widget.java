@@ -87,8 +87,8 @@ public abstract class Widget extends Attachable{
 			owner.setActionHandler(id, this);
 		
 		if(user == null){
-			onAttach();
 			user = owner;
+			onAttach();
 		}
 		
 		if(waitingForUser != null){
