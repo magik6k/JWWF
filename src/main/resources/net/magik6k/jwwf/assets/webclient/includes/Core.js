@@ -35,7 +35,7 @@ $(function(){
 	};
 	socket.onclose = function()
 	{ 
-		alert("Connection closed"); 
+		$("body").html("<h2>Connection to service has been closed</h2><small>Powered by Java Web Widget Framework</small>");
 	};
 });
 
