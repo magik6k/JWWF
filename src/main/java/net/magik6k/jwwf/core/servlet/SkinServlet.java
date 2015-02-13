@@ -18,6 +18,9 @@ public class SkinServlet extends HttpServlet{
         response.setContentType("text/css");
         response.setStatus(HttpServletResponse.SC_OK);
         
-        response.getWriter().write(ResourceReader.instance.readFile("skins/defaultBright.css"));
+        if(request.getRequestURL().toString().endsWith(".css"))
+        	response.getWriter().write(ResourceReader.instance.readFile("skins/default/bootstrap.css"));
+        else
+        	response.getWriter().write(ResourceReader.instance.readFile("skins/default/bootstrap.js"));
     }
 }
