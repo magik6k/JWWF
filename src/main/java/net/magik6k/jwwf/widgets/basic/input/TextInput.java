@@ -124,6 +124,7 @@ public class TextInput extends BasicInput {
 	
 	/**
 	 * Internal use only
+	 * @param data Data
 	 */
 	public void handleData(String data){
 		if(data == null)return;

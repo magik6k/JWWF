@@ -67,6 +67,7 @@ public class Button extends BasicInput{
 	
 	/**
 	 * Internal use only
+	 * @param data Data
 	 */
 	protected void handleData(String data){
 		try {

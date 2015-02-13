@@ -156,6 +156,7 @@ public class Slider extends BasicInput{
 	
 	/**
 	 * Internal use only
+	 * @param data Data
 	 */
 	public void handleData(String data){
 		value = Double.valueOf(data);

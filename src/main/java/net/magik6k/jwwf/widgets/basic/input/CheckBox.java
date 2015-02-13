@@ -66,6 +66,7 @@ public class CheckBox extends BasicInput{
 	
 	/**
 	 * Internal use only
+	 * @param data Data
 	 */
 	public void handleData(String data){
 		state = data.equals("1");

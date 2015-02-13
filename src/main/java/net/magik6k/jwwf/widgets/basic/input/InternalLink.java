@@ -67,6 +67,7 @@ public class InternalLink extends BasicInput{
 	
 	/**
 	 * Internal use only
+	 * @param data Data
 	 */
 	public void handleData(String data){
 		try {
