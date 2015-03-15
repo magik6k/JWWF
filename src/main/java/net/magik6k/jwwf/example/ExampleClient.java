@@ -105,7 +105,7 @@ public class ExampleClient extends User{
 		/* Example ProgressBar */
 		
 		TextLabel progressBarDesc = new TextLabel("ProgressBar");
-		final ProgressBar progressBar = new ProgressBar(255, 0.5);		
+		final ProgressBar progressBar = new ProgressBar(0.5);
 		
 		/* Example Slider */
 		
@@ -120,7 +120,7 @@ public class ExampleClient extends User{
 		}, 30, 0, 120);
 		
 		
-		/* Example TextInput */		
+		/* Example TextInput */
 		final TextLabel textInputDesc = new TextLabel("TextInput");
 		TextInput textInput = new TextInput("TextInput", new TextHandler() {
 			
@@ -130,7 +130,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example PasswordInput */		
+		/* Example PasswordInput */
 		final TextLabel passwordInputDesc = new TextLabel("PasswordInput");
 		PasswordInput passwordInput = new PasswordInput("PasswordInput", new TextHandler() {
 			
@@ -140,7 +140,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example CheckBox */		
+		/* Example CheckBox */
 		final TextLabel checkBoxDesc = new TextLabel("CheckBox");
 		CheckBox checkBox = new CheckBox(new CheckHandler() {
 			@Override
@@ -149,7 +149,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example CheckButton */		
+		/* Example CheckButton */
 		final TextLabel CheckButtonDesc = new TextLabel("CheckButton");
 		CheckButton checkButton = new CheckButton("CheckButton", new CheckHandler() {
 			@Override
@@ -158,7 +158,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Example RadioButton*/		
+		/* Example RadioButton*/
 		final TextLabel radioButtonDesc = new TextLabel("RadioButton");
 		
 		RadioGroup group = new RadioGroup(new SelectionHandler() {
@@ -171,7 +171,7 @@ public class ExampleClient extends User{
 		Panel radioButtons = new Panel(2,
 				new RadioButton(group, "Button1"), new RadioButton(group, "Button2"));
 		
-		/* Example TextArea */		
+		/* Example TextArea */
 		final TextLabel textAreaDesc = new TextLabel("TextArea");
 		TextArea textArea = new TextArea("Text area", new TextHandler() {
 			@Override
@@ -184,7 +184,7 @@ public class ExampleClient extends User{
 		Widget customPanel = new LoginPanel();
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
-		/* UserData example*/		
+		/* UserData example*/
 		TextLabel userDataDesc = new TextLabel("UserData");
 		final TextInput userDataInput = new TextInput("UserData", "ThisWillPersist", new TextHandler() {
 			@Override
@@ -254,28 +254,6 @@ public class ExampleClient extends User{
 		examples.put(new Panel(2, userDataDesc,			userDataInput));
 		examples.put(new Panel(2, busExampleDesc,		busExample));
 		examples.put(new Panel(2, pluginExampleDesc,	pluginExample));
-
-		/*Widget examples = new TablePanel(2, 20,
-				textLabelExample,	preformattedTextLabelExample,
-				imageDesc,			image,
-				rowDesc,			row,
-				tablePanelDesc,		tablePanel,
-				tabbedPanelDesc,	tabbedPanel,
-				externalLinkDesc,	externalLink,
-				internalLinkDesc,	internalLink,
-				buttonDesc,			button,
-				progressBarDesc,	progressBar,
-				sliderDesc,			slider,
-				textInputDesc,		textInput,
-				passwordInputDesc,	passwordInput,
-				textAreaDesc,		textArea,
-				checkBoxDesc,		checkBox,
-				CheckButtonDesc,	checkButton,
-				radioButtonDesc,	radioButtons,
-				customPanelDesc,	customPanel,
-				userDataDesc,		userDataInput,
-				busExampleDesc,		busExample,
-				pluginExampleDesc,	pluginExample);*/
 		
 		rootFrame.setTitle("Example Jwwf WebApp");
 		rootFrame.put(examples);

@@ -1,12 +1,14 @@
-function ProgressBar(width, progress){
-	var pBar = $("<div>").addClass("jwwfElement")
-		.addClass("progressBar").width(progress+"%");
-	this.element = $("<div>").addClass("jwwfElement")
-		.addClass("progressContainer").width(width+"px").html(pBar);
+function ProgressBar(progress){
+	var bar = $("<div>").addClass("progress-bar")
+		.attr("role", "progressbar")
+		.attr("aria-valuenow", progress)
+		.css('width', progress+'%')
+		.attr("aria-valuemin", "0")
+
+	this.element = $("<div>").addClass("progress").html(bar);
 	this.data = this;
-	this.update = function(width, progress){
-		pBar.width(progress+"%");
-		this.element.width(width+"px");
+	this.update = function(progress){
+		bar.css('width', progress+'%').attr("aria-valuenow", progress)
 	}
 }//ProgressBar end
 
