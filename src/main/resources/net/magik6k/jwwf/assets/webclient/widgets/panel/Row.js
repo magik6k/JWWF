@@ -1,7 +1,7 @@
 {
 	create: function(data) {
 		var elements = [];
-		var elem = $("<div>").addClass("row-fluid")
+		var elem = $("<div>").addClass("row")
 
 		for(var i = 0; i < data.content.length; ++i) {
 			if(data.content[i] < 0) {
@@ -11,7 +11,7 @@
 				elements[i].id = -1;
 			} else {
 				elements[i] = {};
-				elements[i].elem = $("<div>").html(widgetStorage[data.content[i]].element)
+				elements[i].elem = widgetStorage[data.content[i]].element
 				elements[i].id = data.content[i];
 			}
 			elem.append(elements[i].elem)
@@ -27,7 +27,13 @@
 			if(widget.data.elements[i].id > 0) {
 				widgetStorage[widget.data.elements[i].id].element = $(widgetStorage[widget.data.elements[i].id].element).detach();
 			}
-			$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
+
+			if(i === 0) {
+				$(widget.element).prepend(widgetStorage[data.content[i]].element);
+			} else {
+				$(widget.element).children().eq(i - 1).after(widgetStorage[data.content[i]].element);
+			}
+			//$(widget.data.elements[i].elem).html(widgetStorage[data.content[i]].element);
 			widget.data.elements[i].id = data.content[i];
 		}
 	}

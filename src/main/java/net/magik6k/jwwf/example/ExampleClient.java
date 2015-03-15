@@ -231,7 +231,31 @@ public class ExampleClient extends User{
 		passwordInput.setEventBus(exampleBus);
 		
 		//Container for all examples
-		Widget examples = new TablePanel(2, 20,
+
+		Row examples = new Row(20);
+
+		examples.put(new Panel(2, textLabelExample,		preformattedTextLabelExample));
+		examples.put(new Panel(2, imageDesc,			image));
+		examples.put(new Panel(2, rowDesc,				row));
+		examples.put(new Panel(2, tablePanelDesc,		tablePanel));
+		examples.put(new Panel(2, tabbedPanelDesc,		tabbedPanel));
+		examples.put(new Panel(2, externalLinkDesc,		externalLink));
+		examples.put(new Panel(2, internalLinkDesc,		internalLink));
+		examples.put(new Panel(2, buttonDesc,			button));
+		examples.put(new Panel(2, progressBarDesc,		progressBar));
+		examples.put(new Panel(2, sliderDesc,			slider));
+		examples.put(new Panel(2, textInputDesc,		textInput));
+		examples.put(new Panel(2, passwordInputDesc,	passwordInput));
+		examples.put(new Panel(2, textAreaDesc,			textArea));
+		examples.put(new Panel(2, checkBoxDesc,			checkBox));
+		examples.put(new Panel(2, CheckButtonDesc,		checkButton));
+		examples.put(new Panel(2, radioButtonDesc,		radioButtons));
+		examples.put(new Panel(2, customPanelDesc,		customPanel));
+		examples.put(new Panel(2, userDataDesc,			userDataInput));
+		examples.put(new Panel(2, busExampleDesc,		busExample));
+		examples.put(new Panel(2, pluginExampleDesc,	pluginExample));
+
+		/*Widget examples = new TablePanel(2, 20,
 				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				rowDesc,			row,
@@ -251,7 +275,7 @@ public class ExampleClient extends User{
 				customPanelDesc,	customPanel,
 				userDataDesc,		userDataInput,
 				busExampleDesc,		busExample,
-				pluginExampleDesc,	pluginExample);
+				pluginExampleDesc,	pluginExample);*/
 		
 		rootFrame.setTitle("Example Jwwf WebApp");
 		rootFrame.put(examples);

@@ -1,7 +1,7 @@
 {
 	create: function(data){
 		var rows = []; 
-		var elem = $("<table>").addClass("jwwfElement");
+		var elem = $("<table>").addClass("table");
 		
 		for(var i = 0; i < data.content.length; ++i)
 		{
