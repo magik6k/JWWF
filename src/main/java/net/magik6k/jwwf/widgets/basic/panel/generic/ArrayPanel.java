@@ -3,7 +3,7 @@ package net.magik6k.jwwf.widgets.basic.panel.generic;
 import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
 
-public abstract class ArrayPanel extends Panel{
+public abstract class ArrayPanel extends AbstractPanel {
 	/**
 	 * Set widget to certain cell in table
 	 * @param widget Widget to set

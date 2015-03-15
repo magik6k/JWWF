@@ -2,13 +2,14 @@ package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
-import net.magik6k.jwwf.widgets.basic.panel.generic.Panel;
+import net.magik6k.jwwf.widgets.basic.panel.generic.AbstractPanel;
 
 /**
  * This panel places its content based on top-left corner of the window,
  * the content is 'fixed'
  */
-public class FixedPanel extends Panel{
+@Deprecated
+public class FixedPanel extends AbstractPanel {
 	private Widget content;
 	private int x,y;
 	

@@ -7,6 +7,7 @@ import net.magik6k.jwwf.widgets.basic.panel.generic.LinePanel;
 /**
  * This panel places its elements in horizontal line
  */
+@Deprecated
 public class HorizontalPanel extends LinePanel{
 
 	private Widget[] content;

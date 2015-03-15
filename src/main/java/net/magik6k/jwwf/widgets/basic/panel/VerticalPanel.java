@@ -7,6 +7,7 @@ import net.magik6k.jwwf.widgets.basic.panel.generic.LinePanel;
 /**
  * This panel places its elements in vertical line
  */
+@Deprecated
 public class VerticalPanel extends LinePanel{
 
 	private Widget[] content;
@@ -28,7 +29,7 @@ public class VerticalPanel extends LinePanel{
 	 */	
 	public VerticalPanel(int height, Widget... widgets) {
 		super();
-		content = new Widget[height];		
+		content = new Widget[height];
 		
 		for(int i = 0; i < content.length; ++i)	{
 			if(i < widgets.length && widgets[i] != null){

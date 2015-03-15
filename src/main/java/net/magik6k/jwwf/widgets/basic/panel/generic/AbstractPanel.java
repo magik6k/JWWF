@@ -6,7 +6,7 @@ import java.util.List;
 import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
 
-public abstract class Panel extends Widget{
+public abstract class AbstractPanel extends Widget{
 	/**
 	 * Puts widget at first free index
 	 * @param widget Widget to put

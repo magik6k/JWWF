@@ -2,10 +2,10 @@
 	create: function(data){
 		document.title = data.title;
 		if(data.content < 0)
-			return {element: $("body")};
+			return {element: $("#mainContainer")};
 		
-		$("body").html(widgetStorage[data.content].element);
-		return {element: $("body"), data:{id: data.content}};
+		$("#mainContainer").html(widgetStorage[data.content].element);
+		return {element: $("#mainContainer"), data:{id: data.content}};
 	},
 	update: function(widget, data){
 		document.title = data.title;
@@ -15,11 +15,11 @@
 		}
 		if(data.content < 0)
 		{
-			$("body").html("");
+			$("#mainContainer").html("");
 		}
 		else
 		{						
-			$("body").html(widgetStorage[data.content].element);
+			$("#mainContainer").html(widgetStorage[data.content].element);
 		}
 	}
 };//MainFrame end

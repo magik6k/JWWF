@@ -6,7 +6,7 @@ import java.util.List;
 import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.Widget;
 
-public abstract class LinePanel extends Panel{
+public abstract class LinePanel extends AbstractPanel {
 	/**
 	 * Puts new widget to the container
 	 * @param widget Widget to put

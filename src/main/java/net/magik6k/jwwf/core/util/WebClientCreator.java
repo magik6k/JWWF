@@ -90,7 +90,7 @@ public class WebClientCreator implements ClientCreator{
 		
 		while (matcher.find()) {
 			res = res.replace(matcher.group(0), 
-					ResourceReader.instance.readFile("webclient/includes/" + matcher.group(1)));			
+					ResourceReader.instance.readFile("webclient/includes/" + matcher.group(1)));
 		}
 		
 		return res;
@@ -106,17 +106,19 @@ public class WebClientCreator implements ClientCreator{
 			
 			codeBuilder.append(file.substring(file.lastIndexOf("/")+1, file.lastIndexOf(".js")));
 			
-			codeBuilder.append("\"]=");					
+			codeBuilder.append("\"]=");
 			codeBuilder.append(ResourceReader.instance.readFile(file));
+			codeBuilder.append("\n");
 		}
 		
 		for(Entry<String, String> widget: specialWidgets){
 			codeBuilder.append(widgetObjectName);
 			codeBuilder.append("[\"");
 			codeBuilder.append(widget.getKey());
-			codeBuilder.append("\"]=");	
+			codeBuilder.append("\"]=");
 			
 			codeBuilder.append(widget.getValue());
+			codeBuilder.append("\n");
 		}
 		return codeBuilder.toString();
 	}
