@@ -1,4 +1,4 @@
-function CheckBox(selected){
+function CheckBox(selected, label){
 	this.checked = false;
 	
 	if(selected == true)
@@ -15,22 +15,21 @@ function CheckBox(selected){
 		this.oncheckfn = f;
 	}
 	
-	this.setState = function(state)
+	this.setState = function(state, label)
 	{
 		this.checked = state;
-		if(this.checked)$(that.element).html("<div class='check'>").addClass("jwwfElement");
-		else $(this.element).html(" ");
+		this.checkbox.prop('checked', state);
+		this.label.html("").append(this.checkbox).append(label)
 	}
 	
 	var that = this;
-	this.element = $("<div>").addClass("jwwfElement").addClass("checkbox").html(" ")
-		.click(function(){
-			that.checked=!that.checked;
-			if(that.checked)$(that.element).html("<div class='check jwwfElement'>");
-			else $(that.element).html(" ");
-			
+	this.checkbox = $("<input type=\"checkbox\">")
+		.change(function() {
+			that.checked=this.checked;
 			if(typeof that.oncheckfn == "function")that.oncheckfn(that.checked);
 		});
-	
+
+	this.label = $("<label>").append(this.checkbox).append(label)
+	this.element = $("<div>").addClass("checkbox").html(this.label)
 }
 

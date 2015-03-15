@@ -2,7 +2,7 @@
 	create: function(data,id){
 		var snd = 0;
 		
-		var elem = $("<input>").addClass("jwwfElement").addClass("jwwfInput").attr("type","password")
+		var elem = $("<input>").addClass("form-control").attr("type","password")
 			.attr("placeholder", data.placeholder)
 			.on("keypress",function(){ 
 					clearTimeout(snd);

@@ -18,8 +18,8 @@ function CheckButton(label, selected){
 	this.setState = function(state)
 	{
 		this.checked = state;
-		if(that.checked)$(that.element).addClass("checkbuttonchecked");
-		else $(that.element).removeClass("checkbuttonchecked")
+		if(that.checked)$(that.element).addClass("active");
+		else $(that.element).removeClass("active")
 	}
 	
 	this.oncheck = function(f)
@@ -27,11 +27,11 @@ function CheckButton(label, selected){
 		this.oncheckfn = f;
 	}
 	var that = this;
-	this.element = $("<div>").addClass("jwwfElement").addClass("checkbutton").html(this.label)
+	this.element = $("<div>").addClass("btn").addClass("btn-default").html(this.label)
 		.click(function(){
 			that.checked=!that.checked;
-			if(that.checked)$(that.element).addClass("checkbuttonchecked");
-			else $(that.element).removeClass("checkbuttonchecked")
+			if(that.checked)$(that.element).addClass("active");
+			else $(that.element).removeClass("active")
 			
 			if(typeof that.oncheckfn == "function")that.oncheckfn(that.checked);
 		});

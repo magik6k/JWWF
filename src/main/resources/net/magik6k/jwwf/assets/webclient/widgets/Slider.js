@@ -2,7 +2,7 @@
 	create: function(data,id){
 		var snd = 0;
 		
-		var elem = $("<input>").addClass("jwwfElement").attr("type","range")
+		var elem = $("<input>").addClass("form-control").attr("type","range")
 			.attr("min", data.min)
 			.attr("max", data.max)
 			.on("input change propertychange",function(){ 

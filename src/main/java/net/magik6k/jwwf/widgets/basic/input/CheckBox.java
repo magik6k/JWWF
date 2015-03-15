@@ -11,6 +11,7 @@ import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 public class CheckBox extends BasicInput{
 	private CheckHandler checkHandler;
 	private boolean state;
+	private String label = "";
 	
 	/**
 	 * @param checkHandler handler called when checkbox changes it's state
@@ -20,7 +21,23 @@ public class CheckBox extends BasicInput{
 		this.checkHandler = checkHandler;
 		this.sendElement();
 	}
-	
+
+	/**
+	 * @param checkHandler handler called when checkbox changes it's state
+	 */
+	public CheckBox(String label, CheckHandler checkHandler) {
+		super(Actions.CHECK_STATE);
+		this.checkHandler = checkHandler;
+		this.label = label;
+		this.sendElement();
+	}
+
+	public CheckBox(String label) {
+		super(Actions.CHECK_STATE);
+		this.label = label;
+		this.sendElement();
+	}
+
 	public CheckBox() {
 		super(Actions.CHECK_STATE);
 		this.sendElement();
@@ -61,9 +78,17 @@ public class CheckBox extends BasicInput{
 
 	@Override
 	public String getData() {
-		return "{\"state\":"+String.valueOf(state)+"}";
+		return "{\"state\":"+String.valueOf(state)+", \"label\":\""+label+"\"}";
 	}
-	
+
+	/**
+	 * @param label Label to set
+	 */
+	public void setLabel(String label) {
+		this.label = label;
+		this.sendElement();
+	}
+
 	/**
 	 * Internal use only
 	 * @param data Data

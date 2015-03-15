@@ -142,7 +142,7 @@ public class ExampleClient extends User{
 		
 		/* Example CheckBox */
 		final TextLabel checkBoxDesc = new TextLabel("CheckBox");
-		CheckBox checkBox = new CheckBox(new CheckHandler() {
+		CheckBox checkBox = new CheckBox("Label", new CheckHandler() {
 			@Override
 			public void checked(boolean state) {
 				checkBoxDesc.setText("CheckBox("+String.valueOf(state)+")");
@@ -150,11 +150,11 @@ public class ExampleClient extends User{
 		});
 		
 		/* Example CheckButton */
-		final TextLabel CheckButtonDesc = new TextLabel("CheckButton");
+		final TextLabel checkButtonDesc = new TextLabel("CheckButton");
 		CheckButton checkButton = new CheckButton("CheckButton", new CheckHandler() {
 			@Override
 			public void checked(boolean state) {
-				CheckButtonDesc.setText("CheckButton("+String.valueOf(state)+")");
+				checkButtonDesc.setText("CheckButton(" + String.valueOf(state) + ")");
 			}
 		});
 		
@@ -169,7 +169,7 @@ public class ExampleClient extends User{
 		});
 		
 		Panel radioButtons = new Panel(2,
-				new RadioButton(group, "Button1"), new RadioButton(group, "Button2"));
+				new RadioButton("First", group, "Button1"), new RadioButton("Second", group, "Button2"));
 		
 		/* Example TextArea */
 		final TextLabel textAreaDesc = new TextLabel("TextArea");
@@ -248,7 +248,7 @@ public class ExampleClient extends User{
 		examples.put(new Panel(2, passwordInputDesc,	passwordInput));
 		examples.put(new Panel(2, textAreaDesc,			textArea));
 		examples.put(new Panel(2, checkBoxDesc,			checkBox));
-		examples.put(new Panel(2, CheckButtonDesc,		checkButton));
+		examples.put(new Panel(2, checkButtonDesc,		checkButton));
 		examples.put(new Panel(2, radioButtonDesc,		radioButtons));
 		examples.put(new Panel(2, customPanelDesc,		customPanel));
 		examples.put(new Panel(2, userDataDesc,			userDataInput));

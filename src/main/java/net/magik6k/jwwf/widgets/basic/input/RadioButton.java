@@ -9,7 +9,9 @@ import net.magik6k.jwwf.util.RadioGroup;
  */
 public class RadioButton extends Widget{
 	private RadioGroup radioGroup;
+	private String label = "";
 	private Object userdata;
+
 	/**
 	 * @param radioGroup Default group to bind button to
 	 */
@@ -19,7 +21,19 @@ public class RadioButton extends Widget{
 		this.radioGroup = radioGroup;
 		this.sendElement();
 	}
-	
+
+	/**
+	 * @param label Label
+	 * @param radioGroup Default group to bind button to
+	 */
+	public RadioButton(String label, RadioGroup radioGroup) {
+		super(Actions.SELECT);
+		attach(radioGroup);
+		this.label = label;
+		this.radioGroup = radioGroup;
+		this.sendElement();
+	}
+
 	/**
 	 * @param radioGroup Default group to bind button to
 	 * @param userdata data to store in button
@@ -27,6 +41,20 @@ public class RadioButton extends Widget{
 	public RadioButton(RadioGroup radioGroup, Object userdata) {
 		super(Actions.CHECK_STATE);
 		attach(radioGroup);
+		this.radioGroup = radioGroup;
+		this.userdata = userdata;
+		this.sendElement();
+	}
+
+	/**
+	 * @param label Label
+	 * @param radioGroup Default group to bind button to
+	 * @param userdata data to store in button
+	 */
+	public RadioButton(String label, RadioGroup radioGroup, Object userdata) {
+		super(Actions.CHECK_STATE);
+		attach(radioGroup);
+		this.label = label;
 		this.radioGroup = radioGroup;
 		this.userdata = userdata;
 		this.sendElement();
@@ -42,7 +70,17 @@ public class RadioButton extends Widget{
 		attach(radioGroup);
 		return this;
 	}
-	
+
+	/**
+	 * @param label Label to set
+	 * @return This RadioButton
+	 */
+	public RadioButton setLabel(String label) {
+		this.label = label;
+		this.sendElement();
+		return this;
+	}
+
 	@Override
 	public String getName() {
 		return "RadioButton";
@@ -50,7 +88,7 @@ public class RadioButton extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"group\":"+String.valueOf(radioGroup.getID())+"}";
+		return "{\"group\":"+String.valueOf(radioGroup.getID())+", \"label\":\""+label+"\"}";
 	}
 	
 	/**

@@ -7,40 +7,10 @@ import net.magik6k.jwwf.widgets.basic.panel.Panel;
 
 /**
  * {@link CheckBox} with {@link TextLabel}
+ *
+ * @deprecated Use labels in {@link CheckBox}
  */
-public class LabeledCheckBox extends Panel {
+@Deprecated
+public class LabeledCheckBox extends CheckBox {
 
-	public final CheckBox checkBox;
-	public final TextLabel label;
-	
-	public LabeledCheckBox(String label, CheckHandler checkHandler) {
-		super(2);
-		
-		this.label = new TextLabel(label);
-		checkBox = new CheckBox(checkHandler);
-		
-		put(this.label, 0);
-		put(checkBox, 1);
-	}
-
-	public LabeledCheckBox(String label) {
-		super(2);
-		
-		this.label = new TextLabel(label);
-		checkBox = new CheckBox();
-		
-		put(this.label, 0);
-		put(checkBox, 1);
-	}
-	
-	
-	public LabeledCheckBox setLabel(String label) {
-		this.label.setText(label);
-		return this;
-	}
-	
-	public boolean getState() {
-		return checkBox.getState();
-	}
-	
 }
