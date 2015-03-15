@@ -5,9 +5,9 @@ import net.magik6k.jwwf.widgets.basic.TextLabel;
 import net.magik6k.jwwf.widgets.basic.input.Button;
 import net.magik6k.jwwf.widgets.basic.input.PasswordInput;
 import net.magik6k.jwwf.widgets.basic.input.TextInput;
-import net.magik6k.jwwf.widgets.basic.panel.VerticalPanel;
+import net.magik6k.jwwf.widgets.basic.panel.Panel;
 
-public class LoginPanel extends VerticalPanel{
+public class LoginPanel extends Panel{
 
 	private final TextInput loginField;
 	private final PasswordInput passwordField;
@@ -16,13 +16,10 @@ public class LoginPanel extends VerticalPanel{
 	
 	public LoginPanel() {
 		super(3);
-		this.setElementSpacing(4);
 		
 		loginField = new TextInput("login");
 		passwordField = new PasswordInput("password");
-		
-		
-		
+
 		loginButton = new Button("LOGIN!", new ClickHandler() {
 			@Override
 			public void clicked() {

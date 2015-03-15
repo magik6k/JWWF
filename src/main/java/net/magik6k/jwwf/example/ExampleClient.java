@@ -56,18 +56,6 @@ public class ExampleClient extends User{
 		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")));
 		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")));
 		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")));
-
-		/* Example VerticalPanel */
-		TextLabel verticalPanelDesc = new TextLabel("VerticalPanel");
-		VerticalPanel verticalPanel = new VerticalPanel(3,
-				new TextLabel("e1"),new TextLabel("e2e2"),new TextLabel("e3"));
-		verticalPanel.setElementAlign(PanelAlign.MIDDLE);
-		
-		/* Example HorizontalPanel */
-		TextLabel horizontalPanelDesc = new TextLabel("HorizontalPanel");
-		HorizontalPanel horizontalPanel = new HorizontalPanel(3,8,
-				new TextLabel("e1"),new TextLabel("e2\ne2"),new TextLabel("e3"));
-		horizontalPanel.setElementAlign(PanelAlign.MIDDLE);
 		
 		/* Example TablePanel */
 		TextLabel tablePanelDesc = new TextLabel("TablePanel");
@@ -75,12 +63,7 @@ public class ExampleClient extends User{
 				new TextLabel("e1"),new TextLabel("e2"),
 				new TextLabel("e3"),new TextLabel("e4"));
 		tablePanel.setSpacing(16, 16);
-		
-		/* Example AbsolutePanel */
-		TextLabel absolutePanelDesc = new TextLabel("AbsolutePanel");
-		AbsolutePanel absolutePanel = new AbsolutePanel(200, 8, 
-				new TextLabel("AbsolutePanel content").setTextWrapping(false));
-		
+
 		/* Example TabbedPanel */
 		TextLabel tabbedPanelDesc = new TextLabel("Tabbed panel");
 		
@@ -185,7 +168,7 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		HorizontalPanel radioButtons = new HorizontalPanel(2, 
+		Panel radioButtons = new Panel(2,
 				new RadioButton(group, "Button1"), new RadioButton(group, "Button2"));
 		
 		/* Example TextArea */		
@@ -197,8 +180,8 @@ public class ExampleClient extends User{
 			}
 		});
 		
-		/* Custom panel example */		
-		Widget customPanel = new LoginPanel();		
+		/* Custom panel example */
+		Widget customPanel = new LoginPanel();
 		TextLabel customPanelDesc = new TextLabel("Custom panel");
 		
 		/* UserData example*/		
@@ -248,14 +231,11 @@ public class ExampleClient extends User{
 		passwordInput.setEventBus(exampleBus);
 		
 		//Container for all examples
-		Widget examples = new TablePanel(2, 23,
+		Widget examples = new TablePanel(2, 20,
 				textLabelExample,	preformattedTextLabelExample,
 				imageDesc,			image,
 				rowDesc,			row,
-				verticalPanelDesc,	verticalPanel,
-				horizontalPanelDesc,horizontalPanel,
 				tablePanelDesc,		tablePanel,
-				absolutePanelDesc,	absolutePanel,
 				tabbedPanelDesc,	tabbedPanel,
 				externalLinkDesc,	externalLink,
 				internalLinkDesc,	internalLink,
