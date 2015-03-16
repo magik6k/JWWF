@@ -2,9 +2,11 @@ package net.magik6k.jwwf.example;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
+import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
+import net.magik6k.jwwf.enums.Type;
 import net.magik6k.jwwf.event.InputEvent;
 import net.magik6k.jwwf.example.plugin.ExamplePluginWidget;
 import net.magik6k.jwwf.handlers.*;
@@ -77,12 +79,14 @@ public class ExampleClient extends User {
 		
 		/* Example Button */
 		final TextLabel buttonDesc = new TextLabel("Button");
-		Button button = new Button("example", new ClickHandler() {
+		final Button button = new Button("example");
+		button.setHandler(new ClickHandler() {
 			private int clicks = 0;
 
 			@Override
 			public void clicked() {
 				buttonDesc.setText("Button(" + String.valueOf(++clicks) + ")");
+				button.setType(Type.values()[clicks%6]);
 			}
 		});
 		

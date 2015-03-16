@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.widgets.basic.input;
 
 import net.magik6k.jwwf.core.action.Actions;
+import net.magik6k.jwwf.enums.Type;
 import net.magik6k.jwwf.event.input.ClickEvent;
 import net.magik6k.jwwf.handlers.ClickHandler;
 import net.magik6k.jwwf.util.Json;
@@ -12,6 +13,31 @@ import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 public class Button extends BasicInput {
 	private String label;
 	private ClickHandler clickHandler;
+	private Type type = Type.DEFAULT;
+
+	/**
+	 * @param label        Default label
+	 * @param clickHandler handler to be invoked when button is pressed by user
+	 * @param type Button type
+	 */
+	public Button(String label, Type type, ClickHandler clickHandler) {
+		super(Actions.BUTTON_CLICK);
+		this.type = type;
+		this.label = label;
+		this.clickHandler = clickHandler;
+		this.sendElement();
+	}
+
+	/**
+	 * @param label Default label
+	 * @param type Button type
+	 */
+	public Button(String label, Type type) {
+		super(Actions.BUTTON_CLICK);
+		this.type = type;
+		this.label = label;
+		this.sendElement();
+	}
 
 	/**
 	 * @param label        Default label
@@ -37,10 +63,22 @@ public class Button extends BasicInput {
 	 * Sets new label
 	 *
 	 * @param label Label
-	 * @return This instance for chaining
+	 * @return This button
 	 */
-	public Button setlabel(String label) {
+	public Button setLabel(String label) {
 		this.label = label;
+		this.sendElement();
+		return this;
+	}
+
+	/**
+	 * Sets type
+	 *
+	 * @param type Type te set
+	 * @return This button
+	 */
+	public Button setType(Type type) {
+		this.type = type;
 		this.sendElement();
 		return this;
 	}
@@ -49,7 +87,7 @@ public class Button extends BasicInput {
 	 * Sets new handler for button click
 	 *
 	 * @param clickHandler New handler
-	 * @return This instance for chaining
+	 * @return This button
 	 */
 	public Button setHandler(ClickHandler clickHandler) {
 		this.clickHandler = clickHandler;
@@ -63,7 +101,7 @@ public class Button extends BasicInput {
 
 	@Override
 	public String getData() {
-		return "{\"label\":" + Json.escapeString(label) + "}";
+		return "{\"label\":" + Json.escapeString(label) + ", \"type\":\"" + type.name + "\"}";
 	}
 
 	/**
