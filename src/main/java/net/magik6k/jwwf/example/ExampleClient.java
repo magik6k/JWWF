@@ -25,8 +25,8 @@ public class ExampleClient extends User {
 
 		/* Example TextLabel*/
 		TextLabel textLabelExample = new TextLabel("This is example text");
-		PreformattedTextLabel preformattedTextLabelExample =
-				new PreformattedTextLabel("This is example\nPreformattedTextLabel\n. . .");
+		PreformatedTextLabel preformatedTextLabelExample =
+				new PreformatedTextLabel("This is example\nPreformattedTextLabel\n. . .");
 		
 		/*Image example*/
 		TextLabel imageDesc = new TextLabel("Image");
@@ -37,9 +37,9 @@ public class ExampleClient extends User {
 
 		TextLabel rowDesc = new TextLabel("Row example");
 		Row row = new Row(3);
-		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")));
-		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")));
-		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")));
+		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")).setWidth(4));
+		row.put(new Panel(2, new TextLabel("<p>lol</p>"), new TextLabel("works")).setWidth(4));
+		row.put(new Panel(2, new TextLabel("<b>lol</b>"), new TextLabel("works")).setWidth(4));
 		
 		/* Example TablePanel */
 		TextLabel tablePanelDesc = new TextLabel("TablePanel");
@@ -218,26 +218,26 @@ public class ExampleClient extends User {
 
 		Row examples = new Row(20);
 
-		examples.put(new Panel(2, textLabelExample, preformattedTextLabelExample));
-		examples.put(new Panel(2, imageDesc, image));
-		examples.put(new Panel(2, rowDesc, row));
-		examples.put(new Panel(2, tablePanelDesc, tablePanel));
-		examples.put(new Panel(2, tabbedPanelDesc, tabbedPanel));
-		examples.put(new Panel(2, externalLinkDesc, externalLink));
-		examples.put(new Panel(2, internalLinkDesc, internalLink));
-		examples.put(new Panel(2, buttonDesc, button));
-		examples.put(new Panel(2, progressBarDesc, progressBar));
-		examples.put(new Panel(2, sliderDesc, slider));
-		examples.put(new Panel(2, textInputDesc, textInput));
-		examples.put(new Panel(2, passwordInputDesc, passwordInput));
-		examples.put(new Panel(2, textAreaDesc, textArea));
-		examples.put(new Panel(2, checkBoxDesc, checkBox));
-		examples.put(new Panel(2, checkButtonDesc, checkButton));
-		examples.put(new Panel(2, radioButtonDesc, radioButtons));
-		examples.put(new Panel(2, customPanelDesc, customPanel));
-		examples.put(new Panel(2, userDataDesc, userDataInput));
-		examples.put(new Panel(2, busExampleDesc, busExample));
-		examples.put(new Panel(2, pluginExampleDesc, pluginExample));
+		examples.put(new Row(2, textLabelExample, preformatedTextLabelExample));
+		examples.put(new Row(2, imageDesc, image));
+		examples.put(new Row(2, rowDesc, row));
+		examples.put(new Row(2, tablePanelDesc, tablePanel));
+		examples.put(new Row(2, tabbedPanelDesc, tabbedPanel));
+		examples.put(new Row(2, externalLinkDesc, externalLink));
+		examples.put(new Row(2, internalLinkDesc, internalLink));
+		examples.put(new Row(2, buttonDesc, button));
+		examples.put(new Row(2, progressBarDesc, progressBar));
+		examples.put(new Row(2, sliderDesc, slider));
+		examples.put(new Row(2, textInputDesc, textInput));
+		examples.put(new Row(2, passwordInputDesc, passwordInput));
+		examples.put(new Row(2, textAreaDesc, textArea));
+		examples.put(new Row(2, checkBoxDesc, checkBox));
+		examples.put(new Row(2, checkButtonDesc, checkButton));
+		examples.put(new Row(2, radioButtonDesc, radioButtons));
+		examples.put(new Row(2, customPanelDesc, customPanel));
+		examples.put(new Row(2, userDataDesc, userDataInput));
+		examples.put(new Row(2, busExampleDesc, busExample));
+		examples.put(new Row(2, pluginExampleDesc, pluginExample));
 
 		rootFrame.setTitle("Example Jwwf WebApp");
 		rootFrame.put(examples);

@@ -8,9 +8,10 @@ import net.magik6k.jwwf.widgets.basic.panel.generic.LinePanel;
  */
 public class Panel extends LinePanel {
 	private Widget[] content;
-
+	byte width = 6;
 
 	/**
+	 * Creates new panel with default 6 width
 	 * @param elements Number of elements
 	 */
 	public Panel(int elements) {
@@ -21,8 +22,25 @@ public class Panel extends LinePanel {
 	}
 
 	/**
+	 * Creates new panel with default 4 width
+	 * @param width Panel width(0 to 12)
 	 * @param elements Number of elements
-	 * @param elements Default widgets
+	 */
+	public Panel(int width, int elements) {
+		super();
+
+		if(width < 0 || width > 12)
+			throw new IllegalArgumentException("Panel width must be within 0-12 range");
+		this.width = (byte) width;
+
+		content = new Widget[elements];
+		for (int i = 0; i < content.length; ++i) content[i] = null;
+		this.sendElement();
+	}
+
+	/**
+	 * @param elements Number of elements
+	 * @param widgets Default widgets
 	 */
 	public Panel(int elements, Widget... widgets) {
 		super();
@@ -34,8 +52,52 @@ public class Panel extends LinePanel {
 				content[i] = widgets[i];
 			}
 		}
+		this.sendElement();
+	}
+
+	/**
+	 * Creates new panel with default 6 width and one widget
+	 * @param widget Widget to store in this panel
+	 */
+	public Panel(Widget widget) {
+		this(1, widget);
+	}
+
+	/**
+	 * @param width Panel width(0 to 12)
+	 * @param elements Number of elements
+	 * @param elements Default widgets
+	 */
+	public Panel(int width, int elements, Widget... widgets) {
+		super();
+
+		if(width < 0 || width > 12)
+			throw new IllegalArgumentException("Panel width must be within 0-12 range");
+		this.width = (byte) width;
+
+		content = new Widget[elements];
+
+		for (int i = 0; i < content.length; ++i) {
+			if (i < widgets.length && widgets[i] != null) {
+				attach(widgets[i]);
+				content[i] = widgets[i];
+			}
+		}
 
 		this.sendElement();
+	}
+
+	/**
+	 * Sets new width for this element
+	 * @param width New width 0 to 12
+	 * @return This panel
+	 */
+	public Panel setWidth(int width) {
+		if(width < 0 || width > 12)
+			throw new IllegalArgumentException("Panel width must be within 0-12 range");
+		this.width = (byte) width;
+		this.sendElement();
+		return this;
 	}
 
 	@Override
@@ -71,6 +133,6 @@ public class Panel extends LinePanel {
 			if (i > 0) data += ",";
 			data += "\"" + String.valueOf(content[i] != null ? content[i].getID() : -1) + "\"";
 		}
-		return new StringBuilder().append("{\"content\":[").append(data).append("]}").toString();
+	return new StringBuilder().append("{\"width\":").append(width).append(",\"content\":[").append(data).append("]}").toString();
 	}
 }

@@ -29,8 +29,11 @@ public class Row extends LinePanel {
 
 		for (int i = 0; i < content.length; ++i) {
 			if (i < widgets.length && widgets[i] != null) {
-				attach(widgets[i]);
-				content[i] = widgets[i];
+				Widget widget = widgets[i];
+				if(!(widget instanceof Panel))
+					widget = new Panel(widget);
+				attach(widget);
+				content[i] = widget;
 			}
 		}
 
@@ -40,7 +43,11 @@ public class Row extends LinePanel {
 	@Override
 	public LinePanel put(Widget widget, int index) throws IndexOutOfBoundsException {
 		if (index < 0 || index >= content.length) throw new IndexOutOfBoundsException();
+
+		if(!(widget instanceof Panel))
+			widget = new Panel(widget);
 		attach(widget);
+
 		content[index] = widget;
 		this.sendElement();
 		return this;
@@ -48,7 +55,10 @@ public class Row extends LinePanel {
 
 	@Override
 	public int put(Widget widget) throws IndexOutOfBoundsException {
+		if(!(widget instanceof Panel))
+			widget = new Panel(widget);
 		attach(widget);
+
 		for (int i = 0; i < content.length; ++i)
 			if (content[i] == null) {
 				content[i] = widget;
