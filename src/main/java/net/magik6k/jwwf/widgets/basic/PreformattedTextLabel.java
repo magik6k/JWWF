@@ -7,8 +7,9 @@ import net.magik6k.jwwf.util.Json;
  * Somewhat like TextLabel but automatically fromats text.
  * Good for basic code/log display
  */
-public class PreformattedTextLabel extends Widget{
+public class PreformattedTextLabel extends Widget {
 	private String text;
+
 	/**
 	 * @param text Default text
 	 */
@@ -17,19 +18,19 @@ public class PreformattedTextLabel extends Widget{
 		this.text = text;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * Sets new text
+	 *
 	 * @param text Text
 	 * @return This instance of object for chaining
 	 */
-	public PreformattedTextLabel setText(String text)
-	{
+	public PreformattedTextLabel setText(String text) {
 		this.text = text;
 		this.sendElement();
 		return this;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "PreformattedTextLabel";
@@ -37,6 +38,6 @@ public class PreformattedTextLabel extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"text\":"+Json.escapeString(text)+"}";
+		return "{\"text\":" + Json.escapeString(text) + "}";
 	}
 }

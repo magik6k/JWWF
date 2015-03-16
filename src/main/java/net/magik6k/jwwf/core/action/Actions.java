@@ -10,22 +10,22 @@ public enum Actions {
 	SELECT("S", new Select()),
 	SLIDE("L", new Slide()),
 	USERDATA("U", new UserData());
-	
+
 	public final String apiName;
 	private final IAction handler;
-	
+
 	private Actions(String apiName, IAction handler) {
 		this.apiName = apiName;
 		this.handler = handler;
 	}
-	
-	public static void processData(UserState userState, String data){
-		for(Actions action : Actions.values()){
-			if(data.startsWith(action.apiName)){
+
+	public static void processData(UserState userState, String data) {
+		for (Actions action : Actions.values()) {
+			if (data.startsWith(action.apiName)) {
 				action.handler.performAction(userState, data);
 			}
 		}
 	}
-	
-	
+
+
 }

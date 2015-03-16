@@ -4,13 +4,13 @@ import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.util.Json;
 
 /**
- * This widget is a simple image 
+ * This widget is a simple image
  */
 public class Image extends Widget {
 	private String url;
 	private String altText;
-	private int w = -1,h = -1;
-	
+	private int w = -1, h = -1;
+
 	/**
 	 * @param url URL of the image; must be accesible by user
 	 */
@@ -19,10 +19,10 @@ public class Image extends Widget {
 		this.url = url;
 		this.sendElement();
 	}
-	
+
 	/**
-	 * @param w width of image, left -1 when not used(will be resized or scaled)
-	 * @param h width of image, left -1 when not used(will be resized or scaled)
+	 * @param w   width of image, left -1 when not used(will be resized or scaled)
+	 * @param h   width of image, left -1 when not used(will be resized or scaled)
 	 * @param url URL of the image; must be accesible by user
 	 */
 	public Image(int w, int h, String url) {
@@ -32,11 +32,11 @@ public class Image extends Widget {
 		this.h = h;
 		this.sendElement();
 	}
-	
+
 	/**
-	 * @param w width of image, left -1 when not used(will be resized or scaled)
-	 * @param h width of image, left -1 when not used(will be resized or scaled)
-	 * @param url URL of the image; must be accesible by user
+	 * @param w               width of image, left -1 when not used(will be resized or scaled)
+	 * @param h               width of image, left -1 when not used(will be resized or scaled)
+	 * @param url             URL of the image; must be accesible by user
 	 * @param alternativeText Text to display when image is not loaded
 	 */
 	public Image(int w, int h, String url, String alternativeText) {
@@ -50,41 +50,43 @@ public class Image extends Widget {
 
 	/**
 	 * Sets size of the image
+	 *
 	 * @param w width of image, left -1 when not used(will be resized or scaled)
 	 * @param h width of image, left -1 when not used(will be resized or scaled)
 	 * @return This instance for chaining
 	 */
-	public Image setSize(int w, int h){
+	public Image setSize(int w, int h) {
 		this.w = w;
 		this.h = h;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets alternative text to be displayed when there
 	 * is problem displaying the image
+	 *
 	 * @param text Alternative text
 	 * @return This instance for chaining
 	 */
-	public Image setAlternativeText(String text){
+	public Image setAlternativeText(String text) {
 		this.altText = text;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets URL of the image
+	 *
 	 * @param url URL of the image; must be accesible by user
 	 * @return This instance for chaining
 	 */
-	public Image setURL(String url)
-	{
+	public Image setURL(String url) {
 		this.url = url;
 		this.sendElement();
 		return this;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "Image";
@@ -92,11 +94,11 @@ public class Image extends Widget {
 
 	@Override
 	public String getData() {
-		String res = "{\"url\":"+Json.escapeString(url)+",\"size\":["+String.valueOf(w)+","+String.valueOf(h)+"]";
-		if(altText != null){
-			res += ",\"alt\":"+Json.escapeString(altText)+"";
+		String res = "{\"url\":" + Json.escapeString(url) + ",\"size\":[" + String.valueOf(w) + "," + String.valueOf(h) + "]";
+		if (altText != null) {
+			res += ",\"alt\":" + Json.escapeString(altText) + "";
 		}
-		res += "}";		
+		res += "}";
 		return res;
 	}
 }

@@ -9,12 +9,12 @@ import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 /**
  * User-clickable button
  */
-public class Button extends BasicInput{
+public class Button extends BasicInput {
 	private String label;
 	private ClickHandler clickHandler;
-	
+
 	/**
-	 * @param label Default label
+	 * @param label        Default label
 	 * @param clickHandler handler to be invoked when button is pressed by user
 	 */
 	public Button(String label, ClickHandler clickHandler) {
@@ -23,7 +23,7 @@ public class Button extends BasicInput{
 		this.clickHandler = clickHandler;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * @param label Default label
 	 */
@@ -32,29 +32,30 @@ public class Button extends BasicInput{
 		this.label = label;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * Sets new label
+	 *
 	 * @param label Label
 	 * @return This instance for chaining
 	 */
-	public Button setlabel(String label)
-	{
+	public Button setlabel(String label) {
 		this.label = label;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets new handler for button click
+	 *
 	 * @param clickHandler New handler
 	 * @return This instance for chaining
 	 */
-	public Button setHandler(ClickHandler clickHandler){
+	public Button setHandler(ClickHandler clickHandler) {
 		this.clickHandler = clickHandler;
 		return this;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "Button";
@@ -62,17 +63,18 @@ public class Button extends BasicInput{
 
 	@Override
 	public String getData() {
-		return "{\"label\":"+Json.escapeString(label)+"}";
+		return "{\"label\":" + Json.escapeString(label) + "}";
 	}
-	
+
 	/**
 	 * Internal use only
+	 *
 	 * @param data Data
 	 */
-	protected void handleData(String data){
+	protected void handleData(String data) {
 		try {
 			sendEvent(new ClickEvent(this.user, getPayload()));
-			if(clickHandler != null)
+			if (clickHandler != null)
 				clickHandler.clicked();
 		} catch (Exception e) {
 			e.printStackTrace();

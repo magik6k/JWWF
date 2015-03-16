@@ -8,11 +8,11 @@ import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 /**
  * Basic check box
  */
-public class CheckBox extends BasicInput{
+public class CheckBox extends BasicInput {
 	private CheckHandler checkHandler;
 	private boolean state;
 	private String label = "";
-	
+
 	/**
 	 * @param checkHandler handler called when checkbox changes it's state
 	 */
@@ -42,35 +42,37 @@ public class CheckBox extends BasicInput{
 		super(Actions.CHECK_STATE);
 		this.sendElement();
 	}
-	
+
 	/**
 	 * Sets new check handler
+	 *
 	 * @param checkHandler New handler
 	 * @return This instance for chaining
 	 */
-	public CheckBox setHandler(CheckHandler checkHandler){
+	public CheckBox setHandler(CheckHandler checkHandler) {
 		this.checkHandler = checkHandler;
 		return this;
 	}
-	
+
 	/**
 	 * Returns boolean indicating checkbox selection
+	 *
 	 * @return State of this widget
 	 */
-	public boolean getState(){
+	public boolean getState() {
 		return state;
 	}
-	
+
 	/**
 	 * @param state New state
 	 * @return This instance for chaining
 	 */
-	public CheckBox setSate(boolean state){
+	public CheckBox setSate(boolean state) {
 		this.state = state;
 		this.sendElement();
 		return this;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "CheckBox";
@@ -78,7 +80,7 @@ public class CheckBox extends BasicInput{
 
 	@Override
 	public String getData() {
-		return "{\"state\":"+String.valueOf(state)+", \"label\":\""+label+"\"}";
+		return "{\"state\":" + String.valueOf(state) + ", \"label\":\"" + label + "\"}";
 	}
 
 	/**
@@ -91,12 +93,13 @@ public class CheckBox extends BasicInput{
 
 	/**
 	 * Internal use only
+	 *
 	 * @param data Data
 	 */
-	public void handleData(String data){
+	public void handleData(String data) {
 		state = data.equals("1");
 		sendEvent(new CheckEvent(this.user, getPayload(), state));
-		if(checkHandler != null)
+		if (checkHandler != null)
 			checkHandler.checked(state);
 	}
 }

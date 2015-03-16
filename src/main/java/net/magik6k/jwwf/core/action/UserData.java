@@ -6,8 +6,8 @@ public class UserData implements IAction {
 
 	@Override
 	public void performAction(UserState userState, String data) {
-		userState.userDataRecv((String)data.subSequence(1, data.indexOf(";")), 
-				(String)data.subSequence( data.indexOf(";")+1, data.length()));
+		userState.userDataRecv((String) data.subSequence(1, data.indexOf(";")),
+				(String) data.subSequence(data.indexOf(";") + 1, data.length()));
 	}
 
 }

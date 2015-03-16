@@ -8,9 +8,9 @@ import net.magik6k.jwwf.util.Json;
  */
 public class ExternalLink extends Widget {
 	private String url, label;
-	
+
 	/**
-	 * @param url URL of destination resource
+	 * @param url   URL of destination resource
 	 * @param label Name of the link
 	 */
 	public ExternalLink(String url, String label) {
@@ -22,28 +22,28 @@ public class ExternalLink extends Widget {
 
 	/**
 	 * Sets links url
+	 *
 	 * @param url URL of destination resource
 	 * @return This instance for chaining
 	 */
-	public ExternalLink setURL(String url)
-	{
+	public ExternalLink setURL(String url) {
 		this.url = url;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets links name
+	 *
 	 * @param label Name of the link
 	 * @return This instance for chaining
 	 */
-	public ExternalLink setLabel(String label)
-	{
+	public ExternalLink setLabel(String label) {
 		this.label = label;
 		this.sendElement();
 		return this;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "ExternalLink";
@@ -51,6 +51,6 @@ public class ExternalLink extends Widget {
 
 	@Override
 	public String getData() {
-		return "{\"url\":"+Json.escapeString(url)+",\"label\":"+Json.escapeString(label)+"}";
+		return "{\"url\":" + Json.escapeString(url) + ",\"label\":" + Json.escapeString(label) + "}";
 	}
 }

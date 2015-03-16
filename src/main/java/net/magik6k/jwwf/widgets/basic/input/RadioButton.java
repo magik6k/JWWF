@@ -7,7 +7,7 @@ import net.magik6k.jwwf.util.RadioGroup;
 /**
  * As part of {@link RadioGroup} acts as option in single-selection group
  */
-public class RadioButton extends Widget{
+public class RadioButton extends Widget {
 	private RadioGroup radioGroup;
 	private String label = "";
 	private Object userdata;
@@ -23,7 +23,7 @@ public class RadioButton extends Widget{
 	}
 
 	/**
-	 * @param label Label
+	 * @param label      Label
 	 * @param radioGroup Default group to bind button to
 	 */
 	public RadioButton(String label, RadioGroup radioGroup) {
@@ -36,7 +36,7 @@ public class RadioButton extends Widget{
 
 	/**
 	 * @param radioGroup Default group to bind button to
-	 * @param userdata data to store in button
+	 * @param userdata   data to store in button
 	 */
 	public RadioButton(RadioGroup radioGroup, Object userdata) {
 		super(Actions.CHECK_STATE);
@@ -47,9 +47,9 @@ public class RadioButton extends Widget{
 	}
 
 	/**
-	 * @param label Label
+	 * @param label      Label
 	 * @param radioGroup Default group to bind button to
-	 * @param userdata data to store in button
+	 * @param userdata   data to store in button
 	 */
 	public RadioButton(String label, RadioGroup radioGroup, Object userdata) {
 		super(Actions.CHECK_STATE);
@@ -59,13 +59,14 @@ public class RadioButton extends Widget{
 		this.userdata = userdata;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * Sets new handler for button click
+	 *
 	 * @param radioGroup group to bind button to
 	 * @return This instance for chaining
 	 */
-	public RadioButton setGroup(RadioGroup radioGroup){
+	public RadioButton setGroup(RadioGroup radioGroup) {
 		this.radioGroup = radioGroup;
 		attach(radioGroup);
 		return this;
@@ -88,14 +89,15 @@ public class RadioButton extends Widget{
 
 	@Override
 	public String getData() {
-		return "{\"group\":"+String.valueOf(radioGroup.getID())+", \"label\":\""+label+"\"}";
+		return "{\"group\":" + String.valueOf(radioGroup.getID()) + ", \"label\":\"" + label + "\"}";
 	}
-	
+
 	/**
 	 * Internal use only
+	 *
 	 * @param data Data
 	 */
-	public void handleData(String data){
+	public void handleData(String data) {
 		radioGroup.select(userdata);
 	}
 }

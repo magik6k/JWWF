@@ -14,11 +14,11 @@ public class TextInput extends BasicInput {
 	private String text = "";
 	private boolean sendTextUpdate;
 	private TextHandler handler;
-	
+
 	/**
 	 * @param placeholder Hint text
 	 * @param defaultText Default text
-	 * @param handler Handler of typed text
+	 * @param handler     Handler of typed text
 	 */
 	public TextInput(String placeholder, String defaultText, TextHandler handler) {
 		super(Actions.TEXT_INPUT);
@@ -28,10 +28,10 @@ public class TextInput extends BasicInput {
 		this.handler = handler;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * @param placeholder Hint text
-	 * @param handler Handler of typed text
+	 * @param handler     Handler of typed text
 	 */
 	public TextInput(String placeholder, TextHandler handler) {
 		super(Actions.TEXT_INPUT);
@@ -39,7 +39,7 @@ public class TextInput extends BasicInput {
 		this.handler = handler;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * @param placeholder Hint text
 	 * @param defaultText Default text
@@ -51,7 +51,7 @@ public class TextInput extends BasicInput {
 		sendTextUpdate = true;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * @param placeholder Hint text
 	 */
@@ -60,53 +60,57 @@ public class TextInput extends BasicInput {
 		this.placeholder = placeholder;
 		this.sendElement();
 	}
-	
+
 	public TextInput() {
 		super(Actions.TEXT_INPUT);
 		this.sendElement();
 	}
-	
+
 	/**
 	 * Sets new placeholder text
+	 *
 	 * @param placeholder Placeholder text
 	 * @return This instance for chaining
 	 */
-	public TextInput setPlaceholder(String placeholder){
+	public TextInput setPlaceholder(String placeholder) {
 		this.placeholder = placeholder;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets new text
+	 *
 	 * @param text Text to set
 	 * @return This instance for chaining
 	 */
-	public TextInput setText(String text){
+	public TextInput setText(String text) {
 		this.text = text;
 		sendTextUpdate = true;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets new TextHandler
+	 *
 	 * @param handler New text handler
 	 * @return This instance for chaining
 	 */
-	public TextInput setTextHandler(TextHandler handler){
+	public TextInput setTextHandler(TextHandler handler) {
 		this.handler = handler;
 		return this;
 	}
-	
+
 	/**
 	 * Returns entered text
+	 *
 	 * @return Entered text
 	 */
-	public String getText(){
+	public String getText() {
 		return text;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "TextInput";
@@ -114,23 +118,24 @@ public class TextInput extends BasicInput {
 
 	@Override
 	public String getData() {
-		if(sendTextUpdate){
+		if (sendTextUpdate) {
 			sendTextUpdate = false;
-			return "{\"placeholder\":"+Json.escapeString(placeholder)+",\"text\":"
-					+Json.escapeString(text)+"}";
-		}		
-		return "{\"placeholder\":"+Json.escapeString(placeholder)+"}";
+			return "{\"placeholder\":" + Json.escapeString(placeholder) + ",\"text\":"
+					+ Json.escapeString(text) + "}";
+		}
+		return "{\"placeholder\":" + Json.escapeString(placeholder) + "}";
 	}
-	
+
 	/**
 	 * Internal use only
+	 *
 	 * @param data Data
 	 */
-	public void handleData(String data){
-		if(data == null)return;
+	public void handleData(String data) {
+		if (data == null) return;
 		text = data;
 		sendEvent(new TextInputEvent(this.user, getPayload(), data));
-		if(handler != null)
+		if (handler != null)
 			handler.onType(data);
 	}
 }

@@ -1,39 +1,23 @@
 package net.magik6k.jwwf.example;
 
+import com.google.common.eventbus.EventBus;
+import com.google.common.eventbus.Subscribe;
 import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
-import net.magik6k.jwwf.enums.PanelAlign;
 import net.magik6k.jwwf.event.InputEvent;
 import net.magik6k.jwwf.example.plugin.ExamplePluginWidget;
-import net.magik6k.jwwf.handlers.CheckHandler;
-import net.magik6k.jwwf.handlers.ClickHandler;
-import net.magik6k.jwwf.handlers.SelectionHandler;
-import net.magik6k.jwwf.handlers.SlideHandler;
-import net.magik6k.jwwf.handlers.TextHandler;
-import net.magik6k.jwwf.handlers.UserDataHandler;
+import net.magik6k.jwwf.handlers.*;
 import net.magik6k.jwwf.util.NamedWidget;
 import net.magik6k.jwwf.util.RadioGroup;
-import net.magik6k.jwwf.widgets.basic.ExternalLink;
-import net.magik6k.jwwf.widgets.basic.Image;
-import net.magik6k.jwwf.widgets.basic.PreformattedTextLabel;
-import net.magik6k.jwwf.widgets.basic.ProgressBar;
-import net.magik6k.jwwf.widgets.basic.TextLabel;
-import net.magik6k.jwwf.widgets.basic.input.Button;
-import net.magik6k.jwwf.widgets.basic.input.CheckBox;
-import net.magik6k.jwwf.widgets.basic.input.CheckButton;
-import net.magik6k.jwwf.widgets.basic.input.InternalLink;
-import net.magik6k.jwwf.widgets.basic.input.PasswordInput;
-import net.magik6k.jwwf.widgets.basic.input.RadioButton;
-import net.magik6k.jwwf.widgets.basic.input.Slider;
-import net.magik6k.jwwf.widgets.basic.input.TextArea;
-import net.magik6k.jwwf.widgets.basic.input.TextInput;
-import net.magik6k.jwwf.widgets.basic.panel.*;
+import net.magik6k.jwwf.widgets.basic.*;
+import net.magik6k.jwwf.widgets.basic.input.*;
+import net.magik6k.jwwf.widgets.basic.panel.Panel;
+import net.magik6k.jwwf.widgets.basic.panel.Row;
+import net.magik6k.jwwf.widgets.basic.panel.TabbedPanel;
+import net.magik6k.jwwf.widgets.basic.panel.TablePanel;
 
-import com.google.common.eventbus.EventBus;
-import com.google.common.eventbus.Subscribe;
-
-public class ExampleClient extends User{
+public class ExampleClient extends User {
 
 	@Override
 	protected void initializeUser(MainFrame rootFrame) {
@@ -41,8 +25,8 @@ public class ExampleClient extends User{
 
 		/* Example TextLabel*/
 		TextLabel textLabelExample = new TextLabel("This is example text");
-		PreformattedTextLabel preformattedTextLabelExample = 
-			new PreformattedTextLabel("This is example\nPreformattedTextLabel\n. . .");
+		PreformattedTextLabel preformattedTextLabelExample =
+				new PreformattedTextLabel("This is example\nPreformattedTextLabel\n. . .");
 		
 		/*Image example*/
 		TextLabel imageDesc = new TextLabel("Image");
@@ -60,18 +44,18 @@ public class ExampleClient extends User{
 		/* Example TablePanel */
 		TextLabel tablePanelDesc = new TextLabel("TablePanel");
 		TablePanel tablePanel = new TablePanel(2, 2,
-				new TextLabel("e1"),new TextLabel("e2"),
-				new TextLabel("e3"),new TextLabel("e4"));
+				new TextLabel("e1"), new TextLabel("e2"),
+				new TextLabel("e3"), new TextLabel("e4"));
 		tablePanel.setSpacing(16, 16);
 
 		/* Example TabbedPanel */
 		TextLabel tabbedPanelDesc = new TextLabel("Tabbed panel");
-		
+
 		TextLabel tabbedPanelContent1 = new TextLabel("Example1");
 		TextLabel tabbedPanelContent2 = new TextLabel("Example2");
 		TextLabel tabbedPanelContent3 = new TextLabel("Example3");
-		
-		TabbedPanel tabbedPanel = new TabbedPanel(3, 
+
+		TabbedPanel tabbedPanel = new TabbedPanel(3,
 				new NamedWidget(tabbedPanelContent1, "Tab 1"),
 				new NamedWidget(tabbedPanelContent2, "Tab 2"),
 				new NamedWidget(tabbedPanelContent3, "Tab 3"));
@@ -84,10 +68,10 @@ public class ExampleClient extends User{
 		final TextLabel internalLinkDesc = new TextLabel("Internal link");
 		InternalLink internalLink = new InternalLink("example", new ClickHandler() {
 			private int clicks = 0;
-			
+
 			@Override
 			public void clicked() {
-				internalLinkDesc.setText("Internal link("+String.valueOf(++clicks)+")");
+				internalLinkDesc.setText("Internal link(" + String.valueOf(++clicks) + ")");
 			}
 		});
 		
@@ -95,27 +79,27 @@ public class ExampleClient extends User{
 		final TextLabel buttonDesc = new TextLabel("Button");
 		Button button = new Button("example", new ClickHandler() {
 			private int clicks = 0;
-			
+
 			@Override
 			public void clicked() {
-				buttonDesc.setText("Button("+String.valueOf(++clicks)+")");
+				buttonDesc.setText("Button(" + String.valueOf(++clicks) + ")");
 			}
 		});
 		
 		/* Example ProgressBar */
-		
+
 		TextLabel progressBarDesc = new TextLabel("ProgressBar");
 		final ProgressBar progressBar = new ProgressBar(0.5);
 		
 		/* Example Slider */
-		
+
 		final TextLabel sliderDesc = new TextLabel("Slider");
 		Slider slider = new Slider(new SlideHandler() {
-			
+
 			@Override
 			public void slide(double position) {
 				sliderDesc.setText("Slider: " + String.valueOf(position));
-				progressBar.setProgress(position/120.0);
+				progressBar.setProgress(position / 120.0);
 			}
 		}, 30, 0, 120);
 		
@@ -123,20 +107,20 @@ public class ExampleClient extends User{
 		/* Example TextInput */
 		final TextLabel textInputDesc = new TextLabel("TextInput");
 		TextInput textInput = new TextInput("TextInput", new TextHandler() {
-			
+
 			@Override
 			public void onType(String data) {
-				textInputDesc.setText("TextInput("+data+")");
+				textInputDesc.setText("TextInput(" + data + ")");
 			}
 		});
 		
 		/* Example PasswordInput */
 		final TextLabel passwordInputDesc = new TextLabel("PasswordInput");
 		PasswordInput passwordInput = new PasswordInput("PasswordInput", new TextHandler() {
-			
+
 			@Override
 			public void onType(String data) {
-				passwordInputDesc.setText("PasswordInput("+data+")");
+				passwordInputDesc.setText("PasswordInput(" + data + ")");
 			}
 		});
 		
@@ -145,7 +129,7 @@ public class ExampleClient extends User{
 		CheckBox checkBox = new CheckBox("Label", new CheckHandler() {
 			@Override
 			public void checked(boolean state) {
-				checkBoxDesc.setText("CheckBox("+String.valueOf(state)+")");
+				checkBoxDesc.setText("CheckBox(" + String.valueOf(state) + ")");
 			}
 		});
 		
@@ -160,14 +144,14 @@ public class ExampleClient extends User{
 		
 		/* Example RadioButton*/
 		final TextLabel radioButtonDesc = new TextLabel("RadioButton");
-		
+
 		RadioGroup group = new RadioGroup(new SelectionHandler() {
 			@Override
 			public void select(Object selectionData) {
-				radioButtonDesc.setText("RadioButton("+(String)selectionData+")");
+				radioButtonDesc.setText("RadioButton(" + (String) selectionData + ")");
 			}
 		});
-		
+
 		Panel radioButtons = new Panel(2,
 				new RadioButton("First", group, "Button1"), new RadioButton("Second", group, "Button2"));
 		
@@ -176,7 +160,7 @@ public class ExampleClient extends User{
 		TextArea textArea = new TextArea("Text area", new TextHandler() {
 			@Override
 			public void onType(String data) {
-				textAreaDesc.setText("TextArea("+data+")");
+				textAreaDesc.setText("TextArea(" + data + ")");
 			}
 		});
 		
@@ -192,36 +176,36 @@ public class ExampleClient extends User{
 				getUserData().set("exampleKey", data);
 			}
 		});
-		
+
 		getUserData().get("exampleKey", new UserDataHandler() {
 			@Override
 			public void data(String key, String value) {
 				userDataInput.setText(value);
-				if(value.equals("")){
+				if (value.equals("")) {
 					userDataInput.setText("ThisWillPersist");
 				}
 			}
 		});
 		
 		/* EventBus example */
-		
+
 		TextLabel busExampleDesc = new TextLabel("EventBus");
 		final TextLabel busExample = new TextLabel("Events: 0");
-		
-		Object handler = new Object(){
+
+		Object handler = new Object() {
 			int events = 0;
-			
+
 			@Subscribe
-			public void onInputAction(InputEvent e){
+			public void onInputAction(InputEvent e) {
 				busExample.setText("Events: " + String.valueOf(++events));
 			}
 		};
 		
 		/* Plugin example */
-		
+
 		TextLabel pluginExampleDesc = new TextLabel("Plugin");
 		ExamplePluginWidget pluginExample = new ExamplePluginWidget();
-		
+
 		EventBus exampleBus = new EventBus();
 		exampleBus.register(handler);
 		button.setEventBus(exampleBus);
@@ -229,32 +213,32 @@ public class ExampleClient extends User{
 		slider.setEventBus(exampleBus);
 		textInput.setEventBus(exampleBus);
 		passwordInput.setEventBus(exampleBus);
-		
+
 		//Container for all examples
 
 		Row examples = new Row(20);
 
-		examples.put(new Panel(2, textLabelExample,		preformattedTextLabelExample));
-		examples.put(new Panel(2, imageDesc,			image));
-		examples.put(new Panel(2, rowDesc,				row));
-		examples.put(new Panel(2, tablePanelDesc,		tablePanel));
-		examples.put(new Panel(2, tabbedPanelDesc,		tabbedPanel));
-		examples.put(new Panel(2, externalLinkDesc,		externalLink));
-		examples.put(new Panel(2, internalLinkDesc,		internalLink));
-		examples.put(new Panel(2, buttonDesc,			button));
-		examples.put(new Panel(2, progressBarDesc,		progressBar));
-		examples.put(new Panel(2, sliderDesc,			slider));
-		examples.put(new Panel(2, textInputDesc,		textInput));
-		examples.put(new Panel(2, passwordInputDesc,	passwordInput));
-		examples.put(new Panel(2, textAreaDesc,			textArea));
-		examples.put(new Panel(2, checkBoxDesc,			checkBox));
-		examples.put(new Panel(2, checkButtonDesc,		checkButton));
-		examples.put(new Panel(2, radioButtonDesc,		radioButtons));
-		examples.put(new Panel(2, customPanelDesc,		customPanel));
-		examples.put(new Panel(2, userDataDesc,			userDataInput));
-		examples.put(new Panel(2, busExampleDesc,		busExample));
-		examples.put(new Panel(2, pluginExampleDesc,	pluginExample));
-		
+		examples.put(new Panel(2, textLabelExample, preformattedTextLabelExample));
+		examples.put(new Panel(2, imageDesc, image));
+		examples.put(new Panel(2, rowDesc, row));
+		examples.put(new Panel(2, tablePanelDesc, tablePanel));
+		examples.put(new Panel(2, tabbedPanelDesc, tabbedPanel));
+		examples.put(new Panel(2, externalLinkDesc, externalLink));
+		examples.put(new Panel(2, internalLinkDesc, internalLink));
+		examples.put(new Panel(2, buttonDesc, button));
+		examples.put(new Panel(2, progressBarDesc, progressBar));
+		examples.put(new Panel(2, sliderDesc, slider));
+		examples.put(new Panel(2, textInputDesc, textInput));
+		examples.put(new Panel(2, passwordInputDesc, passwordInput));
+		examples.put(new Panel(2, textAreaDesc, textArea));
+		examples.put(new Panel(2, checkBoxDesc, checkBox));
+		examples.put(new Panel(2, checkButtonDesc, checkButton));
+		examples.put(new Panel(2, radioButtonDesc, radioButtons));
+		examples.put(new Panel(2, customPanelDesc, customPanel));
+		examples.put(new Panel(2, userDataDesc, userDataInput));
+		examples.put(new Panel(2, busExampleDesc, busExample));
+		examples.put(new Panel(2, pluginExampleDesc, pluginExample));
+
 		rootFrame.setTitle("Example Jwwf WebApp");
 		rootFrame.put(examples);
 	}

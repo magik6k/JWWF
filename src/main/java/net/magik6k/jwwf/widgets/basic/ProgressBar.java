@@ -5,10 +5,10 @@ import net.magik6k.jwwf.core.Widget;
 /**
  * Simple progress indicator
  */
-public class ProgressBar extends Widget{
+public class ProgressBar extends Widget {
 
 	private double progress = 0;
-	
+
 	/**
 	 * Creates new ProgressBar with default width of 256px
 	 */
@@ -18,24 +18,26 @@ public class ProgressBar extends Widget{
 
 	/**
 	 * Creates new ProgressBar
+	 *
 	 * @param progress Initial progress, from 0 to 1
 	 */
 	public ProgressBar(double progress) {
 		super();
 		this.progress = progress;
 	}
-	
+
 	/**
 	 * Sets progress
+	 *
 	 * @param progress New Progress, from 0 to 1
 	 * @return This instance for chaining
 	 */
-	public ProgressBar setProgress(double progress){
+	public ProgressBar setProgress(double progress) {
 		this.progress = progress;
 		sendElement();
 		return this;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "ProgressBar";

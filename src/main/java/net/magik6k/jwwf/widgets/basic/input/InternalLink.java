@@ -9,12 +9,12 @@ import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 /**
  * Link clickable by user with server-side handler
  */
-public class InternalLink extends BasicInput{
+public class InternalLink extends BasicInput {
 	private String label;
 	private ClickHandler clickHandler;
-	
+
 	/**
-	 * @param label Default label
+	 * @param label        Default label
 	 * @param clickHandler handler to be invoked when link is pressed by user
 	 */
 	public InternalLink(String label, ClickHandler clickHandler) {
@@ -23,7 +23,7 @@ public class InternalLink extends BasicInput{
 		this.clickHandler = clickHandler;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * @param label Default label
 	 */
@@ -32,29 +32,30 @@ public class InternalLink extends BasicInput{
 		this.label = label;
 		this.sendElement();
 	}
-	
+
 	/**
 	 * Sets new label
+	 *
 	 * @param label New label
 	 * @return This instance for chaining
 	 */
-	public InternalLink setlabel(String label)
-	{
+	public InternalLink setlabel(String label) {
 		this.label = label;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets new handler for button click
+	 *
 	 * @param clickHandler New handler
 	 * @return This instance for chaining
 	 */
-	public InternalLink setHandler(ClickHandler clickHandler){
+	public InternalLink setHandler(ClickHandler clickHandler) {
 		this.clickHandler = clickHandler;
 		return this;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "InternalLink";
@@ -62,17 +63,18 @@ public class InternalLink extends BasicInput{
 
 	@Override
 	public String getData() {
-		return "{\"label\":"+Json.escapeString(label)+"}";
+		return "{\"label\":" + Json.escapeString(label) + "}";
 	}
-	
+
 	/**
 	 * Internal use only
+	 *
 	 * @param data Data
 	 */
-	public void handleData(String data){
+	public void handleData(String data) {
 		try {
 			sendEvent(new ClickEvent(this.user, getPayload()));
-			if(clickHandler != null)
+			if (clickHandler != null)
 				clickHandler.clicked();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -2,12 +2,12 @@ package net.magik6k.jwwf.example.plugin;
 
 import net.magik6k.jwwf.core.Widget;
 
-public class ExamplePluginWidget extends Widget{
+public class ExamplePluginWidget extends Widget {
 
-	public ExamplePluginWidget(){
-		
+	public ExamplePluginWidget() {
+
 	}
-	
+
 	@Override
 	public String getName() {
 		return "ExamplePluginWidget";

@@ -5,44 +5,48 @@ import net.magik6k.jwwf.event.input.SlideEvent;
 import net.magik6k.jwwf.handlers.SlideHandler;
 import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 
-public class Slider extends BasicInput{
+public class Slider extends BasicInput {
 
 	private double minValue = 0;
 	private double maxValue = 100;
 	private double value = 0.5;
 	private SlideHandler handler;
-	
+
 	/**
 	 * Creates new slider input, with default value range from 0 to 1
+	 *
 	 * @param value Default value
 	 */
 	public Slider(double value) {
 		super(Actions.SLIDE);
 		this.value = value;
 	}
-	
+
 	/**
 	 * Creates new slider input, with default value range from 0 to 1
+	 *
 	 * @param handler Handler for user input
 	 */
 	public Slider(SlideHandler handler) {
 		super(Actions.SLIDE);
 		this.handler = handler;
 	}
-	
+
 	/**
 	 * Creates new slider input, with default value range from 0 to 1
+	 *
 	 * @param handler Handler for user input
-	 * @param value Default value
+	 * @param value   Default value
 	 */
 	public Slider(SlideHandler handler, double value) {
 		super(Actions.SLIDE);
 		this.handler = handler;
 		this.value = value;
 	}
-	
+
 	/**
 	 * Creates new slider input
+	 *
 	 * @param minValue Min slider value
 	 * @param maxValue Max slider value
 	 */
@@ -51,10 +55,11 @@ public class Slider extends BasicInput{
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 	}
-	
+
 	/**
 	 * Creates new slider input
-	 * @param handler Handler for user input
+	 *
+	 * @param handler  Handler for user input
 	 * @param minValue Min slider value
 	 * @param maxValue Max slider value
 	 */
@@ -64,11 +69,12 @@ public class Slider extends BasicInput{
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 	}
-	
+
 	/**
 	 * Creates new slider input
-	 * @param handler Handler for user input
-	 * @param value Default value
+	 *
+	 * @param handler  Handler for user input
+	 * @param value    Default value
 	 * @param minValue Min slider value
 	 * @param maxValue Max slider value
 	 */
@@ -78,9 +84,10 @@ public class Slider extends BasicInput{
 		this.minValue = minValue;
 		this.maxValue = maxValue;
 	}
-	
+
 	/**
 	 * Sets range of value that user can pick on slider
+	 *
 	 * @param minValue Min value
 	 * @param maxValue Max value
 	 * @return This instance for chaining
@@ -91,58 +98,63 @@ public class Slider extends BasicInput{
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets minimal value that user can pick on slider
+	 *
 	 * @param minValue Min value
 	 * @return This instance for chaining
 	 */
-	public Slider setMinValue(double minValue){
+	public Slider setMinValue(double minValue) {
 		this.minValue = minValue;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets minimal value that user can pick on slider
+	 *
 	 * @param maxValue Max value
 	 * @return This instance for chaining
 	 */
-	public Slider setMaxValue(double maxValue){
+	public Slider setMaxValue(double maxValue) {
 		this.maxValue = maxValue;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets slider value
+	 *
 	 * @param value New value
 	 * @return This instance for chaining
 	 */
-	public Slider setValue(double value){
+	public Slider setValue(double value) {
 		this.value = value;
 		this.sendElement();
 		return this;
 	}
-	
+
 	/**
 	 * Sets new handler for this widget
+	 *
 	 * @param handler New handler
 	 * @return This instance for chaining
 	 */
-	public Slider setHanlder(SlideHandler handler){
+	public Slider setHanlder(SlideHandler handler) {
 		this.handler = handler;
 		return this;
 	}
-	
+
 	/**
 	 * Returns value set on slider
+	 *
 	 * @return Slider value
 	 */
-	public double getValue(){
+	public double getValue() {
 		return value;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "Slider";
@@ -150,19 +162,20 @@ public class Slider extends BasicInput{
 
 	@Override
 	public String getData() {
-		
-		return "{\"value\":"+String.valueOf(value)+", \"min\":"+String.valueOf(minValue)+",\"max\":"+String.valueOf(maxValue)+"}";
+
+		return "{\"value\":" + String.valueOf(value) + ", \"min\":" + String.valueOf(minValue) + ",\"max\":" + String.valueOf(maxValue) + "}";
 	}
-	
+
 	/**
 	 * Internal use only
+	 *
 	 * @param data Data
 	 */
-	public void handleData(String data){
+	public void handleData(String data) {
 		value = Double.valueOf(data);
 		sendEvent(new SlideEvent(this.user, getPayload(), value));
-		if(handler != null)
+		if (handler != null)
 			handler.slide(value);
 	}
-	
+
 }
