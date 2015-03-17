@@ -103,7 +103,7 @@ public class ExampleClient extends User {
 			@Override
 			public void slide(double position) {
 				sliderDesc.setText("Slider: " + String.valueOf(position));
-				progressBar.setProgress(position / 120.0);
+				progressBar.setProgress(position / 120.0).setType(Type.values()[(int) Math.floor(position / 21)]);
 			}
 		}, 30, 0, 120);
 		

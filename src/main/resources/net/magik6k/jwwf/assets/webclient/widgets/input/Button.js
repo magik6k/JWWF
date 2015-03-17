@@ -5,7 +5,7 @@
 	},
 	update: function(widget, data) {
 		$(widget.element).removeClass(function(i, j) {
-			return j.match(/btn-/g).join(" ");
+			return j.match(/btn-.+/g).join(" ");
 		});
 
 		$(widget.element).addClass("btn-"+data.type).html(data.label);

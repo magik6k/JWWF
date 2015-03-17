@@ -74,7 +74,7 @@ public class Button extends BasicInput {
 	/**
 	 * Sets type
 	 *
-	 * @param type Type te set
+	 * @param type Type to set
 	 * @return This button
 	 */
 	public Button setType(Type type) {
