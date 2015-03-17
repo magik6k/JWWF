@@ -1,21 +1,21 @@
 package net.magik6k.jwwf.widgets.basic.panel;
 
 import net.magik6k.jwwf.core.Widget;
-import net.magik6k.jwwf.util.NamedWidget;
+import net.magik6k.jwwf.util.Tab;
 import net.magik6k.jwwf.widgets.basic.panel.generic.NamedPanel;
 
 /**
  * Panel with many tabs
  */
 public class TabbedPanel extends NamedPanel {
-	private NamedWidget[] content;
+	private Tab[] content;
 
 	/**
 	 * @param width Default width of the container
 	 */
 	public TabbedPanel(int width) {
 		super();
-		content = new NamedWidget[width];
+		content = new Tab[width];
 		for (int i = 0; i < content.length; ++i) content[i] = null;
 		this.sendElement();
 	}
@@ -24,9 +24,9 @@ public class TabbedPanel extends NamedPanel {
 	 * @param width   Default width of the container
 	 * @param widgets Default widgets
 	 */
-	public TabbedPanel(int width, NamedWidget... widgets) {
+	public TabbedPanel(int width, Tab... widgets) {
 		super();
-		content = new NamedWidget[width];
+		content = new Tab[width];
 
 		for (int i = 0; i < content.length; ++i) {
 			if (i < widgets.length && widgets[i] != null) {
@@ -50,9 +50,10 @@ public class TabbedPanel extends NamedPanel {
 			if (i > 0) data += ",";
 			if (content[i] != null)
 				data += "{\"widget\":" + String.valueOf(content[i].widget != null ? content[i].widget.getID() : -1)
-						+ ",\"name\":\"" + (content[i].name != null ? content[i].name : "unnamed") + "\"}";
+						+ ",\"name\":\"" + (content[i].name != null ? content[i].name : "unnamed")
+						+ "\", \"type\":\"" + content[i].type.name + "\"}";
 			else
-				data += "{\"widget\":-1, \"name\":\"-NULL-\"}";
+				data += "{\"widget\":-1, \"name\":\"-NULL-\", \"type\":\"default\"}";
 		}
 		return "{\"content\":[" + data + "]}";
 	}
@@ -69,7 +70,7 @@ public class TabbedPanel extends NamedPanel {
 		if (index < 0 || index >= content.length) throw new IndexOutOfBoundsException();
 		if (widget == null) return this;
 		attach(widget);
-		content[index] = new NamedWidget(widget, name);
+		content[index] = new Tab(widget, name);
 		this.sendElement();
 		return this;
 	}
@@ -86,7 +87,7 @@ public class TabbedPanel extends NamedPanel {
 		attach(widget);
 		for (int i = 0; i < content.length; ++i)
 			if (content[i] == null) {
-				content[i] = new NamedWidget(widget, name);
+				content[i] = new Tab(widget, name);
 				this.sendElement();
 				return i;
 			}

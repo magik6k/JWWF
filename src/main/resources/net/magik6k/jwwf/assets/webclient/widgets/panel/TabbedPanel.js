@@ -28,7 +28,7 @@
 				var sw = $("<a>").html(data.content[i].name)
 					.addClass("tabsw" + id)
 					.addClass("btn")
-					.addClass("btn-default");
+					.addClass("btn-" + data.content[i].type);
 				setCallback(i, sw);
 				switcher.append(sw);
 			} else {
@@ -40,7 +40,7 @@
 				elements[i].button = $("<a>").html(data.content[i].name)
 					.addClass("tabsw" + id)
 					.addClass("btn")
-					.addClass("btn-default");
+					.addClass("btn-" + data.content[i].type);
 				setCallback(i, elements[i].button);
 				switcher.append(elements[i].button);
 			}

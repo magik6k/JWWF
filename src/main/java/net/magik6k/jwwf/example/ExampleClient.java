@@ -2,7 +2,6 @@ package net.magik6k.jwwf.example;
 
 import com.google.common.eventbus.EventBus;
 import com.google.common.eventbus.Subscribe;
-import net.magik6k.jwwf.core.IWidgetFactory;
 import net.magik6k.jwwf.core.MainFrame;
 import net.magik6k.jwwf.core.User;
 import net.magik6k.jwwf.core.Widget;
@@ -10,7 +9,7 @@ import net.magik6k.jwwf.enums.Type;
 import net.magik6k.jwwf.event.InputEvent;
 import net.magik6k.jwwf.example.plugin.ExamplePluginWidget;
 import net.magik6k.jwwf.handlers.*;
-import net.magik6k.jwwf.util.NamedWidget;
+import net.magik6k.jwwf.util.Tab;
 import net.magik6k.jwwf.util.RadioGroup;
 import net.magik6k.jwwf.widgets.basic.*;
 import net.magik6k.jwwf.widgets.basic.input.*;
@@ -58,9 +57,9 @@ public class ExampleClient extends User {
 		TextLabel tabbedPanelContent3 = new TextLabel("Example3");
 
 		TabbedPanel tabbedPanel = new TabbedPanel(3,
-				new NamedWidget(tabbedPanelContent1, "Tab 1"),
-				new NamedWidget(tabbedPanelContent2, "Tab 2"),
-				new NamedWidget(tabbedPanelContent3, "Tab 3"));
+				new Tab(tabbedPanelContent1, "Tab 1"),
+				new Tab(tabbedPanelContent2, "Tab 2"),
+				new Tab(tabbedPanelContent3, "Tab 3", Type.WARNING));
 		
 		/* Example ExternalLink*/
 		TextLabel externalLinkDesc = new TextLabel("External link");
