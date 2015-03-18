@@ -4,6 +4,7 @@ import net.magik6k.jwwf.core.plugin.ClientCreator;
 import net.magik6k.jwwf.core.plugin.IPluginGlobal;
 import net.magik6k.jwwf.core.plugin.IPluginWebapp;
 import net.magik6k.jwwf.core.servlet.APISocketServlet;
+import net.magik6k.jwwf.core.servlet.ResourceServlet;
 import net.magik6k.jwwf.core.servlet.SkinServlet;
 import net.magik6k.jwwf.core.servlet.WebClientServelt;
 import net.magik6k.jwwf.core.util.UserFactory;
@@ -55,6 +56,9 @@ public class JwwfServer {
 
 		context.addServlet(new ServletHolder(new WebClientServelt(clientCreator)), url + "");
 		context.addServlet(new ServletHolder(new SkinServlet()), url + "__jwwf/skins/*");
+		ServletHolder fontServletHolder = new ServletHolder(new ResourceServlet());
+		fontServletHolder.setInitParameter("basePackage", "net/magik6k/jwwf/assets/fonts");
+		context.addServlet(fontServletHolder, url + "__jwwf/fonts/*");
 		context.addServlet(new ServletHolder(new APISocketServlet(new UserFactory() {
 
 			@Override
