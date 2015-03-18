@@ -109,11 +109,12 @@ public class ExampleClient extends User {
 		
 		/* Example TextInput */
 		final TextLabel textInputDesc = new TextLabel("TextInput");
-		TextInput textInput = new TextInput("TextInput", new TextHandler() {
-
+		TextInput textInput = new TextInput("TextInput");
+		textInput.setTextHandler(new TextHandler() {
 			@Override
 			public void onType(String data) {
 				textInputDesc.setText("TextInput(" + data + ")");
+				textInput.setStatus(Type.values()[Math.min(5, data.length())]);
 			}
 		});
 		
