@@ -28,6 +28,5 @@ public class ResourceServlet extends HttpServlet {
 		response.getOutputStream().write(data);
 
 		response.setStatus(HttpServletResponse.SC_OK);
-		System.out.println(request.getPathInfo());
 	}
 }

@@ -13,10 +13,7 @@ import net.magik6k.jwwf.util.Tab;
 import net.magik6k.jwwf.util.RadioGroup;
 import net.magik6k.jwwf.widgets.basic.*;
 import net.magik6k.jwwf.widgets.basic.input.*;
-import net.magik6k.jwwf.widgets.basic.panel.Panel;
-import net.magik6k.jwwf.widgets.basic.panel.Row;
-import net.magik6k.jwwf.widgets.basic.panel.TabbedPanel;
-import net.magik6k.jwwf.widgets.basic.panel.TablePanel;
+import net.magik6k.jwwf.widgets.basic.panel.*;
 
 public class ExampleClient extends User {
 
@@ -60,7 +57,11 @@ public class ExampleClient extends User {
 				new Tab(tabbedPanelContent1, "Tab 1"),
 				new Tab(tabbedPanelContent2, "Tab 2"),
 				new Tab(tabbedPanelContent3, "Tab 3", Type.WARNING));
-		
+
+		/* Example NamedPanel */
+
+		NamedPanel namedPanel = new NamedPanel(new TextLabel("Content"), "NamedPanel", Type.SUCCESS);
+
 		/* Example ExternalLink*/
 		TextLabel externalLinkDesc = new TextLabel("External link");
 		ExternalLink externalLink = new ExternalLink("http://example.org", "example");
@@ -220,13 +221,14 @@ public class ExampleClient extends User {
 
 		//Container for all examples
 
-		Row examples = new Row(20);
+		Row examples = new Row(21);
 
 		examples.put(new Row(2, textLabelExample, preformatedTextLabelExample));
 		examples.put(new Row(2, imageDesc, image));
 		examples.put(new Row(2, rowDesc, row));
 		examples.put(new Row(2, tablePanelDesc, tablePanel));
 		examples.put(new Row(2, tabbedPanelDesc, tabbedPanel));
+		examples.put(new Row(1, namedPanel));
 		examples.put(new Row(2, externalLinkDesc, externalLink));
 		examples.put(new Row(2, internalLinkDesc, internalLink));
 		examples.put(new Row(2, buttonDesc, button));

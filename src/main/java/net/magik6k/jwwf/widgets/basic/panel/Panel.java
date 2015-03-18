@@ -7,8 +7,8 @@ import net.magik6k.jwwf.widgets.basic.panel.generic.LinePanel;
  * Created by magik6k on 3/15/15.
  */
 public class Panel extends LinePanel {
-	private Widget[] content;
-	private byte width = 6;
+	protected Widget[] content;
+	protected byte width = 6;
 
 	/**
 	 * Creates new panel with default 6 width
