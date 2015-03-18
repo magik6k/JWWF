@@ -110,7 +110,7 @@ public class ExampleClient extends User {
 		
 		/* Example TextInput */
 		final TextLabel textInputDesc = new TextLabel("TextInput");
-		TextInput textInput = new TextInput("TextInput");
+		final TextInput textInput = new TextInput("TextInput");
 		textInput.setTextHandler(new TextHandler() {
 			@Override
 			public void onType(String data) {
@@ -121,11 +121,13 @@ public class ExampleClient extends User {
 		
 		/* Example PasswordInput */
 		final TextLabel passwordInputDesc = new TextLabel("PasswordInput");
-		PasswordInput passwordInput = new PasswordInput("PasswordInput", new TextHandler() {
+		final PasswordInput passwordInput = new PasswordInput("PasswordInput");
+		passwordInput.setTextHandler(new TextHandler() {
 
 			@Override
 			public void onType(String data) {
 				passwordInputDesc.setText("PasswordInput(" + data + ")");
+				passwordInput.setStatus(Type.values()[Math.min(5, data.length())]);
 			}
 		});
 		
