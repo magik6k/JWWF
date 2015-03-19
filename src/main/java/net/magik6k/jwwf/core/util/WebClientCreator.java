@@ -2,7 +2,12 @@ package net.magik6k.jwwf.core.util;
 
 import net.magik6k.jwwf.core.JwwfServer;
 import net.magik6k.jwwf.core.plugin.ClientCreator;
+import ro.isdc.wro.extensions.processor.js.UglifyJsProcessor;
+import ro.isdc.wro.model.resource.processor.impl.js.JSMinProcessor;
 
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
@@ -76,7 +81,16 @@ public class WebClientCreator implements ClientCreator {
 		String widgetCode = generateWidgetCode(getAllWidgets("webclient/widgets"));
 		String client = ResourceReader.instance.readFile("webclient/index.html");
 
-		client = client.replace("/*?WidgetImpl*/", widgetCode);
+		widgetCode = doIncludes(widgetCode);
+
+		JSMinProcessor compressor = new JSMinProcessor();
+		StringWriter out = new StringWriter();
+		try {
+			compressor.process(new StringReader(widgetCode), out);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		client = client.replace("/*?WidgetImpl*/", out.toString());
 		client = doIncludes(client);
 
 		return client;
