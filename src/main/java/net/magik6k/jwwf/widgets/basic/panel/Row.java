@@ -4,7 +4,10 @@ import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.widgets.basic.panel.generic.LinePanel;
 
 /**
- * Created by magik6k on 3/15/15.
+ * Row holds panels in a 'responsive' row. Each
+ * panel has specified width, when width of elements
+ * in a row is greater than 12, elements will flow
+ * into next row.
  */
 public class Row extends LinePanel {
 	private Widget[] content;

@@ -23,6 +23,7 @@ public class CheckBox extends BasicInput {
 	}
 
 	/**
+	 * @param label Label for the checkbox
 	 * @param checkHandler handler called when checkbox changes it's state
 	 */
 	public CheckBox(String label, CheckHandler checkHandler) {
@@ -32,6 +33,9 @@ public class CheckBox extends BasicInput {
 		this.sendElement();
 	}
 
+	/**
+	 * @param label Label for the checkbox
+	 */
 	public CheckBox(String label) {
 		super(Actions.CHECK_STATE);
 		this.label = label;
@@ -44,7 +48,7 @@ public class CheckBox extends BasicInput {
 	}
 
 	/**
-	 * Sets new check handler
+	 * Sets new CheckHandler
 	 *
 	 * @param checkHandler New handler
 	 * @return This instance for chaining

@@ -6,6 +6,9 @@ import net.magik6k.jwwf.handlers.CheckHandler;
 import net.magik6k.jwwf.util.Json;
 import net.magik6k.jwwf.widgets.basic.input.generic.BasicInput;
 
+/**
+ * A button that can be switched on and off
+ */
 public class CheckButton extends BasicInput {
 	private CheckHandler checkHandler;
 	private boolean state;

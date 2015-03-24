@@ -4,7 +4,12 @@ import net.magik6k.jwwf.core.Widget;
 import net.magik6k.jwwf.widgets.basic.panel.generic.LinePanel;
 
 /**
- * Created by magik6k on 3/15/15.
+ * Panel, used to hold elements in {@link net.magik6k.jwwf.widgets.basic.panel.Row Rows}.
+ * Each panel have specified width that is a number
+ * between 1 and 12 and represents number of fields
+ * the panel will take inside row. Default width is
+ * 6. Panel can hold nested rows. This panel is the
+ * twitter bootstrap panel.
  */
 public class Panel extends LinePanel {
 	protected Widget[] content;
