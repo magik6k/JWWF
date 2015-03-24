@@ -2,8 +2,6 @@ package net.magik6k.jwwf.core.util;
 
 import net.magik6k.jwwf.core.JwwfServer;
 import net.magik6k.jwwf.core.plugin.ClientCreator;
-import ro.isdc.wro.extensions.processor.js.UglifyJsProcessor;
-import ro.isdc.wro.model.resource.processor.impl.js.JSMinProcessor;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -83,11 +81,12 @@ public class WebClientCreator implements ClientCreator {
 
 		widgetCode = doIncludes(widgetCode);
 
-		JSMinProcessor compressor = new JSMinProcessor();
+
 		StringWriter out = new StringWriter();
+		JsMin compressor = new JsMin(new ReaderInputStream(new StringReader(widgetCode)), new WriterOutputStream(out));
 		try {
-			compressor.process(new StringReader(widgetCode), out);
-		} catch (IOException e) {
+			compressor.jsmin();
+		} catch (IOException | JsMin.UnterminatedStringLiteralException | JsMin.UnterminatedCommentException | JsMin.UnterminatedRegExpLiteralException e) {
 			e.printStackTrace();
 		}
 		client = client.replace("/*?WidgetImpl*/", out.toString());
