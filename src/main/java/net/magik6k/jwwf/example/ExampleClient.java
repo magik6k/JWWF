@@ -230,7 +230,7 @@ public class ExampleClient extends User {
 		examples.put(new Row(2, rowDesc, row));
 		examples.put(new Row(2, tablePanelDesc, tablePanel));
 		examples.put(new Row(2, tabbedPanelDesc, tabbedPanel));
-		examples.put(new Row(1, new Panel(namedPanel).setWidth(12)));
+		examples.put(new Row(1, namedPanel.asPanel(12)));
 		examples.put(new Row(2, externalLinkDesc, externalLink));
 		examples.put(new Row(2, internalLinkDesc, internalLink));
 		examples.put(new Row(2, buttonDesc, button));

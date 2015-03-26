@@ -1,6 +1,7 @@
 package net.magik6k.jwwf.core;
 
 import net.magik6k.jwwf.core.action.Actions;
+import net.magik6k.jwwf.widgets.special.PanelWidgetWrapper;
 import org.eclipse.jetty.websocket.WebSocket.Connection;
 
 import java.io.IOException;
@@ -51,6 +52,21 @@ public abstract class Widget extends Attachable {
 	 * @return Data to send to client side
 	 */
 	public abstract String getData();
+
+	/**
+	 * @return This widget wrapped as panel
+	 */
+	public PanelWidgetWrapper asPanel() {
+		return new PanelWidgetWrapper(this);
+	}
+
+	/**
+	 * @param width Width of the created panel
+	 * @return This widget wrapped as panel
+	 */
+	public PanelWidgetWrapper asPanel(int width) {
+		return new PanelWidgetWrapper(this, width);
+	}
 
 	public final int getID() {
 		if (id < 0) throw new IllegalStateException("Cannot get ID of element without user");
@@ -122,16 +138,14 @@ public abstract class Widget extends Attachable {
 	 * @param data Data that arrived from client side
 	 * @throws Exception An exception that can be thrown in case something went wrong
 	 */
-	protected void handleData(String data) throws Exception {
-	}
+	protected void handleData(String data) throws Exception {}
 
 	/**
 	 * This method is called when this widget is assigned to user for the first time.
 	 * Note that if you are overriding widget that already extends {@link Widget} class,
 	 * you should call super method.
 	 */
-	protected void onAttach() {
-	}
+	protected void onAttach() {}
 
 	;
 }

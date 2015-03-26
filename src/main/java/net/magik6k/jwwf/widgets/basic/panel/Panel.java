@@ -71,7 +71,7 @@ public class Panel extends LinePanel {
 	/**
 	 * @param width Panel width(0 to 12)
 	 * @param elements Number of elements
-	 * @param elements Default widgets
+	 * @param widgets Default widgets
 	 */
 	public Panel(int width, int elements, Widget... widgets) {
 		super();

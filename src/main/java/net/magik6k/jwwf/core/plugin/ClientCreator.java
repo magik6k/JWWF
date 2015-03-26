@@ -14,8 +14,8 @@ public interface ClientCreator {
 
 	/**
 	 * <p>Registers new widget in client creator. Parameters create and update should
-	 * contain two javascript functions bodies:</p>
-	 * <p>
+	 * contain two javascript functions bodies:
+	 * </p>
 	 * <ul>
 	 * <li>create(data): {element, data} - data argument is object from java widget method {@link Widget#getData() getData}
 	 * It must return object with two fields - element containing DOM element created by this widget,

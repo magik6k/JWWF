@@ -24,7 +24,7 @@ public class Row extends LinePanel {
 
 	/**
 	 * @param elements Number of elements
-	 * @param elements Default widgets
+	 * @param widgets Default widgets
 	 */
 	public Row(int elements, Widget... widgets) {
 		super();
